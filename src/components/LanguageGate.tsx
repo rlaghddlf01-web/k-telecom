@@ -96,7 +96,7 @@ export default function LanguageGate({ standalone = false }: { standalone?: bool
               >
                 <span className="mb-2 block h-7 w-10 overflow-hidden rounded-sm shadow-sm">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={flagUrl(l.flag)} alt="" className="h-full w-full object-cover" loading="lazy" />
+                  <img src={flagUrl(l.flag)} alt="" className="h-full w-full object-cover" />
                 </span>
                 <span className="text-sm font-extrabold leading-tight text-slate-900">{l.name}</span>
                 <span className="mt-0.5 w-full truncate text-[11px] font-medium text-slate-500">{l.country}</span>

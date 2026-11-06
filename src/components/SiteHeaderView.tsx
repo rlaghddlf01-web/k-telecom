@@ -8,7 +8,7 @@ import SmartLink from '@/components/SmartLink';
 import type { HeaderSettings, MenuEntry } from '@/lib/content/types';
 import { useLang, useT } from '@/components/LangProvider';
 import { openLanguageGate } from '@/components/LanguageGate';
-import { langInfo, stripLang } from '@/lib/langs';
+import { flagUrl, langInfo, stripLang } from '@/lib/langs';
 
 export default function SiteHeaderView({ header }: { header: HeaderSettings }) {
   const t = useT();
@@ -27,15 +27,26 @@ export default function SiteHeaderView({ header }: { header: HeaderSettings }) {
     <header className="sticky top-0 z-40 bg-white" onMouseLeave={() => setMega(false)}>
       {/* 유틸 줄 */}
       <div className="hidden border-b border-black/5 bg-soft md:block">
-        <div className="mx-auto flex h-9 max-w-7xl items-center justify-end gap-5 px-4 text-xs text-slate-500">
-          {header.utility.map((l) => (
-            <SmartLink key={l.href + l.label} href={l.href} className="hover:text-brand">
-              {t(l.label)}
-            </SmartLink>
-          ))}
-          <button onClick={openLanguageGate} className="inline-flex items-center gap-1.5 font-bold text-ink hover:text-brand" aria-label="Language">
-            <Globe className="h-3.5 w-3.5" /> {langInfo(lang).name}
+        <div className="mx-auto flex h-11 max-w-7xl items-center justify-between gap-5 px-4 text-xs text-slate-500">
+          {/* 언어 변경: 눈에 띄는 버튼 (누르면 17개 언어 선택 창이 열린다) */}
+          <button
+            onClick={openLanguageGate}
+            aria-label="Language"
+            className="inline-flex items-center gap-2 rounded-full bg-brand py-1.5 pl-2 pr-3.5 text-xs font-extrabold text-white shadow-sm transition-colors hover:bg-brand-dark"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={flagUrl(langInfo(lang).flag)} alt="" className="h-4 w-6 rounded-[3px] object-cover ring-1 ring-white/50" />
+            <Globe className="h-3.5 w-3.5" />
+            {langInfo(lang).name}
+            <ChevronDown className="h-3 w-3" />
           </button>
+          <div className="flex items-center gap-5">
+            {header.utility.map((l) => (
+              <SmartLink key={l.href + l.label} href={l.href} className="hover:text-brand">
+                {t(l.label)}
+              </SmartLink>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -73,6 +84,16 @@ export default function SiteHeaderView({ header }: { header: HeaderSettings }) {
                 {t(header.ctaLabel)}
               </SmartLink>
             )}
+            {/* 모바일: 메뉴를 열지 않아도 바로 보이는 언어 버튼 */}
+            <button
+              onClick={openLanguageGate}
+              aria-label="Language"
+              className="inline-flex items-center gap-1.5 rounded-full bg-brand py-1.5 pl-1.5 pr-2.5 text-[11px] font-extrabold uppercase text-white md:hidden"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={flagUrl(langInfo(lang).flag)} alt="" className="h-3.5 w-5 rounded-[2px] object-cover ring-1 ring-white/50" />
+              {lang}
+            </button>
             <button className="p-2 md:hidden" aria-label={t('메뉴 열기')} onClick={() => setMobile((v) => !v)}>
               {mobile ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
