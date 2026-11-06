@@ -21,7 +21,7 @@ async function catalogText(lang: Lang): Promise<string> {
   const [{ plans }, phones] = await Promise.all([getPlans(), getProducts()]);
   const planLines = plans
     .slice(0, 12)
-    .map((p) => `- ${tr(p.name)} (${tr(p.network)}, data ${tr(p.dataLabel)}, voice ${tr(p.voice)}, SMS ${tr(p.sms)}): list ${p.price} KRW/month, promo ${p.promoPrice} KRW/month`);
+    .map((p) => `- ${tr(p.name)} (${tr(p.network)}, data ${tr(p.dataLabel)}, voice ${tr(p.voice)}, SMS ${tr(p.sms)}): list ${p.price} KRW/month, promo ${p.promoPrice} KRW/month${p.features.length ? `; perks: ${p.features.map(tr).join(', ')}` : ''}`);
   const phoneLines = phones.slice(0, 12).map((p) => `- ${tr(p.title)}: ${tr(p.price)} (${tr(p.note)})`);
   return `PLANS:\n${planLines.join('\n') || '- (none registered yet)'}\n\nPHONES:\n${phoneLines.join('\n') || '- (none registered yet)'}`;
 }
