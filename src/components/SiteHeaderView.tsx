@@ -27,8 +27,8 @@ export default function SiteHeaderView({ header }: { header: HeaderSettings }) {
     <header className="sticky top-0 z-40 bg-white" onMouseLeave={() => setMega(false)}>
       {/* 유틸 줄 */}
       <div className="hidden border-b border-black/5 bg-soft md:block">
-        <div className="mx-auto flex h-11 max-w-7xl items-center justify-between gap-5 px-4 text-xs text-slate-500">
-          {/* 언어 변경: 눈에 띄는 버튼 (누르면 17개 언어 선택 창이 열린다) */}
+        <div className="mx-auto flex h-11 max-w-7xl items-center justify-end gap-5 px-4 text-xs text-slate-500">
+          {/* 언어 변경: 눈에 띄는 버튼. 오른쪽 링크 묶음의 맨 앞(셀프개통 왼쪽)에 있고, 누르면 17개 언어 선택 창이 열린다 */}
           <button
             onClick={openLanguageGate}
             aria-label="Language"
@@ -40,13 +40,11 @@ export default function SiteHeaderView({ header }: { header: HeaderSettings }) {
             {langInfo(lang).name}
             <ChevronDown className="h-3 w-3" />
           </button>
-          <div className="flex items-center gap-5">
-            {header.utility.map((l) => (
-              <SmartLink key={l.href + l.label} href={l.href} className="hover:text-brand">
-                {t(l.label)}
-              </SmartLink>
-            ))}
-          </div>
+          {header.utility.map((l) => (
+            <SmartLink key={l.href + l.label} href={l.href} className="hover:text-brand">
+              {t(l.label)}
+            </SmartLink>
+          ))}
         </div>
       </div>
 
