@@ -9,7 +9,10 @@ const [left, , right] = [PHONES[0], PHONES[1], PHONES[3]];
 
 function DealCard({ phone }: { phone: (typeof PHONES)[number] }) {
   return (
-    <article className="relative flex flex-col items-center rounded-[1.75rem] bg-white p-6 text-center shadow-[0_20px_50px_-30px_rgba(15,20,36,0.45)] ring-1 ring-black/5">
+    <Link
+      href={`/phones/item/${phone.id}`}
+      className="relative flex flex-col items-center rounded-[1.75rem] bg-white p-6 text-center shadow-[0_20px_50px_-30px_rgba(15,20,36,0.45)] ring-1 ring-black/5 transition-shadow hover:shadow-[0_24px_50px_-24px_rgba(15,20,36,0.55)]"
+    >
       {phone.badge && (
         <span className="absolute left-5 top-5 rounded-md bg-brand px-2 py-1 text-[10px] font-extrabold text-white">
           {t(phone.badge)}
@@ -25,7 +28,7 @@ function DealCard({ phone }: { phone: (typeof PHONES)[number] }) {
       <div className="mt-5">
         <DealCountdown />
       </div>
-    </article>
+    </Link>
   );
 }
 
@@ -45,11 +48,11 @@ export default function TodayDeals() {
           </div>
           <p className="mt-4 text-sm text-white/90">{t('결합할수록 월 납부액이 줄어듭니다')}</p>
           <div className="mt-5 flex gap-3">
-            <Link href="/#products" className="rounded-md bg-white px-5 py-2.5 text-xs font-extrabold text-brand">
+            <Link href="/phones" className="rounded-md bg-white px-5 py-2.5 text-xs font-extrabold text-brand">
               {t('상품 보기')}
             </Link>
-            <Link href="/partnership" className="rounded-md border border-white/70 px-5 py-2.5 text-xs font-extrabold">
-              {t('제휴 문의')}
+            <Link href="/support/inquiry" className="rounded-md border border-white/70 px-5 py-2.5 text-xs font-extrabold">
+              {t('결합 문의')}
             </Link>
           </div>
         </article>

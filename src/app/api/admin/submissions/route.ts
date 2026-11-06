@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { isAdminRequest } from '@/lib/server/adminAuth';
+import { DEV_BYPASS, isAdminRequest } from '@/lib/server/adminAuth';
+import { devSampleResponse } from '@/lib/server/devSamples';
 import { getSupabaseAdmin, isSupabaseConfigured } from '@/lib/server/supabaseAdmin';
 import {
   SEARCH_COLUMNS,
@@ -34,6 +35,8 @@ export async function GET(req: NextRequest) {
   }
 
   if (!isSupabaseConfigured()) {
+    // 로컬 개발 모드에서는 화면 확인용 샘플 데이터를 보여준다
+    if (DEV_BYPASS) return NextResponse.json(devSampleResponse(params));
     return NextResponse.json({ configured: false, rows: [], counts: {} });
   }
   const db = getSupabaseAdmin();
@@ -80,7 +83,11 @@ export async function GET(req: NextRequest) {
 /** PATCH /api/admin/submissions  { kind, id, status?, memo? } → 상태·메모 변경 */
 export async function PATCH(req: NextRequest) {
   if (!isAdminRequest(req)) return unauthorized();
-  if (!isSupabaseConfigured()) return NextResponse.json({ error: 'Storage not configured' }, { status: 503 });
+  if (!isSupabaseConfigured()) {
+    // 로컬 개발 샘플 모드: 저장하지 않고 성공으로만 응답 (화면 동작 확인용)
+    if (DEV_BYPASS) return NextResponse.json({ success: true, sample: true });
+    return NextResponse.json({ error: 'Storage not configured' }, { status: 503 });
+  }
 
   const body = await req.json().catch(() => null);
   if (!body || !isKind(body.kind) || typeof body.id !== 'string' || !UUID_RE.test(body.id)) {

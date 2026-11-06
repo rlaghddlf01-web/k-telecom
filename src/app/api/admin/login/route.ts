@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import {
+  DEV_BYPASS,
   ADMIN_COOKIE,
   ADMIN_SESSION_MS,
   checkAdminCredentials,
@@ -11,7 +12,12 @@ import { clientIp, rateLimit } from '@/lib/server/security';
 
 // GET /api/admin/login : 지금 로그인된 상태인지 확인
 export async function GET(req: NextRequest) {
-  return NextResponse.json({ authenticated: isAdminRequest(req), configured: isAdminConfigured() });
+  return NextResponse.json({
+    authenticated: isAdminRequest(req),
+    configured: isAdminConfigured(),
+    // 로컬 개발(npm run dev)에서만 true: 로그인 없이 접속 중임을 화면에 알린다
+    devBypass: DEV_BYPASS,
+  });
 }
 
 // POST /api/admin/login : 아이디·비밀번호를 서버에서 확인하고 로그인 쿠키를 발급

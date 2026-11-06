@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 import ProductImage from '@/components/ProductImage';
 import { PHONES, type PhoneGroup } from '@/lib/phones';
@@ -18,9 +19,14 @@ export default function BestProducts() {
   return (
     <section id="products" className="mx-auto max-w-6xl scroll-mt-20 px-4 pb-16">
       <div className="rounded-[2.5rem] bg-soft px-4 py-12 md:px-10">
-        <h2 className="section-title text-center">{t('인기 스마트폰')}</h2>
+        <div className="flex items-end justify-between">
+          <h2 className="section-title">{t('인기 스마트폰')}</h2>
+          <Link href="/phones" className="text-xs font-bold text-slate-500 underline underline-offset-4 hover:text-brand">
+            {t('전체 보기')}
+          </Link>
+        </div>
 
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
+        <div className="mt-6 flex flex-wrap gap-2">
           {TABS.map((item) => (
             <button
               key={item.id}
@@ -36,18 +42,23 @@ export default function BestProducts() {
 
         <ul className="mt-9 grid grid-cols-2 gap-4 md:grid-cols-5">
           {list.map((p) => (
-            <li key={p.id} className="relative rounded-2xl bg-white p-4 text-center shadow-sm transition-shadow hover:shadow-xl">
-              {p.badge && (
-                <span className="absolute left-3 top-3 z-10 rounded-md bg-brand px-2 py-0.5 text-[10px] font-extrabold text-white">
-                  {t(p.badge)}
-                </span>
-              )}
-              <div className="flex h-44 items-center justify-center">
-                <ProductImage phone={p} className="h-40 drop-shadow-[0_14px_14px_rgba(15,20,36,0.25)]" />
-              </div>
-              <p className="mt-3 text-[11px] font-semibold text-slate-400">{t(p.tag)}</p>
-              <h3 className="mt-1 line-clamp-2 min-h-[2.5rem] text-xs font-bold leading-snug">{t(p.title)}</h3>
-              <p className="mt-2 text-sm font-black text-brand">{t(p.price)}</p>
+            <li key={p.id}>
+              <Link
+                href={`/phones/item/${p.id}`}
+                className="relative block rounded-2xl bg-white p-4 text-center shadow-sm transition-shadow hover:shadow-xl"
+              >
+                {p.badge && (
+                  <span className="absolute left-3 top-3 z-10 rounded-md bg-brand px-2 py-0.5 text-[10px] font-extrabold text-white">
+                    {t(p.badge)}
+                  </span>
+                )}
+                <div className="flex h-44 items-center justify-center">
+                  <ProductImage phone={p} className="h-40 drop-shadow-[0_14px_14px_rgba(15,20,36,0.25)]" />
+                </div>
+                <p className="mt-3 text-[11px] font-semibold text-slate-400">{t(p.tag)}</p>
+                <h3 className="mt-1 line-clamp-2 min-h-[2.5rem] text-xs font-bold leading-snug">{t(p.title)}</h3>
+                <p className="mt-2 text-sm font-black text-brand">{t(p.price)}</p>
+              </Link>
             </li>
           ))}
         </ul>

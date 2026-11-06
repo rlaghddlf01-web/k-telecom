@@ -70,12 +70,14 @@ const formatDate = (iso: string) =>
 export default function AdminApp() {
   const [auth, setAuth] = useState<'loading' | 'out' | 'in'>('loading');
   const [configured, setConfigured] = useState(true);
+  const [devBypass, setDevBypass] = useState(false);
 
   useEffect(() => {
     fetch('/api/admin/login')
       .then((r) => r.json())
       .then((d) => {
         setConfigured(!!d.configured);
+        setDevBypass(!!d.devBypass);
         setAuth(d.authenticated ? 'in' : 'out');
       })
       .catch(() => setAuth('out'));
@@ -87,7 +89,7 @@ export default function AdminApp() {
   if (auth === 'out') {
     return <LoginForm configured={configured} onSuccess={() => setAuth('in')} />;
   }
-  return <Dashboard onLogout={() => setAuth('out')} />;
+  return <Dashboard devBypass={devBypass} onLogout={() => setAuth('out')} />;
 }
 
 // ---------------------------------------------------------------------------
@@ -154,10 +156,11 @@ function LoginForm({ configured, onSuccess }: { configured: boolean; onSuccess: 
 }
 
 // ---------------------------------------------------------------------------
-function Dashboard({ onLogout }: { onLogout: () => void }) {
+function Dashboard({ devBypass, onLogout }: { devBypass: boolean; onLogout: () => void }) {
   const [tab, setTab] = useState<'summary' | Kind>('summary');
   const [counts, setCounts] = useState<Counts>({});
   const [configured, setConfigured] = useState(true);
+  const [sample, setSample] = useState(false);
 
   const handleUnauthorized = useCallback(() => onLogout(), [onLogout]);
 
@@ -173,6 +176,7 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
       .then((d) => {
         if (!d) return;
         setConfigured(d.configured !== false);
+        setSample(!!d.sample);
         setCounts(d.counts ?? {});
       })
       .catch(() => undefined);
@@ -196,9 +200,11 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
           <p className="text-lg font-black text-brand">
             K-Telecom <span className="text-sm font-bold text-slate-400">관리자</span>
           </p>
-          <button onClick={logout} className="flex items-center gap-1.5 rounded-full border border-black/10 px-4 py-2 text-xs font-bold hover:border-brand hover:text-brand">
-            <LogOut className="h-3.5 w-3.5" /> 로그아웃
-          </button>
+          {!devBypass && (
+            <button onClick={logout} className="flex items-center gap-1.5 rounded-full border border-black/10 px-4 py-2 text-xs font-bold hover:border-brand hover:text-brand">
+              <LogOut className="h-3.5 w-3.5" /> 로그아웃
+            </button>
+          )}
         </div>
         <nav className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-4">
           {([['summary', '대시보드'] as const, ...KIND_ORDER.map((k) => [k, KINDS[k].label] as const)]).map(([id, label]) => (
@@ -219,7 +225,16 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
       </header>
 
       <main className="mx-auto max-w-6xl px-4 py-6">
-        {!configured && (
+        {devBypass && (
+          <div className="mb-6 flex items-start gap-3 rounded-2xl bg-sky-50 p-4 text-sm text-sky-900 ring-1 ring-sky-200">
+            <Info className="mt-0.5 h-4 w-4 shrink-0" />
+            <p>
+              <b>개발 모드</b> — 로그인 없이 접속 중입니다. 이 우회는 내 컴퓨터에서 개발 서버(npm run dev)로 실행할 때만 켜지고, 배포된 사이트에서는 켜지지 않습니다.
+              {sample && ' 저장소가 연결되지 않아 화면 확인용 샘플 데이터를 보여 주며, 여기서 바꾼 상태·메모는 저장되지 않습니다.'}
+            </p>
+          </div>
+        )}
+        {!configured && !sample && (
           <div className="mb-6 flex items-start gap-3 rounded-2xl bg-amber-50 p-4 text-sm text-amber-900 ring-1 ring-amber-200">
             <Info className="mt-0.5 h-4 w-4 shrink-0" />
             <p>

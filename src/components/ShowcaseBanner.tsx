@@ -16,8 +16,8 @@ export default function ShowcaseBanner() {
             <p className="mt-4 text-sm leading-relaxed text-white/70">
               {t('외국인등록증 기반으로 24개월 통신요금과 합산 청구합니다. 초기비용 부담 없이 시작하세요.')}
             </p>
-            <Link href="/partnership" className="mt-7 inline-flex rounded-md bg-white px-6 py-3 text-xs font-extrabold text-ink hover:bg-brand hover:text-white transition-colors">
-              {t('제휴 문의하기')}
+            <Link href="/phones/installment" className="mt-7 inline-flex rounded-md bg-white px-6 py-3 text-xs font-extrabold text-ink hover:bg-brand hover:text-white transition-colors">
+              {t('할부 안내 보기')}
             </Link>
           </div>
           <div className="relative flex h-72 items-center justify-center md:h-96">

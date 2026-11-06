@@ -13,16 +13,17 @@ export const COMPANY = {
 export interface Category {
   label: string;
   icon: LucideIcon;
+  href: string;
 }
 
 export const CATEGORIES: Category[] = [
-  { label: '스마트폰', icon: Smartphone },
-  { label: '알뜰폰 요금제', icon: CardSim },
-  { label: 'eSIM', icon: CardSim },
-  { label: '원룸 인터넷', icon: Wifi },
-  { label: 'IPTV', icon: Tv },
-  { label: '국제통화', icon: Globe2 },
-  { label: '신분증 OCR 접수', icon: ScanLine },
+  { label: '스마트폰', icon: Smartphone, href: '/phones' },
+  { label: '알뜰폰 요금제', icon: CardSim, href: '/plans' },
+  { label: 'eSIM', icon: CardSim, href: '/plans/esim' },
+  { label: '원룸 인터넷', icon: Wifi, href: '/internet' },
+  { label: 'IPTV', icon: Tv, href: '/internet/iptv' },
+  { label: '국제통화', icon: Globe2, href: '/plans/addons' },
+  { label: '신분증 OCR 접수', icon: ScanLine, href: '/plans/apply' },
 ];
 
 export const PROCESS_STEPS = [
