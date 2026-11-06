@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { saveSubmission } from '@/lib/server/submissions';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const CATEGORIES = ['요금제', '스마트폰', '인터넷·IPTV', '이벤트', '기타'];
@@ -29,8 +30,17 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: '개인정보 수집·이용에 동의해 주세요.' }, { status: 400 });
   }
 
-  // TODO: 저장 방식(DB/메일) 연동 필요. 개인정보 보호를 위해 이름·연락처 등은 로그에 남기지 않는다.
-  console.log('[inquiry] received', { category: data.category });
+  // 저장소(Supabase)가 설정되어 있으면 저장하고, 없으면 저장하지 않는다. 개인정보는 로그에 남기지 않는다.
+  const saved = await saveSubmission('inquiry', {
+    name: data.name,
+    phone: data.phone,
+    email: data.email || null,
+    category: data.category,
+    message: data.message,
+  });
+  if (saved.failed) {
+    return NextResponse.json({ error: '접수 저장에 실패했습니다. 잠시 후 다시 시도해 주세요.' }, { status: 500 });
+  }
 
   return NextResponse.json({ ok: true });
 }

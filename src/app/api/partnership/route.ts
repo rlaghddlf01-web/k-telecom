@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { PARTNER_TYPES } from '@/lib/site';
+import { saveSubmission } from '@/lib/server/submissions';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -33,8 +34,19 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: '개인정보 수집·이용에 동의해 주세요.' }, { status: 400 });
   }
 
-  // TODO: 저장 방식(DB/메일) 연동 필요. 개인정보 보호를 위해 이름·연락처 등은 로그에 남기지 않는다.
-  console.log('[partnership] received', { types: data.types });
+  // 저장소(Supabase)가 설정되어 있으면 저장하고, 없으면 저장하지 않는다. 개인정보는 로그에 남기지 않는다.
+  const saved = await saveSubmission('partnership', {
+    company: data.company,
+    name: data.name,
+    position: data.position || null,
+    phone: data.phone,
+    email: data.email,
+    types: data.types,
+    message: data.message || null,
+  });
+  if (saved.failed) {
+    return NextResponse.json({ error: '접수 저장에 실패했습니다. 잠시 후 다시 시도해 주세요.' }, { status: 500 });
+  }
 
   return NextResponse.json({ ok: true });
 }

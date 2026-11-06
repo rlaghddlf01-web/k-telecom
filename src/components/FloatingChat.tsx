@@ -1,9 +1,15 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { MessageCircle } from 'lucide-react';
 import { t } from '@/lib/i18n';
 
-/** 오른쪽 아래 고정 상담 버튼 */
+/** 오른쪽 아래 고정 상담 버튼 (관리자 화면에서는 숨김) */
 export default function FloatingChat() {
+  const pathname = usePathname();
+  if (pathname.startsWith('/admin')) return null;
+
   return (
     <Link
       href="/support/inquiry"

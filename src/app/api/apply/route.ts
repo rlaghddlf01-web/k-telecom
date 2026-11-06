@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { NETWORKS, findPlan } from '@/lib/plans';
+import { saveSubmission } from '@/lib/server/submissions';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const ONE_OF = (v: unknown, list: string[]) => (typeof v === 'string' && list.includes(v) ? v : '');
@@ -46,8 +47,25 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: '개인정보 수집·이용에 동의해 주세요.' }, { status: 400 });
   }
 
-  // TODO: 저장 방식(DB/메일) 연동 필요. 개인정보 보호를 위해 이름·연락처 등은 로그에 남기지 않는다.
-  console.log('[apply] received', { network: data.network, planId: data.planId });
+  // 저장소(Supabase)가 설정되어 있으면 저장하고, 없으면 저장하지 않는다. 개인정보는 로그에 남기지 않는다.
+  const saved = await saveSubmission('application', {
+    join_type: data.joinType,
+    network: data.network,
+    billing: data.billing,
+    plan_id: plan.id,
+    plan_name: plan.name,
+    sim: data.sim,
+    sim_buy: data.simBuy,
+    name: data.name,
+    nationality: data.nationality,
+    phone: data.phone,
+    email: data.email || null,
+    wish_number: data.wishNumber || null,
+    current_number: data.currentNumber || null,
+  });
+  if (saved.failed) {
+    return NextResponse.json({ error: '접수 저장에 실패했습니다. 잠시 후 다시 시도해 주세요.' }, { status: 500 });
+  }
 
   return NextResponse.json({ ok: true });
 }
