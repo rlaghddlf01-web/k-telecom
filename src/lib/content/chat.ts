@@ -86,12 +86,15 @@ export interface ChatChannel {
   href: string;
 }
 
-/** 설정된 메신저만 버튼으로 만든다 (label 은 번역 키) */
+/** 아직 연결하지 않은 메신저 버튼이 눌렸을 때 가는 곳 (사이트 안 1:1 상담문의) */
+export const CHAT_FALLBACK_HREF = '/support/inquiry';
+
+/** 왓츠앱·텔레그램·메신저는 연결 전에도 버튼을 보여 주고(문의 페이지로 이동), 카카오톡은 설정했을 때만 보인다 (label 은 번역 키) */
 export function chatChannels(s: ChatSettings): ChatChannel[] {
   const list: ChatChannel[] = [];
-  if (s.whatsapp) list.push({ id: 'whatsapp', label: '왓츠앱 실시간 상담', href: `https://wa.me/${s.whatsapp}` });
-  if (s.telegram) list.push({ id: 'telegram', label: '텔레그램 실시간 상담', href: `https://t.me/${s.telegram}` });
-  if (s.messenger) list.push({ id: 'messenger', label: '페이스북 메신저 상담', href: `https://m.me/${s.messenger}` });
+  list.push({ id: 'whatsapp', label: '왓츠앱 실시간 상담', href: s.whatsapp ? `https://wa.me/${s.whatsapp}` : CHAT_FALLBACK_HREF });
+  list.push({ id: 'telegram', label: '텔레그램 실시간 상담', href: s.telegram ? `https://t.me/${s.telegram}` : CHAT_FALLBACK_HREF });
+  list.push({ id: 'messenger', label: '페이스북 메신저 상담', href: s.messenger ? `https://m.me/${s.messenger}` : CHAT_FALLBACK_HREF });
   if (s.kakao) list.push({ id: 'kakao', label: '카카오톡 실시간 상담', href: s.kakao });
   return list;
 }

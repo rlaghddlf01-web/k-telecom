@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useCallback, useEffect, useState } from 'react';
 import { adminFetch, errorMessage, jsonInit } from '@/components/admin/adminApi';
@@ -8,7 +8,7 @@ import type { ChatSettings } from '@/lib/content/chat';
 
 type Mode = 'supabase' | 'memory' | 'none';
 
-/** 상담 창: 매니저 소개, AI 채팅 사용 여부, 왓츠앱·텔레그램·페이스북 메신저·카카오톡 연결 */
+/** 상담 창: 매니저 소개, AI 채팅 사용 여부, 츠츠앱·텔레그램·페이스북 메신저·카카오톡 연결 */
 export default function ChatManager({ onUnauthorized }: { onUnauthorized: () => void }) {
   const [value, setValue] = useState<ChatSettings | null>(null);
   const [mode, setMode] = useState<Mode>('supabase');
@@ -51,7 +51,7 @@ export default function ChatManager({ onUnauthorized }: { onUnauthorized: () => 
         <button className={primaryBtn} onClick={save} disabled={saving}>{saving ? '저장 중...' : '저장'}</button>
       </div>
       <p className="mb-4 text-xs text-slate-500">
-        사이트 오른쪽 아래 상담 버튼을 눌렀을 때 나오는 창입니다. 비워 둔 메신저는 버튼이 나오지 않고, 입력한 메신저만 보입니다. 고객 화면의 안내 문구는 언어별로 자동 번역됩니다.
+        사이트 오른쪽 아래 상담 버튼을 눌렀을 때 나오는 창입니다. 워워 둔 메신저는 버튼이 나오지 않고, 입력한 메신저만 보입니다. 고객 화면의 안내 문구는 언어별로 자동 번역됩니다.
       </p>
 
       {mode === 'none' && <Notice>저장소(Supabase)가 연결되지 않아 저장할 수 없습니다. docs/telecom_cms.sql 실행과 환경변수 등록이 필요합니다.</Notice>}
@@ -81,7 +81,7 @@ export default function ChatManager({ onUnauthorized }: { onUnauthorized: () => 
           <Field label="한 줄 소개">
             <input className={inputCls} value={value.intro} maxLength={120} onChange={(e) => set('intro', e.target.value)} />
           </Field>
-          <Field label="매니저 사진 (선택)" hint="비우면 기본 아이콘이 보입니다.">
+          <Field label="매니저 사진 (선택)" hint="워우면 기본 아이콘이 보입니다.">
             <ImageField value={value.avatar} onChange={(url) => set('avatar', url)} folder="banners" onUnauthorized={onUnauthorized} />
           </Field>
           <Toggle checked={value.aiEnabled} onChange={(v) => set('aiEnabled', v)} label="AI 매니저 실시간 채팅 사용 (고객 언어로 자동 답변)" />
@@ -89,7 +89,7 @@ export default function ChatManager({ onUnauthorized }: { onUnauthorized: () => 
 
         <section className="space-y-4">
           <h2 className="text-sm font-black">메신저 연결</h2>
-          <Field label="왓츠앱 번호" hint="국가번호를 포함한 숫자만. 예: 821012345678 (+, -, 0 제외)">
+          <Field label="츠츠앱 번호" hint="국가번호를 포함한 숫자만. 예: 821012345678 (+, -, 0 제외)">
             <input className={inputCls} value={value.whatsapp} maxLength={30} inputMode="numeric" onChange={(e) => set('whatsapp', e.target.value)} />
           </Field>
           <Field label="텔레그램 아이디" hint="@ 없이 입력. 예: ktelecom_support (봇 이름도 가능)">
