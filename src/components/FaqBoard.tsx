@@ -2,15 +2,15 @@
 
 import { useState } from 'react';
 import { ChevronDown, Search } from 'lucide-react';
-import { FAQ_CATEGORIES, FAQS } from '@/lib/faq';
+import { FAQ_CATEGORIES, type Faq } from '@/lib/faq';
 import { t } from '@/lib/i18n';
 
-export default function FaqBoard() {
+export default function FaqBoard({ faqs }: { faqs: Faq[] }) {
   const [cat, setCat] = useState<(typeof FAQ_CATEGORIES)[number]>('전체');
   const [q, setQ] = useState('');
 
   const keyword = q.trim();
-  const list = FAQS.filter(
+  const list = faqs.filter(
     (f) => (cat === '전체' || f.category === cat) && (!keyword || f.q.includes(keyword) || f.a.includes(keyword)),
   );
 

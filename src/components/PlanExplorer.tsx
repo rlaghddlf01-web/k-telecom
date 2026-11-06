@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 import { ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import PlanCard from '@/components/PlanCard';
-import { NETWORKS, PLANS, type Network } from '@/lib/plans';
+import { NETWORKS, type Network, type Plan } from '@/lib/plans';
 import { t } from '@/lib/i18n';
 
 type Sort = 'recommended' | 'priceAsc' | 'priceDesc' | 'dataDesc';
@@ -25,7 +25,7 @@ const DATA_NEEDS: { value: number; label: string }[] = [
 
 const PAGE_SIZE = 6;
 
-export default function PlanExplorer() {
+export default function PlanExplorer({ plans }: { plans: Plan[] }) {
   const [network, setNetwork] = useState<Network | 'all'>('all');
   const [sort, setSort] = useState<Sort>('recommended');
   const [dataNeed, setDataNeed] = useState(0);
@@ -35,7 +35,7 @@ export default function PlanExplorer() {
   const [page, setPage] = useState(1);
 
   const list = useMemo(() => {
-    const filtered = PLANS.filter(
+    const filtered = plans.filter(
       (p) =>
         (network === 'all' || p.network === network) &&
         p.dataGB >= dataNeed &&
@@ -47,7 +47,7 @@ export default function PlanExplorer() {
     if (sort === 'priceDesc') sorted.sort((a, b) => b.promoPrice - a.promoPrice);
     if (sort === 'dataDesc') sorted.sort((a, b) => b.dataGB - a.dataGB);
     return sorted;
-  }, [network, sort, dataNeed, intl, maxPrice]);
+  }, [plans, network, sort, dataNeed, intl, maxPrice]);
 
   const pages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
   const current = Math.min(page, pages);

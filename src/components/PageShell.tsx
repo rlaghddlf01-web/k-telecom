@@ -3,19 +3,24 @@ import { ChevronRight, Home } from 'lucide-react';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import { findSection } from '@/lib/menu';
-import { getSiteSettings } from '@/lib/content/load';
+import { getPageMeta, getSiteSettings } from '@/lib/content/load';
 import { t } from '@/lib/i18n';
 
 interface PageShellProps {
   path: string;
   title: string;
   lead?: string;
+  /** 관리자가 제목·설명을 바꿀 수 있는 기능 화면이면 true (바꾼 적이 없으면 title/lead 그대로) */
+  managed?: boolean;
   children: React.ReactNode;
 }
 
 /** 서브 페이지 공통 틀: 헤더 + 타이틀 배너 + 좌측 섹션 메뉴 + 푸터 */
-export default async function PageShell({ path, title, lead, children }: PageShellProps) {
+export default async function PageShell({ path, title: baseTitle, lead: baseLead, managed, children }: PageShellProps) {
   const { header } = await getSiteSettings();
+  const meta = managed ? await getPageMeta(path) : null;
+  const title = meta?.title || baseTitle;
+  const lead = meta ? meta.lead : baseLead;
   const section = findSection(path, header.menu);
   const showSide = !!section && section.children.length > 1;
 

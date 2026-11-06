@@ -1,5 +1,5 @@
 import { Truck, Languages, ScanLine, Wrench } from 'lucide-react';
-import { t } from '@/lib/i18n';
+import { ht } from '@/lib/content/homeText';
 
 const ITEMS = [
   { icon: Truck, title: '무료 배송', desc: '단말·유심 우체국 택배 발송' },
@@ -18,8 +18,8 @@ export default function FeatureStrip() {
               <Icon className="h-5 w-5" />
             </span>
             <div>
-              <p className="text-sm font-extrabold">{t(title)}</p>
-              <p className="text-xs text-slate-500">{t(desc)}</p>
+              <p className="text-sm font-extrabold">{ht(title)}</p>
+              <p className="text-xs text-slate-500">{ht(desc)}</p>
             </div>
           </li>
         ))}

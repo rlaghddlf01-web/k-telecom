@@ -6,11 +6,21 @@ import crypto from 'crypto';
 import { getSupabaseAdmin, isSupabaseConfigured } from '@/lib/server/supabaseAdmin';
 import { DEV_BYPASS } from '@/lib/server/adminAuth';
 
-export type Resource = 'banners' | 'products';
+export type Resource = 'banners' | 'products' | 'plans' | 'events' | 'notices' | 'faqs';
 export type StoreMode = 'supabase' | 'memory' | 'none';
 export type Row = Record<string, unknown>;
 
-const TABLES: Record<Resource, string> = { banners: 'telecom_banners', products: 'telecom_products' };
+const TABLES: Record<Resource, string> = {
+  banners: 'telecom_banners',
+  products: 'telecom_products',
+  plans: 'telecom_plans',
+  events: 'telecom_events',
+  notices: 'telecom_notices',
+  faqs: 'telecom_faqs',
+};
+
+/** 이벤트·공지는 최신 게시일 순, 나머지는 순서 번호 순으로 보여준다 */
+const isPost = (resource: Resource) => resource === 'events' || resource === 'notices';
 
 export class StoreUnavailableError extends Error {
   constructor() {
@@ -27,26 +37,46 @@ export function storeMode(): StoreMode {
 interface Memory {
   banners: Row[];
   products: Row[];
+  plans: Row[];
+  events: Row[];
+  notices: Row[];
+  faqs: Row[];
+  pages: Record<string, Row>;
   settings: Record<string, unknown>;
 }
-const globalRef = globalThis as unknown as { __ktCms?: Memory };
-const memory = (): Memory => (globalRef.__ktCms ??= { banners: [], products: [], settings: {} });
+const globalRef = globalThis as unknown as { __ktCms?: Partial<Memory> };
+
+/** 개발 서버가 코드를 다시 불러와도 임시 저장소에 빠진 항목이 없도록 항상 채워 둔다 */
+function memory(): Memory {
+  const m = (globalRef.__ktCms ??= {});
+  m.banners ??= [];
+  m.products ??= [];
+  m.plans ??= [];
+  m.events ??= [];
+  m.notices ??= [];
+  m.faqs ??= [];
+  m.pages ??= {};
+  m.settings ??= {};
+  return m as Memory;
+}
 
 const byOrder = (a: Row, b: Row) => Number(a.sort_order ?? 0) - Number(b.sort_order ?? 0);
+const byNewest = (a: Row, b: Row) =>
+  String(b.published_at ?? '').localeCompare(String(a.published_at ?? '')) ||
+  String(b.created_at ?? '').localeCompare(String(a.created_at ?? ''));
 
 export async function listRows(resource: Resource): Promise<Row[]> {
   const mode = storeMode();
   if (mode === 'supabase') {
-    const { data, error } = await getSupabaseAdmin()
-      .from(TABLES[resource])
-      .select('*')
-      .order('sort_order', { ascending: true })
-      .order('created_at', { ascending: true })
-      .limit(500);
+    let query = getSupabaseAdmin().from(TABLES[resource]).select('*');
+    query = isPost(resource)
+      ? query.order('published_at', { ascending: false }).order('created_at', { ascending: false })
+      : query.order('sort_order', { ascending: true }).order('created_at', { ascending: true });
+    const { data, error } = await query.limit(500);
     if (error) throw error;
     return data ?? [];
   }
-  if (mode === 'memory') return [...memory()[resource]].sort(byOrder);
+  if (mode === 'memory') return [...memory()[resource]].sort(isPost(resource) ? byNewest : byOrder);
   return [];
 }
 
@@ -115,4 +145,54 @@ export async function setSetting(key: string, value: unknown): Promise<void> {
     return;
   }
   memory().settings[key] = value;
+}
+
+// ---------------------------------------------------------------------------
+// 서브 페이지 (경로 path 가 기본 키)
+// ---------------------------------------------------------------------------
+export async function listPageRows(): Promise<Row[]> {
+  const mode = storeMode();
+  if (mode === 'supabase') {
+    const { data, error } = await getSupabaseAdmin().from('telecom_pages').select('*').order('path', { ascending: true }).limit(500);
+    if (error) throw error;
+    return data ?? [];
+  }
+  if (mode === 'memory') return Object.values(memory().pages);
+  return [];
+}
+
+export async function getPageRow(path: string): Promise<Row | null> {
+  const mode = storeMode();
+  if (mode === 'supabase') {
+    const { data, error } = await getSupabaseAdmin().from('telecom_pages').select('*').eq('path', path).maybeSingle();
+    if (error) throw error;
+    return data ?? null;
+  }
+  if (mode === 'memory') return memory().pages[path] ?? null;
+  return null;
+}
+
+export async function upsertPageRow(row: Row & { path: string }): Promise<void> {
+  const mode = storeMode();
+  if (mode === 'none') throw new StoreUnavailableError();
+  const full = { ...row, updated_at: new Date().toISOString() };
+  if (mode === 'supabase') {
+    const { error } = await getSupabaseAdmin().from('telecom_pages').upsert(full, { onConflict: 'path' });
+    if (error) throw error;
+    return;
+  }
+  memory().pages[row.path] = full;
+}
+
+export async function deletePageRow(path: string): Promise<boolean> {
+  const mode = storeMode();
+  if (mode === 'none') throw new StoreUnavailableError();
+  if (mode === 'supabase') {
+    const { data, error } = await getSupabaseAdmin().from('telecom_pages').delete().eq('path', path).select('path');
+    if (error) throw error;
+    return (data?.length ?? 0) > 0;
+  }
+  const had = path in memory().pages;
+  delete memory().pages[path];
+  return had;
 }

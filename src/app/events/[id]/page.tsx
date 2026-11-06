@@ -2,28 +2,26 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import PageShell from '@/components/PageShell';
 import PostArticle from '@/components/PostArticle';
-import { EVENTS } from '@/lib/boards';
-import { t } from '@/lib/i18n';
+import { getEvents } from '@/lib/content/load';
 
 interface Props {
   params: Promise<{ id: string }>;
 }
 
-export const dynamicParams = false;
-
-export function generateStaticParams() {
-  return EVENTS.map((p) => ({ id: p.id }));
+// 관리자에서 새 이벤트를 등록하면 미리 만들어 두지 않은 주소도 열려야 하므로 dynamicParams 를 막지 않는다.
+export async function generateStaticParams() {
+  return (await getEvents()).map((p) => ({ id: p.id }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
-  const post = EVENTS.find((p) => p.id === id);
-  return post ? { title: `${t(post.title)} | K-Telecom` } : {};
+  const post = (await getEvents()).find((p) => p.id === id);
+  return post ? { title: `${post.title} | K-Telecom` } : {};
 }
 
 export default async function EventDetailPage({ params }: Props) {
   const { id } = await params;
-  const post = EVENTS.find((p) => p.id === id);
+  const post = (await getEvents()).find((p) => p.id === id);
   if (!post) notFound();
 
   return (

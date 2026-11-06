@@ -14,7 +14,7 @@ export default async function PhonesPage() {
 
   return (
     <PageShell
-      path="/phones"
+      path="/phones" managed
       title="단말 목록"
       lead="갤럭시 A시리즈 미개봉 신제품과 정품 검수 리퍼비시 아이폰을 초기비용 0원으로 만나보세요."
     >

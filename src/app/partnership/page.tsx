@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function PartnershipPage() {
   return (
     <PageShell
-      path="/partnership"
+      path="/partnership" managed
       title="제휴 신청"
       lead="외국인 대상 통신 상품 공급을 함께할 파트너사를 모십니다."
     >

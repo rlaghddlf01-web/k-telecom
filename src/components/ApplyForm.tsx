@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { CheckCircle2 } from 'lucide-react';
 import { inputClass } from '@/components/formStyles';
-import { NETWORKS, PLANS, findPlan, won, type Network } from '@/lib/plans';
+import { NETWORKS, won, type Network, type Plan } from '@/lib/plans';
 import { t } from '@/lib/i18n';
 
 type Status = 'idle' | 'sending' | 'done' | 'error';
@@ -37,8 +37,10 @@ function Choice({
   );
 }
 
-export default function ApplyForm() {
+export default function ApplyForm(props: { plans: Plan[] }) {
   const params = useSearchParams();
+  const allPlans = props.plans;
+  const findPlan = (id: string) => allPlans.find((p) => p.id === id);
   const initialPlan = findPlan(params.get('plan') ?? '');
 
   const [joinType, setJoinType] = useState('new');
@@ -50,7 +52,7 @@ export default function ApplyForm() {
   const [status, setStatus] = useState<Status>('idle');
   const [error, setError] = useState('');
 
-  const plans = useMemo(() => PLANS.filter((p) => p.network === network), [network]);
+  const plans = useMemo(() => allPlans.filter((p) => p.network === network), [allPlans, network]);
   const selected = findPlan(planId);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {

@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 import ProductImage from '@/components/ProductImage';
 import type { Phone, PhoneGroup } from '@/lib/phones';
-import { t } from '@/lib/i18n';
 
 const TABS: { id: PhoneGroup | 'all'; label: string }[] = [
   { id: 'all', label: '전체' },
@@ -12,7 +11,9 @@ const TABS: { id: PhoneGroup | 'all'; label: string }[] = [
   { id: 'iphone', label: '애플 아이폰' },
 ];
 
-export default function BestProducts({ phones }: { phones: Phone[] }) {
+/** texts: 서버(홈)에서 관리자가 바꾼 문구를 반영해 미리 만든 글자 (기본 문장 → 표시할 글자) */
+export default function BestProducts({ phones, texts }: { phones: Phone[]; texts: Record<string, string> }) {
+  const t = (key: string) => texts[key] ?? key;
   const [tab, setTab] = useState<PhoneGroup | 'all'>('all');
   const list = phones.filter((p) => tab === 'all' || p.group === tab).slice(0, 5);
 

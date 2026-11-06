@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function EsimPage() {
   return (
     <PageShell
-      path="/plans/esim"
+      path="/plans/esim" managed
       title="eSIM 안내"
       lead="유심을 기다리지 않고 바로 개통하는 eSIM을 안내합니다."
     >

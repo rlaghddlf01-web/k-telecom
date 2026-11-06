@@ -1,20 +1,21 @@
 import Link from 'next/link';
 import PlanCard from '@/components/PlanCard';
 import SampleNotice from '@/components/SampleNotice';
-import { PLANS } from '@/lib/plans';
-import { t } from '@/lib/i18n';
+import { getPlans } from '@/lib/content/load';
+import { ht } from '@/lib/content/homeText';
 
-const PICKS = ['basic-3g', 'talk-7g', 'data-15g', 'unlimited'];
-
-export default function BestPlans() {
-  const picks = PICKS.map((id) => PLANS.find((p) => p.id === id)).filter((p): p is (typeof PLANS)[number] => !!p);
+export default async function BestPlans({ title }: { title?: string }) {
+  const { plans } = await getPlans();
+  // 배지가 붙은 요금제를 먼저, 그다음 순서대로 4개
+  const picks = [...plans.filter((p) => p.badge), ...plans.filter((p) => !p.badge)].slice(0, 4);
+  if (picks.length === 0) return null;
 
   return (
     <section className="mx-auto max-w-6xl px-4 pb-16">
       <div className="flex items-end justify-between">
-        <h2 className="section-title">{t('추천 요금제 BEST')}</h2>
+        <h2 className="section-title">{title || ht('추천 요금제 BEST')}</h2>
         <Link href="/plans" className="text-xs font-bold text-slate-500 underline underline-offset-4 hover:text-brand">
-          {t('전체 요금제 보기')}
+          {ht('전체 요금제 보기')}
         </Link>
       </div>
       <div className="mt-6">

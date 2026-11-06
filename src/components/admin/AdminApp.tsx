@@ -5,14 +5,24 @@ import { LogOut, Search, X, Inbox, Info, RefreshCw } from 'lucide-react';
 import BannerManager from '@/components/admin/BannerManager';
 import ProductManager from '@/components/admin/ProductManager';
 import SiteSettingsManager from '@/components/admin/SiteSettingsManager';
+import ResourceManager from '@/components/admin/ResourceManager';
+import PageManager from '@/components/admin/PageManager';
+import HomeManager from '@/components/admin/HomeManager';
+import { EVENT_UI, FAQ_UI, NOTICE_UI, PLAN_UI } from '@/lib/content/schema';
 
 type Kind = 'application' | 'inquiry' | 'partnership';
 /** 접수 확인 3종 + 사이트 내용 관리 3종 */
-type Tab = 'summary' | Kind | 'banners' | 'products' | 'settings';
+type Tab = 'summary' | Kind | 'banners' | 'products' | 'plans' | 'events' | 'notices' | 'faqs' | 'pages' | 'home' | 'settings';
 
 const MANAGE_TABS: { id: Tab; label: string }[] = [
-  { id: 'banners', label: '배너 관리' },
-  { id: 'products', label: '상품 관리' },
+  { id: 'home', label: '홈 화면' },
+  { id: 'banners', label: '배너' },
+  { id: 'products', label: '상품' },
+  { id: 'plans', label: '요금제' },
+  { id: 'events', label: '이벤트' },
+  { id: 'notices', label: '공지' },
+  { id: 'faqs', label: 'FAQ' },
+  { id: 'pages', label: '페이지' },
   { id: 'settings', label: '헤더·푸터' },
 ];
 type Row = { id: string; status: string; memo: string; created_at: string } & Record<string, unknown>;
@@ -203,7 +213,7 @@ function Dashboard({ devBypass, onLogout }: { devBypass: boolean; onLogout: () =
   }
 
   const newCount = (kind: Kind) => counts[kind]?.new ?? 0;
-  const manage = tab === 'banners' || tab === 'products' || tab === 'settings';
+  const manage = tab !== 'summary' && !(tab in KINDS);
 
   return (
     <div className="min-h-screen bg-soft">
@@ -272,8 +282,14 @@ function Dashboard({ devBypass, onLogout }: { devBypass: boolean; onLogout: () =
         {(tab === 'application' || tab === 'inquiry' || tab === 'partnership') && (
           <List key={tab} kind={tab} onChanged={loadCounts} onUnauthorized={handleUnauthorized} />
         )}
-        {tab === 'banners' && <BannerManager onUnauthorized={handleUnauthorized} />}
+        {tab === 'home' && <HomeManager onUnauthorized={handleUnauthorized} />}
+        {tab === 'banners' &&<BannerManager onUnauthorized={handleUnauthorized} />}
         {tab === 'products' && <ProductManager onUnauthorized={handleUnauthorized} />}
+        {tab === 'plans' && <ResourceManager key="plans" resource="plans" ui={PLAN_UI} onUnauthorized={handleUnauthorized} />}
+        {tab === 'events' && <ResourceManager key="events" resource="events" ui={EVENT_UI} onUnauthorized={handleUnauthorized} />}
+        {tab === 'notices' && <ResourceManager key="notices" resource="notices" ui={NOTICE_UI} onUnauthorized={handleUnauthorized} />}
+        {tab === 'faqs' && <ResourceManager key="faqs" resource="faqs" ui={FAQ_UI} onUnauthorized={handleUnauthorized} />}
+        {tab === 'pages' && <PageManager onUnauthorized={handleUnauthorized} />}
         {tab === 'settings' && <SiteSettingsManager onUnauthorized={handleUnauthorized} />}
       </main>
     </div>

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import { NETWORKS, findPlan } from '@/lib/plans';
+import { NETWORKS } from '@/lib/plans';
+import { getPlan } from '@/lib/content/load';
 import { saveSubmission } from '@/lib/server/submissions';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -27,7 +28,7 @@ export async function POST(req: Request) {
     currentNumber: str(body.currentNumber, 20),
   };
 
-  const plan = findPlan(data.planId);
+  const plan = await getPlan(data.planId);
   if (!data.joinType || !data.network || !data.billing || !data.sim || !data.simBuy || !plan || plan.network !== data.network) {
     return NextResponse.json({ error: '가입 정보를 올바르게 선택해 주세요.' }, { status: 400 });
   }

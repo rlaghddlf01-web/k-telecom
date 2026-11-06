@@ -2,16 +2,19 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import PageShell from '@/components/PageShell';
 import FaqBoard from '@/components/FaqBoard';
+import { getFaqs } from '@/lib/content/load';
 import { t } from '@/lib/i18n';
 
 export const metadata: Metadata = {
   title: t('자주 묻는 질문 | K-Telecom'),
 };
 
-export default function FaqPage() {
+export default async function FaqPage() {
+  const faqs = await getFaqs();
+
   return (
-    <PageShell path="/support/faq" title="자주 묻는 질문">
-      <FaqBoard />
+    <PageShell path="/support/faq" managed title="자주 묻는 질문">
+      <FaqBoard faqs={faqs} />
       <div className="mt-10 flex flex-col items-start justify-between gap-4 rounded-3xl bg-navy p-7 text-white sm:flex-row sm:items-center">
         <div>
           <p className="text-lg font-black">{t('원하는 답을 찾지 못하셨나요?')}</p>

@@ -10,9 +10,12 @@ import {
   updateRow,
   type Resource,
 } from '@/lib/server/cmsStore';
-import { sanitizeBanner, sanitizeProduct } from '@/lib/content/validate';
+import { sanitizeBanner, sanitizeFaq, sanitizePlan, sanitizePost, sanitizeProduct } from '@/lib/content/validate';
 import { DEFAULT_BANNERS } from '@/lib/content/defaults';
 import { PHONES } from '@/lib/phones';
+import { PLANS } from '@/lib/plans';
+import { EVENTS, NOTICES, type Post } from '@/lib/boards';
+import { FAQS } from '@/lib/faq';
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -22,7 +25,63 @@ interface Ctx {
 
 const json = (body: unknown, status = 200) => NextResponse.json(body, { status });
 const unauthorized = () => json({ error: 'Unauthorized' }, 401);
-const isResource = (v: string): v is Resource => v === 'banners' || v === 'products';
+const RESOURCES: Resource[] = ['banners', 'products', 'plans', 'events', 'notices', 'faqs'];
+const isResource = (v: string): v is Resource => (RESOURCES as string[]).includes(v);
+
+const postRow = (p: Post) => ({
+  title: p.title,
+  period: p.period ?? '',
+  body: p.body.join('\n'),
+  published_at: p.date,
+  sort_order: 0,
+  active: true,
+});
+
+/** 기본 내용 가져오기: 지금 사이트에 보이는 기본 내용을 DB 행으로 바꾼다 */
+function seedRows(resource: Resource): Record<string, unknown>[] {
+  switch (resource) {
+    case 'banners':
+      return DEFAULT_BANNERS.map(({ id: _id, ...rest }) => rest);
+    case 'products':
+      return PHONES.map((p, i) => ({
+        grp: p.group,
+        tag: p.tag,
+        title: p.title,
+        price: p.price,
+        note: p.note,
+        badge: p.badge ?? '',
+        description: p.description ?? '',
+        image_url: p.image ?? '',
+        kind: p.kind,
+        color_from: p.from,
+        color_to: p.to,
+        sort_order: i + 1,
+        active: true,
+      }));
+    case 'plans':
+      return PLANS.map((p, i) => ({
+        name: p.name,
+        network: p.network,
+        data_label: p.dataLabel,
+        data_gb: p.dataGB,
+        voice: p.voice,
+        sms: p.sms,
+        price: p.price,
+        promo_price: p.promoPrice,
+        promo_note: p.promoNote,
+        features: p.features,
+        badge: p.badge ?? '',
+        sort_order: i + 1,
+        active: true,
+      }));
+    case 'events':
+      return EVENTS.map(postRow);
+    case 'notices':
+      return NOTICES.map(postRow);
+    case 'faqs':
+      return FAQS.map((f, i) => ({ category: f.category, q: f.q, a: f.a, sort_order: i + 1, active: true }));
+  }
+}
 
 /** 저장이 성공하면 사이트 화면이 바로 새 내용을 쓰도록 캐시를 비운다 */
 const refreshSite = () => revalidatePath('/', 'layout');
@@ -37,7 +96,18 @@ function handleError(err: unknown) {
 
 const sanitize = (resource: Resource, input: unknown) => {
   const allowData = storeMode() === 'memory';
-  return resource === 'banners' ? sanitizeBanner(input, allowData) : sanitizeProduct(input, allowData);
+  switch (resource) {
+    case 'banners':
+      return sanitizeBanner(input, allowData);
+    case 'products':
+      return sanitizeProduct(input, allowData);
+    case 'plans':
+      return sanitizePlan(input);
+    case 'faqs':
+      return sanitizeFaq(input);
+    default:
+      return sanitizePost(input);
+  }
 };
 
 /** GET: 전체 목록 (노출 여부와 관계없이) */
@@ -66,25 +136,7 @@ export async function POST(req: NextRequest, ctx: Ctx) {
       if ((await listRows(resource)).length > 0) {
         return json({ error: '이미 등록된 내용이 있어 기본 내용을 가져올 수 없습니다.' }, 409);
       }
-      const rows =
-        resource === 'banners'
-          ? DEFAULT_BANNERS.map(({ id: _id, ...rest }) => rest)
-          : PHONES.map((p, i) => ({
-              grp: p.group,
-              tag: p.tag,
-              title: p.title,
-              price: p.price,
-              note: p.note,
-              badge: p.badge ?? '',
-              description: p.description ?? '',
-              image_url: p.image ?? '',
-              kind: p.kind,
-              color_from: p.from,
-              color_to: p.to,
-              sort_order: i + 1,
-              active: true,
-            }));
-      const count = await insertRows(resource, rows);
+      const count = await insertRows(resource, seedRows(resource));
       refreshSite();
       return json({ success: true, count });
     }

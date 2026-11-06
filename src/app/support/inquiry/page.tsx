@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function InquiryPage() {
   return (
     <PageShell
-      path="/support/inquiry"
+      path="/support/inquiry" managed
       title="1:1 상담문의"
       lead="궁금한 점을 남겨주시면 담당자가 연락드립니다."
     >

@@ -4,28 +4,28 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 import PageShell from '@/components/PageShell';
 import SampleNotice from '@/components/SampleNotice';
-import { PLANS, findPlan, won } from '@/lib/plans';
+import { won } from '@/lib/plans';
+import { getPlan, getPlans } from '@/lib/content/load';
 import { t } from '@/lib/i18n';
 
 interface Props {
   params: Promise<{ id: string }>;
 }
 
-export const dynamicParams = false;
-
-export function generateStaticParams() {
-  return PLANS.map((p) => ({ id: p.id }));
+// 관리자에서 새 요금제를 등록하면 미리 만들어 두지 않은 주소도 열려야 하므로 dynamicParams 를 막지 않는다.
+export async function generateStaticParams() {
+  return (await getPlans()).plans.map((p) => ({ id: p.id }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
-  const plan = findPlan(id);
-  return plan ? { title: `${t(plan.name)} | K-Telecom` } : {};
+  const plan = await getPlan(id);
+  return plan ? { title: `${plan.name} | K-Telecom` } : {};
 }
 
 export default async function PlanDetailPage({ params }: Props) {
   const { id } = await params;
-  const plan = findPlan(id);
+  const plan = await getPlan(id);
   if (!plan) notFound();
 
   const rows: [string, string][] = [

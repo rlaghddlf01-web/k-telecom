@@ -18,10 +18,14 @@ import HomeSupport from '@/components/HomeSupport';
 import FeatureStrip from '@/components/FeatureStrip';
 import PartnerCta from '@/components/PartnerCta';
 import SiteFooter from '@/components/SiteFooter';
-import { getBanners, getProducts, getSiteSettings } from '@/lib/content/load';
+import type { NewsItem } from '@/components/NewsSection';
+import { Fragment, type ReactNode } from 'react';
+import { getBanners, getEvents, getFaqs, getHomeSettings, getNotices, getProducts, getSiteSettings } from '@/lib/content/load';
+import { resolveOrder } from '@/lib/content/home';
+import { ht, setHomeTexts } from '@/lib/content/homeText';
 
 export default async function HomePage() {
-  const [strip, hero, promo, showcase, popup, phones, settings] = await Promise.all([
+  const [strip, hero, promo, showcase, popup, phones, settings, notices, events, faqs, home] = await Promise.all([
     getBanners('top_strip'),
     getBanners('hero'),
     getBanners('promo'),
@@ -29,7 +33,48 @@ export default async function HomePage() {
     getBanners('popup'),
     getProducts(),
     getSiteSettings(),
+    getNotices(),
+    getEvents(),
+    getFaqs(),
+    getHomeSettings(),
   ]);
+
+  // 최신 소식: 공지와 이벤트를 합쳐 게시일이 최신인 4개
+  const news: NewsItem[] = [
+    ...notices.map((p) => ({ post: p, href: `/support/notice/${p.id}` })),
+    ...events.map((p) => ({ post: p, href: `/events/${p.id}` })),
+  ]
+    .sort((a, b) => b.post.date.localeCompare(a.post.date))
+    .slice(0, 4)
+    .map(({ post, href }) => ({
+      id: `${href}`,
+      title: post.title,
+      desc: (post.body[0] ?? '').slice(0, 80),
+      date: post.date,
+      href,
+    }));
+
+  // 관리자가 정한 순서·노출·문구로 구역을 그린다
+  setHomeTexts(home.texts);
+  const order = resolveOrder(home);
+  const bestTexts = Object.fromEntries(['인기 스마트폰', '전체 보기', '전체', '삼성 갤럭시', '애플 아이폰'].map((k) => [k, ht(k)]));
+  const sections: Record<string, ReactNode> = {
+    categories: <PopularCategories />,
+    plans: <BestPlans />,
+    deals: <TodayDeals phones={phones} />,
+    best: <BestProducts phones={phones} texts={bestTexts} />,
+    promo: <PromoBanners banners={promo} />,
+    iphone: <IphoneSection phones={phones} />,
+    featured: <FeaturedProducts phones={phones} />,
+    showcase: <ShowcaseBanner banner={showcase[0]} />,
+    brands: <BrandRow />,
+    pain: <PainPoints />,
+    process: <ProcessSteps />,
+    news: <NewsSection items={news} />,
+    support: <HomeSupport phone={settings.footer.company.phone} notices={notices} faqs={faqs} />,
+    features: <FeatureStrip />,
+    partner: <PartnerCta />,
+  };
 
   return (
     <>
@@ -38,21 +83,9 @@ export default async function HomePage() {
       <PopupBanner banner={popup[0]} />
       <main>
         <HeroSlider slides={hero} />
-        <PopularCategories />
-        <BestPlans />
-        <TodayDeals phones={phones} />
-        <BestProducts phones={phones} />
-        <PromoBanners banners={promo} />
-        <IphoneSection phones={phones} />
-        <FeaturedProducts phones={phones} />
-        <ShowcaseBanner banner={showcase[0]} />
-        <BrandRow />
-        <PainPoints />
-        <ProcessSteps />
-        <NewsSection />
-        <HomeSupport phone={settings.footer.company.phone} />
-        <FeatureStrip />
-        <PartnerCta />
+        {order.filter((id) => !home.hidden.includes(id)).map((id) => (
+          <Fragment key={id}>{sections[id]}</Fragment>
+        ))}
       </main>
       <SiteFooter />
     </>
