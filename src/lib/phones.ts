@@ -15,6 +15,8 @@ export interface Phone {
   title: string;
   price: string;
   note: string;
+  /** 상세 페이지에 보여줄 설명 (선택) */
+  description?: string;
 }
 
 export const PHONES: Phone[] = [

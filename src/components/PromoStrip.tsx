@@ -1,20 +1,28 @@
 'use client';
 
-import Link from 'next/link';
 import { useState } from 'react';
 import { X } from 'lucide-react';
+import SmartLink from '@/components/SmartLink';
+import { themeOf } from '@/lib/content/themes';
+import type { Banner } from '@/lib/content/types';
 import { t } from '@/lib/i18n';
 
-/** 홈 최상단 띠 배너 (닫기 가능) */
-export default function PromoStrip() {
+/** 홈 최상단 띠 배너 (닫기 가능). 관리자의 [상단 띠배너]에서 수정 */
+export default function PromoStrip({ banner }: { banner?: Banner }) {
   const [open, setOpen] = useState(true);
-  if (!open) return null;
+  if (!banner || !open) return null;
+
+  const content = <>{banner.title} {banner.link_url && <>&rarr;</>}</>;
 
   return (
-    <div className="relative bg-gradient-to-r from-[#1b1550] to-brand text-white">
-      <Link href="/events" className="mx-auto block max-w-7xl px-10 py-2.5 text-center text-xs font-bold md:text-sm">
-        {t('오픈 기념 · 갤럭시 A시리즈 0원폰과 원룸 인터넷 사은품 이벤트 보기')} &rarr;
-      </Link>
+    <div className={`relative bg-gradient-to-r ${themeOf(banner.theme).bg} text-white`}>
+      {banner.link_url ? (
+        <SmartLink href={banner.link_url} className="mx-auto block max-w-7xl px-10 py-2.5 text-center text-xs font-bold md:text-sm">
+          {content}
+        </SmartLink>
+      ) : (
+        <p className="mx-auto max-w-7xl px-10 py-2.5 text-center text-xs font-bold md:text-sm">{content}</p>
+      )}
       <button
         onClick={() => setOpen(false)}
         aria-label={t('닫기')}

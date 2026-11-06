@@ -2,12 +2,10 @@ import Link from 'next/link';
 import DealCountdown from '@/components/DealCountdown';
 import ProductImage from '@/components/ProductImage';
 import PhoneMockup from '@/components/PhoneMockup';
-import { PHONES } from '@/lib/phones';
+import type { Phone } from '@/lib/phones';
 import { t } from '@/lib/i18n';
 
-const [left, , right] = [PHONES[0], PHONES[1], PHONES[3]];
-
-function DealCard({ phone }: { phone: (typeof PHONES)[number] }) {
+function DealCard({ phone }: { phone: Phone }) {
   return (
     <Link
       href={`/phones/item/${phone.id}`}
@@ -32,7 +30,11 @@ function DealCard({ phone }: { phone: (typeof PHONES)[number] }) {
   );
 }
 
-export default function TodayDeals() {
+export default function TodayDeals({ phones }: { phones: Phone[] }) {
+  if (phones.length === 0) return null;
+  const left = phones[0];
+  const right = phones[3] ?? phones[1] ?? phones[0];
+
   return (
     <section className="mx-auto max-w-6xl px-4 pb-16">
       <h2 className="section-title text-center">{t('이달의 추천 결합')}</h2>

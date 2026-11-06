@@ -2,10 +2,9 @@ import Link from 'next/link';
 import { Headset } from 'lucide-react';
 import { NOTICES } from '@/lib/boards';
 import { FAQS } from '@/lib/faq';
-import { COMPANY } from '@/lib/site';
 import { t } from '@/lib/i18n';
 
-export default function HomeSupport() {
+export default function HomeSupport({ phone }: { phone: string }) {
   return (
     <section className="mx-auto max-w-6xl px-4 pb-16">
       <div className="grid gap-5 md:grid-cols-3">
@@ -30,9 +29,11 @@ export default function HomeSupport() {
           <h2 className="flex items-center gap-2 text-base font-black">
             <Headset className="h-5 w-5 text-brand" /> {t('고객센터')}
           </h2>
-          <a href={`tel:${COMPANY.phone.replace(/-/g, '')}`} className="mt-4 block text-3xl font-black tracking-tight">
-            {COMPANY.phone}
-          </a>
+          {phone && (
+            <a href={`tel:${phone.replace(/[^0-9+]/g, '')}`} className="mt-4 block text-3xl font-black tracking-tight">
+              {phone}
+            </a>
+          )}
           <p className="mt-2 text-xs text-white/55">{t('전화 또는 1:1 상담문의로 편하게 문의하세요.')}</p>
           <Link href="/support/inquiry" className="mt-6 inline-flex rounded-full bg-brand px-6 py-2.5 text-xs font-bold hover:bg-brand-dark">
             {t('1:1 상담문의')}

@@ -4,31 +4,30 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 import PageShell from '@/components/PageShell';
 import ProductImage from '@/components/ProductImage';
-import { PHONES } from '@/lib/phones';
+import { getProduct, getProducts } from '@/lib/content/load';
 import { t } from '@/lib/i18n';
 
 interface Props {
   params: Promise<{ id: string }>;
 }
 
-export const dynamicParams = false;
-
-export function generateStaticParams() {
-  return PHONES.map((p) => ({ id: p.id }));
+// 관리자에서 새 상품을 올리면 미리 만들어 두지 않은 주소도 열려야 하므로 dynamicParams 를 막지 않는다.
+export async function generateStaticParams() {
+  return (await getProducts()).map((p) => ({ id: p.id }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
-  const phone = PHONES.find((p) => p.id === id);
-  return phone ? { title: `${t(phone.title)} | K-Telecom`, description: t(phone.note) } : {};
+  const phone = await getProduct(id);
+  return phone ? { title: `${phone.title} | K-Telecom`, description: phone.note || phone.description } : {};
 }
 
 export default async function PhoneDetailPage({ params }: Props) {
   const { id } = await params;
-  const phone = PHONES.find((p) => p.id === id);
+  const phone = await getProduct(id);
   if (!phone) notFound();
 
-  const related = PHONES.filter((p) => p.group === phone.group && p.id !== phone.id).slice(0, 3);
+  const related = (await getProducts()).filter((p) => p.group === phone.group && p.id !== phone.id).slice(0, 3);
 
   return (
     <PageShell path="/phones" title={phone.title}>
@@ -47,6 +46,9 @@ export default async function PhoneDetailPage({ params }: Props) {
           <h2 className="mt-1 text-2xl font-black leading-snug">{t(phone.title)}</h2>
           <p className="mt-4 text-3xl font-black text-brand">{t(phone.price)}</p>
           <p className="mt-1 text-sm text-slate-500">{t(phone.note)}</p>
+          {phone.description && (
+            <p className="mt-4 whitespace-pre-line text-sm leading-relaxed text-slate-600">{phone.description}</p>
+          )}
 
           <dl className="mt-6 divide-y divide-black/5 rounded-2xl ring-1 ring-black/10 text-sm">
             {[

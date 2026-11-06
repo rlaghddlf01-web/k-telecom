@@ -18,28 +18,39 @@ import HomeSupport from '@/components/HomeSupport';
 import FeatureStrip from '@/components/FeatureStrip';
 import PartnerCta from '@/components/PartnerCta';
 import SiteFooter from '@/components/SiteFooter';
+import { getBanners, getProducts, getSiteSettings } from '@/lib/content/load';
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [strip, hero, promo, showcase, popup, phones, settings] = await Promise.all([
+    getBanners('top_strip'),
+    getBanners('hero'),
+    getBanners('promo'),
+    getBanners('showcase'),
+    getBanners('popup'),
+    getProducts(),
+    getSiteSettings(),
+  ]);
+
   return (
     <>
-      <PromoStrip />
+      <PromoStrip banner={strip[0]} />
       <SiteHeader />
-      <PopupBanner />
+      <PopupBanner banner={popup[0]} />
       <main>
-        <HeroSlider />
+        <HeroSlider slides={hero} />
         <PopularCategories />
         <BestPlans />
-        <TodayDeals />
-        <BestProducts />
-        <PromoBanners />
-        <IphoneSection />
-        <FeaturedProducts />
-        <ShowcaseBanner />
+        <TodayDeals phones={phones} />
+        <BestProducts phones={phones} />
+        <PromoBanners banners={promo} />
+        <IphoneSection phones={phones} />
+        <FeaturedProducts phones={phones} />
+        <ShowcaseBanner banner={showcase[0]} />
         <BrandRow />
         <PainPoints />
         <ProcessSteps />
         <NewsSection />
-        <HomeSupport />
+        <HomeSupport phone={settings.footer.company.phone} />
         <FeatureStrip />
         <PartnerCta />
       </main>

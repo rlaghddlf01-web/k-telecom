@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import ProductImage from '@/components/ProductImage';
-import { PHONES, type PhoneGroup } from '@/lib/phones';
+import type { Phone, PhoneGroup } from '@/lib/phones';
 import { t } from '@/lib/i18n';
 
 const TABS: { id: PhoneGroup | 'all'; label: string }[] = [
@@ -12,9 +12,9 @@ const TABS: { id: PhoneGroup | 'all'; label: string }[] = [
   { id: 'iphone', label: '애플 아이폰' },
 ];
 
-export default function PhonesCatalog() {
+export default function PhonesCatalog({ phones }: { phones: Phone[] }) {
   const [tab, setTab] = useState<PhoneGroup | 'all'>('all');
-  const list = PHONES.filter((p) => tab === 'all' || p.group === tab);
+  const list = phones.filter((p) => tab === 'all' || p.group === tab);
 
   return (
     <div>

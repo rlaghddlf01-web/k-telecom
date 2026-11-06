@@ -4,6 +4,10 @@ import FloatingChat from '@/components/FloatingChat';
 import { INDEXING_ALLOWED } from '@/lib/seo';
 import { t } from '@/lib/i18n';
 
+// 관리자에서 바꾼 배너·상품·헤더·푸터가 최대 60초 안에 사이트에 반영되도록 한다.
+// (관리자에서 저장하면 바로 반영되도록 revalidatePath 도 함께 호출한다)
+export const revalidate = 60;
+
 export const viewport: Viewport = {
   themeColor: '#0b1022',
   width: 'device-width',

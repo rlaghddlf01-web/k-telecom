@@ -3,6 +3,7 @@ import { ChevronRight, Home } from 'lucide-react';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import { findSection } from '@/lib/menu';
+import { getSiteSettings } from '@/lib/content/load';
 import { t } from '@/lib/i18n';
 
 interface PageShellProps {
@@ -13,8 +14,9 @@ interface PageShellProps {
 }
 
 /** 서브 페이지 공통 틀: 헤더 + 타이틀 배너 + 좌측 섹션 메뉴 + 푸터 */
-export default function PageShell({ path, title, lead, children }: PageShellProps) {
-  const section = findSection(path);
+export default async function PageShell({ path, title, lead, children }: PageShellProps) {
+  const { header } = await getSiteSettings();
+  const section = findSection(path, header.menu);
   const showSide = !!section && section.children.length > 1;
 
   return (

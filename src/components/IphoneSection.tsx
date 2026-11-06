@@ -1,13 +1,14 @@
 import Link from 'next/link';
 import PhoneMockup from '@/components/PhoneMockup';
 import ProductImage from '@/components/ProductImage';
-import { PHONES } from '@/lib/phones';
+import type { Phone } from '@/lib/phones';
 import { t } from '@/lib/i18n';
 
-export default function IphoneSection() {
-  const list = PHONES.filter((p) => p.group === 'iphone').slice(0, 4);
-  const more = PHONES.filter((p) => p.group === 'galaxy').slice(0, 4);
+export default function IphoneSection({ phones }: { phones: Phone[] }) {
+  const list = phones.filter((p) => p.group === 'iphone').slice(0, 4);
+  const more = phones.filter((p) => p.group === 'galaxy').slice(0, 4);
   const grid = [...list, ...more];
+  if (grid.length === 0) return null;
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-16">

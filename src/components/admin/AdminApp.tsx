@@ -2,8 +2,19 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { LogOut, Search, X, Inbox, Info, RefreshCw } from 'lucide-react';
+import BannerManager from '@/components/admin/BannerManager';
+import ProductManager from '@/components/admin/ProductManager';
+import SiteSettingsManager from '@/components/admin/SiteSettingsManager';
 
 type Kind = 'application' | 'inquiry' | 'partnership';
+/** 접수 확인 3종 + 사이트 내용 관리 3종 */
+type Tab = 'summary' | Kind | 'banners' | 'products' | 'settings';
+
+const MANAGE_TABS: { id: Tab; label: string }[] = [
+  { id: 'banners', label: '배너 관리' },
+  { id: 'products', label: '상품 관리' },
+  { id: 'settings', label: '헤더·푸터' },
+];
 type Row = { id: string; status: string; memo: string; created_at: string } & Record<string, unknown>;
 type Counts = Record<string, Record<string, number>>;
 
@@ -157,7 +168,7 @@ function LoginForm({ configured, onSuccess }: { configured: boolean; onSuccess: 
 
 // ---------------------------------------------------------------------------
 function Dashboard({ devBypass, onLogout }: { devBypass: boolean; onLogout: () => void }) {
-  const [tab, setTab] = useState<'summary' | Kind>('summary');
+  const [tab, setTab] = useState<Tab>('summary');
   const [counts, setCounts] = useState<Counts>({});
   const [configured, setConfigured] = useState(true);
   const [sample, setSample] = useState(false);
@@ -192,6 +203,7 @@ function Dashboard({ devBypass, onLogout }: { devBypass: boolean; onLogout: () =
   }
 
   const newCount = (kind: Kind) => counts[kind]?.new ?? 0;
+  const manage = tab === 'banners' || tab === 'products' || tab === 'settings';
 
   return (
     <div className="min-h-screen bg-soft">
@@ -206,8 +218,8 @@ function Dashboard({ devBypass, onLogout }: { devBypass: boolean; onLogout: () =
             </button>
           )}
         </div>
-        <nav className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-4">
-          {([['summary', '대시보드'] as const, ...KIND_ORDER.map((k) => [k, KINDS[k].label] as const)]).map(([id, label]) => (
+        <nav className="mx-auto flex max-w-6xl items-center gap-1 overflow-x-auto px-4">
+          {([{ id: 'summary' as Tab, label: '대시보드' }, ...KIND_ORDER.map((k) => ({ id: k as Tab, label: KINDS[k].label }))]).map(({ id, label }) => (
             <button
               key={id}
               onClick={() => setTab(id)}
@@ -216,9 +228,21 @@ function Dashboard({ devBypass, onLogout }: { devBypass: boolean; onLogout: () =
               }`}
             >
               {label}
-              {id !== 'summary' && newCount(id) > 0 && (
-                <span className="rounded-full bg-brand px-1.5 py-0.5 text-[10px] font-extrabold text-white">{newCount(id)}</span>
+              {id in KINDS && newCount(id as Kind) > 0 && (
+                <span className="rounded-full bg-brand px-1.5 py-0.5 text-[10px] font-extrabold text-white">{newCount(id as Kind)}</span>
               )}
+            </button>
+          ))}
+          <span className="mx-2 h-5 w-px shrink-0 bg-black/10" aria-hidden="true" />
+          {MANAGE_TABS.map(({ id, label }) => (
+            <button
+              key={id}
+              onClick={() => setTab(id)}
+              className={`shrink-0 border-b-2 px-4 py-3 text-sm font-bold transition-colors ${
+                tab === id ? 'border-brand text-brand' : 'border-transparent text-slate-500 hover:text-ink'
+              }`}
+            >
+              {label}
             </button>
           ))}
         </nav>
@@ -230,11 +254,11 @@ function Dashboard({ devBypass, onLogout }: { devBypass: boolean; onLogout: () =
             <Info className="mt-0.5 h-4 w-4 shrink-0" />
             <p>
               <b>개발 모드</b> — 로그인 없이 접속 중입니다. 이 우회는 내 컴퓨터에서 개발 서버(npm run dev)로 실행할 때만 켜지고, 배포된 사이트에서는 켜지지 않습니다.
-              {sample && ' 저장소가 연결되지 않아 화면 확인용 샘플 데이터를 보여 주며, 여기서 바꾼 상태·메모는 저장되지 않습니다.'}
+              {sample && !manage && ' 저장소가 연결되지 않아 접수 목록은 화면 확인용 샘플 데이터이며, 여기서 바꾼 상태·메모는 저장되지 않습니다.'}
             </p>
           </div>
         )}
-        {!configured && !sample && (
+        {!configured && !sample && !manage && (
           <div className="mb-6 flex items-start gap-3 rounded-2xl bg-amber-50 p-4 text-sm text-amber-900 ring-1 ring-amber-200">
             <Info className="mt-0.5 h-4 w-4 shrink-0" />
             <p>
@@ -244,11 +268,13 @@ function Dashboard({ devBypass, onLogout }: { devBypass: boolean; onLogout: () =
           </div>
         )}
 
-        {tab === 'summary' ? (
-          <Summary counts={counts} onRefresh={loadCounts} onOpen={setTab} />
-        ) : (
+        {tab === 'summary' && <Summary counts={counts} onRefresh={loadCounts} onOpen={setTab} />}
+        {(tab === 'application' || tab === 'inquiry' || tab === 'partnership') && (
           <List key={tab} kind={tab} onChanged={loadCounts} onUnauthorized={handleUnauthorized} />
         )}
+        {tab === 'banners' && <BannerManager onUnauthorized={handleUnauthorized} />}
+        {tab === 'products' && <ProductManager onUnauthorized={handleUnauthorized} />}
+        {tab === 'settings' && <SiteSettingsManager onUnauthorized={handleUnauthorized} />}
       </main>
     </div>
   );

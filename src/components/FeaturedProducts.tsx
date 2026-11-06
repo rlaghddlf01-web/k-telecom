@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import ProductImage from '@/components/ProductImage';
-import { PHONES } from '@/lib/phones';
+import type { Phone } from '@/lib/phones';
 import { t } from '@/lib/i18n';
 
-export default function FeaturedProducts() {
-  const main = PHONES.slice(0, 6);
-  const rec = [PHONES[5], PHONES[2], PHONES[4], PHONES[0]];
+export default function FeaturedProducts({ phones }: { phones: Phone[] }) {
+  const main = phones.slice(0, 6);
+  const rec = [phones[5], phones[2], phones[4], phones[0]].filter((p): p is Phone => Boolean(p));
+  if (main.length === 0) return null;
 
   return (
     <section className="mx-auto max-w-6xl px-4 pb-16">

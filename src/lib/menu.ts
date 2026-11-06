@@ -83,6 +83,6 @@ export const PUBLIC_LINKS: (MenuLink & { external: true })[] = [
 ];
 
 /** 현재 경로가 속한 메인 메뉴 */
-export function findSection(path: string): MenuItem | undefined {
-  return MENU.find((m) => m.children.some((c) => c.href === path) || m.href === path);
+export function findSection<T extends MenuLink & { children: MenuLink[] }>(path: string, menu: T[] = MENU as unknown as T[]): T | undefined {
+  return menu.find((m) => m.children.some((c) => c.href === path) || m.href === path);
 }
