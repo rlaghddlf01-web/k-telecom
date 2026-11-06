@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 import { clientIp, rateLimit } from '@/lib/server/security';
 import { getChatSettings, getPlans, getProducts } from '@/lib/content/load';
-import { isLang, langInfo } from '@/lib/langs';
+import { dictionaryOf } from '@/lib/dictionaries';
+import { isLang, langInfo, type Lang } from '@/lib/langs';
 
 const MODEL = process.env.GEMINI_MODEL || 'gemini-3.1-flash-lite';
 const MAX_HISTORY = 10;
@@ -14,12 +15,14 @@ interface Turn {
 const clip = (v: unknown, max: number) => (typeof v === 'string' ? v.replace(/[\u0000-\u001f\u007f]/g, ' ').trim().slice(0, max) : '');
 
 /** 요금제·단말 정보를 AI 가 근거로 쓸 짧은 글로 만든다 (없는 가격을 지어내지 않게) */
-async function catalogText(): Promise<string> {
+async function catalogText(lang: Lang): Promise<string> {
+  const dict = dictionaryOf(lang);
+  const tr = (key: string) => dict[key] ?? key;
   const [{ plans }, phones] = await Promise.all([getPlans(), getProducts()]);
   const planLines = plans
     .slice(0, 12)
-    .map((p) => `- ${p.name} (${p.network}, data ${p.dataLabel}, voice ${p.voice}, SMS ${p.sms}): list ${p.price} KRW/month, promo ${p.promoPrice} KRW/month`);
-  const phoneLines = phones.slice(0, 12).map((p) => `- ${p.title}: ${p.price} (${p.note})`);
+    .map((p) => `- ${tr(p.name)} (${tr(p.network)}, data ${tr(p.dataLabel)}, voice ${tr(p.voice)}, SMS ${tr(p.sms)}): list ${p.price} KRW/month, promo ${p.promoPrice} KRW/month`);
+  const phoneLines = phones.slice(0, 12).map((p) => `- ${tr(p.title)}: ${tr(p.price)} (${tr(p.note)})`);
   return `PLANS:\n${planLines.join('\n') || '- (none registered yet)'}\n\nPHONES:\n${phoneLines.join('\n') || '- (none registered yet)'}`;
 }
 
@@ -69,13 +72,14 @@ export async function POST(req: Request) {
       headers: { 'content-type': 'application/json', 'x-goog-api-key': apiKey },
       signal: controller.signal,
       body: JSON.stringify({
-        systemInstruction: { parts: [{ text: systemPrompt(settings.managerName, langInfo(lang).name, await catalogText()) }] },
+        systemInstruction: { parts: [{ text: systemPrompt(settings.managerName, langInfo(lang).name, await catalogText(lang)) }] },
         contents: [...history, { role: 'user', text: message }].map((t) => ({ role: t.role, parts: [{ text: t.text }] })),
         generationConfig: { maxOutputTokens: 600, temperature: 0.4 },
       }),
     });
     if (!res.ok) {
-      console.error('chat model error status:', res.status);
+      const detail = await res.json().catch(() => null);
+      console.error('chat model error status:', res.status, String(detail?.error?.message ?? '').slice(0, 200));
       return NextResponse.json({ error: 'AI_UNAVAILABLE' }, { status: 502 });
     }
     const data = await res.json();
