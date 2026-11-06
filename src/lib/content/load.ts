@@ -8,6 +8,7 @@ import { cache } from 'react';
 import { getPageRow, getSetting, listPageRows, listRows, storeMode, type Row } from '@/lib/server/cmsStore';
 import { decodeBlocks } from '@/lib/content/blocks';
 import { DEFAULT_HOME, sanitizeHome, type HomeSettings } from '@/lib/content/home';
+import { DEFAULT_CHAT, sanitizeChat, type ChatSettings } from '@/lib/content/chat';
 import { findDedicated, findRegistry } from '@/lib/content/pageIndex';
 import type { PageDef } from '@/lib/pages';
 import { DEFAULT_BANNERS, DEFAULT_SETTINGS } from '@/lib/content/defaults';
@@ -283,6 +284,22 @@ export const getHomeSettings = cache(async (): Promise<HomeSettings> => {
   } catch (err) {
     console.error('home settings load failed:', err instanceof Error ? err.name : 'unknown');
     return DEFAULT_HOME;
+  }
+});
+
+// ---------------------------------------------------------------------------
+// 상담 창
+// ---------------------------------------------------------------------------
+export const getChatSettings = cache(async (): Promise<ChatSettings> => {
+  if (storeMode() === 'none') return DEFAULT_CHAT;
+  try {
+    const raw = await getSetting('chat');
+    if (!raw) return DEFAULT_CHAT;
+    const checked = sanitizeChat(raw);
+    return checked.ok ? checked.value : DEFAULT_CHAT;
+  } catch (err) {
+    console.error('chat settings load failed:', err instanceof Error ? err.name : 'unknown');
+    return DEFAULT_CHAT;
   }
 });
 

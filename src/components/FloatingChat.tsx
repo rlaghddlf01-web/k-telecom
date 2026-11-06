@@ -1,24 +1,21 @@
-'use client';
+import ChatWidget from '@/components/ChatWidget';
+import { getChatSettings } from '@/lib/content/load';
+import { chatChannels } from '@/lib/content/chat';
+import { t } from '@/lib/i18n';
 
-import Link from '@/components/LocaleLink';
-import { usePathname } from 'next/navigation';
-import { MessageCircle } from 'lucide-react';
-import { useT } from '@/components/LangProvider';
-
-/** 오른쪽 아래 고정 상담 버튼 (관리자 화면에서는 숨김) */
-export default function FloatingChat() {
-  const t = useT();
-  const pathname = usePathname();
-  if (pathname.startsWith('/admin')) return null;
+/** 오른쪽 아래 상담 창: 관리자의 [상담 창] 탭 설정을 읽어 현재 언어로 바꿔 내려 준다 */
+export default async function FloatingChat() {
+  const settings = await getChatSettings();
+  const channels = chatChannels(settings).map(({ id, label, href }) => ({ id, label: t(label), href }));
 
   return (
-    <Link
-      href="/support/inquiry"
-      className="fixed bottom-5 right-4 z-30 flex h-16 w-16 flex-col items-center justify-center rounded-full bg-amber-500 text-white shadow-xl transition-transform hover:scale-105 md:bottom-8 md:right-8"
-      aria-label={t('상담하기')}
-    >
-      <MessageCircle className="h-6 w-6" />
-      <span className="mt-0.5 text-[10px] font-extrabold">{t('상담하기')}</span>
-    </Link>
+    <ChatWidget
+      managerName={t(settings.managerName)}
+      managerRole={t(settings.managerRole)}
+      intro={t(settings.intro)}
+      avatar={settings.avatar}
+      aiEnabled={settings.aiEnabled}
+      channels={channels}
+    />
   );
 }

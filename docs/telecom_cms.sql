@@ -116,9 +116,9 @@ create table if not exists public.telecom_pages (
   updated_at timestamptz not null default now()
 );
 
--- header / footer / home 화면 설정 (JSON)
+-- header / footer / home / chat(상담 창) 설정 (JSON)
 create table if not exists public.telecom_settings (
-  key        text primary key check (key in ('header', 'footer', 'home')),
+  key        text primary key check (key in ('header', 'footer', 'home', 'chat')),
   value      jsonb not null,
   updated_at timestamptz not null default now()
 );
@@ -151,3 +151,7 @@ revoke all on public.telecom_settings from anon, authenticated;
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
 values ('telecom-media', 'telecom-media', true, 4194304, array['image/png', 'image/jpeg', 'image/webp', 'image/gif'])
 on conflict (id) do nothing;
+
+-- 이미 예전 버전을 실행했다면 이 두 줄로 상담 창 설정(chat)을 허용합니다 (여러 번 실행해도 안전)
+alter table public.telecom_settings drop constraint if exists telecom_settings_key_check;
+alter table public.telecom_settings add constraint telecom_settings_key_check check (key in ('header', 'footer', 'home', 'chat'));

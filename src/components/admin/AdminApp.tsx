@@ -8,14 +8,16 @@ import SiteSettingsManager from '@/components/admin/SiteSettingsManager';
 import ResourceManager from '@/components/admin/ResourceManager';
 import PageManager from '@/components/admin/PageManager';
 import HomeManager from '@/components/admin/HomeManager';
+import ChatManager from '@/components/admin/ChatManager';
 import { EVENT_UI, FAQ_UI, NOTICE_UI, PLAN_UI } from '@/lib/content/schema';
 
 type Kind = 'application' | 'inquiry' | 'partnership';
 /** 접수 확인 3종 + 사이트 내용 관리 3종 */
-type Tab = 'summary' | Kind | 'banners' | 'products' | 'plans' | 'events' | 'notices' | 'faqs' | 'pages' | 'home' | 'settings';
+type Tab = 'summary' | Kind | 'banners' | 'products' | 'plans' | 'events' | 'notices' | 'faqs' | 'pages' | 'home' | 'chat' | 'settings';
 
 const MANAGE_TABS: { id: Tab; label: string }[] = [
   { id: 'home', label: '홈 화면' },
+  { id: 'chat', label: '상담 창' },
   { id: 'banners', label: '배너' },
   { id: 'products', label: '상품' },
   { id: 'plans', label: '요금제' },
@@ -283,6 +285,7 @@ function Dashboard({ devBypass, onLogout }: { devBypass: boolean; onLogout: () =
           <List key={tab} kind={tab} onChanged={loadCounts} onUnauthorized={handleUnauthorized} />
         )}
         {tab === 'home' && <HomeManager onUnauthorized={handleUnauthorized} />}
+        {tab === 'chat' && <ChatManager onUnauthorized={handleUnauthorized} />}
         {tab === 'banners' &&<BannerManager onUnauthorized={handleUnauthorized} />}
         {tab === 'products' && <ProductManager onUnauthorized={handleUnauthorized} />}
         {tab === 'plans' && <ResourceManager key="plans" resource="plans" ui={PLAN_UI} onUnauthorized={handleUnauthorized} />}
