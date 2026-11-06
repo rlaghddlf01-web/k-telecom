@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/LocaleLink';
 import { ht } from '@/lib/content/homeText';
 
 export interface NewsItem {
@@ -30,8 +30,8 @@ export default function NewsSection({ items, title }: { items: NewsItem[]; title
           <span className="absolute left-5 top-5 rounded-xl bg-white px-3 py-2 text-center text-xs font-black leading-tight text-ink">
             {first.date.slice(5).replace('-', '.')}
           </span>
-          <h3 className="text-xl font-black leading-snug">{first.title}</h3>
-          {first.desc && <p className="mt-2 text-sm text-white/85">{first.desc}</p>}
+          <h3 className="text-xl font-black leading-snug">{ht(first.title)}</h3>
+          {first.desc && <p className="mt-2 text-sm text-white/85">{ht(first.desc)}</p>}
         </Link>
 
         {rest.length > 0 && (
@@ -39,8 +39,8 @@ export default function NewsSection({ items, title }: { items: NewsItem[]; title
             {rest.map((n) => (
               <li key={n.id}>
                 <Link href={n.href} className="block rounded-2xl bg-white/5 p-4 transition-colors hover:bg-white/10">
-                  <p className="text-sm font-bold">{n.title}</p>
-                  {n.desc && <p className="mt-1 line-clamp-1 text-xs text-white/60">{n.desc}</p>}
+                  <p className="text-sm font-bold">{ht(n.title)}</p>
+                  {n.desc && <p className="mt-1 line-clamp-1 text-xs text-white/60">{ht(n.desc)}</p>}
                   <p className="mt-2 text-[11px] text-white/40">{n.date}</p>
                 </Link>
               </li>

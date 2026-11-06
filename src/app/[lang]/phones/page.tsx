@@ -1,0 +1,23 @@
+import PageShell from '@/components/PageShell';
+import { pageMeta } from '@/lib/pageMeta';
+import PhonesCatalog from '@/components/PhonesCatalog';
+import { getProducts } from '@/lib/content/load';
+import { t, withLang } from '@/lib/i18n';
+
+export const generateMetadata = pageMeta('단말 목록 | K-Telecom', '갤럭시 A시리즈 신제품과 정품 검수 리퍼비시 아이폰을 초기비용 0원으로.');
+
+async function PhonesPage() {
+  const phones = await getProducts();
+
+  return (
+    <PageShell
+      path="/phones" managed
+      title="단말 목록"
+      lead="갤럭시 A시리즈 미개봉 신제품과 정품 검수 리퍼비시 아이폰을 초기비용 0원으로 만나보세요."
+    >
+      <PhonesCatalog phones={phones} />
+    </PageShell>
+  );
+}
+
+export default withLang(PhonesPage);

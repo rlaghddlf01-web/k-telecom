@@ -1,10 +1,10 @@
 'use client';
 
-import Link from 'next/link';
+import Link from '@/components/LocaleLink';
 import { useState } from 'react';
 import { Search, Gift } from 'lucide-react';
 import type { Post } from '@/lib/boards';
-import { t } from '@/lib/i18n';
+import { useT } from '@/components/LangProvider';
 
 type Tab = 'event' | 'winner';
 
@@ -14,6 +14,7 @@ interface Props {
 }
 
 export default function EventBoard({ events, winners }: Props) {
+  const t = useT();
   const [tab, setTab] = useState<Tab>('event');
   const [q, setQ] = useState('');
 
@@ -65,7 +66,7 @@ export default function EventBoard({ events, winners }: Props) {
                 </div>
                 <div className="p-5">
                   <h3 className="text-sm font-extrabold leading-snug">{t(p.title)}</h3>
-                  <p className="mt-2 text-xs text-slate-400">{p.period ?? p.date}</p>
+                  <p className="mt-2 text-xs text-slate-400">{p.period ? t(p.period) : p.date}</p>
                 </div>
               </Link>
             </li>

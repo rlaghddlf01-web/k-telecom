@@ -89,7 +89,7 @@ export default function PhoneMockup({
           )}
           {/* 시계 */}
           <text x="110" y="150" textAnchor="middle" fontSize="54" fontWeight="300" fill="#fff">9:41</text>
-          <text x="110" y="176" textAnchor="middle" fontSize="12" fontWeight="600" fill="#fff" fillOpacity="0.85">서울 · 맑음 24°</text>
+          <text x="110" y="176" textAnchor="middle" fontSize="12" fontWeight="600" fill="#fff" fillOpacity="0.85">Seoul · 24°</text>
           {/* 앱 아이콘 */}
           {[0, 1, 2, 3].map((i) => (
             <rect key={i} x={36 + i * 40} y="352" width="30" height="30" rx="9" fill="#fff" fillOpacity={0.88 - i * 0.14} />

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/LocaleLink';
 import { Headset } from 'lucide-react';
 import type { Post } from '@/lib/boards';
 import type { Faq } from '@/lib/faq';
@@ -23,7 +23,7 @@ export default function HomeSupport({ phone, notices, faqs }: HomeSupportProps) 
             {notices.slice(0, 5).map((n) => (
               <li key={n.id}>
                 <Link href={`/support/notice/${n.id}`} className="flex items-center justify-between gap-3 hover:text-brand">
-                  <span className="truncate font-semibold">{n.title}</span>
+                  <span className="truncate font-semibold">{ht(n.title)}</span>
                   <span className="shrink-0 text-xs text-slate-400">{n.date.slice(5)}</span>
                 </Link>
               </li>
@@ -57,7 +57,7 @@ export default function HomeSupport({ phone, notices, faqs }: HomeSupportProps) 
               <li key={f.q}>
                 <Link href="/support/faq" className="block truncate font-semibold hover:text-brand">
                   <span className="mr-1.5 text-brand">Q</span>
-                  {f.q}
+                  {ht(f.q)}
                 </Link>
               </li>
             ))}

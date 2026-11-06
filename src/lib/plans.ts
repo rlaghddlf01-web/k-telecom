@@ -42,4 +42,8 @@ export function findPlan(id: string): Plan | undefined {
   return PLANS.find((p) => p.id === id);
 }
 
-export const won = (n: number) => `${n.toLocaleString('ko-KR')}원`;
+/** 금액 표기: 한국어는 11,000원, 다른 언어는 11,000 + 그 나라 말의 원 단위(예: KRW, won) */
+export const won = (n: number, t: (key: string) => string = (k) => k) => {
+  const unit = t('원');
+  return unit === '원' ? `${n.toLocaleString('ko-KR')}원` : `${n.toLocaleString('en-US')} ${unit}`;
+};

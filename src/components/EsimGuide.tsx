@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { t } from '@/lib/i18n';
+import { useT } from '@/components/LangProvider';
 
 const GUIDES = {
   ios: {
@@ -25,6 +25,7 @@ const GUIDES = {
 } as const;
 
 export default function EsimGuide() {
+  const t = useT();
   const [os, setOs] = useState<keyof typeof GUIDES>('ios');
 
   return (

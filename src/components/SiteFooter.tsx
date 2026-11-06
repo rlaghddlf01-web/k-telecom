@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/LocaleLink';
 import SmartLink from '@/components/SmartLink';
 import { getSiteSettings } from '@/lib/content/load';
 import { t } from '@/lib/i18n';
@@ -15,14 +15,14 @@ export default async function SiteFooter() {
           {footer.links.map((l) => (
             <li key={l.href + l.label}>
               <SmartLink href={l.href} className={l.href === '/privacy' ? 'font-bold text-white' : 'hover:text-white'}>
-                {l.label}
+                {t(l.label)}
               </SmartLink>
             </li>
           ))}
           {footer.publicLinks.map((l) => (
             <li key={l.href + l.label}>
               <SmartLink href={l.href} className="hover:text-white">
-                {l.label}
+                {t(l.label)}
               </SmartLink>
             </li>
           ))}
@@ -31,12 +31,12 @@ export default async function SiteFooter() {
         <div className="grid gap-6 py-8 text-xs leading-relaxed md:grid-cols-[1fr_auto]">
           <div>
             <p className="text-xl font-black text-brand">{header.logoText}</p>
-            {footer.description && <p className="mt-2">{footer.description}</p>}
+            {footer.description && <p className="mt-2">{t(footer.description)}</p>}
             <p className="mt-3">
-              {c.name && <>{t('상호')}: {c.name}</>}
-              {c.ceo && <> · {t('대표')}: {c.ceo}</>}
+              {c.name && <>{t('상호')}: {t(c.name)}</>}
+              {c.ceo && <> · {t('대표')}: {t(c.ceo)}</>}
             </p>
-            {c.address && <p>{t('주소')}: {c.address}</p>}
+            {c.address && <p>{t('주소')}: {t(c.address)}</p>}
             {(c.bizNumber || c.salesNumber) && (
               <p>
                 {c.bizNumber && <>{t('사업자등록번호')}: {c.bizNumber}</>}
@@ -60,7 +60,7 @@ export default async function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-white/10 py-5 text-center text-xs text-white/35">
-        {footer.copyright || `© ${new Date().getFullYear()} ${c.name}. All Rights Reserved.`}
+        {(footer.copyright && t(footer.copyright)) || `© ${new Date().getFullYear()} ${t(c.name)}. All Rights Reserved.`}
       </div>
     </footer>
   );

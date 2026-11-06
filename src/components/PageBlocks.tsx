@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/LocaleLink';
 import {
   Truck, Languages, ScanLine, Wrench, Wifi, Tv, Globe2, CardSim, Smartphone, ShieldCheck,
   Headset, Wallet, BadgeCheck, Handshake, Clock, Info, ChevronDown, ExternalLink,

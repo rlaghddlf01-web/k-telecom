@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/LocaleLink';
 import { ArrowLeft } from 'lucide-react';
 import type { Post } from '@/lib/boards';
 import { t } from '@/lib/i18n';

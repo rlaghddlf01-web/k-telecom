@@ -1,7 +1,9 @@
-import Link from 'next/link';
+'use client';
+
+import Link from '@/components/LocaleLink';
 import { Phone, MessageSquare } from 'lucide-react';
 import { won, type Plan } from '@/lib/plans';
-import { t } from '@/lib/i18n';
+import { useT } from '@/components/LangProvider';
 
 const NETWORK_TONE: Record<Plan['network'], string> = {
   SKT: 'bg-rose-50 text-rose-600',
@@ -10,6 +12,7 @@ const NETWORK_TONE: Record<Plan['network'], string> = {
 };
 
 export default function PlanCard({ plan }: { plan: Plan }) {
+  const t = useT();
   return (
     <article className="relative flex flex-col rounded-2xl bg-white p-5 shadow-sm ring-1 ring-black/5 transition-shadow hover:shadow-xl">
       {plan.badge && (
@@ -18,10 +21,10 @@ export default function PlanCard({ plan }: { plan: Plan }) {
         </span>
       )}
       <span className={`w-fit rounded-md px-2 py-0.5 text-[11px] font-extrabold ${NETWORK_TONE[plan.network]}`}>
-        {plan.network}
+        {t(plan.network)}
       </span>
       <h3 className="mt-3 text-sm font-bold">{t(plan.name)}</h3>
-      <p className="mt-2 text-2xl font-black tracking-tight">{plan.dataLabel}</p>
+      <p className="mt-2 text-2xl font-black tracking-tight">{t(plan.dataLabel)}</p>
 
       <ul className="mt-3 space-y-1 text-xs text-slate-500">
         <li className="flex items-center gap-1.5"><Phone className="h-3.5 w-3.5" /> {t('음성')} {t(plan.voice)}</li>
@@ -39,9 +42,9 @@ export default function PlanCard({ plan }: { plan: Plan }) {
       )}
 
       <div className="mt-auto pt-5">
-        <p className="text-xs text-slate-400 line-through">{won(plan.price)}</p>
+        <p className="text-xs text-slate-400 line-through">{won(plan.price, t)}</p>
         <p className="text-xl font-black text-brand">
-          {t('월')} {won(plan.promoPrice)}
+          {t('월')} {won(plan.promoPrice, t)}
         </p>
         <p className="mt-0.5 text-[11px] text-slate-400">{t(plan.promoNote)}</p>
         <div className="mt-4 grid grid-cols-2 gap-2">

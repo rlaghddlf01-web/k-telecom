@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { CheckCircle2 } from 'lucide-react';
 import { inputClass } from '@/components/formStyles';
 import { NETWORKS, won, type Network, type Plan } from '@/lib/plans';
-import { t } from '@/lib/i18n';
+import { useT } from '@/components/LangProvider';
 
 type Status = 'idle' | 'sending' | 'done' | 'error';
 
@@ -17,6 +17,7 @@ function Choice({
   value: string;
   onChange: (v: string) => void;
 }) {
+  const t = useT();
   return (
     <div role="radiogroup" aria-label={name} className="mt-1.5 flex flex-wrap gap-2">
       {options.map((o) => (
@@ -38,6 +39,7 @@ function Choice({
 }
 
 export default function ApplyForm(props: { plans: Plan[] }) {
+  const t = useT();
   const params = useSearchParams();
   const allPlans = props.plans;
   const findPlan = (id: string) => allPlans.find((p) => p.id === id);
@@ -135,7 +137,7 @@ export default function ApplyForm(props: { plans: Plan[] }) {
               <option value="" disabled>{t('요금제 선택')}</option>
               {plans.map((p) => (
                 <option key={p.id} value={p.id}>
-                  {t(p.name)} · {t('월')} {won(p.promoPrice)}
+                  {t(p.name)} · {t('월')} {won(p.promoPrice, t)}
                 </option>
               ))}
             </select>
@@ -202,10 +204,10 @@ export default function ApplyForm(props: { plans: Plan[] }) {
 
       <aside className="h-fit rounded-3xl bg-navy p-6 text-white md:sticky md:top-36">
         <p className="text-xs font-bold text-white/55">{t('월 납부금액')}</p>
-        <p className="mt-1 text-3xl font-black">{selected ? won(selected.promoPrice) : '0원'}</p>
+        <p className="mt-1 text-3xl font-black">{selected ? won(selected.promoPrice, t) : won(0, t)}</p>
         {selected && (
           <>
-            <p className="mt-1 text-xs text-white/40 line-through">{won(selected.price)}</p>
+            <p className="mt-1 text-xs text-white/40 line-through">{won(selected.price, t)}</p>
             <p className="mt-3 text-xs text-white/60">{t(selected.name)} · {selected.dataLabel}</p>
           </>
         )}

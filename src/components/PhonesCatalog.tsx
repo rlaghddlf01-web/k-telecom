@@ -1,10 +1,10 @@
 'use client';
 
-import Link from 'next/link';
+import Link from '@/components/LocaleLink';
 import { useState } from 'react';
 import ProductImage from '@/components/ProductImage';
 import type { Phone, PhoneGroup } from '@/lib/phones';
-import { t } from '@/lib/i18n';
+import { useT } from '@/components/LangProvider';
 
 const TABS: { id: PhoneGroup | 'all'; label: string }[] = [
   { id: 'all', label: '전체' },
@@ -13,6 +13,7 @@ const TABS: { id: PhoneGroup | 'all'; label: string }[] = [
 ];
 
 export default function PhonesCatalog({ phones }: { phones: Phone[] }) {
+  const t = useT();
   const [tab, setTab] = useState<PhoneGroup | 'all'>('all');
   const list = phones.filter((p) => tab === 'all' || p.group === tab);
 

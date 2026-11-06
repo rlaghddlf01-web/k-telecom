@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 import { ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import PlanCard from '@/components/PlanCard';
 import { NETWORKS, type Network, type Plan } from '@/lib/plans';
-import { t } from '@/lib/i18n';
+import { useT } from '@/components/LangProvider';
 
 type Sort = 'recommended' | 'priceAsc' | 'priceDesc' | 'dataDesc';
 
@@ -26,6 +26,7 @@ const DATA_NEEDS: { value: number; label: string }[] = [
 const PAGE_SIZE = 6;
 
 export default function PlanExplorer({ plans }: { plans: Plan[] }) {
+  const t = useT();
   const [network, setNetwork] = useState<Network | 'all'>('all');
   const [sort, setSort] = useState<Sort>('recommended');
   const [dataNeed, setDataNeed] = useState(0);

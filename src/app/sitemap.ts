@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getEvents, getNotices, getPlans, getProducts, getSiteSettings } from '@/lib/content/load';
+import { LANG_CODES, localizePath } from '@/lib/langs';
 import { INDEXING_ALLOWED, SITE_URL } from '@/lib/seo';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -28,5 +29,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   events.forEach((p) => paths.add(`/events/${p.id}`));
   notices.forEach((p) => paths.add(`/support/notice/${p.id}`));
 
-  return [...paths].map((path) => ({ url: `${SITE_URL}${path}` }));
+  // 모든 주소를 17개 언어로 내보내고, 서로를 언어 대체 주소로 연결한다
+  return [...paths].flatMap((path) => {
+    const languages = Object.fromEntries(LANG_CODES.map((code) => [code, `${SITE_URL}${localizePath(path, code)}`]));
+    return LANG_CODES.map((code) => ({ url: languages[code], alternates: { languages } }));
+  });
 }

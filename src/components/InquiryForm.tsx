@@ -3,13 +3,14 @@
 import { useState } from 'react';
 import { CheckCircle2 } from 'lucide-react';
 import { inputClass } from '@/components/formStyles';
-import { t } from '@/lib/i18n';
+import { useT } from '@/components/LangProvider';
 
 export const INQUIRY_CATEGORIES = ['요금제', '스마트폰', '인터넷·IPTV', '이벤트', '기타'];
 
 type Status = 'idle' | 'sending' | 'done' | 'error';
 
 export default function InquiryForm() {
+  const t = useT();
   const [status, setStatus] = useState<Status>('idle');
   const [error, setError] = useState('');
 

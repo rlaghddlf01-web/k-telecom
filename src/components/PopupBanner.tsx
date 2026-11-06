@@ -5,10 +5,11 @@ import { X } from 'lucide-react';
 import SmartLink from '@/components/SmartLink';
 import { themeOf } from '@/lib/content/themes';
 import type { Banner } from '@/lib/content/types';
-import { t } from '@/lib/i18n';
+import { useT } from '@/components/LangProvider';
 
 /** 홈 진입 시 뜨는 팝업. '오늘 하루 보지 않기'를 누르면 자정까지 숨김 (팝업마다 따로 기억) */
 export default function PopupBanner({ banner }: { banner?: Banner }) {
+  const t = useT();
   const [open, setOpen] = useState(false);
   const storageKey = banner ? `ktelecom_popup_hidden_until_${banner.id}` : '';
 
@@ -44,16 +45,16 @@ export default function PopupBanner({ banner }: { banner?: Banner }) {
           <img src={banner.image_url} alt="" className="max-h-72 w-full object-cover" />
         )}
         <div className={`bg-gradient-to-br ${theme.bg} p-8 text-white`}>
-          {banner.eyebrow && <p className="text-xs font-bold tracking-[0.25em] text-white/70">{banner.eyebrow}</p>}
-          <h2 className="mt-3 whitespace-pre-line text-2xl font-black leading-snug">{banner.title}</h2>
-          {banner.description && <p className="mt-3 text-sm text-white/75">{banner.description}</p>}
+          {banner.eyebrow && <p className="text-xs font-bold tracking-[0.25em] text-white/70">{t(banner.eyebrow)}</p>}
+          <h2 className="mt-3 whitespace-pre-line text-2xl font-black leading-snug">{t(banner.title)}</h2>
+          {banner.description && <p className="mt-3 text-sm text-white/75">{t(banner.description)}</p>}
           {banner.link_url && banner.button_label && (
             <SmartLink
               href={banner.link_url}
               onClick={() => setOpen(false)}
               className="mt-6 inline-flex rounded-md bg-white px-6 py-2.5 text-xs font-extrabold text-ink"
             >
-              {banner.button_label}
+              {t(banner.button_label)}
             </SmartLink>
           )}
         </div>

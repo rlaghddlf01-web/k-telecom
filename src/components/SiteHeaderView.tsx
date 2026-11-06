@@ -1,15 +1,19 @@
 'use client';
 
-import Link from 'next/link';
+import Link from '@/components/LocaleLink';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Menu, X, Globe, ChevronDown } from 'lucide-react';
 import SmartLink from '@/components/SmartLink';
 import type { HeaderSettings, MenuEntry } from '@/lib/content/types';
-import { t } from '@/lib/i18n';
+import { useLang, useT } from '@/components/LangProvider';
+import { openLanguageGate } from '@/components/LanguageGate';
+import { langInfo, stripLang } from '@/lib/langs';
 
 export default function SiteHeaderView({ header }: { header: HeaderSettings }) {
-  const pathname = usePathname();
+  const t = useT();
+  const lang = useLang();
+  const pathname = stripLang(usePathname());
   const [mega, setMega] = useState(false);
   const [mobile, setMobile] = useState(false);
   const [openIdx, setOpenIdx] = useState<number | null>(null);
@@ -26,12 +30,12 @@ export default function SiteHeaderView({ header }: { header: HeaderSettings }) {
         <div className="mx-auto flex h-9 max-w-7xl items-center justify-end gap-5 px-4 text-xs text-slate-500">
           {header.utility.map((l) => (
             <SmartLink key={l.href + l.label} href={l.href} className="hover:text-brand">
-              {l.label}
+              {t(l.label)}
             </SmartLink>
           ))}
-          <span className="inline-flex items-center gap-1.5 font-bold text-ink">
-            <Globe className="h-3.5 w-3.5" /> 한국어
-          </span>
+          <button onClick={openLanguageGate} className="inline-flex items-center gap-1.5 font-bold text-ink hover:text-brand" aria-label="Language">
+            <Globe className="h-3.5 w-3.5" /> {langInfo(lang).name}
+          </button>
         </div>
       </div>
 
@@ -55,7 +59,7 @@ export default function SiteHeaderView({ header }: { header: HeaderSettings }) {
                   isActive(m) ? 'border-brand text-brand' : 'border-transparent hover:text-brand'
                 }`}
               >
-                {m.label}
+                {t(m.label)}
               </SmartLink>
             ))}
           </nav>
@@ -66,7 +70,7 @@ export default function SiteHeaderView({ header }: { header: HeaderSettings }) {
                 href={header.ctaHref}
                 className="hidden rounded-full bg-brand px-5 py-2.5 text-xs font-bold text-white transition-colors hover:bg-brand-dark sm:inline-flex"
               >
-                {header.ctaLabel}
+                {t(header.ctaLabel)}
               </SmartLink>
             )}
             <button className="p-2 md:hidden" aria-label={t('메뉴 열기')} onClick={() => setMobile((v) => !v)}>
@@ -91,7 +95,7 @@ export default function SiteHeaderView({ header }: { header: HeaderSettings }) {
                         pathname === c.href ? 'font-bold text-brand' : 'text-slate-600'
                       }`}
                     >
-                      {c.label}
+                      {t(c.label)}
                     </SmartLink>
                   </li>
                 ))}
@@ -113,7 +117,7 @@ export default function SiteHeaderView({ header }: { header: HeaderSettings }) {
                     onClick={() => setOpenIdx(openIdx === i ? null : i)}
                     aria-expanded={openIdx === i}
                   >
-                    {m.label}
+                    {t(m.label)}
                     <ChevronDown className={`h-4 w-4 transition-transform ${openIdx === i ? 'rotate-180' : ''}`} />
                   </button>
                   {openIdx === i && (
@@ -121,7 +125,7 @@ export default function SiteHeaderView({ header }: { header: HeaderSettings }) {
                       {m.children.map((c) => (
                         <li key={c.href + c.label}>
                           <SmartLink href={c.href} onClick={() => setMobile(false)} className="block py-2 text-sm text-slate-600">
-                            {c.label}
+                            {t(c.label)}
                           </SmartLink>
                         </li>
                       ))}
@@ -130,15 +134,18 @@ export default function SiteHeaderView({ header }: { header: HeaderSettings }) {
                 </>
               ) : (
                 <SmartLink href={m.href} onClick={() => setMobile(false)} className="block py-3.5 text-sm font-bold">
-                  {m.label}
+                  {t(m.label)}
                 </SmartLink>
               )}
             </div>
           ))}
+          <button onClick={() => { setMobile(false); openLanguageGate(); }} className="flex items-center gap-1.5 py-3 text-sm font-bold">
+            <Globe className="h-4 w-4" /> {langInfo(lang).name}
+          </button>
           <div className="flex flex-wrap gap-x-5 gap-y-2 py-4 text-xs text-slate-500">
             {header.utility.map((l) => (
               <SmartLink key={l.href + l.label} href={l.href} onClick={() => setMobile(false)}>
-                {l.label}
+                {t(l.label)}
               </SmartLink>
             ))}
           </div>

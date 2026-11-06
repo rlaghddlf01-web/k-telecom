@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/LocaleLink';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { CATEGORIES } from '@/lib/site';
 import { ht } from '@/lib/content/homeText';

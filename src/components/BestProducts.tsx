@@ -1,7 +1,8 @@
 'use client';
 
-import Link from 'next/link';
+import Link from '@/components/LocaleLink';
 import { useState } from 'react';
+import { useT } from '@/components/LangProvider';
 import ProductImage from '@/components/ProductImage';
 import type { Phone, PhoneGroup } from '@/lib/phones';
 
@@ -13,7 +14,8 @@ const TABS: { id: PhoneGroup | 'all'; label: string }[] = [
 
 /** texts: 서버(홈)에서 관리자가 바꾼 문구를 반영해 미리 만든 글자 (기본 문장 → 표시할 글자) */
 export default function BestProducts({ phones, texts }: { phones: Phone[]; texts: Record<string, string> }) {
-  const t = (key: string) => texts[key] ?? key;
+  const translate = useT();
+  const t = (key: string) => texts[key] ?? translate(key);
   const [tab, setTab] = useState<PhoneGroup | 'all'>('all');
   const list = phones.filter((p) => tab === 'all' || p.group === tab).slice(0, 5);
 

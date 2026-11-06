@@ -1,3 +1,4 @@
+import { t } from '@/lib/i18n';
 import PhoneMockup from '@/components/PhoneMockup';
 import SmartLink from '@/components/SmartLink';
 import { themeOf } from '@/lib/content/themes';
@@ -14,15 +15,15 @@ export default function ShowcaseBanner({ banner }: { banner?: Banner }) {
         <div className="absolute right-10 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full blur-3xl" style={{ background: theme.glow }} />
         <div className="relative grid items-center gap-8 md:grid-cols-2">
           <div>
-            {banner.eyebrow && <p className="text-xs font-bold tracking-[0.3em] text-white/55">{banner.eyebrow}</p>}
-            <h2 className="mt-3 whitespace-pre-line text-3xl font-black leading-tight md:text-4xl">{banner.title}</h2>
-            {banner.description && <p className="mt-4 text-sm leading-relaxed text-white/70">{banner.description}</p>}
+            {banner.eyebrow && <p className="text-xs font-bold tracking-[0.3em] text-white/55">{t(banner.eyebrow)}</p>}
+            <h2 className="mt-3 whitespace-pre-line text-3xl font-black leading-tight md:text-4xl">{t(banner.title)}</h2>
+            {banner.description && <p className="mt-4 text-sm leading-relaxed text-white/70">{t(banner.description)}</p>}
             {banner.link_url && banner.button_label && (
               <SmartLink
                 href={banner.link_url}
                 className="mt-7 inline-flex rounded-md bg-white px-6 py-3 text-xs font-extrabold text-ink hover:bg-brand hover:text-white transition-colors"
               >
-                {banner.button_label}
+                {t(banner.button_label)}
               </SmartLink>
             )}
           </div>

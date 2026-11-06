@@ -6,9 +6,10 @@ import PhoneMockup from '@/components/PhoneMockup';
 import SmartLink from '@/components/SmartLink';
 import { themeOf } from '@/lib/content/themes';
 import type { Banner } from '@/lib/content/types';
-import { t } from '@/lib/i18n';
+import { useT } from '@/components/LangProvider';
 
 export default function HeroSlider({ slides }: { slides: Banner[] }) {
+  const t = useT();
   const [idx, setIdx] = useState(0);
   const count = slides.length;
 
@@ -69,17 +70,17 @@ export default function HeroSlider({ slides }: { slides: Banner[] }) {
                 )}
 
                 <div className={`pt-12 md:pt-0 ${s.image_url ? 'max-w-xl' : 'order-1 md:order-2 md:text-right'}`}>
-                  {s.eyebrow && <p className="text-xs font-bold tracking-[0.3em] text-white/60 md:text-sm">{s.eyebrow}</p>}
+                  {s.eyebrow && <p className="text-xs font-bold tracking-[0.3em] text-white/60 md:text-sm">{t(s.eyebrow)}</p>}
                   <h1 className="mt-4 whitespace-pre-line text-4xl font-black leading-[1.1] tracking-tight md:text-6xl">
-                    {s.title}
+                    {t(s.title)}
                   </h1>
-                  {s.description && <p className="mt-4 text-sm text-white/70 md:text-base">{s.description}</p>}
+                  {s.description && <p className="mt-4 text-sm text-white/70 md:text-base">{t(s.description)}</p>}
                   {s.link_url && s.button_label && (
                     <SmartLink
                       href={s.link_url}
                       className="mt-7 inline-flex rounded-md bg-white px-7 py-3 text-xs font-extrabold tracking-wide text-ink transition-colors hover:bg-brand hover:text-white"
                     >
-                      {s.button_label}
+                      {t(s.button_label)}
                     </SmartLink>
                   )}
                 </div>

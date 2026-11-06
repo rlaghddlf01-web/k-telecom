@@ -5,14 +5,15 @@ import { X } from 'lucide-react';
 import SmartLink from '@/components/SmartLink';
 import { themeOf } from '@/lib/content/themes';
 import type { Banner } from '@/lib/content/types';
-import { t } from '@/lib/i18n';
+import { useT } from '@/components/LangProvider';
 
 /** 홈 최상단 띠 배너 (닫기 가능). 관리자의 [상단 띠배너]에서 수정 */
 export default function PromoStrip({ banner }: { banner?: Banner }) {
+  const t = useT();
   const [open, setOpen] = useState(true);
   if (!banner || !open) return null;
 
-  const content = <>{banner.title} {banner.link_url && <>&rarr;</>}</>;
+  const content = <>{t(banner.title)} {banner.link_url && <>&rarr;</>}</>;
 
   return (
     <div className={`relative bg-gradient-to-r ${themeOf(banner.theme).bg} text-white`}>

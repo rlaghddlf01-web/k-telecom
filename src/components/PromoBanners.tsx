@@ -1,3 +1,4 @@
+import { t } from '@/lib/i18n';
 import { Wifi, CardSim } from 'lucide-react';
 import PhoneMockup from '@/components/PhoneMockup';
 import SmartLink from '@/components/SmartLink';
@@ -27,10 +28,10 @@ export default function PromoBanners({ banners }: { banners: Banner[] }) {
             </>
           )}
           <div className="relative">
-            <h3 className="text-2xl font-black tracking-tight">{b.title}</h3>
-            {b.description && <p className="mt-1 text-sm text-white/90">{b.description}</p>}
+            <h3 className="text-2xl font-black tracking-tight">{t(b.title)}</h3>
+            {b.description && <p className="mt-1 text-sm text-white/90">{t(b.description)}</p>}
             {b.button_label && (
-              <span className="mt-4 inline-flex rounded-md bg-white px-4 py-1.5 text-xs font-extrabold text-ink">{b.button_label}</span>
+              <span className="mt-4 inline-flex rounded-md bg-white px-4 py-1.5 text-xs font-extrabold text-ink">{t(b.button_label)}</span>
             )}
           </div>
           {!b.image_url && i % 3 === 0 && (

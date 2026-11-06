@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/LocaleLink';
 import ProductImage from '@/components/ProductImage';
 import type { Phone } from '@/lib/phones';
 import { ht } from '@/lib/content/homeText';

@@ -4,12 +4,13 @@ import { useState } from 'react';
 import { CheckCircle2 } from 'lucide-react';
 import { PARTNER_TYPES } from '@/lib/site';
 import { inputClass } from '@/components/formStyles';
-import { t } from '@/lib/i18n';
+import { useT } from '@/components/LangProvider';
 
 type Status = 'idle' | 'sending' | 'done' | 'error';
 
 
 export default function PartnershipForm() {
+  const t = useT();
   const [status, setStatus] = useState<Status>('idle');
   const [types, setTypes] = useState<string[]>([]);
   const [error, setError] = useState('');

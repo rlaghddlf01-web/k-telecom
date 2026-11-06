@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/LocaleLink';
 import DealCountdown from '@/components/DealCountdown';
 import ProductImage from '@/components/ProductImage';
 import PhoneMockup from '@/components/PhoneMockup';

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { t } from '@/lib/i18n';
+import { useT } from '@/components/LangProvider';
 
 /** 이번 달 말일 23:59:59까지 남은 시간 */
 function remaining() {
@@ -17,6 +17,7 @@ function remaining() {
 }
 
 export default function DealCountdown({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
+  const t = useT();
   const [left, setLeft] = useState<ReturnType<typeof remaining> | null>(null);
 
   useEffect(() => {

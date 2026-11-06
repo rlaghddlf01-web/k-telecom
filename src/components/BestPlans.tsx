@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/LocaleLink';
 import PlanCard from '@/components/PlanCard';
 import SampleNotice from '@/components/SampleNotice';
 import { getPlans } from '@/lib/content/load';

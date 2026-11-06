@@ -3,9 +3,10 @@
 import { useState } from 'react';
 import { ChevronDown, Search } from 'lucide-react';
 import { FAQ_CATEGORIES, type Faq } from '@/lib/faq';
-import { t } from '@/lib/i18n';
+import { useT } from '@/components/LangProvider';
 
 export default function FaqBoard({ faqs }: { faqs: Faq[] }) {
+  const t = useT();
   const [cat, setCat] = useState<(typeof FAQ_CATEGORIES)[number]>('전체');
   const [q, setQ] = useState('');
 
