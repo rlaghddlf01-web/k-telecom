@@ -46,8 +46,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: '개인정보 수집·이용에 동의해 주세요.' }, { status: 400 });
   }
 
-  // TODO: 저장 방식 확정 전까지는 서버 로그에만 남깁니다 (DB/메일 연동 필요).
-  console.log('[apply]', JSON.stringify(data));
+  // TODO: 저장 방식(DB/메일) 연동 필요. 개인정보 보호를 위해 이름·연락처 등은 로그에 남기지 않는다.
+  console.log('[apply] received', { network: data.network, planId: data.planId });
 
   return NextResponse.json({ ok: true });
 }

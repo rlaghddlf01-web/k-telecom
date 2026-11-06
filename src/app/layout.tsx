@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import FloatingChat from '@/components/FloatingChat';
+import { INDEXING_ALLOWED } from '@/lib/seo';
 import { t } from '@/lib/i18n';
 
 export const viewport: Viewport = {
@@ -10,6 +11,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  robots: INDEXING_ALLOWED ? undefined : { index: false, follow: false, nocache: true },
   title: t('K-Telecom | 외국인 맞춤 통신·인터넷 원스톱'),
   description: t('스마트폰 단말할부, 알뜰폰 요금제, 인터넷·IPTV를 모국어로 한 번에. K-Telecom 제휴 신청'),
 };

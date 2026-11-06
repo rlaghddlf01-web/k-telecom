@@ -1,10 +1,12 @@
 import type { MetadataRoute } from 'next';
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3100';
+import { INDEXING_ALLOWED, SITE_URL } from '@/lib/seo';
 
 export default function robots(): MetadataRoute.Robots {
+  if (!INDEXING_ALLOWED) {
+    return { rules: { userAgent: '*', disallow: '/' } };
+  }
   return {
     rules: { userAgent: '*', allow: '/', disallow: '/api/' },
-    sitemap: `${SITE_URL}/sitemap.xml`,
+    ...(SITE_URL ? { sitemap: `${SITE_URL}/sitemap.xml` } : {}),
   };
 }

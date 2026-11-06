@@ -4,9 +4,12 @@ import { PHONES } from '@/lib/phones';
 import { PLANS } from '@/lib/plans';
 import { EVENTS, NOTICES } from '@/lib/boards';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3100';
+import { INDEXING_ALLOWED, SITE_URL } from '@/lib/seo';
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // 검색 노출이 막혀 있거나 사이트 주소가 정해지지 않았으면 사이트맵을 비운다 (잘못된 주소가 나가지 않게)
+  if (!INDEXING_ALLOWED || !SITE_URL) return [];
+
   const paths = new Set<string>(['/']);
   MENU.forEach((m) => {
     paths.add(m.href);
