@@ -5,6 +5,8 @@ export interface ChatSettings {
   managerName: string;
   managerRole: string;
   intro: string;
+  /** 상담 창이 닫혀 있을 때 버튼 위에 뜨는 말풍선 */
+  teaser: string;
   avatar: string;
   /** 왓츠앱: 국가번호를 포함한 숫자 (예: 821012345678) */
   whatsapp: string;
@@ -22,6 +24,7 @@ export const DEFAULT_CHAT: ChatSettings = {
   managerName: 'K-Telecom 공식 매니저',
   managerRole: '공식 매니저',
   intro: '통신·요금제·단말 가입을 도와 드립니다.',
+  teaser: '요금제, 핸드폰에 대해 궁금하세요? 😊 궁금한 점이 있으시거나 도움이 필요하시면 언제든 말씀해 주세요!',
   avatar: '',
   whatsapp: '',
   telegram: '',
@@ -70,6 +73,7 @@ export function sanitizeChat(input: unknown): ChatChecked {
       managerName: clip(c.managerName, 40) || DEFAULT_CHAT.managerName,
       managerRole: clip(c.managerRole, 30) || DEFAULT_CHAT.managerRole,
       intro: clip(c.intro, 120) || DEFAULT_CHAT.intro,
+      teaser: clip(c.teaser, 200) || DEFAULT_CHAT.teaser,
       avatar,
       whatsapp,
       telegram,

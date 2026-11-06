@@ -81,6 +81,9 @@ export default function ChatManager({ onUnauthorized }: { onUnauthorized: () => 
           <Field label="한 줄 소개">
             <input className={inputCls} value={value.intro} maxLength={120} onChange={(e) => set('intro', e.target.value)} />
           </Field>
+          <Field label="닫혀 있을 때 말풍선" hint="상담 창을 열기 전, 상담 버튼 위에 뜨는 인사 문구입니다.">
+            <textarea className={inputCls} rows={2} value={value.teaser} maxLength={200} onChange={(e) => set('teaser', e.target.value)} />
+          </Field>
           <Field label="매니저 사진 (선택)" hint="워우면 기본 아이콘이 보입니다.">
             <ImageField value={value.avatar} onChange={(url) => set('avatar', url)} folder="banners" onUnauthorized={onUnauthorized} />
           </Field>

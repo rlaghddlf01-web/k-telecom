@@ -16,6 +16,7 @@ interface Props {
   managerName: string;
   managerRole: string;
   intro: string;
+  teaser: string;
   avatar: string;
   aiEnabled: boolean;
   phone: string;
@@ -39,7 +40,7 @@ interface InstallPromptEvent extends Event {
 }
 
 /** 오른쪽 아래 상담 창: 매니저 소개 → AI 실시간 채팅 / 왓츠앱·텔레그램·메신저·카카오톡 / 앱 설치 */
-export default function ChatWidget({ managerName, managerRole, intro, avatar, aiEnabled, phone, channels }: Props) {
+export default function ChatWidget({ managerName, managerRole, intro, teaser, avatar, aiEnabled, phone, channels }: Props) {
   const t = useT();
   const lang = useLang();
   const pathname = usePathname();
@@ -52,6 +53,7 @@ export default function ChatWidget({ managerName, managerRole, intro, avatar, ai
   const [installEvent, setInstallEvent] = useState<InstallPromptEvent | null>(null);
   const [showGuide, setShowGuide] = useState(false);
   const [installed, setInstalled] = useState(false);
+  const [teaserOpen, setTeaserOpen] = useState(false);
   const endRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -63,6 +65,28 @@ export default function ChatWidget({ managerName, managerRole, intro, avatar, ai
     setInstalled(window.matchMedia('(display-mode: standalone)').matches);
     return () => window.removeEventListener('beforeinstallprompt', onPrompt);
   }, []);
+
+  // 닫혀 있을 때 잠시 뒤에 말풍선을 띄운다 (한 번 닫으면 이번 방문 동안 다시 띄우지 않는다)
+  useEffect(() => {
+    let closed = false;
+    try {
+      closed = sessionStorage.getItem('kt_chat_teaser_closed') === '1';
+    } catch {
+      /* 저장소를 못 쓰면 그냥 보여 준다 */
+    }
+    if (closed) return;
+    const timer = setTimeout(() => setTeaserOpen(true), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const closeTeaser = () => {
+    setTeaserOpen(false);
+    try {
+      sessionStorage.setItem('kt_chat_teaser_closed', '1');
+    } catch {
+      /* 무시 */
+    }
+  };
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
@@ -100,11 +124,11 @@ export default function ChatWidget({ managerName, managerRole, intro, avatar, ai
         setMessages([...next, { role: 'model', text: t('잠시 후 다시 시도해 주세요.') }]);
       } else {
         setFailed(true);
-        setMessages([...next, { role: 'model', text: t('지금은 AI 상담을 쓸 수 없습니다. 아래 버튼으로 문의해 주세요.') }]);
+        setMessages([...next, { role: 'model', text: t('지금은 상담 연결이 원활하지 않습니다. 아래 버튼으로 문의해 주세요.') }]);
       }
     } catch {
       setFailed(true);
-      setMessages([...next, { role: 'model', text: t('지금은 AI 상담을 쓸 수 없습니다. 아래 버튼으로 문의해 주세요.') }]);
+      setMessages([...next, { role: 'model', text: t('지금은 상담 연결이 원활하지 않습니다. 아래 버튼으로 문의해 주세요.') }]);
     } finally {
       setBusy(false);
     }
@@ -132,15 +156,61 @@ export default function ChatWidget({ managerName, managerRole, intro, avatar, ai
   );
 
   if (!open) {
+    const avatarBubble = (size: string) => (
+      <span className="relative block shrink-0">
+        <span className={`flex ${size} items-center justify-center overflow-hidden rounded-full border-2 border-[#d9aa3f] bg-[#1b2440]`}>
+          {avatar ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={avatar} alt="" className="h-full w-full object-cover" />
+          ) : (
+            <MessageSquareText className="h-5 w-5 text-[#e6bb55]" />
+          )}
+        </span>
+        <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-[#0b1226] bg-emerald-400" />
+      </span>
+    );
+
     return (
-      <button
-        onClick={() => setOpen(true)}
-        className="fixed bottom-5 right-4 z-30 flex h-16 w-16 flex-col items-center justify-center rounded-full bg-amber-500 text-white shadow-xl transition-transform hover:scale-105 md:bottom-8 md:right-8"
-        aria-label={t('상담하기')}
-      >
-        <MessageCircle className="h-6 w-6" />
-        <span className="mt-0.5 text-[10px] font-extrabold">{t('상담하기')}</span>
-      </button>
+      <div className="fixed bottom-4 right-3 z-30 flex max-w-[calc(100vw-1.5rem)] flex-col items-end gap-2.5 md:bottom-6 md:right-6">
+        {teaserOpen && (
+          <div className="relative w-[300px] max-w-full rounded-2xl border-2 border-[#d9aa3f] bg-[#0b1226] p-3.5 pr-8 text-left text-white shadow-[0_16px_40px_-10px_rgba(0,0,0,0.6)]">
+            <button onClick={closeTeaser} aria-label={t('닫기')} className="absolute right-2.5 top-2.5 rounded-full p-0.5 text-white/60 hover:text-white">
+              <X className="h-3.5 w-3.5" />
+            </button>
+            <button
+              onClick={() => {
+                closeTeaser();
+                setOpen(true);
+              }}
+              className="block w-full text-left"
+            >
+              <span className="flex items-center gap-1.5 text-[11px] font-extrabold text-white">
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400" />
+                <span className="truncate">
+                  {managerName} · {t('실시간 안내')}
+                </span>
+              </span>
+              <span className="mt-1.5 block text-xs font-semibold leading-relaxed text-white/90">{teaser}</span>
+            </button>
+          </div>
+        )}
+        <button
+          onClick={() => {
+            closeTeaser();
+            setOpen(true);
+          }}
+          className="flex max-w-full items-center gap-3 rounded-full border-2 border-[#d9aa3f] bg-[#0b1226] py-2 pl-2.5 pr-5 text-left text-white shadow-[0_12px_30px_-8px_rgba(0,0,0,0.6)] transition-transform hover:scale-[1.03]"
+          aria-label={managerName}
+        >
+          {avatarBubble('h-10 w-10')}
+          <span className="min-w-0">
+            <span className="block truncate text-[10px] font-bold text-[#e6bb55]">{managerRole}</span>
+            <span className="block truncate text-sm font-black">
+              {managerName} · {t('상담하기')}
+            </span>
+          </span>
+        </button>
+      </div>
     );
   }
 
@@ -190,7 +260,7 @@ export default function ChatWidget({ managerName, managerRole, intro, avatar, ai
           <div className="mt-3 flex items-start gap-2.5 rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-3 text-left">
             <Globe className="mt-0.5 h-4 w-4 shrink-0 text-sky-400" />
             <p className="text-xs font-semibold leading-relaxed text-white/80">
-              {t('모국어로 편하게 대화하세요. AI 매니저가 내 나라 말로 바로 답해 드립니다.')}
+              {t('모국어로 편하게 대화하세요. 매니저가 내 나라 말로 바로 답해 드립니다.')}
             </p>
           </div>
 

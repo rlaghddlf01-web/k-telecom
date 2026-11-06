@@ -13,6 +13,7 @@ export default async function FloatingChat() {
       managerName={t(settings.managerName)}
       managerRole={t(settings.managerRole)}
       intro={t(settings.intro)}
+      teaser={t(settings.teaser)}
       avatar={settings.avatar}
       aiEnabled={settings.aiEnabled}
       phone={site.footer.company.phone}
