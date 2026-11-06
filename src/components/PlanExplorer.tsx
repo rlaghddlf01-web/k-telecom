@@ -75,7 +75,7 @@ export default function PlanExplorer({ plans }: { plans: Plan[] }) {
         </button>
 
         {finderOpen && (
-          <div className="mt-5 grid gap-5 md:grid-cols-3">
+          <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-3">
             <label className="block text-xs font-bold">
               {t('필요한 데이터')}
               <select
@@ -145,7 +145,7 @@ export default function PlanExplorer({ plans }: { plans: Plan[] }) {
       {shown.length === 0 ? (
         <p className="py-20 text-center text-sm text-slate-400">{t('조건에 맞는 요금제가 없습니다.')}</p>
       ) : (
-        <ul className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {shown.map((p) => (
             <li key={p.id}>
               <PlanCard plan={p} />

@@ -44,7 +44,7 @@ export default function EsimGuide() {
         ))}
       </div>
 
-      <ol className="mt-5 grid gap-4 sm:grid-cols-2">
+      <ol className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {GUIDES[os].steps.map((s, i) => (
           <li key={s} className="rounded-2xl border border-black/5 p-5 shadow-sm">
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand text-xs font-black text-white">

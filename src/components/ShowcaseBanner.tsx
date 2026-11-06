@@ -13,7 +13,7 @@ export default function ShowcaseBanner({ banner }: { banner?: Banner }) {
     <section className="mx-auto max-w-6xl px-4 pb-16">
       <div className={`relative overflow-hidden rounded-[2rem] bg-gradient-to-br ${theme.bg} px-8 py-12 text-white md:px-16`}>
         <div className="absolute right-10 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full blur-3xl" style={{ background: theme.glow }} />
-        <div className="relative grid items-center gap-8 md:grid-cols-2">
+        <div className="relative grid grid-cols-1 items-center gap-8 md:grid-cols-2">
           <div>
             {banner.eyebrow && <p className="text-xs font-bold tracking-[0.3em] text-white/55">{t(banner.eyebrow)}</p>}
             <h2 className="mt-3 whitespace-pre-line text-3xl font-black leading-tight md:text-4xl">{t(banner.title)}</h2>

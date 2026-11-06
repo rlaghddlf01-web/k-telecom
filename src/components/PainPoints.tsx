@@ -6,7 +6,7 @@ export default function PainPoints() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-14">
       <h2 className="section-title text-center">{ht('외국인 통신, 이렇게 해결합니다')}</h2>
-      <ul className="mt-8 grid gap-4 md:grid-cols-2">
+      <ul className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
         {PAIN_POINTS.map((p) => (
           <li key={p.problem} className="rounded-2xl border border-black/5 bg-white p-5 shadow-sm">
             <p className="flex items-start gap-2 text-sm text-slate-500">

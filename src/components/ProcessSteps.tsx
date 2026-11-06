@@ -9,7 +9,7 @@ export default function ProcessSteps() {
         <p className="mt-3 text-center text-sm text-white/65">
           {ht('외부 사이트로 이동하지 않고 모국어로 끝까지 신청합니다')}
         </p>
-        <ol className="mt-10 grid gap-5 md:grid-cols-4">
+        <ol className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-4">
           {PROCESS_STEPS.map((s, i) => (
             <li key={s.title} className="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10">
               <div className="flex items-center gap-3">

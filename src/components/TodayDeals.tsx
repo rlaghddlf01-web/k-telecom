@@ -38,7 +38,7 @@ export default function TodayDeals({ phones }: { phones: Phone[] }) {
   return (
     <section className="mx-auto max-w-6xl px-4 pb-16">
       <h2 className="section-title text-center">{ht('이달의 추천 결합')}</h2>
-      <div className="mt-10 grid items-stretch gap-6 md:grid-cols-[1fr_1.05fr_1fr]">
+      <div className="mt-10 grid grid-cols-1 items-stretch gap-6 md:grid-cols-[1fr_1.05fr_1fr]">
         <DealCard phone={left} />
 
         <article className="relative flex flex-col items-center overflow-hidden rounded-[1.75rem] bg-gradient-to-b from-orange-400 via-rose-500 to-fuchsia-600 px-6 pb-7 pt-8 text-center text-white">

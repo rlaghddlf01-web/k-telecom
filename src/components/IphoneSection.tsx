@@ -19,7 +19,7 @@ export default function IphoneSection({ phones }: { phones: Phone[] }) {
         </Link>
       </div>
 
-      <div className="mt-8 grid gap-5 md:grid-cols-[0.8fr_2.2fr]">
+      <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-[0.8fr_2.2fr]">
         <article className="relative flex min-h-[420px] flex-col items-center justify-between overflow-hidden rounded-3xl bg-gradient-to-b from-[#1b1550] via-[#2b1b6b] to-[#e8174f] p-6 text-center text-white">
           <div className="absolute left-1/2 top-24 h-52 w-52 -translate-x-1/2 rounded-full bg-fuchsia-400/40 blur-3xl" />
           <PhoneMockup kind="island" from="#111827" to="#6d5dfc" className="relative mt-6 h-64 drop-shadow-[0_26px_30px_rgba(0,0,0,0.5)]" />

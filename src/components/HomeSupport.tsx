@@ -13,8 +13,8 @@ interface HomeSupportProps {
 export default function HomeSupport({ phone, notices, faqs }: HomeSupportProps) {
   return (
     <section className="mx-auto max-w-6xl px-4 pb-16">
-      <div className="grid gap-5 md:grid-cols-3">
-        <div className="rounded-3xl bg-soft p-6">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+        <div className="min-w-0 rounded-3xl bg-soft p-6">
           <div className="flex items-center justify-between">
             <h2 className="text-base font-black">{ht('공지사항')}</h2>
             <Link href="/support/notice" className="text-xs font-bold text-slate-500 hover:text-brand">{ht('더보기')} +</Link>
@@ -32,7 +32,7 @@ export default function HomeSupport({ phone, notices, faqs }: HomeSupportProps) 
           </ul>
         </div>
 
-        <div className="rounded-3xl bg-navy p-6 text-white">
+        <div className="min-w-0 rounded-3xl bg-navy p-6 text-white">
           <h2 className="flex items-center gap-2 text-base font-black">
             <Headset className="h-5 w-5 text-brand" /> {ht('고객센터')}
           </h2>
@@ -47,7 +47,7 @@ export default function HomeSupport({ phone, notices, faqs }: HomeSupportProps) 
           </Link>
         </div>
 
-        <div className="rounded-3xl bg-soft p-6">
+        <div className="min-w-0 rounded-3xl bg-soft p-6">
           <div className="flex items-center justify-between">
             <h2 className="text-base font-black">{ht('자주 묻는 질문')}</h2>
             <Link href="/support/faq" className="text-xs font-bold text-slate-500 hover:text-brand">{ht('더보기')} +</Link>

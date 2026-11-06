@@ -11,7 +11,7 @@ export default function FeaturedProducts({ phones }: { phones: Phone[] }) {
   return (
     <section className="mx-auto max-w-6xl px-4 pb-16">
       <h2 className="section-title">{ht('추천 상품')}</h2>
-      <div className="mt-8 grid gap-6 lg:grid-cols-[2.4fr_1fr]">
+      <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-[2.4fr_1fr]">
         <ul className="grid grid-cols-2 gap-4 md:grid-cols-3">
           {main.map((p) => (
             <li key={p.id}>

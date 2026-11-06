@@ -54,7 +54,7 @@ export default function EventBoard({ events, winners }: Props) {
           {q ? t('검색 결과가 없습니다.') : t('등록된 내용이 없습니다.')}
         </p>
       ) : (
-        <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+        <ul className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {list.map((p) => (
             <li key={p.id}>
               <Link
