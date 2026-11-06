@@ -8,3 +8,6 @@ next-env.d.ts
 .vercel
 .env*
 .claude
+
+# 제안서(대표 연락처 포함)와 생성 스크립트는 저장소에 올리지 않는다
+docs/proposals/
