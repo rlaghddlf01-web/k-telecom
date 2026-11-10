@@ -1,11 +1,16 @@
 import { NextResponse } from 'next/server';
 import { clientIp, rateLimit } from '@/lib/server/security';
 import { getChatSettings, getPlans, getProducts } from '@/lib/content/load';
+import { QUICK_QUESTIONS } from '@/lib/content/chat';
 import { dictionaryOf } from '@/lib/dictionaries';
 import { isLang, langInfo, type Lang } from '@/lib/langs';
 
 const MODEL = process.env.GEMINI_MODEL || 'gemini-3.1-flash-lite';
 const MAX_HISTORY = 10;
+
+/** 자주 묻는 질문(대화 첫 질문)의 답은 1시간 동안 재사용한다: 같은 질문마다 AI 사용료를 쓰지 않도록 */
+const CACHE_TTL_MS = 60 * 60 * 1000;
+const answerCache = new Map<string, { answer: string; at: number }>();
 
 interface Turn {
   role: 'user' | 'model';
@@ -31,6 +36,7 @@ function systemPrompt(managerName: string, language: string, catalog: string) {
     `You are "${managerName}", the official online manager of K-Telecom, a Korean service that helps foreigners living in Korea get an MVNO (budget) mobile plan, a phone with 24-month installments billed with the plan, and home internet/IPTV.`,
     `LANGUAGE: Reply in the language the customer writes in. If the message is too short to tell, reply in ${language}. Keep every answer short (2-6 sentences), friendly and plain.`,
     'SCOPE: Plans, phones, activation steps, required documents (a foreigner registration card is needed), eSIM, internet, partnership and how to apply on this website (the "sign-up" page).',
+    'PROACTIVE STYLE: Be proactive like a good shop manager. After answering, end with ONE short follow-up question that moves the customer forward (for example monthly data need, budget, whether they want a phone or only a SIM/eSIM, or whether they are ready to open the sign-up page). Skip the follow-up if the customer already gave that information or says goodbye.',
     'RULES:',
     '- Use ONLY the catalog below for prices and plan details. If something is not in the catalog or you are unsure, say that staff will confirm it and suggest the 1:1 inquiry page or the messenger buttons. Never invent prices, discounts or approval results.',
     '- Never ask for or accept passwords, card numbers, foreigner registration numbers or other sensitive personal data in this chat. Tell the customer to enter such details only on the official sign-up form. Phone-installment approval depends on screening.',
@@ -66,6 +72,15 @@ export async function POST(req: Request) {
   const settings = await getChatSettings();
   if (!settings.aiEnabled) return NextResponse.json({ error: 'AI_UNAVAILABLE' }, { status: 503 });
 
+  // 대화 첫 질문이 자주 묻는 질문이면 저장해 둔 답을 먼저 쓴다
+  const dict = dictionaryOf(lang);
+  const isQuick = history.length === 0 && QUICK_QUESTIONS.some((q) => (dict[q] ?? q) === message);
+  const cacheKey = `:`;
+  if (isQuick) {
+    const hit = answerCache.get(cacheKey);
+    if (hit && Date.now() - hit.at < CACHE_TTL_MS) return NextResponse.json({ answer: hit.answer });
+  }
+
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 20_000);
   try {
@@ -93,6 +108,10 @@ export async function POST(req: Request) {
       .trim()
       .slice(0, 1500);
     if (!answer) return NextResponse.json({ error: 'AI_UNAVAILABLE' }, { status: 502 });
+    if (isQuick) {
+      if (answerCache.size > 200) answerCache.clear();
+      answerCache.set(cacheKey, { answer, at: Date.now() });
+    }
     return NextResponse.json({ answer });
   } catch (err) {
     console.error('chat error:', err instanceof Error ? err.name : 'unknown');

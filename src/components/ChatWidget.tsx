@@ -5,6 +5,17 @@ import { usePathname } from 'next/navigation';
 import Link from '@/components/LocaleLink';
 import { ArrowLeft, ChevronRight, Download, Globe, Loader2, MessageCircle, MessageSquareText, Send, Send as TelegramIcon, X } from 'lucide-react';
 import { useLang, useT } from '@/components/LangProvider';
+import { QUICK_QUESTIONS } from '@/lib/content/chat';
+import { stripLang } from '@/lib/langs';
+
+/** 보고 있는 페이지에 맞춰 매니저가 먼저 건네는 인사 (번역 키). 홈 등 나머지는 관리자가 정한 기본 인사를 쓴다 */
+const PAGE_TEASERS: { match: (path: string) => boolean; key: string }[] = [
+  { match: (p) => p.startsWith('/plans/apply'), key: '가입 신청 중 막히는 부분이 있나요? 😊 필요한 서류와 순서를 바로 안내해 드릴게요!' },
+  { match: (p) => p.startsWith('/plans'), key: '요금제를 고르고 계신가요? 😊 데이터와 통화량만 알려 주시면 맞는 요금제를 추천해 드릴게요!' },
+  { match: (p) => p.startsWith('/phones'), key: '어떤 폰이 좋을지 고민되시나요? 😊 예산과 쓰는 방식을 알려 주시면 골라 드릴게요!' },
+  { match: (p) => p.startsWith('/support') || p.startsWith('/events') || p.startsWith('/partnership'), key: '궁금한 점이 있으신가요? 😊 여기서 바로 물어보세요!' },
+];
+
 
 interface Channel {
   id: 'whatsapp' | 'telegram' | 'messenger' | 'kakao';
@@ -94,6 +105,19 @@ export default function ChatWidget({ managerName, managerRole, intro, teaser, av
 
   if (pathname.startsWith('/admin')) return null;
 
+  // 말풍선 문구: 보고 있는 페이지에 맞는 인사가 있으면 그것을, 없으면 관리자가 정한 기본 인사
+  const pageKey = PAGE_TEASERS.find((p) => p.match(stripLang(pathname)))?.key;
+  const teaserText = pageKey ? t(pageKey) : teaser;
+
+  /** 채팅 화면을 바로 열고, 매니저가 먼저 인사한다 */
+  function openChat() {
+    closeTeaser();
+    setOpen(true);
+    if (!aiEnabled) return;
+    setView('chat');
+    if (messages.length === 0) setMessages([{ role: 'model', text: t('안녕하세요! 무엇이든 물어보세요. 요금제, 단말, 가입 방법을 안내해 드립니다.') }]);
+  }
+
   async function install() {
     if (installEvent) {
       await installEvent.prompt();
@@ -103,8 +127,8 @@ export default function ChatWidget({ managerName, managerRole, intro, teaser, av
     }
   }
 
-  async function send() {
-    const text = input.trim();
+  async function send(override?: string) {
+    const text = (override ?? input).trim();
     if (!text || busy) return;
     const next: Msg[] = [...messages, { role: 'user', text }];
     setMessages(next);
@@ -184,20 +208,14 @@ export default function ChatWidget({ managerName, managerRole, intro, teaser, av
             <button onClick={closeTeaser} aria-label={t('닫기')} className="absolute right-2.5 top-2.5 rounded-full p-0.5 text-slate-400 hover:text-ink">
               <X className="h-3.5 w-3.5" />
             </button>
-            <button
-              onClick={() => {
-                closeTeaser();
-                setOpen(true);
-              }}
-              className="block w-full text-left"
-            >
+            <button onClick={openChat} className="block w-full text-left">
               <span className="flex items-center gap-1.5 text-[11px] font-extrabold text-brand">
                 <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
                 <span className="truncate">
                   {managerName} · {t('실시간 안내')}
                 </span>
               </span>
-              <span className="mt-1.5 block text-xs font-semibold leading-relaxed text-slate-700">{teaser}</span>
+              <span className="mt-1.5 block text-xs font-semibold leading-relaxed text-slate-700">{teaserText}</span>
             </button>
           </div>
         )}
@@ -322,6 +340,23 @@ export default function ChatWidget({ managerName, managerRole, intro, teaser, av
               <p className="flex items-center gap-2 text-xs text-slate-500">
                 <Loader2 className="h-3.5 w-3.5 animate-spin text-brand" /> {t('답변을 준비하고 있어요...')}
               </p>
+            )}
+            {/* 매니저가 먼저 인사한 직후에는 자주 묻는 질문을 눌러서 바로 물어볼 수 있다 */}
+            {messages.length === 1 && !busy && (
+              <div className="pt-1">
+                <p className="mb-1.5 text-[11px] font-bold text-slate-400">{t('이런 것을 많이 물어보세요')}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {QUICK_QUESTIONS.map((q) => (
+                    <button
+                      key={q}
+                      onClick={() => send(t(q))}
+                      className="rounded-full border border-brand/30 bg-white px-3 py-1.5 text-left text-xs font-bold text-brand transition-colors hover:bg-brand hover:text-white"
+                    >
+                      {t(q)}
+                    </button>
+                  ))}
+                </div>
+              </div>
             )}
             {failed && channels.length > 0 && <div className="pt-1">{channelButtons}</div>}
             <div ref={endRef} />

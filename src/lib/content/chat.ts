@@ -84,6 +84,9 @@ export function sanitizeChat(input: unknown): ChatChecked {
   };
 }
 
+/** 채팅을 열면 바로 눌러 물어볼 수 있는 자주 묻는 질문 (번역 키 = 고객이 보내는 문장) */
+export const QUICK_QUESTIONS = ['가장 저렴한 요금제는 무엇인가요?', '폰을 할부로 살 수 있나요?', '가입에 필요한 서류가 무엇인가요?', '개통까지 얼마나 걸리나요?'];
+
 export interface ChatChannel {
   id: 'whatsapp' | 'telegram' | 'messenger' | 'kakao';
   label: string;
