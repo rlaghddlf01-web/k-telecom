@@ -5,16 +5,8 @@ import { usePathname } from 'next/navigation';
 import Link from '@/components/LocaleLink';
 import { ArrowLeft, ChevronRight, Download, Globe, Loader2, MessageCircle, MessageSquareText, Send, Send as TelegramIcon, X } from 'lucide-react';
 import { useLang, useT } from '@/components/LangProvider';
-import { QUICK_QUESTIONS } from '@/lib/content/chat';
+import { helpForPath } from '@/lib/content/chatContext';
 import { stripLang } from '@/lib/langs';
-
-/** 보고 있는 페이지에 맞춰 매니저가 먼저 건네는 인사 (번역 키). 홈 등 나머지는 관리자가 정한 기본 인사를 쓴다 */
-const PAGE_TEASERS: { match: (path: string) => boolean; key: string }[] = [
-  { match: (p) => p.startsWith('/plans/apply'), key: '가입 신청 중 막히는 부분이 있나요? 😊 필요한 서류와 순서를 바로 안내해 드릴게요!' },
-  { match: (p) => p.startsWith('/plans'), key: '요금제를 고르고 계신가요? 😊 데이터와 통화량만 알려 주시면 맞는 요금제를 추천해 드릴게요!' },
-  { match: (p) => p.startsWith('/phones'), key: '어떤 폰이 좋을지 고민되시나요? 😊 예산과 쓰는 방식을 알려 주시면 골라 드릴게요!' },
-  { match: (p) => p.startsWith('/support') || p.startsWith('/events') || p.startsWith('/partnership'), key: '궁금한 점이 있으신가요? 😊 여기서 바로 물어보세요!' },
-];
 
 
 interface Channel {
@@ -37,6 +29,8 @@ interface Props {
 interface Msg {
   role: 'user' | 'model';
   text: string;
+  /** 이 말 아래에 보여 줄 질문 버튼 (번역 키) */
+  chips?: string[];
 }
 
 const CHANNEL_STYLE: Record<Channel['id'], string> = {
@@ -77,27 +71,43 @@ export default function ChatWidget({ managerName, managerRole, intro, teaser, av
     return () => window.removeEventListener('beforeinstallprompt', onPrompt);
   }, []);
 
-  // 닫혀 있을 때 잠시 뒤에 말풍선을 띄운다 (한 번 닫으면 이번 방문 동안 다시 띄우지 않는다)
+  // 지금 보고 있는 화면에 맞는 안내 (말풍선 문구, 질문 버튼, 띄우는 시점)
+  const help = helpForPath(stripLang(pathname));
+
+  // 닫혀 있을 때 화면에 맞는 말풍선을 띄운다. 화면마다 따로 기억해서, 한 번 닫은 화면에서는 다시 띄우지 않는다.
+  // 입력 중인 신청 화면은 방해되지 않게 오래 지켜본 뒤에 띄운다 (막혀서 멈춰 있는 고객을 위해)
   useEffect(() => {
+    setTeaserOpen(false);
+    if (open) return;
     let closed = false;
     try {
-      closed = sessionStorage.getItem('kt_chat_teaser_closed') === '1';
+      closed = sessionStorage.getItem(`kt_chat_teaser_closed:${help.id}`) === '1';
     } catch {
       /* 저장소를 못 쓰면 그냥 보여 준다 */
     }
     if (closed) return;
-    const timer = setTimeout(() => setTeaserOpen(true), 1500);
+    const timer = setTimeout(() => setTeaserOpen(true), help.delayMs);
     return () => clearTimeout(timer);
-  }, []);
+  }, [help.id, help.delayMs, open]);
 
   const closeTeaser = () => {
     setTeaserOpen(false);
     try {
-      sessionStorage.setItem('kt_chat_teaser_closed', '1');
+      sessionStorage.setItem(`kt_chat_teaser_closed:${help.id}`, '1');
     } catch {
       /* 무시 */
     }
   };
+
+  // 채팅을 연 채로 다른 화면으로 이동하면, 그 화면에 맞는 인사와 질문 버튼을 매니저가 먼저 건넨다
+  const lastHelpId = useRef(help.id);
+  useEffect(() => {
+    if (lastHelpId.current === help.id) return;
+    lastHelpId.current = help.id;
+    if (!open || view !== 'chat' || messages.length === 0) return;
+    setMessages((m) => [...m, { role: 'model', text: help.teaser ? t(help.teaser) : teaser, chips: help.chips }]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [help.id]);
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
@@ -106,8 +116,7 @@ export default function ChatWidget({ managerName, managerRole, intro, teaser, av
   if (pathname.startsWith('/admin')) return null;
 
   // 말풍선 문구: 보고 있는 페이지에 맞는 인사가 있으면 그것을, 없으면 관리자가 정한 기본 인사
-  const pageKey = PAGE_TEASERS.find((p) => p.match(stripLang(pathname)))?.key;
-  const teaserText = pageKey ? t(pageKey) : teaser;
+  const teaserText = help.teaser ? t(help.teaser) : teaser;
 
   /** 채팅 화면을 바로 열고, 매니저가 먼저 인사한다 */
   function openChat() {
@@ -115,7 +124,10 @@ export default function ChatWidget({ managerName, managerRole, intro, teaser, av
     setOpen(true);
     if (!aiEnabled) return;
     setView('chat');
-    if (messages.length === 0) setMessages([{ role: 'model', text: t('안녕하세요! 무엇이든 물어보세요. 요금제, 단말, 가입 방법을 안내해 드립니다.') }]);
+    if (messages.length === 0) {
+      // 매니저가 먼저 인사하고, 지금 보고 있는 화면에서 자주 막히는 질문을 버튼으로 내밀어 준다
+      setMessages([{ role: 'model', text: help.teaser ? t(help.teaser) : t('안녕하세요! 무엇이든 물어보세요. 요금제, 단말, 가입 방법을 안내해 드립니다.'), chips: help.chips }]);
+    }
   }
 
   async function install() {
@@ -139,7 +151,7 @@ export default function ChatWidget({ managerName, managerRole, intro, teaser, av
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ message: text, history: messages.slice(-10), lang }),
+        body: JSON.stringify({ message: text, history: messages.slice(-10).map(({ role, text }) => ({ role, text })), lang, ctx: help.id }),
       });
       const data = await res.json().catch(() => ({}));
       if (res.ok && typeof data.answer === 'string') {
@@ -290,10 +302,7 @@ export default function ChatWidget({ managerName, managerRole, intro, teaser, av
           <div className="mt-4 space-y-2.5">
             {aiEnabled && (
               <button
-                onClick={() => {
-                  setView('chat');
-                  if (messages.length === 0) setMessages([{ role: 'model', text: t('안녕하세요! 무엇이든 물어보세요. 요금제, 단말, 가입 방법을 안내해 드립니다.') }]);
-                }}
+                onClick={openChat}
                 className="flex w-full items-center gap-2.5 rounded-full bg-brand py-2.5 pl-2.5 pr-4 text-sm font-extrabold text-white shadow-md shadow-brand/30 transition-colors hover:bg-brand-dark"
               >
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/20">
@@ -341,12 +350,12 @@ export default function ChatWidget({ managerName, managerRole, intro, teaser, av
                 <Loader2 className="h-3.5 w-3.5 animate-spin text-brand" /> {t('답변을 준비하고 있어요...')}
               </p>
             )}
-            {/* 매니저가 먼저 인사한 직후에는 자주 묻는 질문을 눌러서 바로 물어볼 수 있다 */}
-            {messages.length === 1 && !busy && (
+            {/* 매니저가 먼저 건넨 말(첫 인사, 다른 화면으로 옮겼을 때의 인사) 아래에는 그 화면에서 자주 막히는 질문 버튼이 나온다 */}
+            {messages[messages.length - 1]?.chips && !busy && (
               <div className="pt-1">
                 <p className="mb-1.5 text-[11px] font-bold text-slate-400">{t('이런 것을 많이 물어보세요')}</p>
                 <div className="flex flex-wrap gap-1.5">
-                  {QUICK_QUESTIONS.map((q) => (
+                  {messages[messages.length - 1].chips!.map((q) => (
                     <button
                       key={q}
                       onClick={() => send(t(q))}

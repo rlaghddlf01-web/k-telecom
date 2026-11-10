@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { clientIp, rateLimit } from '@/lib/server/security';
 import { getChatSettings, getPlans, getProducts } from '@/lib/content/load';
-import { QUICK_QUESTIONS } from '@/lib/content/chat';
+import { helpById } from '@/lib/content/chatContext';
 import { dictionaryOf } from '@/lib/dictionaries';
 import { isLang, langInfo, type Lang } from '@/lib/langs';
 
@@ -31,12 +31,13 @@ async function catalogText(lang: Lang): Promise<string> {
   return `PLANS:\n${planLines.join('\n') || '- (none registered yet)'}\n\nPHONES:\n${phoneLines.join('\n') || '- (none registered yet)'}`;
 }
 
-function systemPrompt(managerName: string, language: string, catalog: string) {
+function systemPrompt(managerName: string, language: string, topic: string, catalog: string) {
   return [
     `You are "${managerName}", the official online manager of K-Telecom, a Korean service that helps foreigners living in Korea get an MVNO (budget) mobile plan, a phone with 24-month installments billed with the plan, and home internet/IPTV.`,
     `LANGUAGE: Reply in the language the customer writes in. If the message is too short to tell, reply in ${language}. Keep every answer short (2-6 sentences), friendly and plain.`,
     'SCOPE: Plans, phones, activation steps, required documents (a foreigner registration card is needed), eSIM, internet, partnership and how to apply on this website (the "sign-up" page).',
     'PROACTIVE STYLE: Be proactive like a good shop manager. After answering, end with ONE short follow-up question that moves the customer forward (for example monthly data need, budget, whether they want a phone or only a SIM/eSIM, or whether they are ready to open the sign-up page). Skip the follow-up if the customer already gave that information or says goodbye.',
+    `CURRENT PAGE: the customer is looking at ${topic} Answer in the context of this page: explain unclear terms or steps on it simply, and tell them exactly where to click or what to choose next. If the question is about something else, answer it normally.`,
     'RULES:',
     '- Use ONLY the catalog below for prices and plan details. If something is not in the catalog or you are unsure, say that staff will confirm it and suggest the 1:1 inquiry page or the messenger buttons. Never invent prices, discounts or approval results.',
     '- Never ask for or accept passwords, card numbers, foreigner registration numbers or other sensitive personal data in this chat. Tell the customer to enter such details only on the official sign-up form. Phone-installment approval depends on screening.',
@@ -69,13 +70,15 @@ export async function POST(req: Request) {
     .filter((h: Turn) => h.text);
 
   const lang = isLang(body?.lang) ? body.lang : 'ko';
+  // 화면이 보낸 페이지 id 는 정해진 목록에 있는 것만 인정한다 (그 화면의 설명은 서버가 가진 것만 쓴다)
+  const help = helpById(body?.ctx);
   const settings = await getChatSettings();
   if (!settings.aiEnabled) return NextResponse.json({ error: 'AI_UNAVAILABLE' }, { status: 503 });
 
   // 대화 첫 질문이 자주 묻는 질문이면 저장해 둔 답을 먼저 쓴다
   const dict = dictionaryOf(lang);
-  const isQuick = history.length === 0 && QUICK_QUESTIONS.some((q) => (dict[q] ?? q) === message);
-  const cacheKey = `:`;
+  const isQuick = history.length === 0 && help.chips.some((q) => (dict[q] ?? q) === message);
+  const cacheKey = `${lang}:${help.id}:${message}`;
   if (isQuick) {
     const hit = answerCache.get(cacheKey);
     if (hit && Date.now() - hit.at < CACHE_TTL_MS) return NextResponse.json({ answer: hit.answer });
@@ -89,7 +92,7 @@ export async function POST(req: Request) {
       headers: { 'content-type': 'application/json', 'x-goog-api-key': apiKey },
       signal: controller.signal,
       body: JSON.stringify({
-        systemInstruction: { parts: [{ text: systemPrompt(settings.managerName, langInfo(lang).name, await catalogText(lang)) }] },
+        systemInstruction: { parts: [{ text: systemPrompt(settings.managerName, langInfo(lang).name, help.topic, await catalogText(lang)) }] },
         contents: [...history, { role: 'user', text: message }].map((t) => ({ role: t.role, parts: [{ text: t.text }] })),
         generationConfig: { maxOutputTokens: 600, temperature: 0.4 },
       }),
