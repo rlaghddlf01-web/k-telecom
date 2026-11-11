@@ -4,6 +4,7 @@ import '../globals.css';
 import FloatingChat from '@/components/FloatingChat';
 import LanguageGate from '@/components/LanguageGate';
 import { LangProvider } from '@/components/LangProvider';
+import TrafficTracker from '@/components/TrafficTracker';
 import { dictionaryOf } from '@/lib/dictionaries';
 import { t, setLang } from '@/lib/i18n';
 import { DEFAULT_LANG, LANG_CODES, isLang, localizePath } from '@/lib/langs';
@@ -61,6 +62,7 @@ export default async function RootLayout({
           {children}
           <FloatingChat />
           <LanguageGate />
+          <TrafficTracker />
         </LangProvider>
       </body>
     </html>
