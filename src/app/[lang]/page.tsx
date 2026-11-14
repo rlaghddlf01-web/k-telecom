@@ -1,4 +1,5 @@
-import { withLang } from '@/lib/i18n';
+import { getLang, withLang } from '@/lib/i18n';
+import { DEFAULT_LANG } from '@/lib/langs';
 import SiteHeader from '@/components/SiteHeader';
 import PromoStrip from '@/components/PromoStrip';
 import PopupBanner from '@/components/PopupBanner';
@@ -61,7 +62,8 @@ async function HomePage() {
   const order = resolveOrder(home);
   const bestTexts = Object.fromEntries(['인기 스마트폰', '전체 보기', '전체', '삼성 갤럭시', '애플 아이폰'].map((k) => [k, ht(k)]));
   const sections: Record<string, ReactNode> = {
-    sister: <SisterServices />,
+    // 한국어 페이지(/)에서는 가린다. 다른 도구가 만든 SisterServices 는 그대로 두고 여기서만 거른다.
+    sister: getLang() === DEFAULT_LANG ? null : <SisterServices />,
     categories: <PopularCategories />,
     plans: <BestPlans />,
     deals: <TodayDeals phones={phones} />,
