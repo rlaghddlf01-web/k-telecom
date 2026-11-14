@@ -21,7 +21,7 @@ function remember(code: Lang) {
   }
 }
 
-/** 언어 선택 화면. 처음 방문하면 한국어 주소(/)에서 자동으로 뜨고, 헤더의 언어 버튼으로 다시 열 수 있다 */
+/** 언어 선택 화면. 헤더의 언어 버튼이나 /welcome 주소에서 열린다 (한국어 주소에서 자동으로 뜨지 않는다) */
 export default function LanguageGate({ standalone = false }: { standalone?: boolean }) {
   const current = useLang();
   const pathname = usePathname();
@@ -37,14 +37,13 @@ export default function LanguageGate({ standalone = false }: { standalone?: bool
 
   useEffect(() => {
     if (standalone) return;
+    // 한국어 주소(/)에서는 자동으로 띄우지 않는다. 외국인은 /vi 같은 언어 주소, /welcome, 헤더의 언어 버튼으로 들어온다.
+    // 광고 등으로 /vi 같은 언어 주소에 바로 들어온 방문자는 이미 언어를 정한 것이다.
+    if (current === 'ko') return;
     try {
-      const chosen = localStorage.getItem(CHOSEN_KEY);
-      if (chosen) return;
-      // 광고 등으로 /vi 같은 언어 주소에 바로 들어온 방문자는 이미 언어를 정한 것이다
-      if (current !== 'ko') localStorage.setItem(CHOSEN_KEY, current);
-      else setOpen(true);
+      if (!localStorage.getItem(CHOSEN_KEY)) localStorage.setItem(CHOSEN_KEY, current);
     } catch {
-      /* 저장소를 못 쓰면 자동으로 띄우지 않는다 */
+      /* 저장소를 못 쓰면 기억하지 않는다 */
     }
   }, [current, standalone]);
 
