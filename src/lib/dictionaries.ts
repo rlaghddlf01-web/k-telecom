@@ -17,9 +17,10 @@ import si from '@/locales/si.json';
 import kk from '@/locales/kk.json';
 import bn from '@/locales/bn.json';
 import ur from '@/locales/ur.json';
+import tl from '@/locales/tl.json';
 
 export type Dictionary = Record<string, string>;
 
-const DICTS: Record<Exclude<Lang, 'ko'>, Dictionary> = { en, ja, ru, vi, zh, th, uz, km, mn, ne, id, my, si, kk, bn, ur };
+const DICTS: Record<Exclude<Lang, 'ko'>, Dictionary> = { en, ja, ru, vi, zh, th, uz, km, mn, ne, id, my, si, kk, bn, ur, tl };
 
 export const dictionaryOf = (lang: Lang): Dictionary => (lang === 'ko' ? {} : DICTS[lang]);

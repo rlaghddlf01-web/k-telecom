@@ -1,5 +1,5 @@
-// 지원 언어 17개 (K-Market 과 같은 코드·같은 주소 규칙: 한국어는 /, 나머지는 /vi 처럼 앞에 붙는다)
-export const LANG_CODES = ['ko', 'en', 'ja', 'ru', 'vi', 'zh', 'th', 'uz', 'km', 'mn', 'ne', 'id', 'my', 'si', 'kk', 'bn', 'ur'] as const;
+// 지원 언어 18개 (K-Market 과 같은 코드·같은 주소 규칙: 한국어는 /, 나머지는 /vi 처럼 앞에 붙는다)
+export const LANG_CODES = ['ko', 'en', 'ja', 'ru', 'vi', 'zh', 'th', 'uz', 'km', 'mn', 'ne', 'id', 'my', 'si', 'kk', 'bn', 'ur', 'tl'] as const;
 export type Lang = (typeof LANG_CODES)[number];
 export const DEFAULT_LANG: Lang = 'ko';
 
@@ -29,6 +29,7 @@ export const LANGS: LangInfo[] = [
   { code: 'kk', name: 'Қазақша', country: 'Kazakhstan', flag: 'kz' },
   { code: 'bn', name: 'বাংলা', country: 'Bangladesh', flag: 'bd' },
   { code: 'ur', name: 'اردو', country: 'Pakistan', flag: 'pk' },
+  { code: 'tl', name: 'Tagalog / Filipino', country: 'Philippines', flag: 'ph' },
 ];
 
 export const flagUrl = (flag: string) => `https://flagcdn.com/w160/${flag}.png`;
