@@ -17,9 +17,7 @@ export function getLang(): Lang {
 }
 
 export function t(key: string): string {
-  const lang = scope().lang;
-  if (lang === DEFAULT_LANG) return key;
-  return dictionaryOf(lang)[key] ?? key;
+  return dictionaryOf(scope().lang)[key] ?? key;
 }
 
 /**

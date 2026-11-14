@@ -19,6 +19,6 @@ export const useLang = (): Lang => useContext(LangContext).lang;
 
 /** 클라이언트 컴포넌트용 t(): 서버의 t() 와 같은 규칙 */
 export function useT(): (key: string) => string {
-  const { lang, dict } = useContext(LangContext);
-  return (key) => (lang === DEFAULT_LANG ? key : dict[key] ?? key);
+  const { dict } = useContext(LangContext);
+  return (key) => dict[key] ?? key;
 }

@@ -1,5 +1,5 @@
 import { getLang, withLang } from '@/lib/i18n';
-import { DEFAULT_LANG } from '@/lib/langs';
+import { DEFAULT_LANG, SOURCE_LANG } from '@/lib/langs';
 import SiteHeader from '@/components/SiteHeader';
 import PromoStrip from '@/components/PromoStrip';
 import PopupBanner from '@/components/PopupBanner';
@@ -24,7 +24,7 @@ import SiteFooter from '@/components/SiteFooter';
 import type { NewsItem } from '@/components/NewsSection';
 import { Fragment, type ReactNode } from 'react';
 import { getBanners, getEvents, getFaqs, getHomeSettings, getNotices, getProducts, getSiteSettings } from '@/lib/content/load';
-import { resolveOrder } from '@/lib/content/home';
+import { KO_HIDDEN_SECTIONS, resolveOrder } from '@/lib/content/home';
 import { ht, setHomeTexts } from '@/lib/content/homeText';
 
 async function HomePage() {
@@ -60,10 +60,12 @@ async function HomePage() {
   // 관리자가 정한 순서·노출·문구로 구역을 그린다
   setHomeTexts(home.texts);
   const order = resolveOrder(home);
+  const lang = getLang();
+  const hidden = lang === DEFAULT_LANG ? [...home.hidden, ...KO_HIDDEN_SECTIONS] : home.hidden;
   const bestTexts = Object.fromEntries(['인기 스마트폰', '전체 보기', '전체', '삼성 갤럭시', '애플 아이폰'].map((k) => [k, ht(k)]));
   const sections: Record<string, ReactNode> = {
     // 한국어 페이지(/)에서는 가린다. 다른 도구가 만든 SisterServices 는 그대로 두고 여기서만 거른다.
-    sister: getLang() === DEFAULT_LANG ? null : <SisterServices />,
+    sister: lang === DEFAULT_LANG || lang === SOURCE_LANG ? null : <SisterServices />,
     categories: <PopularCategories />,
     plans: <BestPlans />,
     deals: <TodayDeals phones={phones} />,
@@ -88,7 +90,7 @@ async function HomePage() {
       <PopupBanner banner={popup[0]} />
       <main>
         <HeroSlider slides={hero} />
-        {order.filter((id) => !home.hidden.includes(id)).map((id) => (
+        {order.filter((id) => !hidden.includes(id)).map((id) => (
           <Fragment key={id}>{sections[id]}</Fragment>
         ))}
       </main>

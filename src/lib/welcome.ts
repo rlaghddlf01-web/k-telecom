@@ -10,7 +10,7 @@ export interface WelcomeLanguageText {
   bannerBenefit: string;
 }
 
-export const WELCOME_TEXTS: Record<Lang, WelcomeLanguageText> = {
+const BASE_TEXTS: Record<Exclude<Lang, 'kr'>, WelcomeLanguageText> = {
   ko: {
     badge: 'K-Telecom 17개국어 모국어 게이트웨이',
     title: 'Choose Your Language / 국가 언어를 선택하세요',
@@ -138,3 +138,6 @@ export const WELCOME_TEXTS: Record<Lang, WelcomeLanguageText> = {
     bannerBenefit: '18 Wika Real-time Auto-Translation Chat',
   },
 };
+
+// /kr(관리자용 원문 화면)은 한국어 문구를 쓴다
+export const WELCOME_TEXTS: Record<Lang, WelcomeLanguageText> = { ...BASE_TEXTS, kr: BASE_TEXTS.ko };

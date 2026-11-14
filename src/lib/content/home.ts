@@ -28,6 +28,9 @@ export const HOME_SECTIONS: HomeSectionDef[] = [
   { id: 'partner', label: '제휴 신청 안내' },
 ];
 
+/** 한국어 페이지(/)에서만 숨기는 구역: 외국인 전용 안내라 한국 고객에게는 필요 없다. (/kr 원문 화면과 다른 언어에는 그대로 나온다) */
+export const KO_HIDDEN_SECTIONS = ['pain', 'process'];
+
 export interface HomeSettings {
   /** 구역 id 를 보여줄 순서대로 */
   order: string[];

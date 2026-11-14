@@ -1,7 +1,13 @@
 // 지원 언어 18개 (K-Market 과 같은 코드·같은 주소 규칙: 한국어는 /, 나머지는 /vi 처럼 앞에 붙는다)
-export const LANG_CODES = ['ko', 'en', 'ja', 'ru', 'vi', 'zh', 'th', 'uz', 'km', 'mn', 'ne', 'id', 'my', 'si', 'kk', 'bn', 'ur', 'tl'] as const;
+// 'kr' 은 방문자용 언어가 아니라 관리자가 보는 "한국어 원문 화면"이다 (/kr).
+// 번역 키로 쓰는 한국어 원문을 바꾸지 않고 그대로 보여 주고, 한국인용으로 바꾼 문구(ko.json)는 적용하지 않는다.
+export const LANG_CODES = ['ko', 'kr', 'en', 'ja', 'ru', 'vi', 'zh', 'th', 'uz', 'km', 'mn', 'ne', 'id', 'my', 'si', 'kk', 'bn', 'ur', 'tl'] as const;
 export type Lang = (typeof LANG_CODES)[number];
 export const DEFAULT_LANG: Lang = 'ko';
+export const SOURCE_LANG: Lang = 'kr';
+
+/** 검색·사이트맵·언어 선택에 내보내는 언어 (원문 화면 /kr 은 뺀다) */
+export const PUBLIC_LANG_CODES = LANG_CODES.filter((c) => c !== SOURCE_LANG);
 
 export interface LangInfo {
   code: Lang;

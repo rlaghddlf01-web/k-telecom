@@ -39,7 +39,7 @@ export default function LanguageGate({ standalone = false }: { standalone?: bool
     if (standalone) return;
     // 한국어 주소(/)에서는 자동으로 띄우지 않는다. 외국인은 /vi 같은 언어 주소, /welcome, 헤더의 언어 버튼으로 들어온다.
     // 광고 등으로 /vi 같은 언어 주소에 바로 들어온 방문자는 이미 언어를 정한 것이다.
-    if (current === 'ko') return;
+    if (current === 'ko' || current === 'kr') return;
     try {
       if (!localStorage.getItem(CHOSEN_KEY)) localStorage.setItem(CHOSEN_KEY, current);
     } catch {
