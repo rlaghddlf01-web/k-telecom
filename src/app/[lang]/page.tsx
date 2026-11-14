@@ -3,6 +3,7 @@ import SiteHeader from '@/components/SiteHeader';
 import PromoStrip from '@/components/PromoStrip';
 import PopupBanner from '@/components/PopupBanner';
 import HeroSlider from '@/components/HeroSlider';
+import SisterServices from '@/components/SisterServices';
 import PopularCategories from '@/components/PopularCategories';
 import BestPlans from '@/components/BestPlans';
 import TodayDeals from '@/components/TodayDeals';
@@ -60,6 +61,7 @@ async function HomePage() {
   const order = resolveOrder(home);
   const bestTexts = Object.fromEntries(['인기 스마트폰', '전체 보기', '전체', '삼성 갤럭시', '애플 아이폰'].map((k) => [k, ht(k)]));
   const sections: Record<string, ReactNode> = {
+    sister: <SisterServices />,
     categories: <PopularCategories />,
     plans: <BestPlans />,
     deals: <TodayDeals phones={phones} />,

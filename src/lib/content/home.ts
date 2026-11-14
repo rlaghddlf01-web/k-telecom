@@ -10,6 +10,7 @@ export interface HomeSectionDef {
 
 /** 홈에 나오는 구역 (기본 순서) */
 export const HOME_SECTIONS: HomeSectionDef[] = [
+  { id: 'sister', label: '세금 환급·중고거래 서비스 배너' },
   { id: 'categories', label: '인기 카테고리' },
   { id: 'plans', label: '추천 요금제 BEST' },
   { id: 'deals', label: '이달의 추천 결합' },
@@ -38,17 +39,23 @@ export interface HomeSettings {
 
 export const DEFAULT_HOME: HomeSettings = { order: HOME_SECTIONS.map((s) => s.id), hidden: [], texts: {} };
 
-/** 구역 순서 보정: 저장된 순서를 우선하고, 빠진 구역은 기본 위치 순으로 뒤에 붙인다 */
+/**
+ * 구역 순서 보정: 저장된 순서를 우선한다.
+ * 저장된 순서에 없던 새 구역은 기본 순서에서 바로 뒤에 오는 구역 앞에 끼워 넣는다.
+ */
 export function resolveOrder(home: HomeSettings): string[] {
-  const known = new Set(HOME_SECTIONS.map((s) => s.id));
-  const seen = new Set<string>();
+  const defaults = HOME_SECTIONS.map((s) => s.id);
+  const known = new Set(defaults);
   const out: string[] = [];
-  for (const id of [...home.order, ...HOME_SECTIONS.map((s) => s.id)]) {
-    if (known.has(id) && !seen.has(id)) {
-      seen.add(id);
-      out.push(id);
-    }
+  for (const id of home.order) {
+    if (known.has(id) && !out.includes(id)) out.push(id);
   }
+  defaults.forEach((id, i) => {
+    if (out.includes(id)) return;
+    const next = defaults.slice(i + 1).find((d) => out.includes(d));
+    if (next) out.splice(out.indexOf(next), 0, id);
+    else out.push(id);
+  });
   return out;
 }
 
@@ -61,6 +68,18 @@ const uniq = (list: string[]) => [...new Set(list)];
 
 /** 관리자 화면에 보여줄 "바꿀 수 있는 문구" 목록 (구역별) */
 export const HOME_TEXT_GROUPS: HomeTextGroup[] = [
+  {
+    group: '세금 환급·중고거래 배너',
+    texts: [
+      '한국 생활에 필요한 서비스를 더 만나 보세요',
+      '세금 환급',
+      '한국에서 낸 세금, 돌려받을 수 있는지 내 나라 말로 확인해 보세요',
+      '환급 알아보기',
+      '중고거래 · 무빙세일',
+      '중고거래·무빙세일 장터에서 필요한 물건을 가까이서 구해 보세요',
+      '장터 둘러보기',
+    ],
+  },
   { group: '인기 카테고리', texts: uniq(['인기 카테고리', ...CATEGORIES.map((c) => c.label)]) },
   { group: '추천 요금제', texts: ['추천 요금제 BEST', '전체 요금제 보기'] },
   { group: '이달의 추천 결합', texts: ['이달의 추천 결합', '3중 결합 혜택', '단말 + 요금제 + 인터넷', '결합할수록 월 납부액이 줄어듭니다', '상품 보기', '결합 문의'] },
