@@ -130,4 +130,11 @@ export const WELCOME_TEXTS: Record<Lang, WelcomeLanguageText> = {
     footerButton: '🇵🇰 اردو میں شروع کریں',
     bannerBenefit: '17 زبانوں میں فوری خودکار ترجمہ چیٹ',
   },
+  tl: {
+    badge: 'K-Telecom 18-Language Native Gateway',
+    title: 'Piliin ang Iyong Wika / Choose Your Language',
+    subtitle: 'Piliin ang iyong sariling wika para sa real-time 1:1 translation at eksklusibong benepisyo.',
+    footerButton: '🇵🇭 Magsimula sa Tagalog (Enter in Filipino)',
+    bannerBenefit: '18 Wika Real-time Auto-Translation Chat',
+  },
 };
