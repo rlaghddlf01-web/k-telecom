@@ -98,8 +98,49 @@ function getVisitorId(): string | undefined {
   }
 }
 
+/**
+ * 머문 시간: 화면을 보고 있던 시간만 세서, 페이지를 닫거나 다른 앱으로 넘어갈 때 그때까지의 초를 보낸다.
+ * 서버는 이 방문자의 가장 최근 방문 줄에 적어 넣는다 (줄이 늘지 않아 방문자 수 통계는 그대로). 2026-11-15
+ */
+function startDwellTracking() {
+  let activeMs = 0;
+  let since = document.visibilityState === 'visible' ? Date.now() : 0;
+  let lastSent = -1;
+  const flush = () => {
+    if (since) {
+      activeMs += Date.now() - since;
+      since = 0;
+    }
+    const sec = Math.min(Math.round(activeMs / 1000), 7200);
+    const visitorId = getVisitorId();
+    if (!visitorId || sec <= lastSent) return;
+    lastSent = sec;
+    const body = JSON.stringify({ event: 'dwell', dwellSec: sec, visitorId });
+    try {
+      if (navigator.sendBeacon && navigator.sendBeacon('/api/traffic', new Blob([body], { type: 'application/json' }))) return;
+    } catch {
+      // sendBeacon 을 못 쓰면 아래 fetch 로
+    }
+    fetch('/api/traffic', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body, keepalive: true }).catch(() => {});
+  };
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') flush();
+    else since = Date.now();
+  });
+  window.addEventListener('pagehide', flush);
+}
+
 export default function TrafficTracker() {
   useEffect(() => {
+    // 자동화 브라우저·다른 페이지 안에 끼워 열린 경우는 머문 시간을 재지 않는다
+    let embedded = false;
+    try {
+      embedded = window.top !== window.self;
+    } catch {
+      embedded = true;
+    }
+    if (!(navigator as Navigator & { webdriver?: boolean }).webdriver && !embedded) startDwellTracking();
+
     try {
       const last = sessionStorage.getItem(SESSION_KEY);
       const now = Date.now();
