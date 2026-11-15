@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
+import Script from 'next/script';
 import '../globals.css';
 import FloatingChat from '@/components/FloatingChat';
 import LanguageGate from '@/components/LanguageGate';
@@ -71,6 +72,8 @@ export default async function RootLayout({
           <LanguageGate />
           <TrafficTracker />
         </LangProvider>
+        {/* Vercel 방문 분석(Vercel 프로젝트에서 Analytics를 켜야 기록됨). 화면에는 아무것도 안 보인다. */}
+        <Script src="/_vercel/insights/script.js" strategy="afterInteractive" />
       </body>
     </html>
   );
