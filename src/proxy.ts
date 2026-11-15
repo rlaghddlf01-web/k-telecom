@@ -25,6 +25,6 @@ export function proxy(req: NextRequest) {
 }
 
 export const config = {
-  // 관리자, API, 정적 파일(확장자가 있는 주소), Next 내부 경로는 건드리지 않는다
-  matcher: ['/((?!admin|api|_next|pwa-icon|.*\\..*).*)'],
+  // 관리자, API, 정적 파일(확장자가 있는 주소), Next 내부 경로, Vercel 방문 분석(/_vercel/insights/view)은 건드리지 않는다
+  matcher: ['/((?!admin|api|_next|_vercel|pwa-icon|.*\\..*).*)'],
 };
