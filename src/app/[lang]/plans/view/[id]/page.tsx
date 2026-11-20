@@ -5,6 +5,7 @@ import { ArrowLeft } from 'lucide-react';
 import PageShell from '@/components/PageShell';
 import SampleNotice from '@/components/SampleNotice';
 import { won } from '@/lib/plans';
+import { planText } from '@/lib/planText';
 import { getPlan, getPlans } from '@/lib/content/load';
 import { t, withLang } from '@/lib/i18n';
 
@@ -30,9 +31,9 @@ async function PlanDetailPage({ params }: Props) {
 
   const rows: [string, string][] = [
     ['통신망', plan.network],
-    ['데이터', plan.dataLabel],
-    ['음성통화', plan.voice],
-    ['문자', plan.sms],
+    ['데이터', planText(plan.dataLabel, t)],
+    ['음성통화', planText(plan.voice, t)],
+    ['문자', planText(plan.sms, t)],
     ['정상 요금', `${t('월')} ${won(plan.price, t)}`],
     ['할인 요금', `${t('월')} ${won(plan.promoPrice, t)} (${t(plan.promoNote)})`],
   ];
@@ -45,7 +46,7 @@ async function PlanDetailPage({ params }: Props) {
           <div className="rounded-3xl bg-gradient-to-br from-[#1b1550] to-brand p-8 text-white">
             <p className="text-xs font-bold tracking-widest text-white/70">{t(plan.network)}</p>
             <h2 className="mt-2 text-2xl font-black">{t(plan.name)}</h2>
-            <p className="mt-4 text-4xl font-black tracking-tight">{t(plan.dataLabel)}</p>
+            <p className="mt-4 text-3xl font-black tracking-tight">{planText(plan.dataLabel, t)}</p>
             {plan.features.length > 0 && (
               <ul className="mt-5 flex flex-wrap gap-2">
                 {plan.features.map((f) => (

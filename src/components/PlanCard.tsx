@@ -4,6 +4,7 @@ import Link from '@/components/LocaleLink';
 import { Phone, MessageSquare } from 'lucide-react';
 import { won, type Plan } from '@/lib/plans';
 import { useT } from '@/components/LangProvider';
+import { planText } from '@/lib/planText';
 
 const NETWORK_TONE: Record<Plan['network'], string> = {
   SKT: 'bg-rose-50 text-rose-600',
@@ -24,11 +25,11 @@ export default function PlanCard({ plan }: { plan: Plan }) {
         {t(plan.network)}
       </span>
       <h3 className="mt-3 text-sm font-bold">{t(plan.name)}</h3>
-      <p className="mt-2 text-2xl font-black tracking-tight">{t(plan.dataLabel)}</p>
+      <p className="mt-2 text-xl font-black tracking-tight">{planText(plan.dataLabel, t)}</p>
 
       <ul className="mt-3 space-y-1 text-xs text-slate-500">
-        <li className="flex items-center gap-1.5"><Phone className="h-3.5 w-3.5" /> {t('음성')} {t(plan.voice)}</li>
-        <li className="flex items-center gap-1.5"><MessageSquare className="h-3.5 w-3.5" /> {t('문자')} {t(plan.sms)}</li>
+        <li className="flex items-center gap-1.5"><Phone className="h-3.5 w-3.5 shrink-0" /> {t('음성')} {planText(plan.voice, t)}</li>
+        <li className="flex items-center gap-1.5"><MessageSquare className="h-3.5 w-3.5 shrink-0" /> {t('문자')} {planText(plan.sms, t)}</li>
       </ul>
 
       {plan.features.length > 0 && (

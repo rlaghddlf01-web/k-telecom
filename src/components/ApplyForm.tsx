@@ -6,6 +6,7 @@ import { CheckCircle2 } from 'lucide-react';
 import { inputClass } from '@/components/formStyles';
 import { NETWORKS, won, type Network, type Plan } from '@/lib/plans';
 import { useT } from '@/components/LangProvider';
+import { planText } from '@/lib/planText';
 
 type Status = 'idle' | 'sending' | 'done' | 'error';
 
@@ -208,7 +209,7 @@ export default function ApplyForm(props: { plans: Plan[] }) {
         {selected && (
           <>
             <p className="mt-1 text-xs text-white/40 line-through">{won(selected.price, t)}</p>
-            <p className="mt-3 text-xs text-white/60">{t(selected.name)} · {selected.dataLabel}</p>
+            <p className="mt-3 text-xs text-white/60">{t(selected.name)} · {planText(selected.dataLabel, t)}</p>
           </>
         )}
         <button

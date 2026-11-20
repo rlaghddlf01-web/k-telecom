@@ -23,11 +23,19 @@ const DATA_NEEDS: { value: number; label: string }[] = [
   { value: 999, label: '무제한' },
 ];
 
-const PAGE_SIZE = 6;
+const PAGE_SIZE = 12;
+
+type Billing = 'all' | 'post' | 'prepaid';
+const BILLINGS: { id: Billing; label: string }[] = [
+  { id: 'all', label: '전체' },
+  { id: 'post', label: '후불' },
+  { id: 'prepaid', label: '선불' },
+];
 
 export default function PlanExplorer({ plans }: { plans: Plan[] }) {
   const t = useT();
   const [network, setNetwork] = useState<Network | 'all'>('all');
+  const [billing, setBilling] = useState<Billing>('all');
   const [sort, setSort] = useState<Sort>('recommended');
   const [dataNeed, setDataNeed] = useState(0);
   const [intl, setIntl] = useState(false);
@@ -39,6 +47,7 @@ export default function PlanExplorer({ plans }: { plans: Plan[] }) {
     const filtered = plans.filter(
       (p) =>
         (network === 'all' || p.network === network) &&
+        (billing === 'all' || (p.billing ?? 'post') === billing) &&
         p.dataGB >= dataNeed &&
         (!intl || p.features.includes('무료 국제통화 패키지')) &&
         (maxPrice === 0 || p.promoPrice <= maxPrice),
@@ -48,7 +57,7 @@ export default function PlanExplorer({ plans }: { plans: Plan[] }) {
     if (sort === 'priceDesc') sorted.sort((a, b) => b.promoPrice - a.promoPrice);
     if (sort === 'dataDesc') sorted.sort((a, b) => b.dataGB - a.dataGB);
     return sorted;
-  }, [plans, network, sort, dataNeed, intl, maxPrice]);
+  }, [plans, network, billing, sort, dataNeed, intl, maxPrice]);
 
   const pages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
   const current = Math.min(page, pages);
@@ -111,7 +120,20 @@ export default function PlanExplorer({ plans }: { plans: Plan[] }) {
 
       {/* 필터 · 정렬 */}
       <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap items-center gap-2">
+          {BILLINGS.map((b) => (
+            <button
+              key={b.id}
+              onClick={() => change(setBilling)(b.id)}
+              aria-pressed={billing === b.id}
+              className={`rounded-full px-4 py-2 text-xs font-bold transition-colors ${
+                billing === b.id ? 'bg-slate-900 text-white' : 'bg-soft text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              {t(b.label)}
+            </button>
+          ))}
+          <span aria-hidden="true" className="mx-1 h-5 w-px bg-black/10" />
           {(['all', ...NETWORKS] as const).map((n) => (
             <button
               key={n}
