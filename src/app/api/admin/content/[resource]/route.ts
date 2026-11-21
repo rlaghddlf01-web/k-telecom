@@ -95,8 +95,10 @@ function handleError(err: unknown) {
   if (err instanceof StoreUnavailableError) {
     return json({ error: '저장소가 연결되지 않았습니다. Supabase 설정을 먼저 해 주세요.' }, 503);
   }
-  console.error('admin content error:', err instanceof Error ? err.name : 'unknown');
-  return json({ error: '처리 중 오류가 발생했습니다.' }, 500);
+  // Supabase 오류는 Error 가 아닌 일반 객체라서 message 를 직접 꺼낸다 (관리자 화면에서 원인을 볼 수 있게 함)
+  const detail = String((err as { message?: string })?.message ?? '').slice(0, 200);
+  console.error('admin content error:', detail || (err instanceof Error ? err.name : 'unknown'));
+  return json({ error: detail ? `처리 중 오류가 발생했습니다. (${detail})` : '처리 중 오류가 발생했습니다.' }, 500);
 }
 
 const sanitize = (resource: Resource, input: unknown) => {

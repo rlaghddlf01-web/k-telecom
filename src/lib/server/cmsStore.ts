@@ -89,12 +89,16 @@ export async function insertRows(resource: Resource, rows: Row[]): Promise<numbe
   if (mode === 'none') throw new StoreUnavailableError();
   if (rows.length === 0) return 0;
   if (mode === 'supabase') {
-    let { error } = await getSupabaseAdmin().from(TABLES[resource]).insert(rows);
-    // 사양 칸을 만드는 SQL(docs/telecom_phone_specs.sql)을 아직 실행하지 않았으면 그 칸만 빼고 다시 저장한다
-    if (error && resource === 'products' && isMissingSpecColumn(error)) {
-      ({ error } = await getSupabaseAdmin().from(TABLES[resource]).insert(rows.map(withoutSpecColumns)));
+    // 한 번에 너무 많이 보내지 않도록 50개씩 나눠 저장한다
+    for (let i = 0; i < rows.length; i += 50) {
+      const chunk = rows.slice(i, i + 50);
+      let { error } = await getSupabaseAdmin().from(TABLES[resource]).insert(chunk);
+      // 사양 칸을 만드는 SQL(docs/telecom_phone_specs.sql)을 아직 실행하지 않았으면 그 칸만 빼고 다시 저장한다
+      if (error && resource === 'products' && isMissingSpecColumn(error)) {
+        ({ error } = await getSupabaseAdmin().from(TABLES[resource]).insert(chunk.map(withoutSpecColumns)));
+      }
+      if (error) throw error;
     }
-    if (error) throw error;
     return rows.length;
   }
   const now = new Date().toISOString();
