@@ -33,10 +33,12 @@ REQUIRED = ["CLAWOPS_API_KEY", "CLAWOPS_ACCOUNT_ID", "CLAWOPS_FROM_NUMBER", "GOO
 TOOL_URL = os.environ.get("VOICE_TOOL_URL", "https://k-telecom.vercel.app/api/voice/tool")
 
 
-def _call_site(name: str, args: dict) -> str:
+def _call_site(audience: str, name: str, args: dict) -> str:
+    # audience: korean = 한국어로 말하는 고객, foreign = 그 밖의 언어로 말하는 고객
+    audience = "foreign" if audience == "foreign" else "korean"
     req = urllib.request.Request(
         TOOL_URL,
-        data=json.dumps({"name": name, "args": args}).encode("utf-8"),
+        data=json.dumps({"name": name, "args": args, "audience": audience}).encode("utf-8"),
         headers={"content-type": "application/json", "x-voice-secret": os.environ["VOICE_TOOL_SECRET"]},
         method="POST",
     )
@@ -85,16 +87,16 @@ async def main() -> None:
         log.warning("통화 실패")
 
     @agent.tool
-    async def search_plans(
-        network: str = "",
+    async def search_plans(network: str = "",
         billing: str = "",
         min_price: int = 0,
         max_price: int = 0,
         min_data_gb: float = 0,
         keyword: str = "",
         sort: str = "price_asc",
+        audience: str = "korean",
     ) -> str:
-        """Search the mobile plans. network: SKT, KT or LGU+; billing: post or prepaid; min_price/max_price: current monthly price in KRW (0 = no limit; 만원대 = 10000..19999); min_data_gb: minimum data in GB (999 = unlimited); keyword: Korean word such as 결합, eSIM, 평생; sort: price_asc, data_desc or lifetime_discount_first. Returns Korean text."""
+        """Search the mobile plans. network: SKT, KT or LGU+; billing: post or prepaid; min_price/max_price: current monthly price in KRW (0 = no limit; 만원대 = 10000..19999); min_data_gb: minimum data in GB (999 = unlimited); keyword: Korean word such as 결합, eSIM, 평생; sort: price_asc, data_desc or lifetime_discount_first. audience: korean if the caller speaks Korean, otherwise foreign. Returns Korean text."""
         args = {k: v for k, v in dict(network=network, billing=billing, keyword=keyword, sort=sort).items() if v}
         if min_price:
             args["min_price"] = min_price
@@ -102,60 +104,60 @@ async def main() -> None:
             args["max_price"] = max_price
         if min_data_gb:
             args["min_data_gb"] = min_data_gb
-        return await asyncio.to_thread(_call_site, "search_plans", args)
+        return await asyncio.to_thread(_call_site, audience, "search_plans", args)
 
     @agent.tool
-    async def get_plan(name: str) -> str:
-        """Get the full detail of one plan by its name or id. Returns Korean text."""
-        return await asyncio.to_thread(_call_site, "get_plan", {"name": name})
+    async def get_plan(name: str, audience: str = "korean") -> str:
+        """Get the full detail of one plan by its name or id. audience: korean if the caller speaks Korean, otherwise foreign. Returns Korean text."""
+        return await asyncio.to_thread(_call_site, audience, "get_plan", {"name": name})
 
     @agent.tool
-    async def search_phones(brand: str = "", keyword: str = "", max_monthly: int = 0) -> str:
-        """List the phones with their monthly price. brand: samsung or apple; keyword: part of the name; max_monthly: max monthly price in KRW (0 = no limit). Returns Korean text."""
+    async def search_phones(brand: str = "", keyword: str = "", max_monthly: int = 0, audience: str = "korean") -> str:
+        """List the phones with their monthly price. brand: samsung or apple; keyword: part of the name; max_monthly: max monthly price in KRW (0 = no limit). audience: korean if the caller speaks Korean, otherwise foreign. Returns Korean text."""
         args = {k: v for k, v in dict(brand=brand, keyword=keyword).items() if v}
         if max_monthly:
             args["max_monthly"] = max_monthly
-        return await asyncio.to_thread(_call_site, "search_phones", args)
+        return await asyncio.to_thread(_call_site, audience, "search_phones", args)
 
     @agent.tool
-    async def get_phone(name: str) -> str:
-        """Get one phone's price, specifications, box contents and the exchange/return policy. Returns Korean text."""
-        return await asyncio.to_thread(_call_site, "get_phone", {"name": name})
+    async def get_phone(name: str, audience: str = "korean") -> str:
+        """Get one phone's price, specifications, box contents and the exchange/return policy. audience: korean if the caller speaks Korean, otherwise foreign. Returns Korean text."""
+        return await asyncio.to_thread(_call_site, audience, "get_phone", {"name": name})
 
     @agent.tool
-    async def search_faq(keyword: str) -> str:
-        """Search the frequently asked questions (documents, activation, number porting, cancellation, payment...). Returns Korean text."""
-        return await asyncio.to_thread(_call_site, "search_faq", {"keyword": keyword})
+    async def search_faq(keyword: str, audience: str = "korean") -> str:
+        """Search the frequently asked questions (documents, activation, number porting, cancellation, payment...). audience: korean if the caller speaks Korean, otherwise foreign. Returns Korean text."""
+        return await asyncio.to_thread(_call_site, audience, "search_faq", {"keyword": keyword})
 
     @agent.tool
-    async def list_pages() -> str:
-        """List every information page of the website (path, title, short summary). Returns Korean text."""
-        return await asyncio.to_thread(_call_site, "list_pages", {})
+    async def list_pages(audience: str = "korean") -> str:
+        """List every information page of the website (path, title, short summary). audience: korean if the caller speaks Korean, otherwise foreign. Returns Korean text."""
+        return await asyncio.to_thread(_call_site, audience, "list_pages", {})
 
     @agent.tool
-    async def search_pages(keyword: str) -> str:
-        """Search all website information pages by a Korean keyword (셀프개통, 부가서비스, 할부, 인터넷, IPTV, 약관, 개인정보, 주문조회, 서류 ...) and return only the matching lines. Returns Korean text."""
-        return await asyncio.to_thread(_call_site, "search_pages", {"keyword": keyword})
+    async def search_pages(keyword: str, audience: str = "korean") -> str:
+        """Search all website information pages by a Korean keyword (셀프개통, 부가서비스, 할부, 인터넷, IPTV, 약관, 개인정보, 주문조회, 서류 ...) and return only the matching lines. audience: korean if the caller speaks Korean, otherwise foreign. Returns Korean text."""
+        return await asyncio.to_thread(_call_site, audience, "search_pages", {"keyword": keyword})
 
     @agent.tool
-    async def get_page(page: str) -> str:
-        """Get the content of one website page by its path (e.g. /plans/self, /internet, /company) or title. Returns Korean text."""
-        return await asyncio.to_thread(_call_site, "get_page", {"page": page})
+    async def get_page(page: str, audience: str = "korean") -> str:
+        """Get the content of one website page by its path (e.g. /plans/self, /internet, /company) or title. audience: korean if the caller speaks Korean, otherwise foreign. Returns Korean text."""
+        return await asyncio.to_thread(_call_site, audience, "get_page", {"page": page})
 
     @agent.tool
-    async def get_events() -> str:
-        """Current events and promotions. Returns Korean text."""
-        return await asyncio.to_thread(_call_site, "get_events", {})
+    async def get_events(audience: str = "korean") -> str:
+        """Current events and promotions. audience: korean if the caller speaks Korean, otherwise foreign. Returns Korean text."""
+        return await asyncio.to_thread(_call_site, audience, "get_events", {})
 
     @agent.tool
-    async def get_notices() -> str:
-        """Recent notices. Returns Korean text."""
-        return await asyncio.to_thread(_call_site, "get_notices", {})
+    async def get_notices(audience: str = "korean") -> str:
+        """Recent notices. audience: korean if the caller speaks Korean, otherwise foreign. Returns Korean text."""
+        return await asyncio.to_thread(_call_site, audience, "get_notices", {})
 
     @agent.tool
-    async def get_company_info() -> str:
-        """Company name, CEO, address, phone, email and how to reach staff. Returns Korean text."""
-        return await asyncio.to_thread(_call_site, "get_company_info", {})
+    async def get_company_info(audience: str = "korean") -> str:
+        """Company name, CEO, address, phone, email and how to reach staff. audience: korean if the caller speaks Korean, otherwise foreign. Returns Korean text."""
+        return await asyncio.to_thread(_call_site, audience, "get_company_info", {})
 
     if sys.platform == "win32":
         # serve() 는 유닉스 종료 신호를 쓰므로 윈도우에서는 연결만 하고 계속 대기한다.

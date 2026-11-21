@@ -200,9 +200,9 @@ async function getPhoneDetail(a: Args): Promise<string> {
     .join('\n');
 }
 
-async function searchFaq(a: Args): Promise<string> {
+async function searchFaq(a: Args, ctx: Ctx): Promise<string> {
   const kw = norm(str(a.keyword));
-  const faqs = await getFaqsForLang('ko');
+  const faqs = await getFaqsForLang(ctx.korean ? 'ko' : 'en');
   const words = str(a.keyword).split(/\s+/).filter((w) => w.length > 1).map(norm);
   const scored = faqs
     .map((f) => {
@@ -372,7 +372,7 @@ export async function runTool(name: string, args: Args, ctx: Ctx = { korean: tru
       case 'get_phone':
         return await getPhoneDetail(args);
       case 'search_faq':
-        return await searchFaq(args);
+        return await searchFaq(args, ctx);
       default:
         return '알 수 없는 도구입니다.';
     }

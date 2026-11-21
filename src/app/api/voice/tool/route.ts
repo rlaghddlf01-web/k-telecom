@@ -25,6 +25,7 @@ export async function POST(req: Request) {
   const name = typeof body?.name === 'string' ? body.name : '';
   if (!TOOL_DECLARATIONS.some((t) => t.name === name)) return NextResponse.json({ error: 'BAD_TOOL' }, { status: 400 });
   const args = body?.args && typeof body.args === 'object' && !Array.isArray(body.args) ? body.args : {};
-  // 전화 상담은 한국인 고객용 문구로 답한다
-  return NextResponse.json({ result: await runTool(name, args, { korean: true }) });
+  // audience: korean(기본) 이면 한국인 고객용 문구, foreign 이면 외국인 고객용 원문(외국인등록증·국제통화 포함)
+  const audience = body?.audience === 'foreign' ? 'foreign' : 'korean';
+  return NextResponse.json({ result: await runTool(name, args, { korean: audience === 'korean' }) });
 }
