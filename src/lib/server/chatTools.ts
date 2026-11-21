@@ -262,16 +262,38 @@ const clean = (text: string, ctx: Ctx) => {
     .join('\n');
 };
 
-async function allPagePaths(): Promise<{ path: string; title: string }[]> {
-  const custom = await getCustomPagePaths();
-  const base = [...PAGES.map((p) => p.path), ...custom];
-  const out: { path: string; title: string }[] = [];
-  for (const path of base) {
-    const page = await getContentPage(path);
-    if (page) out.push({ path, title: page.title });
-  }
-  for (const d of DEDICATED_PAGES) out.push({ path: d.path, title: d.title });
-  return out;
+interface PageEntry {
+  path: string;
+  title: string;
+  text: string;
+}
+
+/**
+ * 모든 안내 페이지의 제목·본문. 전화에서는 바로 대답해야 하므로 페이지를 한꺼번에 읽고
+ * 5분 동안 기억해 둔다 (관리자에서 바꾼 내용은 최대 5분 안에 반영된다).
+ */
+const PAGE_INDEX_TTL_MS = 5 * 60 * 1000;
+const pageIndexCache = new Map<string, { at: number; promise: Promise<PageEntry[]> }>();
+
+function pageIndex(ctx: Ctx): Promise<PageEntry[]> {
+  const key = ctx.korean ? 'ko' : 'foreign';
+  const hit = pageIndexCache.get(key);
+  if (hit && Date.now() - hit.at < PAGE_INDEX_TTL_MS) return hit.promise;
+  const promise = (async () => {
+    const paths = [...PAGES.map((p) => p.path), ...(await getCustomPagePaths()), ...DEDICATED_PAGES.map((d) => d.path)];
+    const unique = [...new Set(paths)];
+    const entries = await Promise.all(
+      unique.map(async (path) => {
+        const t = await pageText(path, ctx);
+        return t ? { path, title: koText(ctx)(t.title), text: t.text } : null;
+      }),
+    );
+    return entries.filter((e): e is PageEntry => e !== null);
+  })();
+  pageIndexCache.set(key, { at: Date.now(), promise });
+  // 실패하면 기억하지 않는다
+  promise.catch(() => pageIndexCache.delete(key));
+  return promise;
 }
 
 async function pageText(path: string, ctx: Ctx): Promise<{ title: string; text: string } | null> {
@@ -288,13 +310,9 @@ async function pageText(path: string, ctx: Ctx): Promise<{ title: string; text: 
 }
 
 async function listPages(ctx: Ctx): Promise<string> {
-  const pages = await allPagePaths();
-  const lines: string[] = [];
-  for (const p of pages) {
-    if (ctx.korean && FOREIGN_ONLY.test(p.title)) continue;
-    const t = await pageText(p.path, ctx);
-    lines.push(`- ${p.path} | ${koText(ctx)(p.title)} | ${SHORT((t?.text ?? '').replace(/\n/g, ' '), 80)}`);
-  }
+  const lines = (await pageIndex(ctx))
+    .filter((p) => !(ctx.korean && FOREIGN_ONLY.test(p.title)))
+    .map((p) => `- ${p.path} | ${p.title} | ${SHORT(p.text.replace(/\n/g, ' '), 80)}`);
   return `홈페이지 안내 페이지 ${lines.length}개:\n${lines.join('\n')}`;
 }
 
@@ -303,12 +321,10 @@ async function searchPages(a: Args, ctx: Ctx): Promise<string> {
   const words = str(a.keyword).split(/\s+/).filter((w) => w.length > 1).map(norm);
   if (!kw) return '검색어를 알려 주세요.';
   const hits: { path: string; title: string; text: string; score: number }[] = [];
-  for (const p of await allPagePaths()) {
-    const t = await pageText(p.path, ctx);
-    if (!t) continue;
-    const hay = norm(`${t.title} ${t.text}`);
-    const score = (hay.includes(kw) ? 3 : 0) + words.filter((w) => hay.includes(w)).length + (norm(t.title).includes(kw) ? 3 : 0);
-    if (score > 0) hits.push({ path: p.path, title: koText(ctx)(t.title), text: t.text, score });
+  for (const p of await pageIndex(ctx)) {
+    const hay = norm(`${p.title} ${p.text}`);
+    const score = (hay.includes(kw) ? 3 : 0) + words.filter((w) => hay.includes(w)).length + (norm(p.title).includes(kw) ? 3 : 0);
+    if (score > 0) hits.push({ path: p.path, title: p.title, text: p.text, score });
   }
   hits.sort((x, y) => y.score - x.score);
   if (hits.length === 0) return '관련 페이지가 없습니다. 직원이 확인해 드린다고 안내하세요.';
@@ -324,11 +340,10 @@ async function searchPages(a: Args, ctx: Ctx): Promise<string> {
 
 async function getPageDetail(a: Args, ctx: Ctx): Promise<string> {
   const q = str(a.page);
-  const pages = await allPagePaths();
+  const pages = await pageIndex(ctx);
   const hit = pages.find((p) => p.path === q) ?? pages.find((p) => norm(p.title) === norm(q)) ?? pages.find((p) => norm(p.title).includes(norm(q)));
   if (!hit) return '해당 페이지를 찾지 못했습니다. list_pages 로 먼저 찾아 보세요.';
-  const t = await pageText(hit.path, ctx);
-  return t ? `## ${koText(ctx)(t.title)} (${hit.path})\n${SHORT(t.text, 1800)}` : '내용이 없습니다.';
+  return `## ${hit.title} (${hit.path})\n${SHORT(hit.text, 1800)}`;
 }
 
 async function eventsText(kind: 'events' | 'notices', ctx: Ctx): Promise<string> {

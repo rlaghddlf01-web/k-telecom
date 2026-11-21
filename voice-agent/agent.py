@@ -12,6 +12,7 @@ import json
 import logging
 import os
 import sys
+import time
 import urllib.request
 
 from dotenv import load_dotenv
@@ -33,9 +34,26 @@ REQUIRED = ["CLAWOPS_API_KEY", "CLAWOPS_ACCOUNT_ID", "CLAWOPS_FROM_NUMBER", "GOO
 TOOL_URL = os.environ.get("VOICE_TOOL_URL", "https://k-telecom.vercel.app/api/voice/tool")
 
 
+_CACHE: dict[str, tuple[float, str]] = {}
+_CACHE_TTL = 300  # 같은 질문의 결과는 5분 동안 바로 돌려준다
+
+
 def _call_site(audience: str, name: str, args: dict) -> str:
     # audience: korean = 한국어로 말하는 고객, foreign = 그 밖의 언어로 말하는 고객
     audience = "foreign" if audience == "foreign" else "korean"
+    key = f"{audience}|{name}|{json.dumps(args, sort_keys=True, ensure_ascii=False)}"
+    hit = _CACHE.get(key)
+    if hit and time.time() - hit[0] < _CACHE_TTL:
+        return hit[1]
+    result = _fetch_site(audience, name, args)
+    if result and not result.startswith("정보를 불러오지 못했습니다"):
+        if len(_CACHE) > 300:
+            _CACHE.clear()
+        _CACHE[key] = (time.time(), result)
+    return result
+
+
+def _fetch_site(audience: str, name: str, args: dict) -> str:
     req = urllib.request.Request(
         TOOL_URL,
         data=json.dumps({"name": name, "args": args, "audience": audience}).encode("utf-8"),
@@ -43,7 +61,7 @@ def _call_site(audience: str, name: str, args: dict) -> str:
         method="POST",
     )
     try:
-        with urllib.request.urlopen(req, timeout=12) as res:
+        with urllib.request.urlopen(req, timeout=10) as res:
             return json.loads(res.read().decode("utf-8")).get("result", "")
     except Exception as err:  # 홈페이지가 안 열려도 통화는 계속되게 한다
         log.warning("tool %s failed: %s", name, type(err).__name__)
@@ -158,6 +176,16 @@ async def main() -> None:
     async def get_company_info(audience: str = "korean") -> str:
         """Company name, CEO, address, phone, email and how to reach staff. audience: korean if the caller speaks Korean, otherwise foreign. Returns Korean text."""
         return await asyncio.to_thread(_call_site, audience, "get_company_info", {})
+
+    async def keep_warm() -> None:
+        """홈페이지 서버가 식어 있으면 첫 조회가 느리다. 시작할 때와 4분마다 미리 불러 둔다 (통화 중 바로 대답하기 위해)."""
+        while True:
+            for audience in ("korean", "foreign"):
+                for name, args in (("search_pages", {"keyword": "셀프개통"}), ("get_company_info", {}), ("search_plans", {"max_price": 20000})):
+                    await asyncio.to_thread(_call_site, audience, name, args)
+            await asyncio.sleep(240)
+
+    warm_task = asyncio.create_task(keep_warm())  # noqa: F841  (프로그램이 도는 동안 계속)
 
     if sys.platform == "win32":
         # serve() 는 유닉스 종료 신호를 쓰므로 윈도우에서는 연결만 하고 계속 대기한다.
