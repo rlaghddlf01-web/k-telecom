@@ -67,7 +67,8 @@ function seedRows(resource: Resource): Record<string, unknown>[] {
         name: p.name,
         network: p.network,
         data_label: p.dataLabel,
-        data_gb: p.dataGB,
+        // DB 열이 정수(integer)라서 0.3·10.3 같은 소수는 반올림해 넣는다
+        data_gb: Math.round(p.dataGB),
         voice: p.voice,
         sms: p.sms,
         price: p.price,
