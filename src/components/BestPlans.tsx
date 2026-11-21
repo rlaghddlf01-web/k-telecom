@@ -3,7 +3,7 @@ import PlanCard from '@/components/PlanCard';
 import SampleNotice from '@/components/SampleNotice';
 import { getPlans } from '@/lib/content/load';
 import { ht } from '@/lib/content/homeText';
-import { NETWORKS, type Plan } from '@/lib/plans';
+import type { Plan } from '@/lib/plans';
 import { ExtraDict } from '@/components/LangProvider';
 import { primeTranslations } from '@/lib/server/prime';
 
@@ -19,29 +19,20 @@ function durability(note: string) {
 }
 
 /**
- * 홈 추천 요금제: 월 1만원대(10,000~19,999원) 후불 요금제를 8개(2줄) 고른다.
- * 할인이 오래가고, 인기·특가 배지가 있고, 데이터가 많은 순으로 점수를 매기고 통신망이 골고루 섞이게 번갈아 뽑는다.
- * 1만원대가 8개에 못 미치면 월 요금이 낮은 요금제로 채운다.
+ * 홈 추천 요금제: 후불 요금제 중 첫 달(현재 월) 요금이 가장 싼 8개(2줄).
  */
 function pickPlans(plans: Plan[]): Plan[] {
   const postpaid = plans.filter((p) => (p.billing ?? 'post') === 'post');
-  const tenK = postpaid.filter((p) => p.promoPrice >= 10000 && p.promoPrice < 20000);
-  const score = (a: Plan, b: Plan) =>
-    durability(b.promoNote) - durability(a.promoNote) ||
-    (BADGE_RANK[b.badge ?? ''] ?? 0) - (BADGE_RANK[a.badge ?? ''] ?? 0) ||
-    b.dataGB - a.dataGB ||
-    a.promoPrice - b.promoPrice;
-
-  const byNetwork = NETWORKS.map((n) => tenK.filter((p) => p.network === n).sort(score));
-  const picks: Plan[] = [];
-  for (let i = 0; picks.length < PICK_COUNT && byNetwork.some((list) => i < list.length); i += 1) {
-    for (const list of byNetwork) if (i < list.length && picks.length < PICK_COUNT) picks.push(list[i]);
-  }
-  if (picks.length < PICK_COUNT) {
-    const rest = postpaid.filter((p) => !picks.includes(p)).sort((a, b) => a.promoPrice - b.promoPrice);
-    picks.push(...rest.slice(0, PICK_COUNT - picks.length));
-  }
-  return picks;
+  // 첫 달 요금이 가장 싼 순. 같으면 할인이 오래가는 것, 배지, 데이터 많은 순
+  return [...postpaid]
+    .sort(
+      (a, b) =>
+        a.promoPrice - b.promoPrice ||
+        durability(b.promoNote) - durability(a.promoNote) ||
+        (BADGE_RANK[b.badge ?? ''] ?? 0) - (BADGE_RANK[a.badge ?? ''] ?? 0) ||
+        b.dataGB - a.dataGB,
+    )
+    .slice(0, PICK_COUNT);
 }
 
 export default async function BestPlans({ title }: { title?: string }) {

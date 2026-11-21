@@ -21,9 +21,10 @@ export default function PhonesCatalog({ phones }: { phones: Phone[] }) {
     const m = price.match(/([\d,]+)\s*원/);
     return m ? Number(m[1].replace(/,/g, '')) : Number.POSITIVE_INFINITY;
   };
-  const list = phones
-    .filter((p) => tab === 'all' || p.group === tab)
-    .sort((a, b) => monthly(a.price) - monthly(b.price));
+  // 추천순 = 관리자에서 정한 순서 그대로
+  const [sort, setSort] = useState<'price' | 'recommended'>('price');
+  const list = phones.filter((p) => tab === 'all' || p.group === tab);
+  if (sort === 'price') list.sort((a, b) => monthly(a.price) - monthly(b.price));
 
   return (
     <div>
@@ -41,10 +42,21 @@ export default function PhonesCatalog({ phones }: { phones: Phone[] }) {
             </button>
           ))}
         </div>
-        <p className="text-xs text-slate-500">
-          {t('총')} <b className="text-brand">{list.length}</b>
-          {t('개 상품')}
-        </p>
+        <div className="flex items-center gap-3">
+          <select
+            value={sort}
+            onChange={(e) => setSort(e.target.value as 'price' | 'recommended')}
+            aria-label={t('정렬')}
+            className="rounded-full bg-soft px-3 py-2 text-xs font-bold text-slate-600 outline-none"
+          >
+            <option value="price">{t('낮은가격순')}</option>
+            <option value="recommended">{t('추천순')}</option>
+          </select>
+          <p className="text-xs text-slate-500">
+            {t('총')} <b className="text-brand">{list.length}</b>
+            {t('개 상품')}
+          </p>
+        </div>
       </div>
 
       <ul className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-3">

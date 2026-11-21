@@ -106,10 +106,30 @@ export default function ProductManager({ onUnauthorized }: { onUnauthorized: () 
     await run(adminFetch('/api/admin/content/products', jsonInit('PATCH', { id: p.id, active: !p.active })));
   }
 
+  /** 맨 위로: 지금 가장 작은 순서 번호보다 작게 만든다 */
+  async function toTop(index: number) {
+    if (index === 0) return;
+    const first = Math.min(...rows.map((r) => r.sort_order));
+    const res = await adminFetch('/api/admin/content/products', jsonInit('PATCH', { id: rows[index].id, sort_order: Math.max(-9999, first - 10) }));
+    if (res.status === 401) return onUnauthorized();
+    if (!res.ok) return setMessage(errorMessage(res));
+    await load();
+  }
+
   async function move(index: number, dir: -1 | 1) {
     const target = index + dir;
     if (target < 0 || target >= rows.length) return;
     const next = [...rows];
+    const a = next[index].sort_order;
+    const b = next[target].sort_order;
+    if (a !== b) {
+      for (const [row, order] of [[next[index], b], [next[target], a]] as const) {
+        const res = await adminFetch('/api/admin/content/products', jsonInit('PATCH', { id: row.id, sort_order: order }));
+        if (res.status === 401) return onUnauthorized();
+        if (!res.ok) return setMessage(errorMessage(res));
+      }
+      return load();
+    }
     [next[index], next[target]] = [next[target], next[index]];
     for (let i = 0; i < next.length; i += 1) {
       const order = (i + 1) * 10;
@@ -212,6 +232,9 @@ export default function ProductManager({ onUnauthorized }: { onUnauthorized: () 
             </div>
             <div className="flex items-center gap-1.5">
               <Toggle checked={p.active} onChange={() => toggle(p)} label="노출" />
+              <button aria-label="맨 위로" title="맨 위로" disabled={i === 0} onClick={() => toTop(i)} className={`${ghostBtn} text-[11px] font-bold`}>
+                맨위
+              </button>
               <button aria-label="위로" disabled={i === 0} onClick={() => move(i, -1)} className={ghostBtn}>
                 <ArrowUp className="h-3.5 w-3.5" />
               </button>

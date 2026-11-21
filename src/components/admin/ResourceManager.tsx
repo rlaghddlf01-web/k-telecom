@@ -61,6 +61,17 @@ export default function ResourceManager({
     const target = index + dir;
     if (target < 0 || target >= rows.length) return;
     const next = [...rows];
+    // 두 항목의 순서 번호만 맞바꾸면 되므로 (번호가 서로 다를 때) 요청 2번으로 끝난다
+    const a = Number(next[index].sort_order);
+    const b = Number(next[target].sort_order);
+    if (a !== b) {
+      for (const [row, order] of [[next[index], b], [next[target], a]] as const) {
+        const res = await adminFetch(api, jsonInit('PATCH', { id: row.id, sort_order: order }));
+        if (res.status === 401) return onUnauthorized();
+        if (!res.ok) return setMessage(errorMessage(res));
+      }
+      return load();
+    }
     [next[index], next[target]] = [next[target], next[index]];
     for (let i = 0; i < next.length; i += 1) {
       const order = (i + 1) * 10;
@@ -70,6 +81,16 @@ export default function ResourceManager({
         if (!res.ok) return setMessage(errorMessage(res));
       }
     }
+    await load();
+  }
+
+  /** 맨 위로: 지금 가장 작은 순서 번호보다 작게 만든다 */
+  async function toTop(index: number) {
+    if (index === 0) return;
+    const first = Math.min(...rows.map((r) => Number(r.sort_order) || 0));
+    const res = await adminFetch(api, jsonInit('PATCH', { id: rows[index].id, sort_order: Math.max(-9999, first - 10) }));
+    if (res.status === 401) return onUnauthorized();
+    if (!res.ok) return setMessage(errorMessage(res));
     await load();
   }
 
@@ -191,6 +212,9 @@ export default function ResourceManager({
               />
               {!ui.byDate && (
                 <>
+                  <button aria-label="맨 위로" title="맨 위로" disabled={i === 0 || !!keyword} onClick={() => toTop(i)} className={`${ghostBtn} text-[11px] font-bold`}>
+                    맨위
+                  </button>
                   <button aria-label="위로" disabled={i === 0 || !!keyword} onClick={() => move(i, -1)} className={ghostBtn}>
                     <ArrowUp className="h-3.5 w-3.5" />
                   </button>
