@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import type { Block, IconName } from '@/lib/pages';
 import { t } from '@/lib/i18n';
+import { hiddenForKorean } from '@/lib/content/koFilter';
 
 const ICONS: Record<IconName, LucideIcon> = {
   truck: Truck, languages: Languages, scan: ScanLine, wrench: Wrench, wifi: Wifi, tv: Tv,
@@ -92,7 +93,7 @@ function BlockView({ block }: { block: Block }) {
                 </thead>
               )}
               <tbody className="divide-y divide-black/5">
-                {block.rows.map((row) => (
+                {block.rows.filter((row) => !hiddenForKorean(...row)).map((row) => (
                   <tr key={row[0]}>
                     {row.map((cell, i) => (
                       <td
@@ -113,7 +114,7 @@ function BlockView({ block }: { block: Block }) {
     case 'faq':
       return (
         <ul className="divide-y divide-black/5 rounded-2xl ring-1 ring-black/10">
-          {block.items.map((f) => (
+          {block.items.filter((f) => !hiddenForKorean(f.q, f.a)).map((f) => (
             <li key={f.q}>
               <details className="group">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-sm font-bold">

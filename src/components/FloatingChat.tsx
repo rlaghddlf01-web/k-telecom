@@ -1,12 +1,16 @@
 import ChatWidget from '@/components/ChatWidget';
 import { getChatSettings, getSiteSettings } from '@/lib/content/load';
 import { chatChannels } from '@/lib/content/chat';
-import { t } from '@/lib/i18n';
+import { getLang, t } from '@/lib/i18n';
+import { DEFAULT_LANG } from '@/lib/langs';
 
 /** 오른쪽 아래 상담 창: 관리자의 [상담 창] 탭 설정을 읽어 현재 언어로 바꿔 내려 준다 */
 export default async function FloatingChat() {
   const [settings, site] = await Promise.all([getChatSettings(), getSiteSettings()]);
-  const channels = chatChannels(settings).map(({ id, label, href }) => ({ id, label: t(label), href }));
+  // 한국어 화면(한국인 고객)에는 카카오톡만 보여 주고, 왓츠앱·텔레그램·페이스북 메신저는 외국어 화면에서만 보여 준다
+  const channels = chatChannels(settings)
+    .filter(({ id }) => getLang() !== DEFAULT_LANG || id === 'kakao')
+    .map(({ id, label, href }) => ({ id, label: t(label), href }));
 
   return (
     <ChatWidget

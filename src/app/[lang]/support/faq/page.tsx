@@ -2,13 +2,15 @@ import Link from '@/components/LocaleLink';
 import PageShell from '@/components/PageShell';
 import { pageMeta } from '@/lib/pageMeta';
 import FaqBoard from '@/components/FaqBoard';
-import { getFaqs } from '@/lib/content/load';
-import { t, withLang } from '@/lib/i18n';
+import { getFaqsForLang } from '@/lib/content/load';
+import { getLang, t, withLang } from '@/lib/i18n';
+import { hiddenForKorean } from '@/lib/content/koFilter';
 
 export const generateMetadata = pageMeta('자주 묻는 질문 | K-Telecom');
 
 async function FaqPage() {
-  const faqs = await getFaqs();
+  // 한국어 화면(한국인 고객)에서는 외국인에게만 해당하는 질문(국제통화, 지원 언어)을 뺀다
+  const faqs = (await getFaqsForLang(getLang())).filter((f) => !hiddenForKorean(f.q, f.a));
 
   return (
     <PageShell path="/support/faq" managed title="자주 묻는 질문">

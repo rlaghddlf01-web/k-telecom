@@ -17,7 +17,7 @@ import { PHONES, type Phone, type PhoneGroup } from '@/lib/phones';
 import { PHONE_EXTRAS } from '@/lib/phoneExtras';
 import { PLANS, SAMPLE_DATA, type Network, type Plan } from '@/lib/plans';
 import { EVENTS, NOTICES, type Post } from '@/lib/boards';
-import { FAQS, type Faq } from '@/lib/faq';
+import { FAQS, KO_FAQS, type Faq } from '@/lib/faq';
 import type { Banner, BannerPosition, FooterSettings, HeaderSettings, SiteSettings, ThemeKey } from '@/lib/content/types';
 
 const asString = (v: unknown) => (typeof v === 'string' ? v : '');
@@ -249,6 +249,12 @@ const loadFaqs = cache(async (lang: string): Promise<Faq[]> => {
 });
 
 export const getFaqs = (lang = 'ko') => loadFaqs(lang);
+
+/** 화면 언어에 맞는 자주 묻는 질문: 관리자가 등록한 것이 있으면 그것을, 없으면 한국어 화면은 한국인용 기본 질문을 쓴다 */
+export async function getFaqsForLang(lang: string): Promise<Faq[]> {
+  const faqs = await loadFaqs('ko');
+  return faqs === FAQS && lang === 'ko' ? KO_FAQS : faqs;
+}
 
 // ---------------------------------------------------------------------------
 // 서브 페이지 (제목·설명·본문 블록)

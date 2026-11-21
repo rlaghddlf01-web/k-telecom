@@ -1,5 +1,6 @@
 import { getLang, withLang } from '@/lib/i18n';
 import { ExtraDict } from '@/components/LangProvider';
+import { hiddenForKorean } from '@/lib/content/koFilter';
 import { primeTranslations } from '@/lib/server/prime';
 import { DEFAULT_LANG, SOURCE_LANG } from '@/lib/langs';
 import SiteHeader from '@/components/SiteHeader';
@@ -25,7 +26,7 @@ import PartnerCta from '@/components/PartnerCta';
 import SiteFooter from '@/components/SiteFooter';
 import type { NewsItem } from '@/components/NewsSection';
 import { Fragment, type ReactNode } from 'react';
-import { getBanners, getEvents, getFaqs, getHomeSettings, getNotices, getProducts, getSiteSettings } from '@/lib/content/load';
+import { getBanners, getEvents, getFaqsForLang, getHomeSettings, getNotices, getProducts, getSiteSettings } from '@/lib/content/load';
 import { KO_HIDDEN_SECTIONS, resolveOrder } from '@/lib/content/home';
 import { ht, setHomeTexts } from '@/lib/content/homeText';
 
@@ -40,7 +41,7 @@ async function HomePage() {
     getSiteSettings(),
     getNotices(),
     getEvents(),
-    getFaqs(),
+    getFaqsForLang(getLang()),
     getHomeSettings(),
   ]);
 
@@ -86,7 +87,7 @@ async function HomePage() {
     pain: <PainPoints />,
     process: <ProcessSteps />,
     news: <NewsSection items={news} />,
-    support: <HomeSupport phone={settings.footer.company.phone} notices={notices} faqs={faqs} />,
+    support: <HomeSupport phone={settings.footer.company.phone} notices={notices} faqs={faqs.filter((f) => !hiddenForKorean(f.q, f.a))} />,
     features: <FeatureStrip />,
     partner: <PartnerCta />,
   };

@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { CheckCircle2 } from 'lucide-react';
 import { inputClass } from '@/components/formStyles';
 import { NETWORKS, won, type Network, type Plan } from '@/lib/plans';
-import { useT } from '@/components/LangProvider';
+import { useLang, useT } from '@/components/LangProvider';
 import { planText } from '@/lib/planText';
 
 type Status = 'idle' | 'sending' | 'done' | 'error';
@@ -41,6 +41,7 @@ function Choice({
 
 export default function ApplyForm(props: { plans: Plan[] }) {
   const t = useT();
+  const lang = useLang();
   const params = useSearchParams();
   const allPlans = props.plans;
   const findPlan = (id: string) => allPlans.find((p) => p.id === id);
@@ -165,10 +166,15 @@ export default function ApplyForm(props: { plans: Plan[] }) {
               {t('이름 (외국인등록증 기준)')} <span className="text-brand">*</span>
               <input name="name" required maxLength={50} className={inputClass} />
             </label>
-            <label className="block text-sm font-bold">
-              {t('국적')} <span className="text-brand">*</span>
-              <input name="nationality" required maxLength={40} className={inputClass} />
-            </label>
+            {lang === 'ko' ? (
+              // 한국어 화면은 한국인 고객용이라 국적을 묻지 않는다
+              <input type="hidden" name="nationality" value="대한민국" />
+            ) : (
+              <label className="block text-sm font-bold">
+                {t('국적')} <span className="text-brand">*</span>
+                <input name="nationality" required maxLength={40} className={inputClass} />
+              </label>
+            )}
             <label className="block text-sm font-bold">
               {t('연락처')} <span className="text-brand">*</span>
               <input name="phone" type="tel" required maxLength={30} className={inputClass} />

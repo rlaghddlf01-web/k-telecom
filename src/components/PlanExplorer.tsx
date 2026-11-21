@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 import { ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import PlanCard from '@/components/PlanCard';
 import { NETWORKS, type Network, type Plan } from '@/lib/plans';
-import { useT } from '@/components/LangProvider';
+import { useLang, useT } from '@/components/LangProvider';
 
 type Sort = 'recommended' | 'priceAsc' | 'priceDesc' | 'dataDesc';
 
@@ -25,6 +25,18 @@ const DATA_NEEDS: { value: number; label: string }[] = [
 
 const PAGE_SIZE = 12;
 
+/** 페이지 번호가 많아도 한 줄에 들어가도록 처음·끝·현재 주변만 보여 준다 (0 은 줄임표) */
+function pageWindow(current: number, total: number): number[] {
+  const keep = new Set([1, total, current - 1, current, current + 1]);
+  const out: number[] = [];
+  for (let n = 1; n <= total; n += 1) {
+    if (!keep.has(n)) continue;
+    if (out.length && n - out[out.length - 1] > 1) out.push(0);
+    out.push(n);
+  }
+  return out;
+}
+
 type Billing = 'all' | 'post' | 'prepaid';
 const BILLINGS: { id: Billing; label: string }[] = [
   { id: 'all', label: '전체' },
@@ -34,6 +46,7 @@ const BILLINGS: { id: Billing; label: string }[] = [
 
 export default function PlanExplorer({ plans }: { plans: Plan[] }) {
   const t = useT();
+  const lang = useLang();
   const [network, setNetwork] = useState<Network | 'all'>('all');
   const [billing, setBilling] = useState<Billing>('all');
   // 처음 열 때는 항상 낮은 가격순으로 보여 준다
@@ -112,10 +125,12 @@ export default function PlanExplorer({ plans }: { plans: Plan[] }) {
                 <option value={40000}>{t('4만원 이하')}</option>
               </select>
             </label>
-            <label className="flex items-end gap-2 pb-2.5 text-sm font-bold">
-              <input type="checkbox" checked={intl} onChange={(e) => change(setIntl)(e.target.checked)} />
-              {t('무료 국제통화 포함')}
-            </label>
+            {lang !== 'ko' && (
+              <label className="flex items-end gap-2 pb-2.5 text-sm font-bold">
+                <input type="checkbox" checked={intl} onChange={(e) => change(setIntl)(e.target.checked)} />
+                {t('무료 국제통화 포함')}
+              </label>
+            )}
           </div>
         )}
       </section>
@@ -179,7 +194,7 @@ export default function PlanExplorer({ plans }: { plans: Plan[] }) {
       )}
 
       {pages > 1 && (
-        <nav className="mt-8 flex items-center justify-center gap-1.5" aria-label="pagination">
+        <nav className="mt-8 flex flex-wrap items-center justify-center gap-1.5" aria-label="pagination">
           <button
             onClick={() => setPage(Math.max(1, current - 1))}
             disabled={current === 1}
@@ -188,16 +203,20 @@ export default function PlanExplorer({ plans }: { plans: Plan[] }) {
           >
             <ChevronLeft className="h-4 w-4" />
           </button>
-          {Array.from({ length: pages }, (_, i) => i + 1).map((n) => (
-            <button
-              key={n}
-              onClick={() => setPage(n)}
-              aria-current={n === current}
-              className={`h-8 w-8 rounded-full text-xs font-bold ${n === current ? 'bg-brand text-white' : 'hover:bg-soft'}`}
-            >
-              {n}
-            </button>
-          ))}
+          {pageWindow(current, pages).map((n, i) =>
+            n === 0 ? (
+              <span key={`gap${i}`} aria-hidden="true" className="px-1 text-xs text-slate-400">…</span>
+            ) : (
+              <button
+                key={n}
+                onClick={() => setPage(n)}
+                aria-current={n === current}
+                className={`h-8 w-8 shrink-0 rounded-full text-xs font-bold ${n === current ? 'bg-brand text-white' : 'hover:bg-soft'}`}
+              >
+                {n}
+              </button>
+            ),
+          )}
           <button
             onClick={() => setPage(Math.min(pages, current + 1))}
             disabled={current === pages}
