@@ -1,0 +1,2 @@
+clawops[agent,gemini]==0.78.0
+python-dotenv
