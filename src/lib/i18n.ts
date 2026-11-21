@@ -5,8 +5,12 @@ import { cache } from 'react';
 import { dictionaryOf } from '@/lib/dictionaries';
 import { DEFAULT_LANG, isLang, type Lang } from '@/lib/langs';
 
-/** 요청 하나마다 따로 쓰이는 저장 칸: 레이아웃이 주소의 언어를 넣어 두면 t() 가 꺼내 쓴다 */
-const scope = cache(() => ({ lang: DEFAULT_LANG as Lang }));
+/**
+ * 요청 하나마다 따로 쓰이는 저장 칸: 레이아웃이 주소의 언어를 넣어 두면 t() 가 꺼내 쓴다.
+ * extra 는 사이트 사전에 없는 문구(관리자가 새로 넣은 휴대폰 이름·설명 등)의 번역으로,
+ * Supabase 번역 저장소에서 꺼낸 것을 primeTranslations() 가 채워 둔다.
+ */
+const scope = cache(() => ({ lang: DEFAULT_LANG as Lang, extra: {} as Record<string, string> }));
 
 export function setLang(lang: Lang) {
   scope().lang = lang;
@@ -16,8 +20,14 @@ export function getLang(): Lang {
   return scope().lang;
 }
 
+/** 저장소에서 꺼낸 번역을 이번 요청의 t() 가 쓰도록 등록한다 */
+export function addExtraTranslations(extra: Record<string, string>) {
+  Object.assign(scope().extra, extra);
+}
+
 export function t(key: string): string {
-  return dictionaryOf(scope().lang)[key] ?? key;
+  const s = scope();
+  return dictionaryOf(s.lang)[key] ?? s.extra[key] ?? key;
 }
 
 /**

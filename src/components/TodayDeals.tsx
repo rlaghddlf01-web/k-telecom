@@ -4,6 +4,7 @@ import ProductImage from '@/components/ProductImage';
 import PhoneMockup from '@/components/PhoneMockup';
 import type { Phone } from '@/lib/phones';
 import { ht } from '@/lib/content/homeText';
+import { phonePrice } from '@/lib/planText';
 
 function DealCard({ phone }: { phone: Phone }) {
   return (
@@ -21,7 +22,7 @@ function DealCard({ phone }: { phone: Phone }) {
       </div>
       <p className="mt-4 text-[11px] font-semibold text-slate-400">{ht(phone.tag)}</p>
       <h3 className="mt-1 text-sm font-bold">{ht(phone.title)}</h3>
-      <p className="mt-2 text-xl font-black text-brand">{ht(phone.price)}</p>
+      <p className="mt-2 text-xl font-black text-brand">{phonePrice(phone.price, ht)}</p>
       <p className="mt-1 text-xs text-slate-500">{ht(phone.note)}</p>
       <div className="mt-5">
         <DealCountdown />

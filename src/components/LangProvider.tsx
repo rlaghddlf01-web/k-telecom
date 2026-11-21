@@ -15,6 +15,12 @@ export function LangProvider({ lang, dict, children }: LangState & { children: R
   return <LangContext.Provider value={{ lang, dict }}>{children}</LangContext.Provider>;
 }
 
+/** 서버가 저장소에서 꺼내 온 번역(extra)을 아래쪽 클라이언트 컴포넌트의 useT() 가 쓰도록 사전에 합친다 */
+export function ExtraDict({ extra, children }: { extra: Record<string, string>; children: React.ReactNode }) {
+  const { lang, dict } = useContext(LangContext);
+  return <LangContext.Provider value={{ lang, dict: { ...extra, ...dict } }}>{children}</LangContext.Provider>;
+}
+
 export const useLang = (): Lang => useContext(LangContext).lang;
 
 /** 클라이언트 컴포넌트용 t(): 서버의 t() 와 같은 규칙 */

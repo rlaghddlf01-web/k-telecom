@@ -60,6 +60,10 @@ function memory(): Memory {
   return m as Memory;
 }
 
+const SPEC_COLUMNS = ['specs', 'official_url', 'is_new'];
+const isMissingSpecColumn = (error: unknown) => SPEC_COLUMNS.some((c) => String((error as { message?: string })?.message ?? '').includes(c));
+const withoutSpecColumns = (row: Row): Row => Object.fromEntries(Object.entries(row).filter(([k]) => !SPEC_COLUMNS.includes(k)));
+
 const byOrder = (a: Row, b: Row) => Number(a.sort_order ?? 0) - Number(b.sort_order ?? 0);
 const byNewest = (a: Row, b: Row) =>
   String(b.published_at ?? '').localeCompare(String(a.published_at ?? '')) ||
@@ -85,7 +89,11 @@ export async function insertRows(resource: Resource, rows: Row[]): Promise<numbe
   if (mode === 'none') throw new StoreUnavailableError();
   if (rows.length === 0) return 0;
   if (mode === 'supabase') {
-    const { error } = await getSupabaseAdmin().from(TABLES[resource]).insert(rows);
+    let { error } = await getSupabaseAdmin().from(TABLES[resource]).insert(rows);
+    // 사양 칸을 만드는 SQL(docs/telecom_phone_specs.sql)을 아직 실행하지 않았으면 그 칸만 빼고 다시 저장한다
+    if (error && resource === 'products' && isMissingSpecColumn(error)) {
+      ({ error } = await getSupabaseAdmin().from(TABLES[resource]).insert(rows.map(withoutSpecColumns)));
+    }
     if (error) throw error;
     return rows.length;
   }
@@ -98,7 +106,10 @@ export async function updateRow(resource: Resource, id: string, patch: Row): Pro
   const mode = storeMode();
   if (mode === 'none') throw new StoreUnavailableError();
   if (mode === 'supabase') {
-    const { data, error } = await getSupabaseAdmin().from(TABLES[resource]).update(patch).eq('id', id).select('id');
+    let { data, error } = await getSupabaseAdmin().from(TABLES[resource]).update(patch).eq('id', id).select('id');
+    if (error && resource === 'products' && isMissingSpecColumn(error)) {
+      ({ data, error } = await getSupabaseAdmin().from(TABLES[resource]).update(withoutSpecColumns(patch)).eq('id', id).select('id'));
+    }
     if (error) throw error;
     return (data?.length ?? 0) > 0;
   }
@@ -145,6 +156,64 @@ export async function setSetting(key: string, value: unknown): Promise<void> {
     return;
   }
   memory().settings[key] = value;
+}
+
+// ---------------------------------------------------------------------------
+// 번역 저장소: 한국어 원문 → 언어별 번역. 한 번 만든 번역은 저장해 두고 다시 쓴다.
+// 테이블(telecom_translations)이 없으면 읽기는 빈 결과, 쓰기는 무시한다 (번역이 매번 새로 만들어질 뿐 사이트는 정상).
+// ---------------------------------------------------------------------------
+export type TranslationOrigin = 'ai' | 'manual';
+const trGlobal = globalThis as unknown as { __ktTranslations?: Map<string, { target: string; origin: TranslationOrigin }> };
+const trMemory = () => (trGlobal.__ktTranslations ??= new Map());
+const trKey = (lang: string, source: string) => `${lang}\u0000${source}`;
+
+export async function getTranslations(lang: string, sources: string[]): Promise<Record<string, string>> {
+  const out: Record<string, string> = {};
+  const unique = [...new Set(sources)];
+  if (unique.length === 0) return out;
+  const mode = storeMode();
+  if (mode === 'supabase') {
+    for (let i = 0; i < unique.length; i += 80) {
+      const chunk = unique.slice(i, i + 80);
+      const { data, error } = await getSupabaseAdmin().from('telecom_translations').select('source,target').eq('lang', lang).in('source', chunk);
+      if (error) return out;
+      for (const r of data ?? []) out[String(r.source)] = String(r.target);
+    }
+    return out;
+  }
+  if (mode === 'memory') {
+    for (const s of unique) {
+      const hit = trMemory().get(trKey(lang, s));
+      if (hit) out[s] = hit.target;
+    }
+  }
+  return out;
+}
+
+export async function saveTranslations(lang: string, pairs: Record<string, string>, origin: TranslationOrigin = 'ai'): Promise<void> {
+  const entries = Object.entries(pairs).filter(([s, t]) => s && t);
+  if (entries.length === 0) return;
+  const mode = storeMode();
+  if (mode === 'supabase') {
+    const now = new Date().toISOString();
+    const rows = entries.map(([source, target]) => ({ lang, source, target, origin, updated_at: now }));
+    // 사람이 직접 고친 번역은 자동 번역이 덮어쓰지 않는다
+    if (origin === 'ai') {
+      const { error } = await getSupabaseAdmin().from('telecom_translations').upsert(rows, { onConflict: 'lang,source', ignoreDuplicates: true });
+      if (error) console.error('translation save failed:', error.code ?? 'unknown');
+    } else {
+      const { error } = await getSupabaseAdmin().from('telecom_translations').upsert(rows, { onConflict: 'lang,source' });
+      if (error) console.error('translation save failed:', error.code ?? 'unknown');
+    }
+    return;
+  }
+  if (mode === 'memory') {
+    for (const [s, t] of entries) {
+      const prev = trMemory().get(trKey(lang, s));
+      if (origin === 'ai' && prev) continue;
+      trMemory().set(trKey(lang, s), { target: t, origin });
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------

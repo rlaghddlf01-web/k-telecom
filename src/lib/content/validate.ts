@@ -125,6 +125,22 @@ export function sanitizeBanner(input: unknown, allowData: boolean): Checked<Row>
   };
 }
 
+/** 사양 표: [[항목, 값], ...] 배열이나 한 줄에 "항목 | 값" 인 글자를 받는다 (최대 40줄) */
+function cleanSpecInput(v: unknown): [string, string][] {
+  const lines: unknown[] = Array.isArray(v) ? v : typeof v === 'string' ? v.split(/\r?\n/).map((l) => l.split('|').map((s) => s.trim())) : [];
+  const out: [string, string][] = [];
+  for (const line of lines) {
+    if (!Array.isArray(line) || line.length < 2) continue;
+    const label = text(line[0], 40);
+    const value = text(line.slice(1).join(' | '), 160);
+    if (label && value) out.push([label, value]);
+    if (out.length >= 40) break;
+  }
+  return out;
+}
+
+const OFFICIAL_URL = /^https:\/\/[^\s"'<>]{4,300}$/;
+
 export function sanitizeProduct(input: unknown, allowData: boolean): Checked<Row> {
   if (!input || typeof input !== 'object') return fail('잘못된 요청입니다.');
   const p = input as Row;
@@ -148,6 +164,9 @@ export function sanitizeProduct(input: unknown, allowData: boolean): Checked<Row
       note: text(p.note, 120),
       badge: text(p.badge, 12),
       description: text(p.description, 2000),
+      specs: cleanSpecInput(p.specs),
+      official_url: typeof p.official_url === 'string' && OFFICIAL_URL.test(p.official_url.trim()) ? p.official_url.trim() : '',
+      is_new: p.is_new === true,
       image_url: image,
       kind: p.kind === 'island' || p.kind === 'back' ? p.kind : 'punch',
       color_from: from,

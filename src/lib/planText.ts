@@ -22,6 +22,16 @@ export function planText(text: string, t: (key: string) => string): string {
 }
 
 /**
+ * 휴대폰 가격 문구를 번역한다. "월 110,834원" 처럼 숫자만 다른 문구는 "월"과 "원"만 그 나라 말로 바꾼다.
+ * 그 밖의 문구(예: "기기값 0원")는 사전 번역을 그대로 쓴다. 한국어에서는 글자를 그대로 둔다.
+ */
+export function phonePrice(price: string, t: (key: string) => string): string {
+  const m = price.match(/^월 ([\d,]+)원$/);
+  if (!m) return t(price);
+  return `${t('월')} ${won(Number(m[1].replace(/,/g, '')), t)}`;
+}
+
+/**
  * 할인 안내 문구를 번역한다. "7개월 후 59,950원" 같은 문구는 숫자만 바뀌므로 틀(문장 모양)을 번역해서 끼워 넣는다.
  * 한국어에서는 글자를 그대로 둔다.
  */

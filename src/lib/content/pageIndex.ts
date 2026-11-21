@@ -14,7 +14,7 @@ export const DEDICATED_PAGES: PageMeta[] = [
   { path: '/plans', title: '요금제 안내', lead: '통신망, 데이터량, 요금으로 비교하고 나에게 맞는 요금제를 찾아보세요.' },
   { path: '/plans/apply', title: '가입접수', lead: '신청서를 남기시면 상담원이 연락드려 본인 확인과 개통을 도와드립니다.' },
   { path: '/plans/esim', title: 'eSIM 안내', lead: '유심을 기다리지 않고 바로 개통하는 eSIM을 안내합니다.' },
-  { path: '/phones', title: '단말 목록', lead: '갤럭시 A시리즈 미개봉 신제품과 정품 검수 리퍼비시 아이폰을 초기비용 0원으로 만나보세요.' },
+  { path: '/phones', title: '단말 목록', lead: '삼성 갤럭시·애플 아이폰 새 제품과 중고 단말을 24개월 할부로 만나보세요.' },
   { path: '/events', title: '이벤트', lead: '진행 중인 혜택과 이벤트를 확인하세요.' },
   { path: '/partnership', title: '제휴 신청', lead: '외국인 대상 통신 상품 공급을 함께할 파트너사를 모십니다.' },
   { path: '/support/notice', title: '공지사항', lead: '' },

@@ -47,11 +47,11 @@ export const DEFAULT_BANNERS: Banner[] = [
     link_url: '/#process',
   }),
   banner('hero', 3, 'rose', {
-    eyebrow: '파트너 모집',
-    title: '통신 제휴사를\n찾고 있습니다',
-    description: '마케팅비 없이 외국인 신규 가입자를 연결해 드립니다',
-    button_label: '제휴 신청하기',
-    link_url: '/partnership',
+    eyebrow: '요금제 비교',
+    title: '월 1만원대로 시작하는\n알뜰폰 요금제',
+    description: 'SKT·KT·LG U+ 망 요금제를 낮은 가격순으로 비교해 보세요',
+    button_label: '요금제 보기',
+    link_url: '/plans',
   }),
 
   banner('promo', 1, 'orange', {

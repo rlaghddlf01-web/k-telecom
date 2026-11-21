@@ -2,6 +2,7 @@ import Link from '@/components/LocaleLink';
 import ProductImage from '@/components/ProductImage';
 import type { Phone } from '@/lib/phones';
 import { ht } from '@/lib/content/homeText';
+import { phonePrice } from '@/lib/planText';
 
 export default function FeaturedProducts({ phones }: { phones: Phone[] }) {
   const main = phones.slice(0, 6);
@@ -29,7 +30,7 @@ export default function FeaturedProducts({ phones }: { phones: Phone[] }) {
                 </div>
                 <p className="mt-3 text-[11px] font-semibold text-slate-400">{ht(p.tag)}</p>
                 <h3 className="mt-1 text-sm font-bold leading-snug">{ht(p.title)}</h3>
-                <p className="mt-2 text-sm font-black text-brand">{ht(p.price)}</p>
+                <p className="mt-2 text-sm font-black text-brand">{phonePrice(p.price, ht)}</p>
               </Link>
             </li>
           ))}
@@ -50,7 +51,7 @@ export default function FeaturedProducts({ phones }: { phones: Phone[] }) {
                   </div>
                   <div className="min-w-0">
                     <p className="truncate text-xs font-bold">{ht(p.title)}</p>
-                    <p className="mt-1 text-xs font-black text-pink-400">{ht(p.price)}</p>
+                    <p className="mt-1 text-xs font-black text-pink-400">{phonePrice(p.price, ht)}</p>
                   </div>
                 </Link>
               </li>

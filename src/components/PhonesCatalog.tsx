@@ -5,6 +5,7 @@ import { useState } from 'react';
 import ProductImage from '@/components/ProductImage';
 import type { Phone, PhoneGroup } from '@/lib/phones';
 import { useT } from '@/components/LangProvider';
+import { phonePrice } from '@/lib/planText';
 
 const TABS: { id: PhoneGroup | 'all'; label: string }[] = [
   { id: 'all', label: '전체' },
@@ -56,7 +57,7 @@ export default function PhonesCatalog({ phones }: { phones: Phone[] }) {
               </div>
               <p className="mt-3 text-[11px] font-semibold text-slate-400">{t(p.tag)}</p>
               <h3 className="mt-1 line-clamp-2 min-h-[2.5rem] text-xs font-bold leading-snug">{t(p.title)}</h3>
-              <p className="mt-2 text-sm font-black text-brand">{t(p.price)}</p>
+              <p className="mt-2 text-sm font-black text-brand">{phonePrice(p.price, t)}</p>
             </Link>
           </li>
         ))}

@@ -99,6 +99,19 @@ export default function ResourceManager({
     <div>
       <div className="mb-2 flex flex-wrap items-center gap-3">
         <h1 className="mr-auto text-lg font-black">{ui.title}</h1>
+        {resource === 'plans' && mode !== 'none' && (
+          <button
+            onClick={async () => {
+              setMessage('번역을 만들고 저장하는 중입니다. 1~2분 걸릴 수 있습니다...');
+              const res = await adminFetch<{ languages?: number; texts?: number }>('/api/admin/translate', jsonInit('POST', { resource: 'plans' }));
+              if (res.status === 401) return onUnauthorized();
+              setMessage(res.ok ? `번역을 저장했습니다. (문구 ${res.data.texts ?? 0}개 × ${res.data.languages ?? 0}개 언어)` : errorMessage(res));
+            }}
+            className={`${ghostBtn} inline-flex items-center gap-1.5`}
+          >
+            번역 미리 만들기
+          </button>
+        )}
         {resource === 'plans' && rows.length > 0 && mode !== 'none' && (
           <button
             onClick={() => {

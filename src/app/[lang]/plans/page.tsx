@@ -2,13 +2,17 @@ import PageShell from '@/components/PageShell';
 import { pageMeta } from '@/lib/pageMeta';
 import PlanExplorer from '@/components/PlanExplorer';
 import SampleNotice from '@/components/SampleNotice';
+import { ExtraDict } from '@/components/LangProvider';
 import { getPlans } from '@/lib/content/load';
-import { t, withLang } from '@/lib/i18n';
+import { withLang } from '@/lib/i18n';
+import { primeTranslations } from '@/lib/server/prime';
 
 export const generateMetadata = pageMeta('요금제 안내 | K-Telecom', '외국인 고객에게 맞춘 알뜰폰 요금제를 비교하고 신청하세요.');
 
 async function PlansPage() {
   const { plans } = await getPlans();
+  // 사이트 사전에 없는 새 혜택·배지·안내 문구는 번역 저장소에서 꺼내거나 번역해서 저장해 둔다 (요금제 이름은 번역하지 않는다)
+  const extra = await primeTranslations(plans.flatMap((p) => [...p.features, p.badge ?? '', /개월 후 [\d,]+원$/.test(p.promoNote) ? '' : p.promoNote]));
 
   return (
     <PageShell
@@ -17,7 +21,9 @@ async function PlansPage() {
       lead="통신망, 데이터량, 요금으로 비교하고 나에게 맞는 요금제를 찾아보세요."
     >
       <SampleNotice />
-      <PlanExplorer plans={plans} />
+      <ExtraDict extra={extra}>
+        <PlanExplorer plans={plans} />
+      </ExtraDict>
     </PageShell>
   );
 }

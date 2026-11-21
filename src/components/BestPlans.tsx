@@ -4,6 +4,8 @@ import SampleNotice from '@/components/SampleNotice';
 import { getPlans } from '@/lib/content/load';
 import { ht } from '@/lib/content/homeText';
 import { NETWORKS, type Plan } from '@/lib/plans';
+import { ExtraDict } from '@/components/LangProvider';
+import { primeTranslations } from '@/lib/server/prime';
 
 const PICK_COUNT = 8; // 4개씩 2줄
 
@@ -46,6 +48,7 @@ export default async function BestPlans({ title }: { title?: string }) {
   const { plans } = await getPlans();
   const picks = pickPlans(plans);
   if (picks.length === 0) return null;
+  const extra = await primeTranslations(picks.flatMap((p) => [...p.features, p.badge ?? '', /개월 후 [\d,]+원$/.test(p.promoNote) ? '' : p.promoNote]));
 
   return (
     <section className="mx-auto max-w-6xl px-4 pb-16">
@@ -58,13 +61,15 @@ export default async function BestPlans({ title }: { title?: string }) {
       <div className="mt-6">
         <SampleNotice />
       </div>
-      <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {picks.map((p) => (
-          <li key={p.id}>
-            <PlanCard plan={p} />
-          </li>
-        ))}
-      </ul>
+      <ExtraDict extra={extra}>
+        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {picks.map((p) => (
+            <li key={p.id}>
+              <PlanCard plan={p} />
+            </li>
+          ))}
+        </ul>
+      </ExtraDict>
     </section>
   );
 }

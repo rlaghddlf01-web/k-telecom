@@ -3,6 +3,7 @@ import PhoneMockup from '@/components/PhoneMockup';
 import ProductImage from '@/components/ProductImage';
 import type { Phone } from '@/lib/phones';
 import { ht } from '@/lib/content/homeText';
+import { phonePrice } from '@/lib/planText';
 
 export default function IphoneSection({ phones }: { phones: Phone[] }) {
   const list = phones.filter((p) => p.group === 'iphone').slice(0, 4);
@@ -44,7 +45,7 @@ export default function IphoneSection({ phones }: { phones: Phone[] }) {
                 </div>
                 <p className="mt-3 text-[11px] font-semibold text-slate-400">{ht(p.tag)}</p>
                 <h3 className="mt-1 line-clamp-2 min-h-[2.4rem] text-xs font-bold leading-snug">{ht(p.title)}</h3>
-                <p className="mt-2 text-xs font-black text-brand">{ht(p.price)}</p>
+                <p className="mt-2 text-xs font-black text-brand">{phonePrice(p.price, ht)}</p>
               </Link>
             </li>
           ))}

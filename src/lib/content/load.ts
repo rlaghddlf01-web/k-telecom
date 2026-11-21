@@ -14,6 +14,7 @@ import type { PageDef } from '@/lib/pages';
 import { DEFAULT_BANNERS, DEFAULT_SETTINGS } from '@/lib/content/defaults';
 import { sanitizeSetting } from '@/lib/content/validate';
 import { PHONES, type Phone, type PhoneGroup } from '@/lib/phones';
+import { PHONE_EXTRAS } from '@/lib/phoneExtras';
 import { PLANS, SAMPLE_DATA, type Network, type Plan } from '@/lib/plans';
 import { EVENTS, NOTICES, type Post } from '@/lib/boards';
 import { FAQS, type Faq } from '@/lib/faq';
@@ -80,9 +81,28 @@ export async function getBanners(position: BannerPosition, lang = 'ko'): Promise
 // ---------------------------------------------------------------------------
 // 상품 (스마트폰)
 // ---------------------------------------------------------------------------
+/** 사양 표·공식 페이지·새 제품 여부가 비어 있으면 기본 사양(phoneExtras.ts)을 상품 제목으로 찾아 채운다 */
+function withExtras(p: Phone): Phone {
+  const extra = PHONE_EXTRAS[p.title];
+  if (!extra) return p;
+  return {
+    ...p,
+    specs: p.specs?.length ? p.specs : extra.rows,
+    official: p.official || extra.official,
+    isNew: p.isNew ?? extra.isNew,
+  };
+}
+
+const cleanSpecs = (v: unknown): [string, string][] =>
+  Array.isArray(v)
+    ? v
+        .filter((x): x is [string, string] => Array.isArray(x) && typeof x[0] === 'string' && typeof x[1] === 'string' && !!x[0] && !!x[1])
+        .map(([k, val]): [string, string] => [k, val])
+    : [];
+
 function toPhone(r: Row): Phone {
   const group = asString(r.grp);
-  return {
+  return withExtras({
     id: String(r.id),
     group: (group === 'iphone' || group === 'budget' ? group : 'galaxy') as PhoneGroup,
     image: asString(r.image_url) || undefined,
@@ -95,18 +115,23 @@ function toPhone(r: Row): Phone {
     price: asString(r.price),
     note: asString(r.note),
     description: asString(r.description) || undefined,
-  };
+    specs: cleanSpecs(r.specs).length ? cleanSpecs(r.specs) : undefined,
+    official: asString(r.official_url) || undefined,
+    isNew: typeof r.is_new === 'boolean' ? r.is_new : undefined,
+  });
 }
 
+const DEFAULT_PHONES = PHONES.map(withExtras);
+
 const loadProducts = cache(async (lang: string): Promise<Phone[]> => {
-  if (storeMode() === 'none') return PHONES;
+  if (storeMode() === 'none') return DEFAULT_PHONES;
   try {
     const rows = await listRows('products');
-    if (rows.length === 0) return PHONES; // 아직 등록한 적이 없으면 기본 상품
+    if (rows.length === 0) return DEFAULT_PHONES; // 아직 등록한 적이 없으면 기본 상품
     return rows.filter(isActive).map((r) => toPhone(localize(r, lang, ['tag', 'title', 'price', 'note', 'badge', 'description'])));
   } catch (err) {
     console.error('products load failed:', err instanceof Error ? err.name : 'unknown');
-    return PHONES;
+    return DEFAULT_PHONES;
   }
 });
 

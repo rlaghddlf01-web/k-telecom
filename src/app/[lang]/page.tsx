@@ -1,4 +1,6 @@
 import { getLang, withLang } from '@/lib/i18n';
+import { ExtraDict } from '@/components/LangProvider';
+import { primeTranslations } from '@/lib/server/prime';
 import { DEFAULT_LANG, SOURCE_LANG } from '@/lib/langs';
 import SiteHeader from '@/components/SiteHeader';
 import PromoStrip from '@/components/PromoStrip';
@@ -62,6 +64,8 @@ async function HomePage() {
   const order = resolveOrder(home);
   const lang = getLang();
   const hidden = lang === DEFAULT_LANG ? [...home.hidden, ...KO_HIDDEN_SECTIONS] : home.hidden;
+  // 새로 올린 휴대폰의 이름·문구는 번역 저장소에서 꺼내거나 번역해서 저장해 둔다
+  const phoneExtra = await primeTranslations(phones.flatMap((p) => [p.title, p.tag, p.note, p.badge ?? '']));
   const bestTexts = Object.fromEntries(['인기 스마트폰', '전체 보기', '전체', '삼성 갤럭시', '애플 아이폰'].map((k) => [k, ht(k)]));
   const sections: Record<string, ReactNode> = {
     // 한국어 페이지(/)에서는 가린다. 다른 도구가 만든 SisterServices 는 그대로 두고 여기서만 거른다.
@@ -69,7 +73,11 @@ async function HomePage() {
     categories: <PopularCategories />,
     plans: <BestPlans />,
     deals: <TodayDeals phones={phones} />,
-    best: <BestProducts phones={phones} texts={bestTexts} />,
+    best: (
+      <ExtraDict extra={phoneExtra}>
+        <BestProducts phones={phones} texts={bestTexts} />
+      </ExtraDict>
+    ),
     promo: <PromoBanners banners={promo} />,
     iphone: <IphoneSection phones={phones} />,
     featured: <FeaturedProducts phones={phones} />,

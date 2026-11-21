@@ -13,6 +13,7 @@ import {
 import { sanitizeBanner, sanitizeFaq, sanitizePlan, sanitizePost, sanitizeProduct } from '@/lib/content/validate';
 import { DEFAULT_BANNERS } from '@/lib/content/defaults';
 import { PHONES } from '@/lib/phones';
+import { PHONE_EXTRAS } from '@/lib/phoneExtras';
 import { PLANS } from '@/lib/plans';
 import { EVENTS, NOTICES, type Post } from '@/lib/boards';
 import { FAQS } from '@/lib/faq';
@@ -51,6 +52,9 @@ function seedRows(resource: Resource): Record<string, unknown>[] {
         note: p.note,
         badge: p.badge ?? '',
         description: p.description ?? '',
+        specs: p.specs ?? PHONE_EXTRAS[p.title]?.rows ?? [],
+        official_url: p.official ?? PHONE_EXTRAS[p.title]?.official ?? '',
+        is_new: p.isNew ?? PHONE_EXTRAS[p.title]?.isNew ?? false,
         image_url: p.image ?? '',
         kind: p.kind,
         color_from: p.from,

@@ -22,7 +22,15 @@ interface ProductRow {
   color_to: string;
   sort_order: number;
   active: boolean;
+  /** 사양 표 (DB 에는 [[항목, 값], ...] 로 저장) */
+  specs?: [string, string][];
+  /** 입력 양식에서만 쓰는 글자: 한 줄에 "항목 | 값" */
+  specs_text?: string;
+  official_url?: string;
+  is_new?: boolean;
 }
+
+const specsToText = (specs?: [string, string][]) => (specs ?? []).map(([k, v]) => `${k} | ${v}`).join('\n');
 
 const EMPTY: ProductRow = {
   grp: 'galaxy',
@@ -38,6 +46,9 @@ const EMPTY: ProductRow = {
   color_to: '#e8174f',
   sort_order: 0,
   active: true,
+  specs_text: '',
+  official_url: '',
+  is_new: false,
 };
 
 const GROUPS: Record<ProductRow['grp'], string> = { galaxy: '삼성 갤럭시', iphone: '애플 아이폰', budget: '기타' };
@@ -119,7 +130,8 @@ export default function ProductManager({ onUnauthorized }: { onUnauthorized: () 
   async function save() {
     if (!draft) return;
     setSaving(true);
-    const { id, ...item } = draft;
+    const { id, specs_text, specs: _specs, ...rest } = draft;
+    const item = { ...rest, specs: specs_text ?? '' };
     const res = id
       ? await adminFetch('/api/admin/content/products', jsonInit('PATCH', { id, item }))
       : await adminFetch('/api/admin/content/products', jsonInit('POST', { item }));
@@ -137,6 +149,19 @@ export default function ProductManager({ onUnauthorized }: { onUnauthorized: () 
     <div>
       <div className="mb-4 flex flex-wrap items-center gap-3">
         <h1 className="mr-auto text-lg font-black">상품 관리 (스마트폰)</h1>
+        {mode !== 'none' && (
+          <button
+            onClick={async () => {
+              setMessage('번역을 만들고 저장하는 중입니다. 1~2분 걸릴 수 있습니다...');
+              const res = await adminFetch<{ languages?: number; texts?: number; stored?: number }>('/api/admin/translate', jsonInit('POST', { resource: 'products' }));
+              if (res.status === 401) return onUnauthorized();
+              setMessage(res.ok ? `번역을 저장했습니다. (문구 ${res.data.texts ?? 0}개 × ${res.data.languages ?? 0}개 언어)` : errorMessage(res));
+            }}
+            className={`${ghostBtn} inline-flex items-center gap-1.5`}
+          >
+            번역 미리 만들기
+          </button>
+        )}
         {rows.length > 0 && mode !== 'none' && (
           <button
             onClick={() => {
@@ -193,7 +218,7 @@ export default function ProductManager({ onUnauthorized }: { onUnauthorized: () 
               <button aria-label="아래로" disabled={i === rows.length - 1} onClick={() => move(i, 1)} className={ghostBtn}>
                 <ArrowDown className="h-3.5 w-3.5" />
               </button>
-              <button aria-label="수정" onClick={() => setDraft({ ...p })} className={ghostBtn}>
+              <button aria-label="수정" onClick={() => setDraft({ ...p, specs_text: specsToText(p.specs), official_url: p.official_url ?? '', is_new: p.is_new ?? false })} className={ghostBtn}>
                 <Pencil className="h-3.5 w-3.5" />
               </button>
               <button aria-label="삭제" onClick={() => remove(p)} className={`${ghostBtn} hover:!border-rose-400 hover:!text-rose-600`}>
@@ -248,6 +273,23 @@ export default function ProductManager({ onUnauthorized }: { onUnauthorized: () 
           <Field label="상세 설명" hint="상품 상세 페이지에 보입니다. 줄바꿈이 그대로 표시됩니다.">
             <textarea value={draft.description} onChange={(e) => set('description', e.target.value)} rows={4} maxLength={2000} className={inputCls} />
           </Field>
+          <Field
+            label="사양 표"
+            hint="한 줄에 하나씩 「항목 | 값」으로 적습니다. 예) 배터리 | 5,000mAh. 항목 이름은 18개 언어로 보이고, 값은 숫자·영문 그대로 모든 언어에 보입니다. 값에 한글이 있으면 자동 번역해서 저장해 둡니다."
+          >
+            <textarea
+              value={draft.specs_text ?? ''}
+              onChange={(e) => set('specs_text', e.target.value)}
+              rows={7}
+              maxLength={4000}
+              placeholder={'화면 크기 | 6.9"\n배터리 | 5,000mAh\n무게 | 214g'}
+              className={`${inputCls} font-mono text-xs`}
+            />
+          </Field>
+          <Field label="제조사 공식 페이지 주소" hint="https:// 로 시작하는 주소. 상세 페이지 아래에 「공식 페이지에서 자세히 보기」 링크로 나옵니다.">
+            <input value={draft.official_url ?? ''} onChange={(e) => set('official_url', e.target.value)} maxLength={300} placeholder="https://www.samsung.com/..." className={inputCls} />
+          </Field>
+          <Toggle checked={draft.is_new ?? false} onChange={(v) => set('is_new', v)} label="새 제품 (상품 구성 안내를 보여 줍니다)" />
           <div className="text-sm font-bold">
             상품 사진
             <ImageField value={draft.image_url} onChange={(v) => set('image_url', v)} folder="products" onUnauthorized={onUnauthorized} />
