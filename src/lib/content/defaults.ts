@@ -80,14 +80,7 @@ export const DEFAULT_BANNERS: Banner[] = [
     button_label: '할부 안내 보기',
     link_url: '/phones/installment',
   }),
-
-  banner('popup', 1, 'violet', {
-    eyebrow: '오픈 기념 혜택',
-    title: '기기값 0원\n24개월 분할',
-    description: '외국인등록증만 있으면 신용카드 없이 단말 할부 가능',
-    button_label: '자세히 보기',
-    link_url: '/events/galaxy-zero',
-  }),
+  // 홈 팝업은 기본으로 띄우지 않는다. 필요하면 관리자 > 배너에서 "팝업" 위치로 등록한다.
 ];
 
 export const DEFAULT_SETTINGS: SiteSettings = {

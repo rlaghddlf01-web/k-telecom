@@ -121,6 +121,7 @@ export async function getProduct(id: string, lang = 'ko'): Promise<Phone | undef
 // ---------------------------------------------------------------------------
 function toPlan(r: Row): Plan {
   const network = asString(r.network);
+  const features = Array.isArray(r.features) ? r.features.filter((f): f is string => typeof f === 'string') : [];
   return {
     id: String(r.id),
     name: asString(r.name),
@@ -132,7 +133,9 @@ function toPlan(r: Row): Plan {
     price: Number(r.price ?? 0),
     promoPrice: Number(r.promo_price ?? 0) || Number(r.price ?? 0),
     promoNote: asString(r.promo_note),
-    features: Array.isArray(r.features) ? r.features.filter((f): f is string => typeof f === 'string') : [],
+    features,
+    // 후불/선불은 별도 칸 없이 부가 혜택의 "선불" 표시로 구분한다 (관리자에서 혜택에 '선불'을 적으면 선불로 나온다)
+    billing: features.includes('선불') ? 'prepaid' : 'post',
     badge: asString(r.badge) || undefined,
   };
 }

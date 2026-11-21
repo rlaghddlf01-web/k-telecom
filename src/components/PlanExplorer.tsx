@@ -9,8 +9,8 @@ import { useT } from '@/components/LangProvider';
 type Sort = 'recommended' | 'priceAsc' | 'priceDesc' | 'dataDesc';
 
 const SORTS: { id: Sort; label: string }[] = [
-  { id: 'recommended', label: '추천순' },
   { id: 'priceAsc', label: '낮은가격순' },
+  { id: 'recommended', label: '추천순' },
   { id: 'priceDesc', label: '높은가격순' },
   { id: 'dataDesc', label: '데이터 많은순' },
 ];
@@ -36,7 +36,8 @@ export default function PlanExplorer({ plans }: { plans: Plan[] }) {
   const t = useT();
   const [network, setNetwork] = useState<Network | 'all'>('all');
   const [billing, setBilling] = useState<Billing>('all');
-  const [sort, setSort] = useState<Sort>('recommended');
+  // 처음 열 때는 항상 낮은 가격순으로 보여 준다
+  const [sort, setSort] = useState<Sort>('priceAsc');
   const [dataNeed, setDataNeed] = useState(0);
   const [intl, setIntl] = useState(false);
   const [maxPrice, setMaxPrice] = useState(0);
@@ -53,7 +54,8 @@ export default function PlanExplorer({ plans }: { plans: Plan[] }) {
         (maxPrice === 0 || p.promoPrice <= maxPrice),
     );
     const sorted = [...filtered];
-    if (sort === 'priceAsc') sorted.sort((a, b) => a.promoPrice - b.promoPrice);
+    // 같은 가격이면 데이터가 많은 요금제를 먼저 보여 준다
+    if (sort === 'priceAsc') sorted.sort((a, b) => a.promoPrice - b.promoPrice || b.dataGB - a.dataGB);
     if (sort === 'priceDesc') sorted.sort((a, b) => b.promoPrice - a.promoPrice);
     if (sort === 'dataDesc') sorted.sort((a, b) => b.dataGB - a.dataGB);
     return sorted;

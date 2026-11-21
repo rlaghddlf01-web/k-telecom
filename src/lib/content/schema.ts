@@ -183,7 +183,7 @@ export const PLAN_UI: ResourceUi = {
   titleKey: 'name',
   subKeys: ['network', 'data_label', 'promo_price'],
   help: '요금제 목록, 요금제 상세, 가입접수, 홈의 추천 요금제에 보입니다. 배지가 있는 요금제가 홈 추천에 먼저 나옵니다.',
-  seedHelp: '아직 등록한 요금제가 없어 예시 요금제가 표시되고 있습니다(예시 안내 문구 포함). 가져와서 실제 요금제로 고치면 예시 안내 문구가 사라집니다.',
+  seedHelp: '아직 등록한 요금제가 없어 기본 요금제(프리티 정책서 기준 후불 88개·선불 25개)가 표시되고 있습니다. 가져오면 수정할 수 있습니다.',
   empty: { name: '', network: 'KT', data_label: '', data_gb: 0, voice: '', sms: '', price: 0, promo_price: 0, promo_note: '', features: [], badge: '', sort_order: 0, active: true },
   fields: [
     { kind: 'text', key: 'name', label: '요금제 이름', max: 60, required: true, placeholder: '통화 넉넉 7GB' },

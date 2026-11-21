@@ -89,11 +89,32 @@ export default function ResourceManager({
   }
 
   const today = new Date().toISOString().slice(0, 10);
+  const [search, setSearch] = useState('');
+  const keyword = search.trim().toLowerCase();
+  const visible = keyword
+    ? rows.filter((r) => `${r[ui.titleKey] ?? ''} ${ui.subKeys.map((k) => display(k, r[k])).join(' ')}`.toLowerCase().includes(keyword))
+    : rows;
 
   return (
     <div>
       <div className="mb-2 flex flex-wrap items-center gap-3">
         <h1 className="mr-auto text-lg font-black">{ui.title}</h1>
+        {resource === 'plans' && rows.length > 0 && mode !== 'none' && (
+          <button
+            onClick={() => {
+              if (
+                confirm(
+                  `지금 등록된 요금제 ${rows.length}개를 모두 지우고, 프리티 정책서 기준 기본 요금제(후불 88개·선불 25개)로 바꿉니다.\n직접 수정한 내용은 사라집니다. 진행할까요?`,
+                )
+              ) {
+                run(adminFetch(api, jsonInit('POST', { action: 'replace' })), '기본 요금제로 바꿨습니다.');
+              }
+            }}
+            className={`${ghostBtn} inline-flex items-center gap-1.5`}
+          >
+            <Download className="h-3.5 w-3.5" /> 기본 요금제로 교체
+          </button>
+        )}
         <button
           className={`${primaryBtn} inline-flex items-center gap-1.5`}
           onClick={() => setDraft({ ...ui.empty, published_at: ui.empty.published_at === '' ? today : ui.empty.published_at, sort_order: (rows.length + 1) * 10 })}
@@ -127,8 +148,23 @@ export default function ResourceManager({
         </div>
       )}
 
+      {rows.length > 12 && (
+        <div className="mb-3 flex items-center gap-3">
+          <input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="이름·통신망으로 찾기"
+            aria-label="목록 검색"
+            className="w-full max-w-xs rounded-xl border border-black/10 bg-white px-3 py-2 text-sm outline-none focus:border-brand"
+          />
+          <span className="text-xs text-slate-400">{keyword ? `${visible.length} / ${rows.length}개` : `${rows.length}개`}</span>
+        </div>
+      )}
+
       <ul className="space-y-3">
-        {rows.map((row, i) => (
+        {visible.map((row) => {
+          const i = rows.indexOf(row);
+          return (
           <li key={row.id} className="flex flex-wrap items-center gap-4 rounded-2xl bg-white p-4 shadow-sm">
             <div className="min-w-0 flex-1">
               <p className="truncate text-sm font-extrabold">{String(row[ui.titleKey] ?? '').split('\n').join(' ')}</p>
@@ -142,10 +178,10 @@ export default function ResourceManager({
               />
               {!ui.byDate && (
                 <>
-                  <button aria-label="위로" disabled={i === 0} onClick={() => move(i, -1)} className={ghostBtn}>
+                  <button aria-label="위로" disabled={i === 0 || !!keyword} onClick={() => move(i, -1)} className={ghostBtn}>
                     <ArrowUp className="h-3.5 w-3.5" />
                   </button>
-                  <button aria-label="아래로" disabled={i === rows.length - 1} onClick={() => move(i, 1)} className={ghostBtn}>
+                  <button aria-label="아래로" disabled={i === rows.length - 1 || !!keyword} onClick={() => move(i, 1)} className={ghostBtn}>
                     <ArrowDown className="h-3.5 w-3.5" />
                   </button>
                 </>
@@ -164,7 +200,8 @@ export default function ResourceManager({
               </button>
             </div>
           </li>
-        ))}
+          );
+        })}
         {!loading && rows.length === 0 && <li className="rounded-2xl bg-white py-14 text-center text-sm text-slate-400">등록된 내용이 없습니다.</li>}
       </ul>
 
