@@ -230,9 +230,9 @@ export default function ProductManager({ onUnauthorized }: { onUnauthorized: () 
                 {p.badge && <> · <span className="font-bold text-brand">{p.badge}</span></>}
               </p>
             </div>
-            <div className="flex items-center gap-1.5">
+            <div className="flex w-full flex-wrap items-center justify-end gap-1.5 sm:w-auto sm:flex-nowrap">
               <Toggle checked={p.active} onChange={() => toggle(p)} label="노출" />
-              <button aria-label="맨 위로" title="맨 위로" disabled={i === 0} onClick={() => toTop(i)} className={`${ghostBtn} text-[11px] font-bold`}>
+              <button aria-label="맨 위로" title="맨 위로" disabled={i === 0} onClick={() => toTop(i)} className={`${ghostBtn} whitespace-nowrap text-[11px] font-bold`}>
                 맨위
               </button>
               <button aria-label="위로" disabled={i === 0} onClick={() => move(i, -1)} className={ghostBtn}>

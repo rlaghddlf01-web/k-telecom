@@ -21,6 +21,66 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+button,
+a,
+summary,
+select {
+  touch-action: manipulation;
+}
+
+/* 모바일 최적화: 손가락으로 누르기 쉽게, 읽기 쉽게 */
+@media (max-width: 767px) {
+  /* 입력칸 글자가 16px 보다 작으면 iOS 가 확대해 버린다 */
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  /* 너무 작은 글자(10px)는 11px 로 */
+  .text-\[10px\] {
+    font-size: 11px;
+  }
+
+  /* 글자 링크는 화면에서 모양은 그대로 두고 누르는 영역만 넓힌다 */
+  footer a,
+  summary,
+  main a.underline {
+    position: relative;
+  }
+  footer a::after,
+  main a.underline::after {
+    content: "";
+    position: absolute;
+    inset: -10px -6px;
+  }
+  footer ul li,
+  footer p a {
+    padding-block: 2px;
+  }
+
+  /* 하단 홈 막대가 있는 기기에서 띄워 둔 버튼이 가려지지 않게 */
+  .fixed.bottom-4,
+  .fixed.bottom-5 {
+    margin-bottom: env(safe-area-inset-bottom);
+  }
+}
+
 .section-title {
   font-size: 1.5rem;
   font-weight: 800;

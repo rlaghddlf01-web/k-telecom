@@ -233,7 +233,7 @@ export default function ResourceManager({
             aria-label="목록 검색"
             className="w-full max-w-xs rounded-xl border border-black/10 bg-white px-3 py-2 text-sm outline-none focus:border-brand"
           />
-          <span className="text-xs text-slate-400">{keyword ? `${visible.length} / ${rows.length}개` : `${rows.length}개`}</span>
+          <span className="whitespace-nowrap text-xs text-slate-400">{keyword ? `${visible.length} / ${rows.length}개` : `${rows.length}개`}</span>
         </div>
       )}
 
@@ -246,7 +246,7 @@ export default function ResourceManager({
               <p className="truncate text-sm font-extrabold">{String(row[ui.titleKey] ?? '').split('\n').join(' ')}</p>
               <p className="mt-0.5 truncate text-xs text-slate-400">{ui.subKeys.map((k) => display(k, row[k])).filter(Boolean).join(' · ')}</p>
             </div>
-            <div className="flex items-center gap-1.5">
+            <div className="flex w-full flex-wrap items-center justify-end gap-1.5 sm:w-auto sm:flex-nowrap">
               <Toggle
                 checked={row.active !== false}
                 onChange={() => run(adminFetch(api, jsonInit('PATCH', { id: row.id, active: row.active === false })))}
@@ -254,7 +254,7 @@ export default function ResourceManager({
               />
               {!ui.byDate && (
                 <>
-                  <button aria-label="맨 위로" title="맨 위로" disabled={i === 0 || !reordering} onClick={() => toTop(i)} className={`${ghostBtn} text-[11px] font-bold`}>
+                  <button aria-label="맨 위로" title="맨 위로" disabled={i === 0 || !reordering} onClick={() => toTop(i)} className={`${ghostBtn} whitespace-nowrap text-[11px] font-bold`}>
                     맨위
                   </button>
                   <button aria-label="위로" disabled={i === 0 || !reordering} onClick={() => move(i, -1)} className={ghostBtn}>
