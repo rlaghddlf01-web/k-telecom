@@ -227,17 +227,18 @@ interface Ctx {
 const FOREIGN_ONLY = /(국제통화|어떤 언어를 지원|국적|모국어 선택)/;
 const SHORT = (s: string, n: number) => (s.length > n ? `${s.slice(0, n)}…` : s);
 
-function flatten(blocks: Block[]): string {
+/** 블록 본문을 글로 펴 준다. tr 은 문장 하나하나에 먼저 적용한다 (한국인용 문구 사전은 문장 단위로 되어 있다) */
+function flatten(blocks: Block[], tr: (s: string) => string = (s) => s): string {
   const out: string[] = [];
   for (const b of blocks) {
-    if (b.type === 'notice') out.push(`[안내] ${b.text}`);
-    else if (b.type === 'text') out.push([b.heading, ...b.paragraphs].filter(Boolean).join(' '));
-    else if (b.type === 'cards') out.push(b.items.map((i) => `${i.title}: ${i.desc}`).join(' / '));
-    else if (b.type === 'steps') out.push(`${b.heading ?? '순서'}: ${b.items.map((i, n) => `${n + 1}) ${i.title} - ${i.desc}`).join(' ')}`);
-    else if (b.type === 'table') out.push(`${b.heading ?? ''} ${b.rows.map((r) => r.join(' | ')).join(' ; ')}`.trim());
-    else if (b.type === 'faq') out.push(b.items.map((i) => `Q ${i.q} A ${i.a}`).join(' '));
-    else if (b.type === 'links') out.push(`${b.heading ?? '링크'}: ${b.items.map((i) => i.label).join(', ')}`);
-    else if (b.type === 'cta') out.push(`${b.title} ${b.desc}`);
+    if (b.type === 'notice') out.push(`[안내] ${tr(b.text)}`);
+    else if (b.type === 'text') out.push([b.heading, ...b.paragraphs].filter(Boolean).map((s) => tr(s as string)).join(' '));
+    else if (b.type === 'cards') out.push(b.items.map((i) => `${tr(i.title)}: ${tr(i.desc)}`).join(' / '));
+    else if (b.type === 'steps') out.push(`${tr(b.heading ?? '순서')}: ${b.items.map((i, n) => `${n + 1}) ${tr(i.title)} - ${tr(i.desc)}`).join(' ')}`);
+    else if (b.type === 'table') out.push(`${b.heading ? tr(b.heading) : ''} ${b.rows.map((r) => r.map(tr).join(' | ')).join(' ; ')}`.trim());
+    else if (b.type === 'faq') out.push(b.items.map((i) => `Q ${tr(i.q)} A ${tr(i.a)}`).join(' '));
+    else if (b.type === 'links') out.push(`${tr(b.heading ?? '링크')}: ${b.items.map((i) => tr(i.label)).join(', ')}`);
+    else if (b.type === 'cta') out.push(`${tr(b.title)} ${tr(b.desc)}`);
   }
   return out.join('\n');
 }
@@ -253,7 +254,11 @@ const clean = (text: string, ctx: Ctx) => {
   return text
     .split('\n')
     .filter((l) => !(ctx.korean && FOREIGN_ONLY.test(l)))
-    .map(tr)
+    .map((l) => {
+      const out = tr(l);
+      // 사전에 없는 문장에 남은 외국인등록증은 한국인 고객에게는 신분증으로 말한다
+      return ctx.korean ? out.replace(/외국인\s?등록증(\s?\(ARC\))?/g, '신분증') : out;
+    })
     .join('\n');
 };
 
@@ -271,7 +276,10 @@ async function allPagePaths(): Promise<{ path: string; title: string }[]> {
 
 async function pageText(path: string, ctx: Ctx): Promise<{ title: string; text: string } | null> {
   const page = await getContentPage(path);
-  if (page) return { title: page.title, text: clean([page.lead ?? '', flatten(page.blocks)].filter(Boolean).join('\n'), ctx) };
+  if (page) {
+    const tr = koText(ctx);
+    return { title: page.title, text: clean([page.lead ? tr(page.lead) : '', flatten(page.blocks, tr)].filter(Boolean).join('\n'), ctx) };
+  }
   if (DEDICATED_PAGES.some((d) => d.path === path)) {
     const meta = await getPageMeta(path);
     return { title: meta.title, text: clean(meta.lead, ctx) };
