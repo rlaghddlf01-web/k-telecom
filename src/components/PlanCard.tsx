@@ -4,7 +4,7 @@ import Link from '@/components/LocaleLink';
 import { Phone, MessageSquare } from 'lucide-react';
 import { won, type Plan } from '@/lib/plans';
 import { useT } from '@/components/LangProvider';
-import { planText } from '@/lib/planText';
+import { planNote, planText } from '@/lib/planText';
 
 const NETWORK_TONE: Record<Plan['network'], string> = {
   SKT: 'bg-rose-50 text-rose-600',
@@ -47,7 +47,7 @@ export default function PlanCard({ plan }: { plan: Plan }) {
         <p className="text-xl font-black text-brand">
           {t('월')} {won(plan.promoPrice, t)}
         </p>
-        <p className="mt-0.5 text-[11px] text-slate-400">{t(plan.promoNote)}</p>
+        <p className="mt-0.5 text-[11px] text-slate-400">{planNote(plan.promoNote, t)}</p>
         <div className="mt-4 grid grid-cols-2 gap-2">
           <Link
             href={`/plans/view/${plan.id}`}

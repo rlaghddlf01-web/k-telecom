@@ -141,9 +141,9 @@ export async function POST(req: NextRequest, ctx: Ctx) {
       return json({ success: true, count });
     }
 
-    // 요금제만: 지금 등록된 요금제를 모두 지우고 기본 요금제(프리티 정책서)로 바꾼다.
-    // 새 요금제를 먼저 넣고 나서 이전 것을 지우므로, 중간에 실패해도 요금제가 비지 않는다.
-    if (body.action === 'replace' && resource === 'plans') {
+    // 지금 등록된 항목을 모두 지우고 기본 내용(요금제·상품은 프리티 홈페이지 기준)으로 바꾼다.
+    // 새 항목을 먼저 넣고 나서 이전 것을 지우므로, 중간에 실패해도 목록이 비지 않는다.
+    if (body.action === 'replace') {
       const old = await listRows(resource);
       const count = await insertRows(resource, seedRows(resource));
       for (const row of old) await deleteRow(resource, String(row.id));

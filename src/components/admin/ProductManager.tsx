@@ -137,6 +137,18 @@ export default function ProductManager({ onUnauthorized }: { onUnauthorized: () 
     <div>
       <div className="mb-4 flex flex-wrap items-center gap-3">
         <h1 className="mr-auto text-lg font-black">상품 관리 (스마트폰)</h1>
+        {rows.length > 0 && mode !== 'none' && (
+          <button
+            onClick={() => {
+              if (confirm(`지금 등록된 상품 ${rows.length}개를 모두 지우고, 프리티 홈페이지 기준 기본 휴대폰으로 바꿉니다.\n직접 수정한 내용은 사라집니다. 진행할까요?`)) {
+                run(adminFetch('/api/admin/content/products', jsonInit('POST', { action: 'replace' })), '기본 상품으로 바꿨습니다.');
+              }
+            }}
+            className={`${ghostBtn} inline-flex items-center gap-1.5`}
+          >
+            <Download className="h-3.5 w-3.5" /> 기본 상품으로 교체
+          </button>
+        )}
         <button className={`${primaryBtn} inline-flex items-center gap-1.5`} onClick={() => setDraft({ ...EMPTY, sort_order: (rows.length + 1) * 10 })}>
           <Plus className="h-3.5 w-3.5" /> 새 상품
         </button>

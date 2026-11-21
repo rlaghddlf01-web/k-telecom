@@ -183,7 +183,7 @@ export const PLAN_UI: ResourceUi = {
   titleKey: 'name',
   subKeys: ['network', 'data_label', 'promo_price'],
   help: '요금제 목록, 요금제 상세, 가입접수, 홈의 추천 요금제에 보입니다. 배지가 있는 요금제가 홈 추천에 먼저 나옵니다.',
-  seedHelp: '아직 등록한 요금제가 없어 기본 요금제(프리티 정책서 기준 후불 88개·선불 25개)가 표시되고 있습니다. 가져오면 수정할 수 있습니다.',
+  seedHelp: '아직 등록한 요금제가 없어 기본 요금제(프리티 홈페이지 기준)가 표시되고 있습니다. 가져오면 수정할 수 있습니다.',
   empty: { name: '', network: 'KT', data_label: '', data_gb: 0, voice: '', sms: '', price: 0, promo_price: 0, promo_note: '', features: [], badge: '', sort_order: 0, active: true },
   fields: [
     { kind: 'text', key: 'name', label: '요금제 이름', max: 60, required: true, placeholder: '통화 넉넉 7GB' },
@@ -195,7 +195,7 @@ export const PLAN_UI: ResourceUi = {
     { kind: 'number', key: 'price', label: '정상 요금(원)', min: 0, max: 10000000 },
     { kind: 'number', key: 'promo_price', label: '할인 요금(원)', min: 0, max: 10000000, hint: '비우면 정상 요금과 같게 표시됩니다.' },
     { kind: 'text', key: 'promo_note', label: '할인 조건 문구', max: 80, placeholder: '할인 종료 후 29,700원' },
-    { kind: 'strings', key: 'features', label: '부가 혜택', max: 6, itemMax: 30, addLabel: '혜택 추가', hint: '예: 무료 국제통화 패키지 (「무료 국제통화 포함」 필터는 이 이름으로 찾습니다)' },
+    { kind: 'strings', key: 'features', label: '부가 혜택', max: 6, itemMax: 30, addLabel: '혜택 추가', hint: '예: 무료 국제통화 패키지 (「무료 국제통화 포함」 필터는 이 이름으로 찾습니다). 선불 요금제는 혜택에 「선불」을 적어 주세요. 적지 않으면 후불로 나옵니다.' },
     { kind: 'text', key: 'badge', label: '배지', max: 12, placeholder: '인기' },
     { kind: 'number', key: 'sort_order', label: '순서 번호', hint: '작을수록 먼저 보입니다.' },
     { kind: 'toggle', key: 'active', label: '사이트에 노출' },

@@ -104,7 +104,7 @@ export default function ResourceManager({
             onClick={() => {
               if (
                 confirm(
-                  `지금 등록된 요금제 ${rows.length}개를 모두 지우고, 프리티 정책서 기준 기본 요금제(후불 88개·선불 25개)로 바꿉니다.\n직접 수정한 내용은 사라집니다. 진행할까요?`,
+                  `지금 등록된 요금제 ${rows.length}개를 모두 지우고, 프리티 홈페이지 기준 기본 요금제로 바꿉니다.\n직접 수정한 내용은 사라집니다. 진행할까요?`,
                 )
               ) {
                 run(adminFetch(api, jsonInit('POST', { action: 'replace' })), '기본 요금제로 바꿨습니다.');
