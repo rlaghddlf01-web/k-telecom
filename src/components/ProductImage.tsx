@@ -5,7 +5,7 @@ import type { Phone } from '@/lib/phones';
 export default function ProductImage({ phone, className = '' }: { phone: Phone; className?: string }) {
   if (phone.image) {
     // eslint-disable-next-line @next/next/no-img-element
-    return <img src={phone.image} alt={phone.title} className={`object-contain ${className}`} loading="lazy" />;
+    return <img src={phone.image} alt={phone.title} className={`max-w-full object-contain ${className}`} loading="lazy" />;
   }
   return <PhoneMockup kind={phone.kind} from={phone.from} to={phone.to} className={className} />;
 }

@@ -59,8 +59,8 @@ export default function PhonesCatalog({ phones }: { phones: Phone[] }) {
                   {t(p.badge)}
                 </span>
               )}
-              <div className="flex h-44 items-center justify-center">
-                <ProductImage phone={p} className="h-40 drop-shadow-[0_14px_14px_rgba(15,20,36,0.25)]" />
+              <div className="flex h-52 items-center justify-center">
+                <ProductImage phone={p} className="max-h-48 w-auto drop-shadow-[0_14px_14px_rgba(15,20,36,0.25)]" />
               </div>
               <p className="mt-3 text-[11px] font-semibold text-slate-400">{t(p.tag)}</p>
               <h3 className="mt-1 line-clamp-2 min-h-[2.5rem] text-xs font-bold leading-snug">{t(p.title)}</h3>
