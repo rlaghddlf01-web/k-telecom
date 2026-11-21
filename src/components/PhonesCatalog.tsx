@@ -16,7 +16,14 @@ const TABS: { id: PhoneGroup | 'all'; label: string }[] = [
 export default function PhonesCatalog({ phones }: { phones: Phone[] }) {
   const t = useT();
   const [tab, setTab] = useState<PhoneGroup | 'all'>('all');
-  const list = phones.filter((p) => tab === 'all' || p.group === tab);
+  // 항상 월 금액이 낮은 순으로 보여 준다 (금액을 읽을 수 없는 문구는 맨 뒤)
+  const monthly = (price: string) => {
+    const m = price.match(/([\d,]+)\s*원/);
+    return m ? Number(m[1].replace(/,/g, '')) : Number.POSITIVE_INFINITY;
+  };
+  const list = phones
+    .filter((p) => tab === 'all' || p.group === tab)
+    .sort((a, b) => monthly(a.price) - monthly(b.price));
 
   return (
     <div>
