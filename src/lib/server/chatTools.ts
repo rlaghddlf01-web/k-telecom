@@ -185,6 +185,10 @@ async function getPhoneDetail(a: Args): Promise<string> {
   const phones = await getProducts();
   const p = phones.find((x) => norm(x.title) === q) ?? phones.find((x) => norm(x.title).includes(q));
   if (!p) return '해당 이름의 휴대폰을 찾지 못했습니다. search_phones 로 먼저 찾아 보세요.';
+  return phoneDetailText(p);
+}
+
+function phoneDetailText(p: Awaited<ReturnType<typeof getProducts>>[number]): string {
   const extra = PHONE_EXTRAS[p.title];
   const rows = p.specs ?? extra?.rows ?? [];
   const isNew = p.isNew ?? extra?.isNew ?? false;
@@ -402,4 +406,56 @@ export async function runTool(name: string, args: Args, ctx: Ctx = { korean: tru
   } catch {
     return '정보를 불러오지 못했습니다. 직원이 확인해 드린다고 안내하세요.';
   }
+}
+
+// ---------------------------------------------------------------------------
+// 전화 상담용 스냅샷: 전화 프로그램이 켜질 때 한 번에 받아 메모리에 올려 두고, 이후에는 인터넷 없이 바로 찾는다
+// ---------------------------------------------------------------------------
+export async function buildSnapshot() {
+  const ko: Ctx = { korean: true };
+  const fo: Ctx = { korean: false };
+  const [{ plans }, phones, faqKo, faqFo, pagesKo, pagesFo, eventsKo, eventsFo, noticesKo, noticesFo, company] = await Promise.all([
+    getPlans(),
+    getProducts(),
+    getFaqsForLang('ko'),
+    getFaqsForLang('en'),
+    pageIndex(ko),
+    pageIndex(fo),
+    eventsText('events', ko),
+    eventsText('events', fo),
+    eventsText('notices', ko),
+    eventsText('notices', fo),
+    companyInfo(),
+  ]);
+  const monthly = (price: string) => Number((price.match(/([\d,]+)\s*원/)?.[1] ?? '').replace(/,/g, '')) || null;
+  return {
+    generatedAt: new Date().toISOString(),
+    plans: plans.map((p) => ({
+      id: p.id,
+      name: p.name,
+      network: p.network,
+      billing: p.billing ?? 'post',
+      dataGB: p.dataGB,
+      promoPrice: p.promoPrice,
+      promoNote: p.promoNote,
+      features: p.features,
+      badge: p.badge ?? '',
+      line: planLine(p),
+    })),
+    phones: phones.map((p) => ({
+      title: p.title,
+      brand: PHONE_EXTRAS[p.title]?.brand ?? (p.group === 'iphone' ? 'apple' : 'samsung'),
+      monthly: monthly(p.price),
+      line: `- ${p.title} | ${p.price} | ${p.note}${p.badge ? ` | ${p.badge}` : ''}`,
+      detail: phoneDetailText(p),
+    })),
+    faqs: {
+      korean: faqKo.map((f) => ({ category: f.category, q: f.q, a: f.a })),
+      foreign: faqFo.map((f) => ({ category: f.category, q: f.q, a: f.a })),
+    },
+    pages: { korean: pagesKo, foreign: pagesFo },
+    events: { korean: eventsKo, foreign: eventsFo },
+    notices: { korean: noticesKo, foreign: noticesFo },
+    company,
+  };
 }
