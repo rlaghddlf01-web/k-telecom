@@ -26,12 +26,26 @@ export async function GET(req: NextRequest) {
 
   // 저장소 연결 여부와 관계없이 잘못된 요청은 먼저 거른다
   const params = req.nextUrl.searchParams;
-  if (!params.get('summary') && !isKind(params.get('kind'))) {
+  if (!params.get('summary') && !params.get('planCounts') && !isKind(params.get('kind'))) {
     return NextResponse.json({ error: 'Bad kind' }, { status: 400 });
   }
   const statusParam = params.get('status');
   if (statusParam && !isStatus(statusParam)) {
     return NextResponse.json({ error: 'Bad status' }, { status: 400 });
+  }
+
+  // 요금제별 가입접수 건수 (관리자 요금제 목록의 "가입 많은순" 정렬용)
+  if (params.get('planCounts')) {
+    if (!isSupabaseConfigured()) return NextResponse.json({ counts: {} });
+    try {
+      const { data, error } = await getSupabaseAdmin().from(TABLES.application).select('plan_name').limit(5000);
+      if (error) throw error;
+      const counts: Record<string, number> = {};
+      for (const row of data ?? []) counts[row.plan_name] = (counts[row.plan_name] ?? 0) + 1;
+      return NextResponse.json({ counts });
+    } catch {
+      return serverError();
+    }
   }
 
   if (!isSupabaseConfigured()) {

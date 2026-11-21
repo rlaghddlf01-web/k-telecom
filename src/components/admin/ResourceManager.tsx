@@ -112,9 +112,32 @@ export default function ResourceManager({
   const today = new Date().toISOString().slice(0, 10);
   const [search, setSearch] = useState('');
   const keyword = search.trim().toLowerCase();
-  const visible = keyword
-    ? rows.filter((r) => `${r[ui.titleKey] ?? ''} ${ui.subKeys.map((k) => display(k, r[k])).join(' ')}`.toLowerCase().includes(keyword))
-    : rows;
+  const [sortBy, setSortBy] = useState<'order' | 'priceAsc' | 'priceDesc' | 'dataDesc' | 'signups'>('order');
+  const [netFilter, setNetFilter] = useState('');
+  const [counts, setCounts] = useState<Record<string, number>>({});
+  const isPlans = resource === 'plans';
+  useEffect(() => {
+    if (!isPlans) return;
+    adminFetch<{ counts?: Record<string, number> }>('/api/admin/submissions?planCounts=1').then((res) => {
+      if (res.ok) setCounts(res.data.counts ?? {});
+    });
+  }, [isPlans]);
+  const signups = (r: Row) => counts[String(r.name ?? '')] ?? 0;
+  // 정렬·필터를 쓰는 동안에는 위·아래 이동을 막는다 (화면 순서가 실제 순서가 아니므로)
+  const reordering = !keyword && sortBy === 'order' && !netFilter;
+  let visible = rows.filter(
+    (r) =>
+      (!keyword || `${r[ui.titleKey] ?? ''} ${ui.subKeys.map((k) => display(k, r[k])).join(' ')}`.toLowerCase().includes(keyword)) &&
+      (!netFilter || r.network === netFilter),
+  );
+  if (isPlans && sortBy !== 'order') {
+    const num = (r: Row, k: string) => Number(r[k] ?? 0);
+    visible = [...visible].sort((a, b) =>
+      sortBy === 'priceAsc' ? num(a, 'promo_price') - num(b, 'promo_price') :
+      sortBy === 'priceDesc' ? num(b, 'promo_price') - num(a, 'promo_price') :
+      sortBy === 'dataDesc' ? num(b, 'data_gb') - num(a, 'data_gb') :
+      signups(b) - signups(a) || num(a, 'promo_price') - num(b, 'promo_price'));
+  }
 
   return (
     <div>
@@ -182,6 +205,25 @@ export default function ResourceManager({
         </div>
       )}
 
+      {isPlans && rows.length > 1 && (
+        <div className="mb-3 flex flex-wrap items-center gap-2">
+          <select value={sortBy} onChange={(e) => setSortBy(e.target.value as typeof sortBy)} aria-label="정렬" className="rounded-xl border border-black/10 bg-white px-3 py-2 text-sm font-semibold outline-none focus:border-brand">
+            <option value="order">내가 정한 순서</option>
+            <option value="priceAsc">낮은 가격순</option>
+            <option value="priceDesc">높은 가격순</option>
+            <option value="dataDesc">데이터 많은순</option>
+            <option value="signups">가입 많은순</option>
+          </select>
+          <select value={netFilter} onChange={(e) => setNetFilter(e.target.value)} aria-label="통신망" className="rounded-xl border border-black/10 bg-white px-3 py-2 text-sm font-semibold outline-none focus:border-brand">
+            <option value="">통신망 전체</option>
+            <option value="SKT">SKT</option>
+            <option value="KT">KT</option>
+            <option value="LGU+">LG U+</option>
+          </select>
+          {sortBy !== 'order' && <span className="text-xs text-slate-400">정렬 중에는 위·아래 이동이 꺼집니다. "내가 정한 순서"로 돌아가면 이동할 수 있습니다.</span>}
+        </div>
+      )}
+
       {rows.length > 12 && (
         <div className="mb-3 flex items-center gap-3">
           <input
@@ -212,13 +254,13 @@ export default function ResourceManager({
               />
               {!ui.byDate && (
                 <>
-                  <button aria-label="맨 위로" title="맨 위로" disabled={i === 0 || !!keyword} onClick={() => toTop(i)} className={`${ghostBtn} text-[11px] font-bold`}>
+                  <button aria-label="맨 위로" title="맨 위로" disabled={i === 0 || !reordering} onClick={() => toTop(i)} className={`${ghostBtn} text-[11px] font-bold`}>
                     맨위
                   </button>
-                  <button aria-label="위로" disabled={i === 0 || !!keyword} onClick={() => move(i, -1)} className={ghostBtn}>
+                  <button aria-label="위로" disabled={i === 0 || !reordering} onClick={() => move(i, -1)} className={ghostBtn}>
                     <ArrowUp className="h-3.5 w-3.5" />
                   </button>
-                  <button aria-label="아래로" disabled={i === rows.length - 1 || !!keyword} onClick={() => move(i, 1)} className={ghostBtn}>
+                  <button aria-label="아래로" disabled={i === rows.length - 1 || !reordering} onClick={() => move(i, 1)} className={ghostBtn}>
                     <ArrowDown className="h-3.5 w-3.5" />
                   </button>
                 </>
