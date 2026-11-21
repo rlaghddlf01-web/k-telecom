@@ -71,9 +71,18 @@ async def main() -> None:
         session_factory=make_session,
         recording=False,  # 음성 녹음은 하지 않는다
     )
-    agent.on("call_start")(lambda *a, **k: log.info("통화 시작"))
-    agent.on("call_end")(lambda *a, **k: log.info("통화 종료"))
-    agent.on("call_failed")(lambda *a, **k: log.warning("통화 실패"))
+    # 이벤트 처리 함수는 반드시 async 여야 한다 (일반 함수면 통화가 바로 끊긴다)
+    @agent.on("call_start")
+    async def _on_start(*_args, **_kwargs) -> None:
+        log.info("통화 시작")
+
+    @agent.on("call_end")
+    async def _on_end(*_args, **_kwargs) -> None:
+        log.info("통화 종료")
+
+    @agent.on("call_failed")
+    async def _on_failed(*_args, **_kwargs) -> None:
+        log.warning("통화 실패")
 
     @agent.tool
     async def search_plans(
@@ -117,6 +126,36 @@ async def main() -> None:
     async def search_faq(keyword: str) -> str:
         """Search the frequently asked questions (documents, activation, number porting, cancellation, payment...). Returns Korean text."""
         return await asyncio.to_thread(_call_site, "search_faq", {"keyword": keyword})
+
+    @agent.tool
+    async def list_pages() -> str:
+        """List every information page of the website (path, title, short summary). Returns Korean text."""
+        return await asyncio.to_thread(_call_site, "list_pages", {})
+
+    @agent.tool
+    async def search_pages(keyword: str) -> str:
+        """Search all website information pages by a Korean keyword (셀프개통, 부가서비스, 할부, 인터넷, IPTV, 약관, 개인정보, 주문조회, 서류 ...) and return only the matching lines. Returns Korean text."""
+        return await asyncio.to_thread(_call_site, "search_pages", {"keyword": keyword})
+
+    @agent.tool
+    async def get_page(page: str) -> str:
+        """Get the content of one website page by its path (e.g. /plans/self, /internet, /company) or title. Returns Korean text."""
+        return await asyncio.to_thread(_call_site, "get_page", {"page": page})
+
+    @agent.tool
+    async def get_events() -> str:
+        """Current events and promotions. Returns Korean text."""
+        return await asyncio.to_thread(_call_site, "get_events", {})
+
+    @agent.tool
+    async def get_notices() -> str:
+        """Recent notices. Returns Korean text."""
+        return await asyncio.to_thread(_call_site, "get_notices", {})
+
+    @agent.tool
+    async def get_company_info() -> str:
+        """Company name, CEO, address, phone, email and how to reach staff. Returns Korean text."""
+        return await asyncio.to_thread(_call_site, "get_company_info", {})
 
     if sys.platform == "win32":
         # serve() 는 유닉스 종료 신호를 쓰므로 윈도우에서는 연결만 하고 계속 대기한다.

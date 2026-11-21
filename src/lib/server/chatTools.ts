@@ -1,4 +1,17 @@
-import { getFaqsForLang, getPlans, getProducts } from '@/lib/content/load';
+import {
+  getContentPage,
+  getCustomPagePaths,
+  getEvents,
+  getFaqsForLang,
+  getNotices,
+  getPageMeta,
+  getPlans,
+  getProducts,
+  getSiteSettings,
+} from '@/lib/content/load';
+import { DEDICATED_PAGES } from '@/lib/content/pageIndex';
+import { dictionaryOf } from '@/lib/dictionaries';
+import { PAGES, type Block } from '@/lib/pages';
 import { PHONE_EXTRAS, PHONE_INCLUDES, PHONE_POLICY } from '@/lib/phoneExtras';
 import type { Plan } from '@/lib/plans';
 
@@ -48,6 +61,36 @@ export const TOOL_DECLARATIONS = [
     name: 'get_phone',
     description: 'Get the full detail of one phone: price, specifications, what is in the box, and the exchange/return policy.',
     parameters: { type: 'OBJECT', properties: { name: { type: 'STRING', description: 'Phone name or part of it' } }, required: ['name'] },
+  },
+  {
+    name: 'list_pages',
+    description: 'List every information page of the website (title, path and one-line summary): self-activation, add-on services, phone installments, internet, IPTV, forms, guides, order status, company, location, terms, privacy, custom pages.',
+    parameters: { type: 'OBJECT', properties: {} },
+  },
+  {
+    name: 'search_pages',
+    description: 'Search the text of all website information pages by keyword (e.g. 셀프개통, 부가서비스, 할부, 인터넷, IPTV, 약관, 개인정보, 주문조회, 서류) and return the matching pages with their content.',
+    parameters: { type: 'OBJECT', properties: { keyword: { type: 'STRING', description: 'Korean keyword' } }, required: ['keyword'] },
+  },
+  {
+    name: 'get_page',
+    description: 'Get the full content of one website page by its path (e.g. /plans/self, /internet, /company) or title.',
+    parameters: { type: 'OBJECT', properties: { page: { type: 'STRING', description: 'Page path or title' } }, required: ['page'] },
+  },
+  {
+    name: 'get_events',
+    description: 'Current events and promotions (title, period, details).',
+    parameters: { type: 'OBJECT', properties: {} },
+  },
+  {
+    name: 'get_notices',
+    description: 'Recent notices (title, date, details).',
+    parameters: { type: 'OBJECT', properties: {} },
+  },
+  {
+    name: 'get_company_info',
+    description: 'Company information: name, CEO, address, phone, email, business registration numbers, and how to reach staff.',
+    parameters: { type: 'OBJECT', properties: {} },
   },
   {
     name: 'search_faq',
@@ -173,9 +216,153 @@ async function searchFaq(a: Args): Promise<string> {
   return scored.map(({ f }) => `Q. ${f.q}\nA. ${f.a}`).join('\n\n');
 }
 
-export async function runTool(name: string, args: Args): Promise<string> {
+// ---------------------------------------------------------------------------
+// 사이트 안내 페이지 · 이벤트 · 공지 · 회사 정보
+// ---------------------------------------------------------------------------
+/** korean: 한국인 고객용 문구(locales/ko.json 의 "원문 → 한국인용 문구")를 쓰고 외국인 전용 항목은 뺀다 */
+interface Ctx {
+  korean: boolean;
+}
+
+const FOREIGN_ONLY = /(국제통화|어떤 언어를 지원|국적|모국어 선택)/;
+const SHORT = (s: string, n: number) => (s.length > n ? `${s.slice(0, n)}…` : s);
+
+function flatten(blocks: Block[]): string {
+  const out: string[] = [];
+  for (const b of blocks) {
+    if (b.type === 'notice') out.push(`[안내] ${b.text}`);
+    else if (b.type === 'text') out.push([b.heading, ...b.paragraphs].filter(Boolean).join(' '));
+    else if (b.type === 'cards') out.push(b.items.map((i) => `${i.title}: ${i.desc}`).join(' / '));
+    else if (b.type === 'steps') out.push(`${b.heading ?? '순서'}: ${b.items.map((i, n) => `${n + 1}) ${i.title} - ${i.desc}`).join(' ')}`);
+    else if (b.type === 'table') out.push(`${b.heading ?? ''} ${b.rows.map((r) => r.join(' | ')).join(' ; ')}`.trim());
+    else if (b.type === 'faq') out.push(b.items.map((i) => `Q ${i.q} A ${i.a}`).join(' '));
+    else if (b.type === 'links') out.push(`${b.heading ?? '링크'}: ${b.items.map((i) => i.label).join(', ')}`);
+    else if (b.type === 'cta') out.push(`${b.title} ${b.desc}`);
+  }
+  return out.join('\n');
+}
+
+const koText = (ctx: Ctx) => {
+  const dict = ctx.korean ? dictionaryOf('ko') : {};
+  return (s: string) => dict[s] ?? s;
+};
+
+/** 문장 단위로 외국인 전용 문장을 빼고(한국인용일 때), 한국인용 문구로 바꾼다 */
+const clean = (text: string, ctx: Ctx) => {
+  const tr = koText(ctx);
+  return text
+    .split('\n')
+    .filter((l) => !(ctx.korean && FOREIGN_ONLY.test(l)))
+    .map(tr)
+    .join('\n');
+};
+
+async function allPagePaths(): Promise<{ path: string; title: string }[]> {
+  const custom = await getCustomPagePaths();
+  const base = [...PAGES.map((p) => p.path), ...custom];
+  const out: { path: string; title: string }[] = [];
+  for (const path of base) {
+    const page = await getContentPage(path);
+    if (page) out.push({ path, title: page.title });
+  }
+  for (const d of DEDICATED_PAGES) out.push({ path: d.path, title: d.title });
+  return out;
+}
+
+async function pageText(path: string, ctx: Ctx): Promise<{ title: string; text: string } | null> {
+  const page = await getContentPage(path);
+  if (page) return { title: page.title, text: clean([page.lead ?? '', flatten(page.blocks)].filter(Boolean).join('\n'), ctx) };
+  if (DEDICATED_PAGES.some((d) => d.path === path)) {
+    const meta = await getPageMeta(path);
+    return { title: meta.title, text: clean(meta.lead, ctx) };
+  }
+  return null;
+}
+
+async function listPages(ctx: Ctx): Promise<string> {
+  const pages = await allPagePaths();
+  const lines: string[] = [];
+  for (const p of pages) {
+    if (ctx.korean && FOREIGN_ONLY.test(p.title)) continue;
+    const t = await pageText(p.path, ctx);
+    lines.push(`- ${p.path} | ${koText(ctx)(p.title)} | ${SHORT((t?.text ?? '').replace(/\n/g, ' '), 80)}`);
+  }
+  return `홈페이지 안내 페이지 ${lines.length}개:\n${lines.join('\n')}`;
+}
+
+async function searchPages(a: Args, ctx: Ctx): Promise<string> {
+  const kw = norm(str(a.keyword));
+  const words = str(a.keyword).split(/\s+/).filter((w) => w.length > 1).map(norm);
+  if (!kw) return '검색어를 알려 주세요.';
+  const hits: { path: string; title: string; text: string; score: number }[] = [];
+  for (const p of await allPagePaths()) {
+    const t = await pageText(p.path, ctx);
+    if (!t) continue;
+    const hay = norm(`${t.title} ${t.text}`);
+    const score = (hay.includes(kw) ? 3 : 0) + words.filter((w) => hay.includes(w)).length + (norm(t.title).includes(kw) ? 3 : 0);
+    if (score > 0) hits.push({ path: p.path, title: koText(ctx)(t.title), text: t.text, score });
+  }
+  hits.sort((x, y) => y.score - x.score);
+  if (hits.length === 0) return '관련 페이지가 없습니다. 직원이 확인해 드린다고 안내하세요.';
+  // 페이지 전체가 아니라 질문 단어가 들어 있는 줄만 꺼낸다 (없으면 맨 앞 두 줄)
+  const terms = [kw, ...words];
+  const relevant = (text: string) => {
+    const lines = text.split('\n').filter(Boolean);
+    const picked = lines.filter((l) => terms.some((t) => norm(l).includes(t)));
+    return SHORT((picked.length ? picked : lines.slice(0, 2)).join('\n'), 500);
+  };
+  return hits.slice(0, 3).map((h) => `## ${h.title} (${h.path})\n${relevant(h.text)}`).join('\n\n');
+}
+
+async function getPageDetail(a: Args, ctx: Ctx): Promise<string> {
+  const q = str(a.page);
+  const pages = await allPagePaths();
+  const hit = pages.find((p) => p.path === q) ?? pages.find((p) => norm(p.title) === norm(q)) ?? pages.find((p) => norm(p.title).includes(norm(q)));
+  if (!hit) return '해당 페이지를 찾지 못했습니다. list_pages 로 먼저 찾아 보세요.';
+  const t = await pageText(hit.path, ctx);
+  return t ? `## ${koText(ctx)(t.title)} (${hit.path})\n${SHORT(t.text, 1800)}` : '내용이 없습니다.';
+}
+
+async function eventsText(kind: 'events' | 'notices', ctx: Ctx): Promise<string> {
+  const posts = await (kind === 'events' ? getEvents() : getNotices());
+  const list = posts.filter((p) => !(ctx.korean && FOREIGN_ONLY.test(`${p.title} ${p.body.join(' ')}`))).slice(0, 6);
+  if (list.length === 0) return kind === 'events' ? '진행 중인 이벤트가 없습니다.' : '등록된 공지가 없습니다.';
+  const tr = koText(ctx);
+  return list.map((p) => `- ${tr(p.title)}${p.period ? ` (기간: ${p.period})` : ''} [${p.date}]\n  ${SHORT(p.body.map(tr).join(' '), 300)}`).join('\n');
+}
+
+async function companyInfo(): Promise<string> {
+  const { footer } = await getSiteSettings();
+  const c = footer.company;
+  return [
+    `상호: ${c.name}`,
+    `대표: ${c.ceo}`,
+    `주소: ${c.address}`,
+    `대표 연락처: ${c.phone}`,
+    `이메일: ${c.email}`,
+    c.bizNumber ? `사업자등록번호: ${c.bizNumber}` : '',
+    c.salesNumber ? `통신판매업 신고번호: ${c.salesNumber}` : '',
+    '상담: 홈페이지의 1:1 상담문의나 가입 신청서를 남기시면 상담원이 연락드립니다.',
+  ]
+    .filter(Boolean)
+    .join('\n');
+}
+
+export async function runTool(name: string, args: Args, ctx: Ctx = { korean: true }): Promise<string> {
   try {
     switch (name) {
+      case 'list_pages':
+        return await listPages(ctx);
+      case 'search_pages':
+        return await searchPages(args, ctx);
+      case 'get_page':
+        return await getPageDetail(args, ctx);
+      case 'get_events':
+        return await eventsText('events', ctx);
+      case 'get_notices':
+        return await eventsText('notices', ctx);
+      case 'get_company_info':
+        return await companyInfo();
       case 'search_plans':
         return await searchPlans(args);
       case 'get_plan':

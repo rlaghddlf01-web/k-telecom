@@ -25,5 +25,6 @@ export async function POST(req: Request) {
   const name = typeof body?.name === 'string' ? body.name : '';
   if (!TOOL_DECLARATIONS.some((t) => t.name === name)) return NextResponse.json({ error: 'BAD_TOOL' }, { status: 400 });
   const args = body?.args && typeof body.args === 'object' && !Array.isArray(body.args) ? body.args : {};
-  return NextResponse.json({ result: await runTool(name, args) });
+  // 전화 상담은 한국인 고객용 문구로 답한다
+  return NextResponse.json({ result: await runTool(name, args, { korean: true }) });
 }

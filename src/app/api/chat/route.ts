@@ -30,6 +30,8 @@ async function catalogText(): Promise<string> {
     '- get_plan: full detail of one plan.',
     '- search_phones / get_phone: phones, monthly price, specs, box contents, return policy.',
     '- search_faq: sign-up documents, activation, number porting, self-activation, cancellation, payment, etc.',
+    '- search_pages / get_page / list_pages: any other website information (self-activation, add-ons, phone installments, internet, IPTV, forms, guides, order status, terms, privacy).',
+    '- get_events / get_notices / get_company_info: current events, notices, company and contact details.',
     'Tool results are in Korean. Translate them into the customer\'s language when you answer. Quote prices and names exactly as returned; never invent any. If a tool returns nothing relevant, say staff will confirm. For bundle (결합) questions, only state what appears in plan perks or FAQ results.',
   ].join('\n');
 }
@@ -126,7 +128,7 @@ export async function POST(req: Request) {
       if (calls.length === 0) break;
       // 모델이 보낸 내용을 그대로 이어 붙이고(서명 포함), 도구 결과를 사용자 차례로 돌려준다
       contents.push({ role: 'model', parts });
-      const results = await Promise.all(calls.map((c) => runTool(c.functionCall!.name, c.functionCall!.args ?? {})));
+      const results = await Promise.all(calls.map((c) => runTool(c.functionCall!.name, c.functionCall!.args ?? {}, { korean: lang === 'ko' })));
       contents.push({
         role: 'user',
         parts: calls.map((c, i) => ({ functionResponse: { name: c.functionCall!.name, response: { result: results[i] } } })),
