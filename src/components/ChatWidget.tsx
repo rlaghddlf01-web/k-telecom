@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from '@/components/LocaleLink';
-import { ArrowLeft, ChevronRight, Download, Globe, Loader2, MessageCircle, MessageSquareText, Send, Send as TelegramIcon, X } from 'lucide-react';
+import { ArrowLeft, ChevronRight, Download, Globe, Loader2, MessageCircle, MessageSquareText, Phone, Send, Send as TelegramIcon, X } from 'lucide-react';
 import { useLang, useT } from '@/components/LangProvider';
 import { helpForPath } from '@/lib/content/chatContext';
 import { stripLang } from '@/lib/langs';
@@ -23,6 +23,10 @@ interface Props {
   avatar: string;
   aiEnabled: boolean;
   phone: string;
+  /** AI 전화 상담 번호와 번역된 안내 문구 */
+  aiPhone: string;
+  aiPhoneLabel: string;
+  aiPhoneNote: string;
   channels: Channel[];
 }
 
@@ -45,7 +49,7 @@ interface InstallPromptEvent extends Event {
 }
 
 /** 오른쪽 아래 상담 창: 매니저 소개 → AI 실시간 채팅 / 왓츠앱·텔레그램·메신저·카카오톡 / 앱 설치 */
-export default function ChatWidget({ managerName, managerRole, intro, teaser, avatar, aiEnabled, phone, channels }: Props) {
+export default function ChatWidget({ managerName, managerRole, intro, teaser, avatar, aiEnabled, phone, aiPhone, aiPhoneLabel, aiPhoneNote, channels }: Props) {
   const t = useT();
   const lang = useLang();
   const pathname = usePathname();
@@ -311,6 +315,21 @@ export default function ChatWidget({ managerName, managerRole, intro, teaser, av
                 <span className="flex-1 text-left">{t('지금 실시간으로 매니저에게 문의하기')}</span>
                 <ChevronRight className="h-4 w-4 shrink-0" />
               </button>
+            )}
+            {aiPhone && (
+              <a
+                href={`tel:${aiPhone.replace(/[^0-9+]/g, '')}`}
+                className="flex w-full items-center gap-2.5 rounded-full bg-gradient-to-r from-[#3b1670] to-pill py-2.5 pl-2.5 pr-4 text-sm font-extrabold text-white shadow-md shadow-pill/30 transition-opacity hover:opacity-90"
+              >
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/20">
+                  <Phone className="h-4 w-4" />
+                </span>
+                <span className="min-w-0 flex-1 text-left leading-tight">
+                  {aiPhoneLabel} <span className="tracking-tight">{aiPhone}</span>
+                  <span className="mt-0.5 block text-[11px] font-semibold text-white/75">{aiPhoneNote}</span>
+                </span>
+                <ChevronRight className="h-4 w-4 shrink-0" />
+              </a>
             )}
             {channelButtons}
             {!installed && (

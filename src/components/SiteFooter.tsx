@@ -2,10 +2,14 @@ import Link from '@/components/LocaleLink';
 import SmartLink from '@/components/SmartLink';
 import { getSiteSettings } from '@/lib/content/load';
 import { t } from '@/lib/i18n';
+import { AI_PHONE } from '@/lib/site';
+import { primeTranslations } from '@/lib/server/prime';
+
+const PHONE_TEXTS = ['AI 전화 상담', '24시간 · 한국어와 외국어로 바로 상담'];
 
 /** 푸터: 내용은 관리자의 [헤더·푸터]에서 수정 */
 export default async function SiteFooter() {
-  const { header, footer } = await getSiteSettings();
+  const [{ header, footer }] = await Promise.all([getSiteSettings(), primeTranslations(PHONE_TEXTS)]);
   const c = footer.company;
 
   return (
@@ -53,6 +57,11 @@ export default async function SiteFooter() {
           <div className="md:text-right">
             <p className="text-sm font-bold text-white">{t('고객센터')}</p>
             {c.phone && <p className="mt-1 text-2xl font-black text-white">{c.phone}</p>}
+            <a href={`tel:${AI_PHONE.number.replace(/[^0-9+]/g, '')}`} className="mt-3 block hover:text-white">
+              <span className="text-[11px] font-bold text-white/60">{t(PHONE_TEXTS[0])}</span>
+              <span className="block text-xl font-black text-white">{AI_PHONE.number}</span>
+              <span className="block text-[11px] text-white/50">{t(PHONE_TEXTS[1])}</span>
+            </a>
             <Link href="/support/inquiry" className="mt-3 inline-flex rounded-full border border-white/30 px-4 py-2 font-bold text-white hover:bg-white/10">
               {t('1:1 상담문의')}
             </Link>
