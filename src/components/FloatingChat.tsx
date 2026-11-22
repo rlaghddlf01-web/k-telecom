@@ -6,7 +6,7 @@ import { DEFAULT_LANG } from '@/lib/langs';
 import { AI_PHONE } from '@/lib/site';
 import { primeTranslations } from '@/lib/server/prime';
 
-const PHONE_TEXTS = ['AI 전화 상담', '24시간 · 한국어와 외국어로 바로 상담'];
+const PHONE_TEXTS = ['24시간 전화 상담', '연중무휴 · 바로 상담 가능'];
 
 /** 오른쪽 아래 상담 창: 관리자의 [상담 창] 탭 설정을 읽어 현재 언어로 바꿔 내려 준다 */
 export default async function FloatingChat() {

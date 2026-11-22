@@ -5,7 +5,7 @@ import { t } from '@/lib/i18n';
 import { AI_PHONE } from '@/lib/site';
 import { primeTranslations } from '@/lib/server/prime';
 
-const PHONE_TEXTS = ['AI 전화 상담', '24시간 · 한국어와 외국어로 바로 상담'];
+const PHONE_TEXTS = ['24시간 전화 상담', '연중무휴 · 바로 상담 가능'];
 
 /** 푸터: 내용은 관리자의 [헤더·푸터]에서 수정 */
 export default async function SiteFooter() {

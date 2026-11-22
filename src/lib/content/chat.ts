@@ -67,11 +67,14 @@ export function sanitizeChat(input: unknown): ChatChecked {
     return { ok: false, error: '매니저 사진 주소가 올바르지 않습니다.' };
   }
 
+  const rawName = clip(c.managerName, 40);
+  const rawRole = clip(c.managerRole, 30);
+
   return {
     ok: true,
     value: {
-      managerName: clip(c.managerName, 40) || DEFAULT_CHAT.managerName,
-      managerRole: clip(c.managerRole, 30) || DEFAULT_CHAT.managerRole,
+      managerName: !rawName || rawName === 'K-Telecom 공식 매니저' ? DEFAULT_CHAT.managerName : rawName,
+      managerRole: !rawRole || rawRole === '공식 매니저' ? DEFAULT_CHAT.managerRole : rawRole,
       intro: clip(c.intro, 120) || DEFAULT_CHAT.intro,
       teaser: clip(c.teaser, 200) || DEFAULT_CHAT.teaser,
       avatar: avatar || DEFAULT_CHAT.avatar,
