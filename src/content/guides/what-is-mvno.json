@@ -1,0 +1,293 @@
+{
+  "slug": "what-is-mvno",
+  "order": 1,
+  "published": "2026-11-22",
+  "updated": "2026-11-22",
+  "related": [
+    "how-to-read-a-plan",
+    "use-your-own-phone",
+    "keep-your-number"
+  ],
+  "content": {
+    "ko": {
+      "title": "알뜰폰(MVNO)이란? 같은 통신망인데 요금이 다른 이유",
+      "description": "알뜰폰이 무엇인지, 왜 같은 통신망을 쓰면서도 요금 구조가 다를 수 있는지, 가입 전에 무엇을 확인하면 좋은지 쉽게 정리했습니다.",
+      "sections": [
+        {
+          "heading": "알뜰폰은 어떤 서비스인가요?",
+          "body": "알뜰폰(MVNO)은 자체 기지국을 직접 세우지 않고, 큰 통신사의 통신망을 빌려 서비스를 제공하는 사업자의 휴대폰 서비스입니다. 전화를 걸고 데이터를 쓸 때는 망을 빌려준 통신사의 기지국을 그대로 이용합니다. 그래서 통화가 되는 지역과 기본적인 통신 품질은 같은 망을 쓰는 다른 서비스와 크게 다르지 않은 경우가 많습니다."
+        },
+        {
+          "heading": "왜 요금이 다를 수 있나요?",
+          "body": "알뜰폰 사업자는 망을 새로 만들 필요가 없고, 대형 매장이나 큰 광고비, 단말기 보조금 같은 비용을 줄이는 대신 요금제 자체에 집중하는 경우가 많습니다. 이런 구조 덕분에 비슷한 데이터와 통화를 제공하는 요금제를 다른 가격으로 내놓을 수 있습니다. 다만 실제 요금은 요금제와 사업자마다 다르므로 꼭 직접 비교해 보세요."
+        },
+        {
+          "heading": "가입 전에 확인할 점",
+          "body": "멤버십 혜택, 해외 로밍, 매장 방문 상담, 일부 부가서비스는 사업자와 요금제에 따라 제공되지 않거나 방식이 다를 수 있습니다. 데이터를 다 쓴 뒤의 속도, 고객센터 이용 방법, 사용할 수 있는 휴대폰 종류도 확인해 두면 좋습니다. 내가 주로 쓰는 데이터와 통화량을 먼저 알고 고르는 것이 가장 중요합니다."
+        }
+      ],
+      "faq": [
+        {
+          "q": "알뜰폰은 통화 품질이 나쁜가요?",
+          "a": "알뜰폰은 큰 통신사의 망을 빌려 쓰기 때문에 기본 통신망은 같습니다. 다만 혼잡한 시간대 속도나 세부 조건은 요금제와 사업자에 따라 다를 수 있습니다."
+        },
+        {
+          "q": "외국인도 알뜰폰에 가입할 수 있나요?",
+          "a": "가능한 경우가 많습니다. 필요한 서류와 조건은 사업자마다 다르니 가입 전에 확인해 주세요."
+        }
+      ]
+    },
+    "en": {
+      "title": "What is an MVNO (알뜰폰)? Same network, different price structure",
+      "description": "A simple guide to budget mobile plans in Korea (알뜰폰, MVNO): what they are, why they can cost less on the same network, and what to check before you sign up.",
+      "sections": [
+        {
+          "heading": "What is an MVNO?",
+          "body": "An MVNO (called 알뜰폰 in Korea) is a mobile service from a company that does not build its own cell towers. Instead, it rents network capacity from one of the large carriers. When you make a call or use data, you connect through the host carrier's towers. That is why coverage and basic quality are often similar to other services on the same network."
+        },
+        {
+          "heading": "Why can it cost less?",
+          "body": "MVNO providers do not need to build a network, and many of them spend less on large stores, heavy advertising and phone subsidies. They focus on the plan itself instead. This structure allows them to offer plans with similar data and calls at a different price. Actual prices depend on the plan and the provider, so always compare for yourself."
+        },
+        {
+          "heading": "What to check before signing up",
+          "body": "Membership perks, roaming abroad, in-store support and some add-on services may be missing or work differently, depending on the provider and plan. It is also worth checking the speed after your data runs out, how to reach customer service, and which phones are supported. Most importantly, know how much data and how many calls you actually use."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Is call quality worse on an MVNO?",
+          "a": "MVNOs use a large carrier's network, so the underlying network is the same. Speed at busy times and other details can still differ by plan and provider."
+        },
+        {
+          "q": "Can foreigners join an MVNO?",
+          "a": "In many cases, yes. The documents and conditions differ by provider, so please confirm before you apply."
+        }
+      ]
+    },
+    "vi": {
+      "title": "Sim giá rẻ (알뜰폰, MVNO) là gì? Cùng mạng nhưng cách tính cước khác",
+      "description": "Giải thích dễ hiểu về sim giá rẻ (알뜰폰, MVNO) ở Hàn Quốc: đó là gì, vì sao cùng dùng một mạng mà cước có thể khác, và cần kiểm tra gì trước khi đăng ký.",
+      "sections": [
+        {
+          "heading": "Sim giá rẻ (MVNO) là dịch vụ gì?",
+          "body": "MVNO (ở Hàn gọi là 알뜰폰) là dịch vụ di động của những công ty không tự xây trạm phát sóng mà thuê lại hạ tầng mạng của các nhà mạng lớn. Khi bạn gọi điện hay dùng dữ liệu, điện thoại vẫn kết nối qua trạm của nhà mạng cho thuê. Vì vậy vùng phủ sóng và chất lượng cơ bản thường không khác nhiều so với các dịch vụ khác dùng chung mạng đó."
+        },
+        {
+          "heading": "Vì sao cước có thể khác?",
+          "body": "Nhà cung cấp MVNO không phải tự xây mạng, và nhiều nơi cắt giảm chi phí cửa hàng lớn, quảng cáo rầm rộ hay trợ giá máy để tập trung vào chính gói cước. Nhờ cách vận hành này, họ có thể đưa ra những gói có dữ liệu và cuộc gọi tương tự với mức giá khác. Tuy nhiên, giá thực tế tùy từng gói và từng nhà cung cấp, nên bạn hãy tự so sánh kỹ."
+        },
+        {
+          "heading": "Cần kiểm tra gì trước khi đăng ký?",
+          "body": "Ưu đãi thành viên, chuyển vùng quốc tế (roaming), tư vấn tại cửa hàng và một số dịch vụ cộng thêm có thể không có hoặc hoạt động khác đi, tùy nhà cung cấp và gói cước. Bạn cũng nên xem tốc độ sau khi hết dữ liệu, cách liên hệ tổng đài và những dòng máy được hỗ trợ. Quan trọng nhất là biết rõ mỗi tháng mình thực sự dùng bao nhiêu dữ liệu và phút gọi."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Sim giá rẻ có chất lượng cuộc gọi kém không?",
+          "a": "MVNO thuê mạng của nhà mạng lớn nên hạ tầng mạng cơ bản là như nhau. Dù vậy, tốc độ vào giờ cao điểm và các điều kiện chi tiết vẫn có thể khác tùy gói và nhà cung cấp."
+        },
+        {
+          "q": "Người nước ngoài có đăng ký sim giá rẻ được không?",
+          "a": "Trong nhiều trường hợp là được. Giấy tờ và điều kiện mỗi nhà cung cấp một khác, nên bạn hãy hỏi rõ trước khi đăng ký."
+        }
+      ]
+    },
+    "ne": {
+      "title": "MVNO (알뜰폰) भनेको के हो? एउटै नेटवर्क, फरक मूल्य संरचना",
+      "description": "कोरियामा सस्तो मोबाइल प्लान (알뜰폰, MVNO) के हो, एउटै नेटवर्कमा किन कम खर्च पर्न सक्छ, र साइन अप गर्नुअघि के जाँच्ने भन्ने सरल जानकारी।",
+      "sections": [
+        {
+          "heading": "MVNO भनेको के हो?",
+          "body": "MVNO (कोरियामा 알뜰폰 भनिन्छ) आफ्नै टावर नबनाउने कम्पनीले दिने मोबाइल सेवा हो। यसले ठूला टेलिकम कम्पनीको नेटवर्क भाडामा लिएर सेवा दिन्छ। कल गर्दा वा डाटा चलाउँदा तपाईं त्यही ठूलो कम्पनीको टावरबाट जोडिनुहुन्छ। त्यसैले कभरेज र आधारभूत गुणस्तर प्रायः सोही नेटवर्कका अरू सेवासँग मिल्दोजुल्दो हुन्छ।"
+        },
+        {
+          "heading": "किन कम खर्च पर्न सक्छ?",
+          "body": "MVNO कम्पनीले नेटवर्क बनाउनु पर्दैन, र धेरैले ठूला पसल, महँगो विज्ञापन र फोन अनुदानमा कम खर्च गर्छन्। बरु तिनीहरू प्लानमै ध्यान दिन्छन्। यसैले उस्तै डाटा र कल भएको प्लान फरक मूल्यमा दिन सक्छन्। वास्तविक मूल्य प्लान र कम्पनी अनुसार फरक हुन्छ, त्यसैले आफैं तुलना गर्नुहोस्।"
+        },
+        {
+          "heading": "साइन अप गर्नुअघि जाँच्नुपर्ने कुरा",
+          "body": "कम्पनी र प्लान अनुसार मेम्बरसिप सुविधा, विदेशमा रोमिङ, पसलमा गएर पाइने सहयोग र केही थप सेवा नहुन वा फरक तरिकाले चल्न सक्छन्। डाटा सकिएपछिको स्पिड, ग्राहक सेवासम्म कसरी पुग्ने, र कुन फोन चल्छ भन्ने पनि हेर्नुहोस्। सबैभन्दा महत्त्वपूर्ण कुरा, तपाईं वास्तवमा कति डाटा र कल प्रयोग गर्नुहुन्छ थाहा पाउनुहोस्।"
+        }
+      ],
+      "faq": [
+        {
+          "q": "MVNO मा कलको गुणस्तर खराब हुन्छ?",
+          "a": "MVNO ले ठूलो कम्पनीकै नेटवर्क प्रयोग गर्छ, त्यसैले आधारभूत नेटवर्क एउटै हो। तर भीड हुने बेलाको स्पिड र अरू विवरण प्लान र कम्पनी अनुसार फरक हुन सक्छ।"
+        },
+        {
+          "q": "विदेशीले पनि MVNO लिन सक्छन्?",
+          "a": "धेरैजसो अवस्थामा सक्छन्। चाहिने कागजात र सर्तहरू कम्पनी अनुसार फरक हुन्छन्, त्यसैले आवेदन दिनुअघि पक्का गर्नुहोस्।"
+        }
+      ]
+    },
+    "km": {
+      "title": "តើ MVNO (알뜰폰) ជាអ្វី? បណ្ដាញដូចគ្នា តែរចនាសម្ព័ន្ធតម្លៃខុសគ្នា",
+      "description": "ការណែនាំងាយៗអំពីគម្រោងទូរស័ព្ទតម្លៃសន្សំនៅកូរ៉េ (알뜰폰, MVNO)៖ វាជាអ្វី ហេតុអ្វីតម្លៃអាចខុសគ្នាទោះប្រើបណ្ដាញដូចគ្នា និងអ្វីដែលគួរពិនិត្យមុនចុះឈ្មោះ។",
+      "sections": [
+        {
+          "heading": "តើ MVNO ជាសេវាអ្វី?",
+          "body": "MVNO (នៅកូរ៉េហៅថា 알뜰폰) គឺជាសេវាទូរស័ព្ទចល័តរបស់ក្រុមហ៊ុនដែលមិនសាងសង់បង្គោលអង់តែនផ្ទាល់ខ្លួន ប៉ុន្តែជួលបណ្ដាញពីក្រុមហ៊ុនទូរគមនាគមន៍ធំៗ។ ពេលអ្នកហៅទូរស័ព្ទ ឬប្រើទិន្នន័យ អ្នកភ្ជាប់តាមរយៈអង់តែនរបស់ក្រុមហ៊ុនដែលផ្ដល់បណ្ដាញនោះផ្ទាល់។ ដូច្នេះ តំបន់គ្របដណ្ដប់ និងគុណភាពមូលដ្ឋាន ច្រើនតែស្រដៀងនឹងសេវាផ្សេងទៀតដែលប្រើបណ្ដាញដូចគ្នា។"
+        },
+        {
+          "heading": "ហេតុអ្វីតម្លៃអាចខុសគ្នា?",
+          "body": "ក្រុមហ៊ុន MVNO មិនចាំបាច់សាងសង់បណ្ដាញថ្មីទេ ហើយភាគច្រើនចំណាយតិចលើហាងធំៗ ការផ្សាយពាណិជ្ជកម្មខ្លាំង និងការឧបត្ថម្ភតម្លៃទូរស័ព្ទ ដោយផ្ដោតលើគម្រោងសេវាវិញ។ រចនាសម្ព័ន្ធនេះអនុញ្ញាតឱ្យពួកគេផ្ដល់គម្រោងដែលមានទិន្នន័យ និងការហៅស្រដៀងគ្នា ក្នុងតម្លៃខុសគ្នា។ ប៉ុន្តែតម្លៃពិតប្រាកដអាស្រ័យលើគម្រោង និងក្រុមហ៊ុន ដូច្នេះសូមប្រៀបធៀបដោយខ្លួនឯងជានិច្ច។"
+        },
+        {
+          "heading": "អ្វីដែលគួរពិនិត្យមុនចុះឈ្មោះ",
+          "body": "អត្ថប្រយោជន៍សមាជិកភាព រ៉ូមីងនៅបរទេស ការប្រឹក្សានៅហាង និងសេវាបន្ថែមខ្លះ អាចគ្មាន ឬដំណើរការខុសគ្នា អាស្រ័យលើក្រុមហ៊ុន និងគម្រោង។ គួរពិនិត្យផងដែរនូវល្បឿនក្រោយពេលទិន្នន័យអស់ របៀបទាក់ទងផ្នែកសេវាអតិថិជន និងប្រភេទទូរស័ព្ទដែលអាចប្រើបាន។ សំខាន់បំផុត ត្រូវដឹងថាអ្នកពិតជាប្រើទិន្នន័យ និងការហៅប៉ុន្មានជាមុនសិន។"
+        }
+      ],
+      "faq": [
+        {
+          "q": "តើគុណភាពហៅទូរស័ព្ទរបស់ MVNO អន់ជាងឬ?",
+          "a": "MVNO ជួលបណ្ដាញពីក្រុមហ៊ុនធំ ដូច្នេះបណ្ដាញមូលដ្ឋានគឺដូចគ្នា។ ប៉ុន្តែល្បឿនពេលមនុស្សប្រើច្រើន និងលក្ខខណ្ឌលម្អិតផ្សេងៗ អាចខុសគ្នាតាមគម្រោង និងក្រុមហ៊ុន។"
+        },
+        {
+          "q": "តើជនបរទេសអាចចុះឈ្មោះ MVNO បានទេ?",
+          "a": "ក្នុងករណីជាច្រើន អាចបាន។ ឯកសារ និងលក្ខខណ្ឌដែលត្រូវការខុសគ្នាតាមក្រុមហ៊ុន ដូច្នេះសូមពិនិត្យមុនពេលដាក់ពាក្យ។"
+        }
+      ]
+    },
+    "id": {
+      "title": "Apa itu MVNO (알뜰폰)? Jaringannya sama, struktur tarifnya berbeda",
+      "description": "Panduan singkat tentang paket seluler hemat di Korea (알뜰폰, MVNO): apa itu, mengapa biayanya bisa berbeda meski memakai jaringan yang sama, dan apa saja yang perlu dicek sebelum mendaftar.",
+      "sections": [
+        {
+          "heading": "Apa itu MVNO?",
+          "body": "MVNO (di Korea disebut 알뜰폰) adalah layanan seluler dari perusahaan yang tidak membangun menara pemancar sendiri, melainkan menyewa jaringan dari operator besar. Saat Anda menelepon atau memakai data, Anda tetap tersambung lewat menara milik operator penyedia jaringan tersebut. Karena itu, jangkauan sinyal dan kualitas dasarnya sering kali tidak jauh berbeda dengan layanan lain di jaringan yang sama."
+        },
+        {
+          "heading": "Mengapa biayanya bisa lebih rendah?",
+          "body": "Penyedia MVNO tidak perlu membangun jaringan, dan banyak di antaranya menekan biaya toko besar, iklan besar-besaran, serta subsidi ponsel. Mereka lebih fokus pada paketnya sendiri. Struktur seperti ini memungkinkan mereka menawarkan paket dengan data dan panggilan serupa dengan harga yang berbeda. Namun harga sebenarnya tergantung pada paket dan penyedianya, jadi selalu bandingkan sendiri."
+        },
+        {
+          "heading": "Yang perlu dicek sebelum mendaftar",
+          "body": "Keuntungan membership, roaming ke luar negeri, layanan di toko, dan beberapa layanan tambahan bisa saja tidak tersedia atau berbeda cara kerjanya, tergantung penyedia dan paket. Sebaiknya cek juga kecepatan setelah kuota habis, cara menghubungi layanan pelanggan, dan ponsel apa saja yang didukung. Yang paling penting, ketahui dulu berapa banyak data dan panggilan yang biasa Anda pakai."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Apakah kualitas panggilan MVNO lebih buruk?",
+          "a": "MVNO memakai jaringan operator besar, jadi jaringan dasarnya sama. Namun kecepatan di jam sibuk dan detail lainnya bisa berbeda tergantung paket dan penyedia."
+        },
+        {
+          "q": "Apakah orang asing bisa mendaftar MVNO?",
+          "a": "Dalam banyak kasus, bisa. Dokumen dan syaratnya berbeda di setiap penyedia, jadi pastikan dulu sebelum mendaftar."
+        }
+      ]
+    },
+    "th": {
+      "title": "ซิมราคาประหยัด (알뜰폰, MVNO) คืออะไร? ใช้เครือข่ายเดียวกันแต่โครงสร้างค่าบริการต่างกัน",
+      "description": "สรุปแบบเข้าใจง่ายว่าซิมราคาประหยัด (알뜰폰, MVNO) ในเกาหลีคืออะไร ทำไมใช้เครือข่ายเดียวกันแต่ค่าบริการอาจต่างกัน และควรเช็กอะไรก่อนสมัคร",
+      "sections": [
+        {
+          "heading": "ซิมราคาประหยัด (MVNO) คือบริการแบบไหน?",
+          "body": "MVNO (ในเกาหลีเรียกว่า 알뜰폰) คือบริการมือถือของบริษัทที่ไม่ได้สร้างเสาสัญญาณเอง แต่เช่าใช้เครือข่ายของค่ายมือถือรายใหญ่ เวลาโทรหรือใช้เน็ต มือถือจะเชื่อมต่อผ่านเสาสัญญาณของค่ายที่ให้เช่าเครือข่ายนั้นโดยตรง ดังนั้นพื้นที่ครอบคลุมและคุณภาพสัญญาณพื้นฐานจึงมักไม่ต่างจากบริการอื่นที่ใช้เครือข่ายเดียวกันมากนัก"
+        },
+        {
+          "heading": "ทำไมค่าบริการถึงต่างกันได้?",
+          "body": "ผู้ให้บริการ MVNO ไม่ต้องลงทุนสร้างเครือข่ายเอง และหลายรายลดค่าใช้จ่ายด้านหน้าร้านขนาดใหญ่ ค่าโฆษณาจำนวนมาก หรือเงินอุดหนุนค่าเครื่อง เพื่อมาโฟกัสที่ตัวแพ็กเกจแทน โครงสร้างแบบนี้ทำให้สามารถเสนอแพ็กเกจที่ให้เน็ตและค่าโทรใกล้เคียงกันในราคาที่ต่างออกไปได้ แต่ราคาจริงขึ้นอยู่กับแพ็กเกจและผู้ให้บริการแต่ละราย จึงควรเปรียบเทียบด้วยตัวเองเสมอ"
+        },
+        {
+          "heading": "สิ่งที่ควรเช็กก่อนสมัคร",
+          "body": "สิทธิประโยชน์สมาชิก โรมมิ่งต่างประเทศ การรับคำปรึกษาที่หน้าร้าน และบริการเสริมบางอย่าง อาจไม่มีหรือมีเงื่อนไขต่างกันไปตามผู้ให้บริการและแพ็กเกจ ควรเช็กความเร็วหลังเน็ตหมด วิธีติดต่อคอลเซ็นเตอร์ และรุ่นมือถือที่รองรับไว้ด้วย ที่สำคัญที่สุดคือต้องรู้ก่อนว่าแต่ละเดือนเราใช้เน็ตและโทรมากแค่ไหน"
+        }
+      ],
+      "faq": [
+        {
+          "q": "ซิมราคาประหยัดคุณภาพการโทรแย่กว่าไหม?",
+          "a": "MVNO เช่าใช้เครือข่ายของค่ายใหญ่ เครือข่ายพื้นฐานจึงเป็นตัวเดียวกัน แต่ความเร็วในช่วงเวลาที่คนใช้เยอะและเงื่อนไขปลีกย่อยอาจต่างกันไปตามแพ็กเกจและผู้ให้บริการ"
+        },
+        {
+          "q": "ชาวต่างชาติสมัครซิมราคาประหยัดได้ไหม?",
+          "a": "ส่วนใหญ่สมัครได้ แต่เอกสารและเงื่อนไขแตกต่างกันไปในแต่ละผู้ให้บริการ จึงควรสอบถามให้แน่ใจก่อนสมัคร"
+        }
+      ]
+    },
+    "mn": {
+      "title": "MVNO (알뜰폰) гэж юу вэ? Сүлжээ нэг, үнийн бүтэц өөр",
+      "description": "Солонгос дахь хямд гар утасны багц (알뜰폰, MVNO) гэж юу болох, яагаад ижил сүлжээн дээр үнийн бүтэц нь өөр байж болох, бүртгүүлэхээсээ өмнө юуг шалгах талаар энгийнээр тайлбарлалаа.",
+      "sections": [
+        {
+          "heading": "MVNO гэж ямар үйлчилгээ вэ?",
+          "body": "MVNO (Солонгост 알뜰폰 гэдэг) нь өөрийн гэсэн цамхаг барьдаггүй, харин томоохон операторын сүлжээг түрээслэн үйлчилгээ үзүүлдэг компанийн гар утасны үйлчилгээ юм. Та залгах эсвэл дата ашиглахдаа сүлжээгээ түрээслүүлсэн операторын цамхагаар шууд холбогдоно. Тиймээс хамрах хүрээ, үндсэн чанар нь ижил сүлжээг ашигладаг бусад үйлчилгээтэй ихэвчлэн ойролцоо байдаг."
+        },
+        {
+          "heading": "Яагаад үнэ нь өөр байж болох вэ?",
+          "body": "MVNO компаниуд шинээр сүлжээ барих шаардлагагүй бөгөөд ихэнх нь томоохон дэлгүүр, их хэмжээний сурталчилгаа, утасны татаас зэрэгт бага зарцуулж, харин багцдаа анхаардаг. Ийм бүтцийн ачаар ижил төстэй дата, ярианы багцыг өөр үнээр санал болгож чаддаг. Гэхдээ бодит үнэ нь багц болон компаниас хамаарах тул заавал өөрөө харьцуулж үзээрэй."
+        },
+        {
+          "heading": "Бүртгүүлэхээс өмнө шалгах зүйлс",
+          "body": "Гишүүнчлэлийн урамшуулал, гадаадад роуминг, дэлгүүрт очиж зөвлөгөө авах, зарим нэмэлт үйлчилгээ нь компани, багцаас хамааран байхгүй эсвэл өөрөөр ажиллаж болно. Дата дууссаны дараах хурд, харилцагчийн төвтэй хэрхэн холбогдох, ямар утас дэмждэг зэргийг ч шалгаад аваарай. Хамгийн чухал нь өөрөө хэр их дата, яриа ашигладгаа эхлээд мэдэх явдал юм."
+        }
+      ],
+      "faq": [
+        {
+          "q": "MVNO-гийн ярианы чанар муу байдаг уу?",
+          "a": "MVNO нь томоохон операторын сүлжээг түрээслэн ашигладаг тул үндсэн сүлжээ нь адилхан. Гэхдээ ачаалалтай цагийн хурд болон бусад нарийн нөхцөл нь багц, компаниас хамаарч өөр байж болно."
+        },
+        {
+          "q": "Гадаад иргэн MVNO-д бүртгүүлж болох уу?",
+          "a": "Ихэнх тохиолдолд болно. Шаардлагатай бичиг баримт, нөхцөл нь компани бүрт өөр тул өргөдөл гаргахаасаа өмнө шалгаарай."
+        }
+      ]
+    },
+    "my": {
+      "title": "MVNO (알뜰폰) ဆိုတာ ဘာလဲ။ ကွန်ရက်တူပေမယ့် ဈေးနှုန်းပုံစံ မတူပါ",
+      "description": "ကိုရီးယားရှိ ဈေးသက်သာသော ဖုန်းအစီအစဉ် (알뜰폰, MVNO) ဆိုတာ ဘာလဲ၊ ကွန်ရက်တစ်ခုတည်းမှာ ဘာကြောင့် ကုန်ကျစရိတ်နည်းနိုင်သလဲ၊ စာရင်းမသွင်းခင် ဘာတွေစစ်ဆေးရမလဲဆိုတာ ရိုးရှင်းစွာ ရှင်းပြထားပါတယ်။",
+      "sections": [
+        {
+          "heading": "MVNO ဆိုတာ ဘာလဲ",
+          "body": "MVNO (ကိုရီးယားမှာ 알뜰폰 လို့ခေါ်) ဆိုတာ ကိုယ်ပိုင်တာဝါ မဆောက်ဘဲ ကုမ္ပဏီကြီးရဲ့ ကွန်ရက်ကို ငှားသုံးတဲ့ ဖုန်းဝန်ဆောင်မှု ဖြစ်ပါတယ်။ ဖုန်းခေါ်တဲ့အခါ ဒါမှမဟုတ် ဒေတာသုံးတဲ့အခါ အဲဒီကုမ္ပဏီကြီးရဲ့ တာဝါကနေ ချိတ်ဆက်ပါတယ်။ ဒါကြောင့် လိုင်းမိတဲ့နေရာနဲ့ အခြေခံအရည်အသွေးဟာ ကွန်ရက်တူ တခြားဝန်ဆောင်မှုတွေနဲ့ များသောအားဖြင့် ဆင်တူပါတယ်။"
+        },
+        {
+          "heading": "ဘာကြောင့် ကုန်ကျစရိတ် နည်းနိုင်သလဲ",
+          "body": "MVNO ကုမ္ပဏီတွေဟာ ကွန်ရက်ဆောက်စရာ မလိုသလို အများစုက ဆိုင်ကြီးတွေ၊ ကြော်ငြာအများကြီးနဲ့ ဖုန်းထောက်ပံ့ငွေအတွက် နည်းနည်းပဲ သုံးပါတယ်။ အဲဒီအစား အစီအစဉ်ကိုယ်တိုင်ကိုပဲ အာရုံစိုက်ပါတယ်။ ဒီပုံစံကြောင့် ဒေတာနဲ့ ဖုန်းခေါ်ဆိုမှု ဆင်တူတဲ့ အစီအစဉ်ကို ဈေးနှုန်းကွဲပြားစွာ ပေးနိုင်ပါတယ်။ တကယ့်ဈေးနှုန်းက အစီအစဉ်နဲ့ ကုမ္ပဏီအလိုက် ကွာခြားလို့ ကိုယ်တိုင် နှိုင်းယှဉ်ကြည့်ပါ။"
+        },
+        {
+          "heading": "စာရင်းမသွင်းခင် စစ်ဆေးရမယ့်အရာ",
+          "body": "ကုမ္ပဏီနဲ့ အစီအစဉ်ပေါ်မူတည်ပြီး အသင်းဝင်အကျိုးခံစားခွင့်၊ နိုင်ငံခြားရိုမင်း၊ ဆိုင်မှာ အကူအညီရယူခြင်းနဲ့ အချို့ထပ်ဆောင်းဝန်ဆောင်မှုတွေ မပါတာ ဒါမှမဟုတ် ကွဲပြားစွာ အလုပ်လုပ်တာ ရှိနိုင်ပါတယ်။ ဒေတာကုန်ပြီးနောက် အမြန်နှုန်း၊ ဖောက်သည်ဝန်ဆောင်မှု ဆက်သွယ်နည်း၊ သုံးလို့ရတဲ့ဖုန်းတွေကိုလည်း စစ်ပါ။ အရေးအကြီးဆုံးကတော့ ကိုယ်တကယ်သုံးတဲ့ ဒေတာနဲ့ ဖုန်းခေါ်ဆိုမှုပမာဏကို သိထားဖို့ပါ။"
+        }
+      ],
+      "faq": [
+        {
+          "q": "MVNO မှာ ဖုန်းခေါ်ဆိုမှု အရည်အသွေး ပိုဆိုးသလား။",
+          "a": "MVNO တွေဟာ ကုမ္ပဏီကြီးရဲ့ ကွန်ရက်ကို သုံးတာမို့ အခြေခံကွန်ရက်က အတူတူပါပဲ။ ဒါပေမယ့် လူများတဲ့အချိန် အမြန်နှုန်းနဲ့ အသေးစိတ်အချက်တွေက အစီအစဉ်နဲ့ ကုမ္ပဏီအလိုက် ကွာခြားနိုင်ပါတယ်။"
+        },
+        {
+          "q": "နိုင်ငံခြားသားတွေ MVNO ဝင်လို့ရသလား။",
+          "a": "အများအားဖြင့် ရပါတယ်။ လိုအပ်တဲ့ စာရွက်စာတမ်းနဲ့ အခြေအနေတွေက ကုမ္ပဏီအလိုက် ကွာခြားလို့ လျှောက်ထားခင် အတည်ပြုပါ။"
+        }
+      ]
+    },
+    "uz": {
+      "title": "MVNO (알뜰폰) nima? Tarmoq bir xil, narx tuzilmasi boshqacha",
+      "description": "Koreyadagi arzon mobil tariflar (알뜰폰, MVNO) haqida qisqa qo'llanma: ular nima, nega bir xil tarmoqda bo'lsa ham narxi farq qilishi mumkin va ulanishdan oldin nimalarni tekshirish kerak.",
+      "sections": [
+        {
+          "heading": "MVNO nima?",
+          "body": "MVNO (Koreyada 알뜰폰 deb ataladi) — o'z aloqa minoralarini qurmaydigan, balki yirik operatorlardan tarmoqni ijaraga oladigan kompaniyaning mobil xizmati. Qo'ng'iroq qilganingizda yoki internetdan foydalanganingizda tarmoq egasi bo'lgan operatorning minoralari orqali ulanasiz. Shuning uchun qamrov hududi va asosiy aloqa sifati ko'pincha shu tarmoqdagi boshqa xizmatlardan unchalik farq qilmaydi."
+        },
+        {
+          "heading": "Nega arzonroq bo'lishi mumkin?",
+          "body": "MVNO kompaniyalari tarmoq qurishga muhtoj emas, ko'plari esa katta do'konlar, keng reklama va telefon uchun subsidiyalarga kamroq sarflaydi. Ular asosan tarifning o'ziga e'tibor qaratadi. Shu tuzilma tufayli o'xshash internet va qo'ng'iroq hajmiga ega tariflarni boshqacha narxda taklif qila oladi. Biroq haqiqiy narx tarif va kompaniyaga bog'liq, shuning uchun albatta o'zingiz solishtirib ko'ring."
+        },
+        {
+          "heading": "Ulanishdan oldin nimani tekshirish kerak",
+          "body": "A'zolik imtiyozlari, xorijda rouming, do'konda maslahat va ayrim qo'shimcha xizmatlar kompaniya va tarifga qarab bo'lmasligi yoki boshqacha ishlashi mumkin. Internet tugagandan keyingi tezlik, mijozlarga xizmat ko'rsatish markaziga qanday murojaat qilish va qaysi telefonlar qo'llab-quvvatlanishini ham tekshirib qo'ying. Eng muhimi — avval o'zingiz qancha internet va qo'ng'iroqdan foydalanishingizni bilib oling."
+        }
+      ],
+      "faq": [
+        {
+          "q": "MVNO'da aloqa sifati yomonroqmi?",
+          "a": "MVNO yirik operator tarmog'idan foydalanadi, shuning uchun asosiy tarmoq bir xil. Ammo gavjum vaqtlardagi tezlik va boshqa tafsilotlar tarif va kompaniyaga qarab farq qilishi mumkin."
+        },
+        {
+          "q": "Chet elliklar MVNO'ga ulana oladimi?",
+          "a": "Ko'p hollarda ha. Kerakli hujjatlar va shartlar kompaniyaga qarab farq qiladi, shuning uchun ariza berishdan oldin aniqlab oling."
+        }
+      ]
+    }
+  }
+}

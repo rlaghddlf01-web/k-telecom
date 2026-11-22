@@ -1,0 +1,293 @@
+{
+  "slug": "keep-your-number",
+  "order": 6,
+  "published": "2026-11-22",
+  "updated": "2026-11-22",
+  "related": [
+    "use-your-own-phone",
+    "what-is-mvno",
+    "check-your-monthly-bill"
+  ],
+  "content": {
+    "ko": {
+      "title": "번호이동: 쓰던 번호 그대로 통신사 바꾸기",
+      "description": "지금 쓰는 휴대폰 번호를 유지한 채 다른 통신사나 알뜰폰으로 옮기는 번호이동의 일반적인 흐름과 주의할 점을 안내합니다.",
+      "sections": [
+        {
+          "heading": "번호이동이란?",
+          "body": "번호이동은 지금 쓰는 휴대폰 번호를 그대로 유지하면서 다른 통신사로 옮기는 것입니다. 은행, 메신저, 각종 앱에 등록한 번호를 바꾸지 않아도 되기 때문에 한국에서 오래 지낸 분들께 특히 편리합니다. 큰 통신사에서 알뜰폰으로, 알뜰폰에서 다른 알뜰폰으로도 옮길 수 있는 경우가 많습니다."
+        },
+        {
+          "heading": "일반적인 진행 순서",
+          "body": "보통 새로 가입할 통신사에 번호이동으로 신청하면, 새 통신사가 기존 통신사에 이동을 요청합니다. 이 과정에서 본인 확인 문자나 전화 인증을 거치는 경우가 많습니다. 새 유심이나 eSIM이 준비되면 개통이 진행되고, 기존 통신사 서비스는 자동으로 끝납니다. 개통하는 동안 잠깐 연결이 끊길 수 있습니다."
+        },
+        {
+          "heading": "신청 전에 확인할 점",
+          "body": "번호는 본인 명의여야 하고, 회선이 정지되지 않은 상태여야 하는 경우가 많습니다. 기존 통신사의 남은 단말기 할부금, 약정 해지에 따른 위약금, 마지막 달 요금은 이동 후에도 청구될 수 있습니다. 정확한 조건과 금액은 기존 통신사에 먼저 확인해 보세요."
+        }
+      ],
+      "faq": [
+        {
+          "q": "번호이동을 하면 기존 통신사 해지를 따로 해야 하나요?",
+          "a": "일반적으로 번호이동이 완료되면 기존 회선은 자동으로 해지됩니다. 남은 요금 정산은 기존 통신사에서 별도로 청구될 수 있습니다."
+        },
+        {
+          "q": "번호이동하는 동안 휴대폰을 못 쓰나요?",
+          "a": "개통 과정에서 짧게 연결이 끊길 수 있습니다. 걸리는 시간은 상황과 통신사에 따라 다릅니다."
+        }
+      ]
+    },
+    "en": {
+      "title": "Keeping your number when you switch carriers (번호이동)",
+      "description": "The general steps of number porting in Korea, so you can move to another carrier or MVNO while keeping your current phone number, and what to watch out for.",
+      "sections": [
+        {
+          "heading": "What is number porting?",
+          "body": "Number porting (번호이동) lets you move to another carrier while keeping your current phone number. You do not need to update the number registered with your bank, messenger apps and other services, which is especially useful if you have lived in Korea for a while. In many cases you can move from a large carrier to an MVNO, or from one MVNO to another."
+        },
+        {
+          "heading": "How it usually works",
+          "body": "Usually you apply for number porting with the new carrier, and the new carrier sends the request to your current one. You will often be asked to verify yourself by text message or phone. Once your new USIM or eSIM is ready, the line is activated and the old service ends automatically. Your connection may drop briefly during activation."
+        },
+        {
+          "heading": "Check before you apply",
+          "body": "The number must be in your name, and the line often needs to be active, not suspended. Any remaining phone installment, early termination fees and the last month's charges from your old carrier may still be billed after you move. Ask your current carrier about the exact conditions and amounts first."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Do I need to cancel my old carrier separately?",
+          "a": "Generally, the old line closes automatically once porting is complete. Your old carrier may still send a separate final bill."
+        },
+        {
+          "q": "Will I lose service during porting?",
+          "a": "Your connection may drop briefly during activation. How long it takes depends on the situation and the carrier."
+        }
+      ]
+    },
+    "vi": {
+      "title": "Chuyển mạng giữ số (번호이동): đổi nhà mạng mà vẫn giữ số cũ",
+      "description": "Các bước chung khi chuyển mạng giữ số ở Hàn Quốc để sang nhà mạng khác hoặc sim giá rẻ (MVNO) mà vẫn giữ số hiện tại, cùng những điểm cần lưu ý.",
+      "sections": [
+        {
+          "heading": "Chuyển mạng giữ số là gì?",
+          "body": "Chuyển mạng giữ số (번호이동) giúp bạn sang nhà mạng khác mà vẫn giữ nguyên số điện thoại đang dùng. Bạn không phải cập nhật số đã đăng ký với ngân hàng, ứng dụng nhắn tin và các dịch vụ khác, nên rất tiện nếu bạn đã sống ở Hàn một thời gian. Trong nhiều trường hợp, bạn có thể chuyển từ nhà mạng lớn sang MVNO, hoặc từ MVNO này sang MVNO khác."
+        },
+        {
+          "heading": "Quy trình thường diễn ra thế nào?",
+          "body": "Thông thường bạn đăng ký chuyển mạng giữ số với nhà mạng mới, rồi nhà mạng mới gửi yêu cầu sang nhà mạng hiện tại. Bạn thường sẽ được yêu cầu xác minh danh tính qua tin nhắn hoặc cuộc gọi. Khi USIM hoặc eSIM mới đã sẵn sàng, thuê bao sẽ được kích hoạt và dịch vụ cũ tự động kết thúc. Trong lúc kích hoạt, kết nối có thể bị gián đoạn một chút."
+        },
+        {
+          "heading": "Cần kiểm tra trước khi đăng ký",
+          "body": "Số điện thoại phải đứng tên bạn, và thường thuê bao phải đang hoạt động, không bị tạm khóa. Tiền trả góp máy còn lại, phí phạt hủy cam kết và cước tháng cuối của nhà mạng cũ vẫn có thể bị tính sau khi bạn chuyển. Hãy hỏi nhà mạng hiện tại về điều kiện và số tiền cụ thể trước."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Chuyển mạng giữ số xong có phải tự hủy thuê bao ở nhà mạng cũ không?",
+          "a": "Thông thường, thuê bao cũ sẽ tự động bị hủy khi chuyển mạng hoàn tất. Nhà mạng cũ vẫn có thể gửi riêng hóa đơn quyết toán cuối cùng."
+        },
+        {
+          "q": "Trong lúc chuyển mạng có bị mất sóng không?",
+          "a": "Kết nối có thể bị gián đoạn ngắn trong quá trình kích hoạt. Mất bao lâu thì tùy tình huống và nhà mạng."
+        }
+      ]
+    },
+    "ne": {
+      "title": "कम्पनी बदल्दा पनि आफ्नो नम्बर राख्ने (번호이동)",
+      "description": "कोरियामा नम्बर पोर्टिङको सामान्य प्रक्रिया, जसले अहिलेकै फोन नम्बर राखेर अर्को कम्पनी वा MVNO मा सर्न मिल्छ, र ध्यान दिनुपर्ने कुरा।",
+      "sections": [
+        {
+          "heading": "नम्बर पोर्टिङ भनेको के हो?",
+          "body": "नम्बर पोर्टिङ (번호이동) ले अहिलेकै फोन नम्बर राखेर अर्को कम्पनीमा सर्न दिन्छ। बैंक, मेसेन्जर एप र अरू सेवामा दर्ता गरेको नम्बर बदल्नु पर्दैन, जुन कोरियामा लामो समयदेखि बस्नेहरूका लागि विशेष उपयोगी हुन्छ। धेरैजसो अवस्थामा ठूलो कम्पनीबाट MVNO मा, वा एउटा MVNO बाट अर्कोमा सर्न सकिन्छ।"
+        },
+        {
+          "heading": "सामान्यतया कसरी हुन्छ",
+          "body": "प्रायः नयाँ कम्पनीमा नम्बर पोर्टिङका लागि आवेदन दिनुहुन्छ, अनि नयाँ कम्पनीले पुरानो कम्पनीलाई अनुरोध पठाउँछ। यस बेला म्यासेज वा फोनबाट आफ्नो पहिचान प्रमाणित गर्न भनिन्छ। नयाँ USIM वा eSIM तयार भएपछि लाइन सक्रिय हुन्छ र पुरानो सेवा आफैं बन्द हुन्छ। सक्रिय हुँदा केही बेर कनेक्सन टुट्न सक्छ।"
+        },
+        {
+          "heading": "आवेदन दिनुअघि जाँच्नुहोस्",
+          "body": "नम्बर तपाईंकै नाममा हुनुपर्छ, र प्रायः लाइन बन्द नभई चालु अवस्थामा हुनुपर्छ। पुरानो कम्पनीको बाँकी फोन किस्ता, सम्झौता तोडेको जरिवाना र अन्तिम महिनाको शुल्क सरेपछि पनि बिलमा आउन सक्छ। सही सर्त र रकमबारे पहिले अहिलेको कम्पनीसँग सोध्नुहोस्।"
+        }
+      ],
+      "faq": [
+        {
+          "q": "पुरानो कम्पनी छुट्टै रद्द गर्नुपर्छ?",
+          "a": "सामान्यतया पोर्टिङ पूरा भएपछि पुरानो लाइन आफैं बन्द हुन्छ। पुरानो कम्पनीले अन्तिम बिल छुट्टै पठाउन सक्छ।"
+        },
+        {
+          "q": "पोर्टिङ हुँदा फोन चल्दैन?",
+          "a": "सक्रिय हुने बेला केही बेर कनेक्सन टुट्न सक्छ। कति समय लाग्छ भन्ने अवस्था र कम्पनीमा भर पर्छ।"
+        }
+      ]
+    },
+    "km": {
+      "title": "រក្សាលេខដដែល ពេលប្ដូរក្រុមហ៊ុន (번호이동)",
+      "description": "ជំហានទូទៅនៃការផ្ទេរលេខនៅកូរ៉េ ដើម្បីប្ដូរទៅក្រុមហ៊ុនផ្សេង ឬ MVNO ដោយរក្សាលេខទូរស័ព្ទបច្ចុប្បន្ន និងចំណុចដែលត្រូវប្រុងប្រយ័ត្ន។",
+      "sections": [
+        {
+          "heading": "តើការផ្ទេរលេខជាអ្វី?",
+          "body": "ការផ្ទេរលេខ (번호이동) អនុញ្ញាតឱ្យអ្នកប្ដូរទៅក្រុមហ៊ុនផ្សេង ដោយរក្សាលេខទូរស័ព្ទបច្ចុប្បន្ន។ អ្នកមិនចាំបាច់ប្ដូរលេខដែលបានចុះឈ្មោះជាមួយធនាគារ កម្មវិធីផ្ញើសារ និងសេវាផ្សេងៗទេ ដែលមានប្រយោជន៍ខ្លាំង បើអ្នករស់នៅកូរ៉េយូរហើយ។ ក្នុងករណីជាច្រើន អ្នកអាចប្ដូរពីក្រុមហ៊ុនធំទៅ MVNO ឬពី MVNO មួយទៅ MVNO មួយទៀតបាន។"
+        },
+        {
+          "heading": "ដំណើរការជាទូទៅ",
+          "body": "ជាធម្មតា អ្នកដាក់ពាក្យផ្ទេរលេខជាមួយក្រុមហ៊ុនថ្មី ហើយក្រុមហ៊ុនថ្មីនឹងផ្ញើសំណើទៅក្រុមហ៊ុនបច្ចុប្បន្នរបស់អ្នក។ ច្រើនតែអ្នកនឹងត្រូវផ្ទៀងផ្ទាត់អត្តសញ្ញាណតាមសារ ឬការហៅទូរស័ព្ទ។ ពេល USIM ឬ eSIM ថ្មីរួចរាល់ លេខនឹងត្រូវបើកដំណើរការ ហើយសេវាចាស់បញ្ចប់ដោយស្វ័យប្រវត្តិ។ ការតភ្ជាប់អាចដាច់មួយភ្លែតអំឡុងពេលបើកដំណើរការ។"
+        },
+        {
+          "heading": "ពិនិត្យមុនពេលដាក់ពាក្យ",
+          "body": "លេខត្រូវតែជាឈ្មោះរបស់អ្នក ហើយច្រើនតែត្រូវស្ថិតក្នុងស្ថានភាពដំណើរការ មិនមែនត្រូវបានផ្អាក។ ប្រាក់រំលស់ទូរស័ព្ទដែលនៅសល់ ថ្លៃពិន័យបញ្ចប់កិច្ចសន្យាមុនកំណត់ និងថ្លៃខែចុងក្រោយពីក្រុមហ៊ុនចាស់ អាចនៅតែត្រូវគិតក្រោយពេលអ្នកប្ដូរ។ សូមសួរក្រុមហ៊ុនបច្ចុប្បន្នពីលក្ខខណ្ឌ និងចំនួនទឹកប្រាក់ពិតប្រាកដជាមុនសិន។"
+        }
+      ],
+      "faq": [
+        {
+          "q": "តើត្រូវលុបចោលក្រុមហ៊ុនចាស់ដោយឡែកទេ?",
+          "a": "ជាទូទៅ លេខចាស់នឹងបិទដោយស្វ័យប្រវត្តិ ពេលការផ្ទេរលេខបានបញ្ចប់។ ក្រុមហ៊ុនចាស់អាចនៅតែផ្ញើវិក្កយបត្រចុងក្រោយដាច់ដោយឡែក។"
+        },
+        {
+          "q": "តើខ្ញុំនឹងបាត់សេវាអំឡុងពេលផ្ទេរលេខទេ?",
+          "a": "ការតភ្ជាប់អាចដាច់មួយភ្លែតអំឡុងពេលបើកដំណើរការ។ រយៈពេលអាស្រ័យលើស្ថានភាព និងក្រុមហ៊ុន។"
+        }
+      ]
+    },
+    "id": {
+      "title": "Pindah operator tanpa ganti nomor (번호이동)",
+      "description": "Langkah umum pindah operator dengan nomor tetap di Korea, agar Anda bisa beralih ke operator lain atau MVNO tanpa mengganti nomor, serta hal-hal yang perlu diperhatikan.",
+      "sections": [
+        {
+          "heading": "Apa itu pindah operator dengan nomor tetap?",
+          "body": "Pindah operator dengan nomor tetap (번호이동) memungkinkan Anda beralih ke operator lain sambil tetap memakai nomor ponsel yang sekarang. Anda tidak perlu memperbarui nomor yang terdaftar di bank, aplikasi pesan, dan layanan lain, sehingga sangat membantu jika Anda sudah lama tinggal di Korea. Dalam banyak kasus, Anda bisa pindah dari operator besar ke MVNO, atau dari satu MVNO ke MVNO lain."
+        },
+        {
+          "heading": "Bagaimana prosesnya biasanya",
+          "body": "Biasanya Anda mengajukan pindah operator ke operator baru, lalu operator baru mengirim permintaan ke operator lama Anda. Anda sering diminta verifikasi diri lewat SMS atau telepon. Setelah USIM atau eSIM baru siap, nomor diaktifkan dan layanan lama berakhir secara otomatis. Koneksi mungkin terputus sebentar selama proses aktivasi."
+        },
+        {
+          "heading": "Cek sebelum mengajukan",
+          "body": "Nomor harus atas nama Anda sendiri, dan sering kali harus dalam keadaan aktif, tidak diblokir. Sisa cicilan ponsel, denda pemutusan kontrak lebih awal, dan tagihan bulan terakhir dari operator lama mungkin tetap ditagihkan setelah Anda pindah. Tanyakan dulu syarat dan jumlah pastinya ke operator Anda saat ini."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Apakah saya perlu berhenti berlangganan dari operator lama secara terpisah?",
+          "a": "Umumnya, nomor di operator lama otomatis ditutup setelah proses pindah selesai. Operator lama mungkin tetap mengirim tagihan akhir secara terpisah."
+        },
+        {
+          "q": "Apakah layanan saya terputus selama proses pindah?",
+          "a": "Koneksi mungkin terputus sebentar saat aktivasi. Lamanya tergantung situasi dan operatornya."
+        }
+      ]
+    },
+    "th": {
+      "title": "ย้ายค่ายเบอร์เดิม (번호이동): เปลี่ยนค่ายโดยใช้เบอร์เดิม",
+      "description": "ขั้นตอนทั่วไปของการย้ายค่ายเบอร์เดิมในเกาหลี เพื่อย้ายไปค่ายอื่นหรือซิมราคาประหยัด (MVNO) โดยยังใช้เบอร์ปัจจุบันได้ พร้อมข้อควรระวัง",
+      "sections": [
+        {
+          "heading": "ย้ายค่ายเบอร์เดิมคืออะไร?",
+          "body": "การย้ายค่ายเบอร์เดิม (번호이동) คือการย้ายไปใช้ค่ายอื่นโดยยังใช้เบอร์มือถือเดิมได้ ไม่ต้องเปลี่ยนเบอร์ที่ลงทะเบียนไว้กับธนาคาร แอปแชต และบริการต่าง ๆ จึงสะดวกมากสำหรับคนที่อยู่เกาหลีมาสักพักแล้ว ส่วนใหญ่สามารถย้ายจากค่ายใหญ่ไป MVNO หรือจาก MVNO รายหนึ่งไปอีกรายได้"
+        },
+        {
+          "heading": "ขั้นตอนโดยทั่วไป",
+          "body": "โดยทั่วไป เราสมัครย้ายค่ายเบอร์เดิมกับค่ายใหม่ แล้วค่ายใหม่จะส่งคำขอไปยังค่ายปัจจุบันให้ ระหว่างนี้มักต้องยืนยันตัวตนผ่าน SMS หรือโทรศัพท์ เมื่อ USIM หรือ eSIM ใหม่พร้อมแล้ว ระบบจะเปิดใช้งานเบอร์และบริการของค่ายเดิมจะสิ้นสุดลงอัตโนมัติ ระหว่างเปิดใช้งานสัญญาณอาจขาดหายไปชั่วครู่"
+        },
+        {
+          "heading": "สิ่งที่ควรเช็กก่อนสมัคร",
+          "body": "เบอร์ต้องเป็นชื่อของเราเอง และส่วนใหญ่เบอร์ต้องยังใช้งานอยู่ ไม่ถูกระงับ ค่าผ่อนเครื่องที่เหลือ ค่าปรับยกเลิกสัญญา และค่าบริการเดือนสุดท้ายของค่ายเดิม อาจยังถูกเรียกเก็บหลังย้ายค่ายแล้ว ควรสอบถามเงื่อนไขและยอดเงินที่แน่นอนกับค่ายปัจจุบันก่อน"
+        }
+      ],
+      "faq": [
+        {
+          "q": "ย้ายค่ายเบอร์เดิมแล้ว ต้องไปยกเลิกค่ายเดิมเองไหม?",
+          "a": "โดยทั่วไป เมื่อย้ายค่ายเสร็จ เบอร์ที่ค่ายเดิมจะถูกยกเลิกโดยอัตโนมัติ แต่ค่ายเดิมอาจยังส่งบิลค่าบริการงวดสุดท้ายแยกมาให้"
+        },
+        {
+          "q": "ระหว่างย้ายค่ายจะใช้มือถือไม่ได้ไหม?",
+          "a": "สัญญาณอาจขาดหายไปช่วงสั้น ๆ ระหว่างเปิดใช้งาน ใช้เวลานานแค่ไหนขึ้นอยู่กับสถานการณ์และค่าย"
+        }
+      ]
+    },
+    "mn": {
+      "title": "Оператор солихдоо дугаараа хадгалах (번호이동)",
+      "description": "Одоогийн утасны дугаараа хадгалсаар өөр оператор эсвэл MVNO руу шилжих дугаар шилжүүлэлтийн ерөнхий алхмууд болон анхаарах зүйлс.",
+      "sections": [
+        {
+          "heading": "Дугаар шилжүүлэх гэж юу вэ?",
+          "body": "Дугаар шилжүүлэх (번호이동) нь одоогийн утасны дугаараа хадгалсаар өөр оператор руу шилжих явдал юм. Банк, мессенжер болон бусад үйлчилгээнд бүртгүүлсэн дугаараа солих шаардлагагүй тул Солонгост удаан амьдарсан хүмүүст ялангуяа тохиромжтой. Ихэнх тохиолдолд томоохон оператороос MVNO руу, эсвэл нэг MVNO-гоос нөгөө рүү шилжиж болно."
+        },
+        {
+          "heading": "Ерөнхий дараалал",
+          "body": "Ихэвчлэн шинэ оператортоо дугаар шилжүүлэх хүсэлт гаргахад шинэ оператор тань одоогийн оператор руу хүсэлт илгээнэ. Энэ үед мессеж эсвэл утсаар хувийн баталгаажуулалт хийлгэх нь элбэг. Шинэ USIM эсвэл eSIM бэлэн болмогц дугаар идэвхжиж, хуучин үйлчилгээ автоматаар дуусгавар болно. Идэвхжүүлэх явцад холболт богино хугацаанд тасарч болно."
+        },
+        {
+          "heading": "Хүсэлт гаргахаас өмнө шалгах зүйлс",
+          "body": "Дугаар таны нэр дээр байх ёстой бөгөөд ихэнхдээ түр хаагдаагүй, идэвхтэй байх шаардлагатай. Хуучин операторын үлдэгдэл утасны зээл, гэрээг хугацаанаас нь өмнө цуцалсны торгууль, сүүлийн сарын төлбөр шилжсэний дараа ч нэхэмжлэгдэж болно. Яг нөхцөл, дүнг эхлээд одоогийн оператороосоо лавлаарай."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Хуучин операторыг тусад нь цуцлах шаардлагатай юу?",
+          "a": "Ерөнхийдөө дугаар шилжүүлэлт дуусмагц хуучин дугаар автоматаар хаагдана. Үлдэгдэл төлбөрийг хуучин оператор тусад нь нэхэмжилж болно."
+        },
+        {
+          "q": "Дугаар шилжүүлэх үед утсаа ашиглаж чадахгүй юу?",
+          "a": "Идэвхжүүлэх явцад холболт богино хугацаанд тасарч болно. Хэр удах нь нөхцөл байдал болон оператороос хамаарна."
+        }
+      ]
+    },
+    "my": {
+      "title": "ကုမ္ပဏီပြောင်းရင်း ကိုယ့်နံပါတ် ဆက်ထားခြင်း (번호이동)",
+      "description": "အခုဖုန်းနံပါတ်ကို ဆက်ထားပြီး တခြားကုမ္ပဏီ ဒါမှမဟုတ် MVNO ကို ပြောင်းနိုင်တဲ့ ကိုရီးယားရဲ့ နံပါတ်ရွှေ့ပြောင်းခြင်း ယေဘုယျအဆင့်များနဲ့ သတိထားရမယ့်အရာများ။",
+      "sections": [
+        {
+          "heading": "နံပါတ်ရွှေ့ပြောင်းခြင်း ဆိုတာ ဘာလဲ",
+          "body": "နံပါတ်ရွှေ့ပြောင်းခြင်း (번호이동) က အခုဖုန်းနံပါတ်ကို ဆက်ထားပြီး တခြားကုမ္ပဏီကို ပြောင်းခွင့်ပေးပါတယ်။ ဘဏ်၊ မက်ဆင်ဂျာအက်ပ်နဲ့ တခြားဝန်ဆောင်မှုတွေမှာ မှတ်ပုံတင်ထားတဲ့ နံပါတ်ကို ပြောင်းစရာမလိုတာမို့ ကိုရီးယားမှာ ကြာကြာနေခဲ့သူတွေအတွက် အထူးအသုံးဝင်ပါတယ်။ အများအားဖြင့် ကုမ္ပဏီကြီးကနေ MVNO ကို၊ ဒါမှမဟုတ် MVNO တစ်ခုကနေ တစ်ခုကို ပြောင်းလို့ရပါတယ်။"
+        },
+        {
+          "heading": "များသောအားဖြင့် ဘယ်လိုလုပ်ရလဲ",
+          "body": "များသောအားဖြင့် ကုမ္ပဏီအသစ်မှာ နံပါတ်ရွှေ့ပြောင်းဖို့ လျှောက်ရပြီး ကုမ္ပဏီအသစ်က လက်ရှိကုမ္ပဏီဆီ တောင်းဆိုချက် ပို့ပါတယ်။ စာတို ဒါမှမဟုတ် ဖုန်းနဲ့ ကိုယ်ပိုင်အတည်ပြုခိုင်းတာ မကြာခဏ ရှိပါတယ်။ USIM ဒါမှမဟုတ် eSIM အသစ်အဆင်သင့်ဖြစ်ရင် လိုင်းဖွင့်ပေးပြီး ဝန်ဆောင်မှုဟောင်း အလိုအလျောက် ပြီးဆုံးပါတယ်။ လိုင်းဖွင့်နေစဉ် ခဏတာ လိုင်းပြတ်နိုင်ပါတယ်။"
+        },
+        {
+          "heading": "မလျှောက်ခင် စစ်ပါ",
+          "body": "နံပါတ်က ကိုယ့်နာမည်နဲ့ ဖြစ်ရပြီး လိုင်းက ပိတ်ထားတာမဟုတ်ဘဲ အသုံးပြုနေဆဲ ဖြစ်ဖို့ များသောအားဖြင့် လိုပါတယ်။ ကုမ္ပဏီဟောင်းမှာ ကျန်နေတဲ့ ဖုန်းအရစ်ကျ၊ စာချုပ်မပြည့်ခင် ဖျက်တဲ့ဒဏ်ကြေးနဲ့ နောက်ဆုံးလကြေးတွေကို ပြောင်းပြီးနောက်တောင် ဘေလ်တောင်းနိုင်ပါတယ်။ တိကျတဲ့ အခြေအနေနဲ့ ပမာဏကို လက်ရှိကုမ္ပဏီကို အရင်မေးပါ။"
+        }
+      ],
+      "faq": [
+        {
+          "q": "ကုမ္ပဏီဟောင်းကို သီးသန့် ဖျက်ရမလား။",
+          "a": "ယေဘုယျအားဖြင့် ရွှေ့ပြောင်းမှုပြီးတာနဲ့ လိုင်းဟောင်း အလိုအလျောက် ပိတ်သွားပါတယ်။ ကုမ္ပဏီဟောင်းက နောက်ဆုံးဘေလ်ကို သီးသန့် ပို့နိုင်ပါတယ်။"
+        },
+        {
+          "q": "ရွှေ့ပြောင်းနေစဉ် ဖုန်းသုံးလို့ မရဘူးလား။",
+          "a": "လိုင်းဖွင့်နေစဉ် ခဏတာ လိုင်းပြတ်နိုင်ပါတယ်။ ဘယ်လောက်ကြာမလဲဆိုတာ အခြေအနေနဲ့ ကုမ္ပဏီပေါ် မူတည်ပါတယ်။"
+        }
+      ]
+    },
+    "uz": {
+      "title": "Operator almashtirganda raqamni saqlab qolish (번호이동)",
+      "description": "Koreyada raqamni ko'chirishning umumiy bosqichlari: hozirgi raqamingizni saqlagan holda boshqa operator yoki MVNO'ga o'tish va nimalarga e'tibor berish kerakligi.",
+      "sections": [
+        {
+          "heading": "Raqamni ko'chirish nima?",
+          "body": "Raqamni ko'chirish (번호이동) hozirgi telefon raqamingizni saqlagan holda boshqa operatorga o'tish imkonini beradi. Bank, messenjerlar va boshqa xizmatlarda ro'yxatdan o'tgan raqamingizni yangilashingiz shart emas, bu ayniqsa Koreyada uzoq yashab kelayotganlar uchun qulay. Ko'p hollarda yirik operatordan MVNO'ga yoki bir MVNO'dan boshqasiga o'tish mumkin."
+        },
+        {
+          "heading": "Jarayon odatda qanday kechadi",
+          "body": "Odatda yangi operatorga raqamni ko'chirish uchun ariza berasiz, yangi operator esa so'rovni hozirgi operatoringizga yuboradi. Ko'pincha SMS yoki telefon orqali shaxsingizni tasdiqlash so'raladi. Yangi USIM yoki eSIM tayyor bo'lgach, raqam faollashtiriladi va eski xizmat avtomatik tugaydi. Faollashtirish paytida aloqa qisqa vaqtga uzilishi mumkin."
+        },
+        {
+          "heading": "Ariza berishdan oldin tekshiring",
+          "body": "Raqam o'z nomingizda bo'lishi kerak, ko'pincha liniya bloklanmagan, faol holatda bo'lishi ham talab qilinadi. Eski operatordagi telefon uchun qolgan bo'lib to'lov, shartnomani muddatidan oldin bekor qilish jarimasi va oxirgi oy to'lovi o'tganingizdan keyin ham hisoblanishi mumkin. Aniq shartlar va summalarni avval hozirgi operatoringizdan so'rang."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Eski operatordan alohida uzilishim kerakmi?",
+          "a": "Odatda ko'chirish tugagach, eski liniya avtomatik yopiladi. Eski operator yakuniy hisobni alohida yuborishi mumkin."
+        },
+        {
+          "q": "Ko'chirish paytida aloqasiz qolamanmi?",
+          "a": "Faollashtirish paytida aloqa qisqa vaqtga uzilishi mumkin. Qancha vaqt olishi vaziyat va operatorga bog'liq."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,293 @@
+{
+  "slug": "avoid-phone-scams",
+  "order": 10,
+  "published": "2026-11-22",
+  "updated": "2026-11-22",
+  "related": [
+    "opening-a-line-as-a-foreigner",
+    "check-your-monthly-bill",
+    "prepaid-vs-postpaid"
+  ],
+  "content": {
+    "ko": {
+      "title": "휴대폰 사기 피하기: 현금 선입금 요구와 스미싱 주의",
+      "description": "외국인을 노리는 휴대폰 판매 사기, 명의 대여 요구, 스미싱 문자를 알아보는 방법과 피해를 줄이는 기본 수칙을 안내합니다.",
+      "sections": [
+        {
+          "heading": "현금을 먼저 보내라는 판매처",
+          "body": "SNS나 메신저에서 휴대폰을 싸게 준다며 개인 계좌로 현금을 먼저 보내라고 하는 경우는 특히 조심해야 합니다. 돈을 보낸 뒤 연락이 끊기거나, 약속과 다른 조건으로 개통되는 피해가 생길 수 있습니다. 판매처의 사업자 정보와 정식 계약서를 확인하고, 이해되지 않는 조건이 있으면 서명하지 마세요."
+        },
+        {
+          "heading": "신분증을 빌려 달라는 요청",
+          "body": "아르바이트나 돈을 준다며 내 이름으로 휴대폰을 개통해 달라거나 외국인등록증을 빌려 달라는 요청은 거절하세요. 내 명의로 개통된 휴대폰이 범죄에 쓰이면 법적인 문제가 생길 수 있고, 요금과 할부금도 내 이름으로 청구될 수 있습니다."
+        },
+        {
+          "heading": "스미싱 문자",
+          "body": "택배 주소 확인, 과태료, 가족의 급한 부탁처럼 보이는 문자에 들어 있는 링크는 누르지 마세요. 링크를 통해 앱을 설치하면 개인정보가 빠져나가거나 소액결제가 될 수 있습니다. 가족이 돈을 보내 달라고 하면 반드시 직접 전화로 확인하세요. 피해가 의심되면 통신사와 경찰(112)에 바로 알리세요."
+        }
+      ],
+      "faq": [
+        {
+          "q": "링크를 이미 눌렀어요. 어떻게 하나요?",
+          "a": "설치된 모르는 앱이 있으면 삭제하고, 통신사에 소액결제 차단을 요청하세요. 금융 정보를 입력했다면 은행에도 바로 연락하세요."
+        },
+        {
+          "q": "정식 판매처인지 어떻게 알 수 있나요?",
+          "a": "사업자 정보, 정식 계약서, 개인 계좌가 아닌 결제 방법인지 확인하세요. 조금이라도 의심되면 서두르지 말고 다른 곳에 물어보세요."
+        }
+      ]
+    },
+    "en": {
+      "title": "Avoiding phone scams in Korea: upfront cash requests and smishing",
+      "description": "How to spot phone sales scams that target foreigners, requests to borrow your ID, and smishing texts, plus basic rules to protect yourself.",
+      "sections": [
+        {
+          "heading": "Sellers who ask for cash first",
+          "body": "Be very careful when someone on social media or a messenger app offers a cheap phone and asks you to send cash to a personal bank account first. After you pay, they may stop replying, or the line may be opened on different terms than promised. Check the seller's business details and a proper contract, and do not sign if you do not understand the conditions."
+        },
+        {
+          "heading": "Requests to borrow your ID",
+          "body": "Refuse anyone who offers money or a part-time job in return for opening a phone line in your name or borrowing your residence card. If a phone opened in your name is used for a crime, you may face legal problems, and the bills and installments can be charged to you."
+        },
+        {
+          "heading": "Smishing text messages",
+          "body": "Do not tap links in texts that look like delivery address checks, fines or urgent requests from family. Installing an app from such a link can leak your personal information or trigger phone payments. If a family member asks for money, always confirm by calling them directly. If you suspect fraud, contact your carrier and the police (112) right away."
+        }
+      ],
+      "faq": [
+        {
+          "q": "I already tapped the link. What should I do?",
+          "a": "Delete any unknown apps that were installed and ask your carrier to block phone payments. If you entered financial details, contact your bank immediately."
+        },
+        {
+          "q": "How can I tell if a seller is legitimate?",
+          "a": "Check the business details, a proper contract and that payment is not to a personal account. If anything feels wrong, do not rush and ask someone else."
+        }
+      ]
+    },
+    "vi": {
+      "title": "Tránh lừa đảo điện thoại ở Hàn: đòi chuyển tiền trước và tin nhắn lừa đảo (smishing)",
+      "description": "Cách nhận biết lừa đảo bán điện thoại nhắm vào người nước ngoài, lời nhờ mượn giấy tờ đứng tên và tin nhắn lừa đảo (smishing), cùng các nguyên tắc cơ bản để tự bảo vệ.",
+      "sections": [
+        {
+          "heading": "Người bán đòi chuyển tiền trước",
+          "body": "Hãy hết sức cẩn thận khi có người trên mạng xã hội hoặc ứng dụng nhắn tin chào bán điện thoại giá rẻ và đòi bạn chuyển tiền trước vào tài khoản cá nhân. Sau khi chuyển tiền, họ có thể biến mất, hoặc thuê bao được mở với điều kiện khác so với đã hứa. Hãy kiểm tra thông tin doanh nghiệp của người bán và hợp đồng chính thức, và đừng ký nếu có điều khoản bạn không hiểu."
+        },
+        {
+          "heading": "Lời nhờ mượn giấy tờ tùy thân",
+          "body": "Hãy từ chối bất kỳ ai hứa trả tiền hay giới thiệu việc làm thêm để đổi lấy việc mở sim đứng tên bạn hoặc mượn thẻ cư trú (외국인등록증) của bạn. Nếu điện thoại đứng tên bạn bị dùng vào việc phạm pháp, bạn có thể gặp rắc rối pháp lý, và cước phí lẫn tiền trả góp cũng có thể bị tính cho bạn."
+        },
+        {
+          "heading": "Tin nhắn lừa đảo (smishing)",
+          "body": "Đừng bấm vào đường link trong những tin nhắn trông như xác nhận địa chỉ giao hàng, thông báo nộp phạt hay lời nhờ vả gấp của người thân. Cài ứng dụng từ những link này có thể làm lộ thông tin cá nhân hoặc phát sinh thanh toán bằng điện thoại (소액결제). Nếu người nhà nhờ chuyển tiền, hãy luôn gọi điện trực tiếp để xác nhận. Nếu nghi ngờ bị lừa, hãy báo ngay cho nhà mạng và cảnh sát (112)."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Tôi lỡ bấm vào link rồi, phải làm sao?",
+          "a": "Xóa các ứng dụng lạ đã được cài và yêu cầu nhà mạng chặn thanh toán bằng điện thoại. Nếu đã nhập thông tin tài chính, hãy liên hệ ngân hàng ngay lập tức."
+        },
+        {
+          "q": "Làm sao biết người bán có uy tín không?",
+          "a": "Kiểm tra thông tin doanh nghiệp, hợp đồng chính thức và xem có phải thanh toán vào tài khoản cá nhân hay không. Nếu thấy có gì bất thường, đừng vội vàng và hãy hỏi thêm người khác."
+        }
+      ]
+    },
+    "ne": {
+      "title": "कोरियामा फोन ठगीबाट बच्ने: पहिले नगद माग्ने र स्मिसिङ",
+      "description": "विदेशीलाई निसाना बनाउने फोन बिक्री ठगी, परिचयपत्र सापट माग्ने अनुरोध र स्मिसिङ म्यासेज कसरी चिन्ने, र आफूलाई जोगाउने आधारभूत नियम।",
+      "sections": [
+        {
+          "heading": "पहिले नगद माग्ने बिक्रेता",
+          "body": "सामाजिक सञ्जाल वा मेसेन्जरमा कसैले सस्तो फोन दिन्छु भनेर व्यक्तिगत बैंक खातामा पहिले पैसा पठाउन भन्छ भने धेरै सावधान रहनुहोस्। पैसा पठाएपछि जवाफ आउन बन्द हुन सक्छ, वा भनेभन्दा फरक सर्तमा लाइन खोलिन सक्छ। बिक्रेताको व्यवसाय विवरण र उचित सम्झौता जाँच्नुहोस्, र सर्त नबुझे हस्ताक्षर नगर्नुहोस्।"
+        },
+        {
+          "heading": "परिचयपत्र सापट माग्ने अनुरोध",
+          "body": "पैसा वा पार्ट टाइम काम दिन्छु भनेर तपाईंको नाममा फोन लाइन खोलिदिन वा रेसिडेन्स कार्ड (외국인등록증) सापट माग्ने जोसुकैलाई इन्कार गर्नुहोस्। तपाईंको नाममा खोलिएको फोन अपराधमा प्रयोग भयो भने कानुनी समस्या आउन सक्छ, र बिल तथा किस्ता पनि तपाईंकै नाममा आउन सक्छ।"
+        },
+        {
+          "heading": "स्मिसिङ म्यासेज",
+          "body": "डेलिभरी ठेगाना जाँच, जरिवाना वा परिवारको अत्यावश्यक अनुरोधजस्तो देखिने म्यासेजका लिंक नथिच्नुहोस्। त्यस्तो लिंकबाट एप इन्स्टल गर्दा व्यक्तिगत जानकारी चोरिन वा फोन भुक्तानी हुन सक्छ। परिवारले पैसा मागे सधैं सिधै फोन गरेर पक्का गर्नुहोस्। ठगीको शंका लागे तुरुन्तै आफ्नो कम्पनी र प्रहरी (112) लाई खबर गर्नुहोस्।"
+        }
+      ],
+      "faq": [
+        {
+          "q": "मैले लिंक थिचिसकें। अब के गर्ने?",
+          "a": "इन्स्टल भएका नचिनेका एप हटाउनुहोस् र कम्पनीलाई फोन भुक्तानी (소액결제) रोक्न भन्नुहोस्। बैंकको जानकारी हाल्नुभएको छ भने तुरुन्तै बैंकलाई सम्पर्क गर्नुहोस्।"
+        },
+        {
+          "q": "बिक्रेता भरपर्दो हो कि होइन कसरी थाहा पाउने?",
+          "a": "व्यवसाय विवरण, उचित सम्झौता, र भुक्तानी व्यक्तिगत खातामा नभएको जाँच्नुहोस्। केही गडबड लागे हतार नगर्नुहोस् र अरू कसैलाई सोध्नुहोस्।"
+        }
+      ]
+    },
+    "km": {
+      "title": "ជៀសវាងការបោកប្រាស់ទូរស័ព្ទនៅកូរ៉េ៖ ការទាមទារលុយមុន និងសារបោកប្រាស់ (smishing)",
+      "description": "របៀបសម្គាល់ការបោកប្រាស់លក់ទូរស័ព្ទដែលផ្ដោតលើជនបរទេស សំណើខ្ចីអត្តសញ្ញាណប័ណ្ណ និងសារ smishing ព្រមទាំងច្បាប់មូលដ្ឋានដើម្បីការពារខ្លួន។",
+      "sections": [
+        {
+          "heading": "អ្នកលក់ដែលសុំលុយមុន",
+          "body": "សូមប្រុងប្រយ័ត្នខ្លាំង ពេលមាននរណាម្នាក់នៅលើបណ្ដាញសង្គម ឬកម្មវិធីផ្ញើសារ ផ្ដល់ទូរស័ព្ទថោក ហើយសុំឱ្យអ្នកផ្ញើលុយទៅគណនីធនាគារផ្ទាល់ខ្លួនរបស់គេជាមុន។ ក្រោយពេលបង់ គេអាចលែងឆ្លើយតប ឬបើកលេខតាមលក្ខខណ្ឌខុសពីការសន្យា។ សូមពិនិត្យព័ត៌មានអាជីវកម្មរបស់អ្នកលក់ និងកិច្ចសន្យាត្រឹមត្រូវ ហើយកុំចុះហត្ថលេខា បើអ្នកមិនយល់លក្ខខណ្ឌ។"
+        },
+        {
+          "heading": "សំណើខ្ចីអត្តសញ្ញាណប័ណ្ណ",
+          "body": "សូមបដិសេធអ្នកណាដែលផ្ដល់លុយ ឬការងារក្រៅម៉ោង ដើម្បីឱ្យអ្នកបើកលេខទូរស័ព្ទក្នុងឈ្មោះអ្នក ឬខ្ចីប័ណ្ណស្នាក់នៅ (외국인등록증) របស់អ្នក។ បើទូរស័ព្ទដែលបើកក្នុងឈ្មោះអ្នកត្រូវបានប្រើក្នុងបទល្មើស អ្នកអាចជួបបញ្ហាផ្លូវច្បាប់ ហើយវិក្កយបត្រ និងប្រាក់រំលស់ក៏អាចគិតមកលើអ្នកដែរ។"
+        },
+        {
+          "heading": "សារបោកប្រាស់ (smishing)",
+          "body": "កុំចុចតំណក្នុងសារដែលមើលទៅដូចជាការផ្ទៀងផ្ទាត់អាសយដ្ឋានដឹកជញ្ជូន ការពិន័យ ឬសំណើបន្ទាន់ពីគ្រួសារ។ ការដំឡើងកម្មវិធីតាមតំណបែបនេះ អាចធ្វើឱ្យលេចធ្លាយព័ត៌មានផ្ទាល់ខ្លួន ឬមានការទូទាត់តាមទូរស័ព្ទ (소액결제)។ បើសមាជិកគ្រួសារសុំលុយ ត្រូវហៅទៅបញ្ជាក់ដោយផ្ទាល់ជានិច្ច។ បើសង្ស័យថាត្រូវបោក សូមទាក់ទងក្រុមហ៊ុនទូរស័ព្ទ និងប៉ូលិស (112) ភ្លាមៗ។"
+        }
+      ],
+      "faq": [
+        {
+          "q": "ខ្ញុំបានចុចតំណរួចហើយ។ ត្រូវធ្វើអ្វី?",
+          "a": "សូមលុបកម្មវិធីមិនស្គាល់ដែលបានដំឡើង ហើយស្នើក្រុមហ៊ុនឱ្យបិទការទូទាត់តាមទូរស័ព្ទ។ បើអ្នកបានបញ្ចូលព័ត៌មានហិរញ្ញវត្ថុ សូមទាក់ទងធនាគាររបស់អ្នកភ្លាមៗ។"
+        },
+        {
+          "q": "តើធ្វើដូចម្ដេចដឹងថាអ្នកលក់ស្របច្បាប់?",
+          "a": "សូមពិនិត្យព័ត៌មានអាជីវកម្ម កិច្ចសន្យាត្រឹមត្រូវ និងថាការបង់ប្រាក់មិនមែនទៅគណនីផ្ទាល់ខ្លួន។ បើមានអ្វីមួយមិនប្រក្រតី កុំប្រញាប់ ហើយសួរអ្នកផ្សេងសិន។"
+        }
+      ]
+    },
+    "id": {
+      "title": "Menghindari penipuan ponsel di Korea: permintaan transfer di muka dan smishing",
+      "description": "Cara mengenali penipuan penjualan ponsel yang menyasar orang asing, permintaan meminjam kartu identitas, dan SMS smishing, serta aturan dasar untuk melindungi diri.",
+      "sections": [
+        {
+          "heading": "Penjual yang meminta uang di muka",
+          "body": "Berhati-hatilah jika ada orang di media sosial atau aplikasi pesan yang menawarkan ponsel murah dan meminta Anda mentransfer uang lebih dulu ke rekening pribadi. Setelah Anda membayar, mereka bisa menghilang, atau nomor dibuka dengan syarat yang berbeda dari yang dijanjikan. Cek data usaha penjual dan kontrak resminya, dan jangan tanda tangan jika ada syarat yang tidak Anda pahami."
+        },
+        {
+          "heading": "Permintaan meminjam kartu identitas",
+          "body": "Tolak siapa pun yang menawarkan uang atau kerja paruh waktu sebagai imbalan untuk membuka nomor ponsel atas nama Anda atau meminjam kartu registrasi orang asing (외국인등록증) Anda. Jika ponsel yang dibuka atas nama Anda dipakai untuk kejahatan, Anda bisa terkena masalah hukum, dan tagihan serta cicilannya bisa dibebankan kepada Anda."
+        },
+        {
+          "heading": "SMS smishing",
+          "body": "Jangan ketuk tautan di SMS yang tampak seperti konfirmasi alamat paket, pemberitahuan denda, atau permintaan mendesak dari keluarga. Memasang aplikasi dari tautan semacam itu bisa membocorkan data pribadi Anda atau memicu pembayaran lewat ponsel. Jika anggota keluarga meminta uang, selalu pastikan dengan menelepon mereka langsung. Jika Anda curiga menjadi korban, segera hubungi operator dan polisi (112)."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Saya sudah terlanjur mengetuk tautannya. Apa yang harus dilakukan?",
+          "a": "Hapus aplikasi tak dikenal yang terpasang dan minta operator memblokir pembayaran lewat ponsel (소액결제). Jika Anda sempat memasukkan data keuangan, segera hubungi bank Anda."
+        },
+        {
+          "q": "Bagaimana cara tahu penjual itu resmi?",
+          "a": "Cek data usaha, kontrak resmi, dan pastikan pembayaran tidak ke rekening pribadi. Jika ada yang terasa janggal, jangan terburu-buru dan tanyakan ke pihak lain."
+        }
+      ]
+    },
+    "th": {
+      "title": "ระวังมิจฉาชีพเรื่องมือถือ: การขอให้โอนเงินก่อนและ SMS หลอกลวง (สมิชชิ่ง)",
+      "description": "วิธีสังเกตการหลอกขายมือถือที่มุ่งเป้าชาวต่างชาติ การขอยืมบัตรเพื่อเปิดเบอร์ และ SMS หลอกลวง (สมิชชิ่ง) พร้อมหลักพื้นฐานในการป้องกันตัวเอง",
+      "sections": [
+        {
+          "heading": "ผู้ขายที่ขอให้โอนเงินก่อน",
+          "body": "ต้องระวังเป็นพิเศษ ถ้ามีคนในโซเชียลมีเดียหรือแอปแชตเสนอขายมือถือราคาถูก แล้วขอให้โอนเงินเข้าบัญชีส่วนตัวก่อน หลังโอนเงินแล้วอาจติดต่อไม่ได้อีกเลย หรือเบอร์ถูกเปิดด้วยเงื่อนไขที่ต่างจากที่ตกลงกันไว้ ควรตรวจสอบข้อมูลธุรกิจของผู้ขายและสัญญาที่เป็นทางการ และถ้ามีเงื่อนไขที่ไม่เข้าใจ อย่าเพิ่งเซ็น"
+        },
+        {
+          "heading": "คำขอยืมบัตรประจำตัว",
+          "body": "ปฏิเสธทุกคนที่เสนอเงินหรืองานพาร์ตไทม์เพื่อแลกกับการเปิดเบอร์ในชื่อของเรา หรือขอยืมบัตรต่างด้าว (외국인등록증) ของเรา ถ้ามือถือที่เปิดในชื่อของเราถูกนำไปใช้ก่ออาชญากรรม เราอาจมีปัญหาทางกฎหมาย และค่าบริการกับค่าผ่อนเครื่องก็อาจถูกเรียกเก็บในชื่อของเรา"
+        },
+        {
+          "heading": "SMS หลอกลวง (สมิชชิ่ง)",
+          "body": "อย่ากดลิงก์ใน SMS ที่ดูเหมือนการยืนยันที่อยู่จัดส่งพัสดุ แจ้งค่าปรับ หรือคำขอด่วนจากคนในครอบครัว การติดตั้งแอปจากลิงก์แบบนี้อาจทำให้ข้อมูลส่วนตัวรั่วไหลหรือเกิดการชำระเงินผ่านมือถือ (소액결제) ถ้าคนในครอบครัวขอให้โอนเงิน ต้องโทรหาเขาโดยตรงเพื่อยืนยันทุกครั้ง ถ้าสงสัยว่าถูกหลอก ให้แจ้งค่ายมือถือและตำรวจ (112) ทันที"
+        }
+      ],
+      "faq": [
+        {
+          "q": "เผลอกดลิงก์ไปแล้ว ต้องทำอย่างไร?",
+          "a": "ลบแอปแปลก ๆ ที่ถูกติดตั้ง และขอให้ค่ายมือถือบล็อกการชำระเงินผ่านมือถือ ถ้ากรอกข้อมูลทางการเงินไปแล้ว ให้ติดต่อธนาคารทันที"
+        },
+        {
+          "q": "จะรู้ได้อย่างไรว่าเป็นผู้ขายที่ถูกต้อง?",
+          "a": "ตรวจสอบข้อมูลธุรกิจ สัญญาที่เป็นทางการ และดูว่าไม่ได้ให้โอนเงินเข้าบัญชีส่วนตัว ถ้ารู้สึกว่ามีอะไรผิดปกติ อย่ารีบร้อน และลองสอบถามคนอื่นดูก่อน"
+        }
+      ]
+    },
+    "mn": {
+      "title": "Солонгост утасны луйвраас сэргийлэх: урьдчилж бэлэн мөнгө нэхэх, смишинг",
+      "description": "Гадаад иргэдийг онилсон утас худалдааны луйвар, үнэмлэх зээлэх хүсэлт, смишинг мессежийг хэрхэн таних болон өөрийгөө хамгаалах үндсэн дүрмүүд.",
+      "sections": [
+        {
+          "heading": "Эхлээд бэлэн мөнгө нэхдэг худалдагч",
+          "body": "Сошиал медиа эсвэл мессенжерээр хэн нэгэн хямд утас санал болгоод, эхлээд хувийн банкны данс руу мөнгө шилжүүлэхийг шаардвал маш болгоомжтой байгаарай. Мөнгө шилжүүлсний дараа холбоо тасарч, эсвэл амласнаас өөр нөхцөлөөр дугаар нээгдэж болзошгүй. Худалдагчийн бизнесийн мэдээлэл, албан ёсны гэрээг шалгаж, ойлгохгүй нөхцөл байвал гарын үсэг зурахгүй байгаарай."
+        },
+        {
+          "heading": "Үнэмлэх зээлэх хүсэлт",
+          "body": "Мөнгө эсвэл цагийн ажил санал болгож, таны нэр дээр утасны дугаар нээлгэх, эсвэл гадаад иргэний үнэмлэхийг тань (외국인등록증) зээлэхийг хүссэн хүнээс татгалзаарай. Таны нэр дээр нээгдсэн утсыг гэмт хэрэгт ашиглавал хуулийн асуудалд орж болзошгүй бөгөөд төлбөр, зээл нь ч таны нэр дээр нэхэмжлэгдэж болно."
+        },
+        {
+          "heading": "Смишинг мессеж",
+          "body": "Илгээмжийн хаяг баталгаажуулах, торгууль, гэр бүлийн яаралтай хүсэлт мэт харагдах мессеж доторх холбоосыг бүү дар. Ийм холбоосоор аппликейшн суулгавал хувийн мэдээлэл алдагдах эсвэл утсаар жижиг төлбөр (소액결제) хийгдэж болно. Гэр бүлийн гишүүн мөнгө гуйвал заавал өөрөө шууд залгаж баталгаажуулаарай. Луйварт өртсөн гэж сэжиглэвэл оператор болон цагдаад (112) нэн даруй мэдэгдээрэй."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Холбоосыг аль хэдийн дарчихлаа. Яах вэ?",
+          "a": "Суусан танихгүй аппликейшн байвал устгаж, оператороосоо утасны жижиг төлбөрийг хаалгаарай. Санхүүгийн мэдээлэл оруулсан бол банкандаа нэн даруй хандаарай."
+        },
+        {
+          "q": "Худалдагч хууль ёсны эсэхийг яаж мэдэх вэ?",
+          "a": "Бизнесийн мэдээлэл, албан ёсны гэрээ, төлбөр хувийн данс руу биш эсэхийг шалгаарай. Бага ч гэсэн эргэлзээ төрвөл яарахгүйгээр өөр газраас асуугаарай."
+        }
+      ]
+    },
+    "my": {
+      "title": "ကိုရီးယားမှာ ဖုန်းလိမ်လည်မှု ရှောင်ရှားခြင်း: ငွေကြိုတောင်းခြင်းနဲ့ စမစ်ရှင်း",
+      "description": "နိုင်ငံခြားသားတွေကို ပစ်မှတ်ထားတဲ့ ဖုန်းရောင်းလိမ်မှု၊ မှတ်ပုံတင်ငှားဖို့ တောင်းဆိုမှုနဲ့ စမစ်ရှင်းစာတိုတွေကို ဘယ်လိုသိနိုင်မလဲ၊ ကိုယ့်ကိုယ်ကို ကာကွယ်ဖို့ အခြေခံစည်းကမ်းများ။",
+      "sections": [
+        {
+          "heading": "ငွေအရင်ပို့ခိုင်းတဲ့ ရောင်းသူ",
+          "body": "ဆိုရှယ်မီဒီယာ ဒါမှမဟုတ် မက်ဆင်ဂျာမှာ တစ်စုံတစ်ယောက်က ဖုန်းဈေးပေါပေါပေးမယ်ဆိုပြီး ကိုယ်ပိုင်ဘဏ်အကောင့်ကို ငွေအရင်ပို့ခိုင်းရင် အထူးသတိထားပါ။ ငွေပို့ပြီးရင် အဆက်အသွယ်ပြတ်သွားတာ ဒါမှမဟုတ် ကတိပေးထားတာနဲ့ မတူတဲ့ အခြေအနေနဲ့ လိုင်းဖွင့်ခံရတာ ဖြစ်နိုင်ပါတယ်။ ရောင်းသူရဲ့ လုပ်ငန်းအချက်အလက်နဲ့ တရားဝင်စာချုပ်ကို စစ်ပြီး နားမလည်တဲ့ အခြေအနေရှိရင် လက်မှတ်မထိုးပါနဲ့။"
+        },
+        {
+          "heading": "မှတ်ပုံတင် ငှားဖို့ တောင်းဆိုမှု",
+          "body": "ငွေ ဒါမှမဟုတ် အချိန်ပိုင်းအလုပ်ပေးမယ်ဆိုပြီး ကိုယ့်နာမည်နဲ့ ဖုန်းလိုင်းဖွင့်ပေးဖို့ ဒါမှမဟုတ် နေထိုင်ခွင့်ကတ် (외국인등록증) ငှားဖို့ တောင်းတဲ့သူကို ငြင်းပါ။ ကိုယ့်နာမည်နဲ့ ဖွင့်ထားတဲ့ဖုန်းကို ရာဇဝတ်မှုမှာ သုံးရင် ဥပဒေပြဿနာ ကြုံနိုင်ပြီး ဘေလ်နဲ့ အရစ်ကျတွေကိုလည်း ကိုယ့်ဆီ တောင်းခံနိုင်ပါတယ်။"
+        },
+        {
+          "heading": "စမစ်ရှင်း စာတိုများ",
+          "body": "ပါဆယ်လိပ်စာစစ်ခြင်း၊ ဒဏ်ငွေ ဒါမှမဟုတ် မိသားစုရဲ့ အရေးပေါ်တောင်းဆိုမှုလို ပုံစံရှိတဲ့ စာတိုထဲက လင့်ခ်တွေကို မနှိပ်ပါနဲ့။ အဲဒီလင့်ခ်ကနေ အက်ပ်ထည့်လိုက်ရင် ကိုယ်ရေးအချက်အလက် ပေါက်ကြားတာ ဒါမှမဟုတ် ဖုန်းနဲ့ငွေပေးချေမှု ဖြစ်သွားတာ ရှိနိုင်ပါတယ်။ မိသားစုဝင်က ငွေတောင်းရင် တိုက်ရိုက်ဖုန်းဆက်ပြီး အမြဲ အတည်ပြုပါ။ လိမ်လည်မှုလို့ သံသယရှိရင် ကိုယ့်ကုမ္ပဏီနဲ့ ရဲ (112) ကို ချက်ချင်း အကြောင်းကြားပါ။"
+        }
+      ],
+      "faq": [
+        {
+          "q": "လင့်ခ်ကို နှိပ်မိသွားပြီ။ ဘာလုပ်ရမလဲ။",
+          "a": "ထည့်သွင်းခံရတဲ့ မသိတဲ့အက်ပ်တွေကို ဖျက်ပြီး ကုမ္ပဏီကို ဖုန်းနဲ့ငွေပေးချေမှု (소액결제) ပိတ်ပေးဖို့ တောင်းဆိုပါ။ ဘဏ်အချက်အလက် ထည့်မိခဲ့ရင် ဘဏ်ကို ချက်ချင်း ဆက်သွယ်ပါ။"
+        },
+        {
+          "q": "ရောင်းသူ တရားဝင်လား ဘယ်လိုသိနိုင်မလဲ။",
+          "a": "လုပ်ငန်းအချက်အလက်၊ တရားဝင်စာချုပ်နဲ့ ငွေပေးချေမှုက ကိုယ်ပိုင်အကောင့်ကို မဟုတ်ကြောင်း စစ်ပါ။ တစ်ခုခု မှားနေသလို ခံစားရရင် အလျင်မလိုဘဲ တခြားသူကို မေးပါ။"
+        }
+      ]
+    },
+    "uz": {
+      "title": "Koreyada telefon firibgarligidan saqlanish: oldindan pul so'rash va smishing",
+      "description": "Chet elliklarni nishonga oladigan telefon sotish firibgarliklari, hujjatingizni so'rab olish urinishlari va smishing SMS'larini qanday aniqlash hamda o'zingizni himoya qilishning asosiy qoidalari.",
+      "sections": [
+        {
+          "heading": "Avval pul o'tkazishni so'raydigan sotuvchilar",
+          "body": "Ijtimoiy tarmoq yoki messenjerda kimdir arzon telefon taklif qilib, avval shaxsiy bank hisobiga pul o'tkazishingizni so'rasa, juda ehtiyot bo'ling. Pul to'laganingizdan keyin ular javob bermay qo'yishi yoki raqam va'da qilinganidan boshqacha shartlarda ochilishi mumkin. Sotuvchining tadbirkorlik ma'lumotlari va rasmiy shartnomani tekshiring, tushunmagan shartlaringiz bo'lsa, imzo chekmang."
+        },
+        {
+          "heading": "Hujjatingizni so'rab olish urinishlari",
+          "body": "Pul yoki qisman ish evaziga sizning nomingizga telefon raqami ochib berishni yoki chet ellik kartangizni (외국인등록증) vaqtincha berishni so'raganlarga rad javobini bering. Agar nomingizga ochilgan telefon jinoyatda ishlatilsa, huquqiy muammolarga duch kelishingiz mumkin, to'lovlar va bo'lib to'lovlar ham sizning nomingizga yozilishi mumkin."
+        },
+        {
+          "heading": "Smishing SMS'lari",
+          "body": "Posilka manzilini tasdiqlash, jarima yoki oiladan kelgan shoshilinch iltimosga o'xshagan SMS'lardagi havolalarni bosmang. Bunday havola orqali ilova o'rnatish shaxsiy ma'lumotlaringiz o'g'irlanishiga yoki telefon orqali to'lov amalga oshishiga olib kelishi mumkin. Oila a'zongiz pul so'rasa, albatta unga o'zingiz qo'ng'iroq qilib tasdiqlang. Firibgarlikdan shubha qilsangiz, darhol operatoringizga va politsiyaga (112) xabar bering."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Havolani bosib qo'ydim. Nima qilishim kerak?",
+          "a": "O'rnatilgan notanish ilovalarni o'chiring va operatoringizdan telefon orqali to'lovlarni (소액결제) bloklashni so'rang. Agar moliyaviy ma'lumotlaringizni kiritgan bo'lsangiz, darhol bankingizga ham murojaat qiling."
+        },
+        {
+          "q": "Sotuvchi rasmiy ekanini qanday bilsam bo'ladi?",
+          "a": "Tadbirkorlik ma'lumotlari, rasmiy shartnoma va to'lov shaxsiy hisobga emasligini tekshiring. Biror narsa shubhali tuyulsa, shoshilmang va boshqa joydan maslahat so'rang."
+        }
+      ]
+    }
+  }
+}

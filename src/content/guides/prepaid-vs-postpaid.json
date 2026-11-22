@@ -1,0 +1,293 @@
+{
+  "slug": "prepaid-vs-postpaid",
+  "order": 3,
+  "published": "2026-11-22",
+  "updated": "2026-11-22",
+  "related": [
+    "opening-a-line-as-a-foreigner",
+    "how-to-read-a-plan",
+    "check-your-monthly-bill"
+  ],
+  "content": {
+    "ko": {
+      "title": "선불 요금제 vs 후불 요금제, 나에게 맞는 것은?",
+      "description": "선불과 후불 요금제가 어떻게 다른지, 어떤 상황에서 어느 쪽이 편한지 외국인 입장에서 쉽게 비교했습니다.",
+      "sections": [
+        {
+          "heading": "선불 요금제",
+          "body": "선불 요금제는 먼저 금액을 충전하고 그 안에서 사용하는 방식입니다. 충전한 만큼만 쓰기 때문에 예상하지 못한 청구서가 나올 걱정이 적고, 여권으로 가입할 수 있는 경우도 있습니다. 대신 충전을 잊으면 사용이 멈출 수 있고, 일정 기간 충전하지 않으면 번호가 정지되거나 해지될 수 있으니 조건을 확인하세요."
+        },
+        {
+          "heading": "후불 요금제",
+          "body": "후불 요금제는 한 달 동안 사용한 뒤 다음 달에 요금을 내는 방식입니다. 자동이체로 매달 결제되기 때문에 충전을 신경 쓸 필요가 없고, 선택할 수 있는 요금제가 더 다양한 편입니다. 보통 외국인등록증과 본인 명의 결제 수단이 필요합니다."
+        },
+        {
+          "heading": "어떻게 고르면 좋을까요?",
+          "body": "한국에 막 도착했거나 짧게 머문다면 선불이 시작하기 쉬울 수 있습니다. 오래 머물고 은행 계좌가 있다면 후불이 더 편할 수 있습니다. 은행이나 앱 본인 인증에 휴대폰이 필요할 때 어떤 요금제가 지원되는지도 서비스마다 다르니 함께 확인해 보세요."
+        }
+      ],
+      "faq": [
+        {
+          "q": "선불에서 후불로 바꿀 수 있나요?",
+          "a": "가능한 경우가 많지만, 번호 유지 여부와 절차는 통신사마다 다릅니다. 바꾸기 전에 확인해 주세요."
+        },
+        {
+          "q": "선불 요금제로 본인 인증을 할 수 있나요?",
+          "a": "서비스마다 다릅니다. 일부 은행이나 앱은 선불 번호의 본인 인증을 제한할 수 있으니 미리 확인하세요."
+        }
+      ]
+    },
+    "en": {
+      "title": "Prepaid vs postpaid plans in Korea: which one fits you?",
+      "description": "How prepaid and postpaid phone plans differ in Korea, and which one may be easier depending on your situation as a foreigner.",
+      "sections": [
+        {
+          "heading": "Prepaid plans",
+          "body": "With a prepaid plan, you top up first and use the service within that balance. Because you only use what you have loaded, there is less risk of an unexpected bill, and some prepaid plans accept a passport. However, service can stop if you forget to top up, and the number may be suspended or closed if you do not recharge for a while, so check the conditions."
+        },
+        {
+          "heading": "Postpaid plans",
+          "body": "With a postpaid plan, you use the service for a month and pay the following month. Payment is taken automatically, so you do not need to think about topping up, and there is usually a wider choice of plans. You normally need a residence card (ARC) and a payment method in your own name."
+        },
+        {
+          "heading": "How to choose",
+          "body": "If you have just arrived or are staying for a short time, prepaid can be an easier start. If you are staying longer and have a bank account, postpaid may be more convenient. Phone verification for banks and apps also works differently depending on the service and plan type, so check that too."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Can I switch from prepaid to postpaid?",
+          "a": "Often yes, but whether you can keep your number and how it works differ by carrier. Please check before you switch."
+        },
+        {
+          "q": "Can I use a prepaid number for identity verification?",
+          "a": "It depends on the service. Some banks or apps may limit verification with prepaid numbers, so check in advance."
+        }
+      ]
+    },
+    "vi": {
+      "title": "Gói trả trước hay trả sau: gói nào hợp với bạn?",
+      "description": "So sánh dễ hiểu giữa gói cước trả trước và trả sau ở Hàn Quốc, và trường hợp nào thì loại nào tiện hơn cho người nước ngoài.",
+      "sections": [
+        {
+          "heading": "Gói trả trước",
+          "body": "Với gói trả trước, bạn nạp tiền trước rồi dùng trong phạm vi số dư đó. Vì chỉ dùng đúng số tiền đã nạp nên ít lo bị hóa đơn bất ngờ, và có gói cho đăng ký bằng hộ chiếu. Tuy nhiên, nếu quên nạp tiền thì dịch vụ có thể bị ngừng, và nếu lâu không nạp, số có thể bị tạm khóa hoặc hủy, nên hãy đọc kỹ điều kiện."
+        },
+        {
+          "heading": "Gói trả sau",
+          "body": "Với gói trả sau, bạn dùng trong một tháng rồi thanh toán vào tháng sau. Tiền được trừ tự động hằng tháng nên không cần bận tâm chuyện nạp tiền, và thường có nhiều lựa chọn gói hơn. Thông thường bạn cần thẻ cư trú (ARC) và phương thức thanh toán đứng tên mình."
+        },
+        {
+          "heading": "Nên chọn thế nào?",
+          "body": "Nếu bạn mới sang Hàn hoặc chỉ ở ngắn ngày, gói trả trước có thể là khởi đầu dễ dàng hơn. Nếu ở lâu và đã có tài khoản ngân hàng, gói trả sau có thể tiện hơn. Việc xác minh danh tính bằng điện thoại cho ngân hàng và ứng dụng cũng khác nhau tùy dịch vụ và loại gói, nên hãy kiểm tra cả điểm này."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Có chuyển từ trả trước sang trả sau được không?",
+          "a": "Thường là được, nhưng có giữ được số cũ hay không và thủ tục thế nào thì tùy nhà mạng. Hãy hỏi trước khi chuyển."
+        },
+        {
+          "q": "Số trả trước có dùng để xác minh danh tính được không?",
+          "a": "Tùy từng dịch vụ. Một số ngân hàng hoặc ứng dụng có thể hạn chế xác minh bằng số trả trước, nên hãy kiểm tra trước."
+        }
+      ]
+    },
+    "ne": {
+      "title": "कोरियामा प्रिपेड कि पोस्टपेड प्लान: तपाईंलाई कुन मिल्छ?",
+      "description": "कोरियामा प्रिपेड र पोस्टपेड फोन प्लान कसरी फरक छन्, र विदेशीका रूपमा तपाईंको अवस्था अनुसार कुन सजिलो हुन सक्छ।",
+      "sections": [
+        {
+          "heading": "प्रिपेड प्लान",
+          "body": "प्रिपेड प्लानमा पहिले रिचार्ज गरेर त्यही ब्यालेन्सभित्र सेवा चलाइन्छ। जति रिचार्ज गर्नुभयो त्यति मात्र खर्च हुने भएकाले अचानक ठूलो बिल आउने डर कम हुन्छ, र केही प्रिपेड प्लानमा पासपोर्टले पनि हुन्छ। तर रिचार्ज गर्न बिर्सनुभयो भने सेवा रोकिन सक्छ, र लामो समय रिचार्ज नगरे नम्बर बन्द वा रद्द हुन सक्छ, त्यसैले सर्तहरू हेर्नुहोस्।"
+        },
+        {
+          "heading": "पोस्टपेड प्लान",
+          "body": "पोस्टपेड प्लानमा एक महिना सेवा चलाएर अर्को महिना तिरिन्छ। भुक्तानी आफैं कट्ने भएकाले रिचार्जको चिन्ता गर्नु पर्दैन, र प्लानका विकल्प पनि प्रायः धेरै हुन्छन्। सामान्यतया रेसिडेन्स कार्ड (ARC) र आफ्नै नाममा भुक्तानी माध्यम चाहिन्छ।"
+        },
+        {
+          "heading": "कसरी छान्ने?",
+          "body": "भर्खरै आइपुग्नुभएको छ वा छोटो समय बस्दै हुनुहुन्छ भने प्रिपेडबाट सुरु गर्न सजिलो हुन सक्छ। लामो समय बस्ने र बैंक खाता भएको छ भने पोस्टपेड बढी सुविधाजनक हुन सक्छ। बैंक र एपका लागि फोन प्रमाणीकरण पनि सेवा र प्लानको प्रकार अनुसार फरक हुन्छ, त्यो पनि जाँच्नुहोस्।"
+        }
+      ],
+      "faq": [
+        {
+          "q": "प्रिपेडबाट पोस्टपेडमा बदल्न मिल्छ?",
+          "a": "प्रायः मिल्छ, तर नम्बर उही राख्न मिल्छ कि मिल्दैन र प्रक्रिया कस्तो हुन्छ भन्ने कम्पनी अनुसार फरक हुन्छ। बदल्नुअघि सोध्नुहोस्।"
+        },
+        {
+          "q": "प्रिपेड नम्बरले परिचय प्रमाणीकरण गर्न मिल्छ?",
+          "a": "सेवामा भर पर्छ। केही बैंक वा एपले प्रिपेड नम्बरबाट प्रमाणीकरण सीमित गर्न सक्छन्, त्यसैले पहिल्यै जाँच्नुहोस्।"
+        }
+      ]
+    },
+    "km": {
+      "title": "គម្រោងបង់ប្រាក់មុន ឬបង់ប្រាក់ក្រោយ៖ មួយណាសាកសមនឹងអ្នក?",
+      "description": "ភាពខុសគ្នារវាងគម្រោងទូរស័ព្ទបង់ប្រាក់មុន និងបង់ប្រាក់ក្រោយនៅកូរ៉េ និងមួយណាអាចងាយស្រួលជាង តាមស្ថានភាពរបស់អ្នកជាជនបរទេស។",
+      "sections": [
+        {
+          "heading": "គម្រោងបង់ប្រាក់មុន (prepaid)",
+          "body": "ជាមួយគម្រោងបង់ប្រាក់មុន អ្នកបញ្ចូលលុយជាមុន ហើយប្រើក្នុងចំនួនដែលបានបញ្ចូលនោះ។ ដោយសារប្រើបានតែប៉ុណ្ណឹងដែលបានបញ្ចូល ហានិភ័យនៃវិក្កយបត្រដែលមិនបានរំពឹងទុកមានតិច ហើយគម្រោងខ្លះអាចចុះឈ្មោះដោយលិខិតឆ្លងដែន។ ប៉ុន្តែបើភ្លេចបញ្ចូលលុយ សេវាអាចឈប់ ហើយបើមិនបញ្ចូលយូរ លេខអាចត្រូវផ្អាក ឬបិទ ដូច្នេះសូមពិនិត្យលក្ខខណ្ឌ។"
+        },
+        {
+          "heading": "គម្រោងបង់ប្រាក់ក្រោយ (postpaid)",
+          "body": "ជាមួយគម្រោងបង់ប្រាក់ក្រោយ អ្នកប្រើសេវារយៈពេលមួយខែ ហើយបង់នៅខែបន្ទាប់។ ប្រាក់ត្រូវកាត់ដោយស្វ័យប្រវត្តិ ដូច្នេះមិនចាំបាច់គិតពីការបញ្ចូលលុយ ហើយជាធម្មតាមានគម្រោងឱ្យជ្រើសរើសច្រើនជាង។ ជាទូទៅ អ្នកត្រូវការប័ណ្ណស្នាក់នៅ (ARC) និងវិធីបង់ប្រាក់ក្នុងឈ្មោះអ្នកផ្ទាល់។"
+        },
+        {
+          "heading": "តើគួរជ្រើសរើសយ៉ាងដូចម្ដេច?",
+          "body": "បើអ្នកទើបមកដល់ ឬស្នាក់នៅរយៈពេលខ្លី គម្រោងបង់ប្រាក់មុនអាចជាការចាប់ផ្ដើមងាយជាង។ បើស្នាក់នៅយូរ ហើយមានគណនីធនាគារ គម្រោងបង់ប្រាក់ក្រោយអាចស្រួលជាង។ ការផ្ទៀងផ្ទាត់អត្តសញ្ញាណតាមទូរស័ព្ទសម្រាប់ធនាគារ និងកម្មវិធី ក៏ខុសគ្នាតាមសេវា និងប្រភេទគម្រោងដែរ ដូច្នេះសូមពិនិត្យចំណុចនេះផង។"
+        }
+      ],
+      "faq": [
+        {
+          "q": "តើអាចប្ដូរពីបង់ប្រាក់មុន ទៅបង់ប្រាក់ក្រោយបានទេ?",
+          "a": "ច្រើនតែអាចបាន ប៉ុន្តែថាតើអាចរក្សាលេខដដែលបានឬទេ និងនីតិវិធី ខុសគ្នាតាមក្រុមហ៊ុន។ សូមពិនិត្យមុនពេលប្ដូរ។"
+        },
+        {
+          "q": "តើអាចប្រើលេខបង់ប្រាក់មុន ដើម្បីផ្ទៀងផ្ទាត់អត្តសញ្ញាណបានទេ?",
+          "a": "វាអាស្រ័យលើសេវា។ ធនាគារ ឬកម្មវិធីខ្លះអាចកំណត់ការផ្ទៀងផ្ទាត់ដោយលេខបង់ប្រាក់មុន ដូច្នេះសូមពិនិត្យជាមុន។"
+        }
+      ]
+    },
+    "id": {
+      "title": "Paket prabayar vs pascabayar di Korea: mana yang cocok untuk Anda?",
+      "description": "Perbedaan paket ponsel prabayar dan pascabayar di Korea, dan mana yang mungkin lebih praktis sesuai situasi Anda sebagai orang asing.",
+      "sections": [
+        {
+          "heading": "Paket prabayar",
+          "body": "Dengan paket prabayar, Anda mengisi saldo terlebih dahulu lalu memakai layanan sesuai saldo tersebut. Karena hanya memakai apa yang sudah diisi, risiko tagihan tak terduga lebih kecil, dan sebagian paket prabayar bisa dibuka dengan paspor. Namun layanan bisa terhenti jika Anda lupa isi ulang, dan nomor bisa diblokir atau ditutup jika tidak diisi ulang dalam jangka waktu tertentu, jadi cek syaratnya."
+        },
+        {
+          "heading": "Paket pascabayar",
+          "body": "Dengan paket pascabayar, Anda memakai layanan selama sebulan lalu membayarnya bulan berikutnya. Pembayaran dipotong otomatis, jadi Anda tidak perlu memikirkan isi ulang, dan pilihan paketnya biasanya lebih beragam. Umumnya Anda memerlukan kartu registrasi orang asing (ARC) dan metode pembayaran atas nama sendiri."
+        },
+        {
+          "heading": "Cara memilih",
+          "body": "Jika Anda baru tiba atau hanya tinggal sebentar, prabayar bisa jadi awal yang lebih mudah. Jika Anda tinggal lebih lama dan sudah punya rekening bank, pascabayar mungkin lebih praktis. Verifikasi nomor ponsel untuk bank dan aplikasi juga berbeda tergantung layanan dan jenis paket, jadi cek hal itu juga."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Bisakah saya beralih dari prabayar ke pascabayar?",
+          "a": "Sering kali bisa, tetapi apakah nomor bisa tetap dipakai dan bagaimana prosesnya berbeda di setiap operator. Pastikan dulu sebelum beralih."
+        },
+        {
+          "q": "Bisakah nomor prabayar dipakai untuk verifikasi identitas?",
+          "a": "Tergantung layanannya. Sebagian bank atau aplikasi mungkin membatasi verifikasi dengan nomor prabayar, jadi cek terlebih dahulu."
+        }
+      ]
+    },
+    "th": {
+      "title": "แบบเติมเงิน vs แบบรายเดือน แบบไหนเหมาะกับเรา?",
+      "description": "เปรียบเทียบแบบเข้าใจง่ายว่าแพ็กเกจเติมเงินกับรายเดือนในเกาหลีต่างกันอย่างไร และแบบไหนสะดวกกว่าในสถานการณ์ของชาวต่างชาติ",
+      "sections": [
+        {
+          "heading": "แบบเติมเงิน",
+          "body": "แบบเติมเงินคือเติมเงินเข้าไปก่อน แล้วใช้ภายในยอดเงินนั้น เพราะใช้ได้เท่าที่เติม จึงไม่ค่อยต้องกังวลเรื่องบิลแพงเกินคาด และบางแพ็กเกจก็ใช้พาสปอร์ตสมัครได้ แต่ถ้าลืมเติมเงิน บริการอาจหยุดใช้งาน และถ้าไม่เติมเงินเป็นเวลานาน เบอร์อาจถูกระงับหรือยกเลิกได้ จึงควรเช็กเงื่อนไขให้ดี"
+        },
+        {
+          "heading": "แบบรายเดือน",
+          "body": "แบบรายเดือนคือใช้งานไปหนึ่งเดือน แล้วจ่ายค่าบริการในเดือนถัดไป ระบบจะตัดเงินอัตโนมัติทุกเดือน จึงไม่ต้องคอยกังวลเรื่องเติมเงิน และมักมีแพ็กเกจให้เลือกหลากหลายกว่า โดยทั่วไปต้องใช้บัตรต่างด้าว (ARC) และช่องทางชำระเงินที่เป็นชื่อของเราเอง"
+        },
+        {
+          "heading": "เลือกแบบไหนดี?",
+          "body": "ถ้าเพิ่งมาถึงเกาหลีหรืออยู่ไม่นาน แบบเติมเงินอาจเริ่มต้นได้ง่ายกว่า ถ้าอยู่ยาวและมีบัญชีธนาคารแล้ว แบบรายเดือนอาจสะดวกกว่า นอกจากนี้ การยืนยันตัวตนผ่านมือถือสำหรับธนาคารและแอปต่าง ๆ ก็ต่างกันไปตามบริการและประเภทแพ็กเกจ จึงควรเช็กเรื่องนี้ด้วย"
+        }
+      ],
+      "faq": [
+        {
+          "q": "เปลี่ยนจากเติมเงินเป็นรายเดือนได้ไหม?",
+          "a": "ส่วนใหญ่ทำได้ แต่จะใช้เบอร์เดิมต่อได้หรือไม่และมีขั้นตอนอย่างไรขึ้นอยู่กับแต่ละค่าย ควรสอบถามก่อนเปลี่ยน"
+        },
+        {
+          "q": "ใช้เบอร์เติมเงินยืนยันตัวตนได้ไหม?",
+          "a": "ขึ้นอยู่กับแต่ละบริการ ธนาคารหรือแอปบางแห่งอาจจำกัดการยืนยันตัวตนด้วยเบอร์เติมเงิน จึงควรเช็กไว้ล่วงหน้า"
+        }
+      ]
+    },
+    "mn": {
+      "title": "Урьдчилсан ба дараа төлбөрт багц: аль нь танд тохирох вэ?",
+      "description": "Солонгос дахь урьдчилсан болон дараа төлбөрт утасны багц хэрхэн ялгаатай, гадаад иргэний хувьд ямар нөхцөлд аль нь илүү хялбар байж болохыг харьцууллаа.",
+      "sections": [
+        {
+          "heading": "Урьдчилсан төлбөрт багц",
+          "body": "Урьдчилсан төлбөрт багцад эхлээд мөнгө цэнэглээд, тэр үлдэгдлийн хүрээнд ашиглана. Цэнэглэсэн хэмжээгээрээ л ашигладаг тул санаандгүй их төлбөр ирэх эрсдэл бага, зарим багцад паспортоор бүртгүүлж болдог. Харин цэнэглэхээ мартвал үйлчилгээ зогсож, удаан хугацаанд цэнэглэхгүй бол дугаар түр хаагдах эсвэл цуцлагдаж болзошгүй тул нөхцөлийг нь шалгаарай."
+        },
+        {
+          "heading": "Дараа төлбөрт багц",
+          "body": "Дараа төлбөрт багцад нэг сар ашиглаад дараа сард нь төлнө. Төлбөр автоматаар суутгагддаг тул цэнэглэх талаар санаа зовох шаардлагагүй, сонгох багц ч ихэвчлэн олон байдаг. Ихэвчлэн гадаад иргэний үнэмлэх (ARC) болон өөрийн нэр дээрх төлбөрийн хэрэгсэл шаардлагатай."
+        },
+        {
+          "heading": "Хэрхэн сонгох вэ?",
+          "body": "Саяхан ирсэн эсвэл богино хугацаагаар байгаа бол урьдчилсан төлбөрт багцаар эхлэх нь хялбар байж болно. Удаан хугацаагаар байх, банкны данстай бол дараа төлбөрт багц илүү тохиромжтой байж магадгүй. Банк, аппликейшнд утсаар баталгаажуулах нь үйлчилгээ болон багцын төрлөөс хамаарч өөр байдаг тул үүнийг ч шалгаарай."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Урьдчилсан төлбөртөөс дараа төлбөрт рүү шилжиж болох уу?",
+          "a": "Ихэнхдээ болно, гэхдээ дугаараа хадгалж үлдэх эсэх, журам нь оператор бүрт өөр. Шилжихээсээ өмнө шалгаарай."
+        },
+        {
+          "q": "Урьдчилсан төлбөрт дугаараар хувийн баталгаажуулалт хийж болох уу?",
+          "a": "Үйлчилгээнээс хамаарна. Зарим банк, аппликейшн урьдчилсан төлбөрт дугаараар баталгаажуулахыг хязгаарлаж болох тул урьдчилан шалгаарай."
+        }
+      ]
+    },
+    "my": {
+      "title": "ကိုရီးယားမှာ ငွေကြိုဖြည့်နဲ့ လစဉ်ကြေးအစီအစဉ်: ဘယ်ဟာ ကိုယ်နဲ့ ကိုက်မလဲ",
+      "description": "ကိုရီးယားမှာ ငွေကြိုဖြည့် (prepaid) နဲ့ လစဉ်ကြေး (postpaid) ဖုန်းအစီအစဉ် ဘယ်လိုကွာလဲ၊ နိုင်ငံခြားသားအဖြစ် ကိုယ့်အခြေအနေအလိုက် ဘယ်ဟာ ပိုလွယ်နိုင်လဲ။",
+      "sections": [
+        {
+          "heading": "ငွေကြိုဖြည့်အစီအစဉ်",
+          "body": "ငွေကြိုဖြည့်အစီအစဉ်မှာ အရင်ငွေဖြည့်ပြီး အဲဒီလက်ကျန်အတွင်းမှာ သုံးရပါတယ်။ ဖြည့်ထားသလောက်ပဲ သုံးရတာမို့ မမျှော်လင့်တဲ့ ဘေလ်ကြီး လာမှာ စိုးရိမ်စရာ နည်းပြီး အချို့အစီအစဉ်တွေမှာ ပတ်စပို့နဲ့ ရပါတယ်။ ဒါပေမယ့် ငွေဖြည့်ဖို့ မေ့ရင် ဝန်ဆောင်မှု ရပ်သွားနိုင်ပြီး အချိန်အတော်ကြာ ငွေမဖြည့်ရင် နံပါတ် ပိတ်ခံရ ဒါမှမဟုတ် ဖျက်ခံရနိုင်လို့ အခြေအနေတွေ စစ်ကြည့်ပါ။"
+        },
+        {
+          "heading": "လစဉ်ကြေးအစီအစဉ်",
+          "body": "လစဉ်ကြေးအစီအစဉ်မှာ တစ်လသုံးပြီး နောက်လမှ ပေးချေရပါတယ်။ ငွေအလိုအလျောက် ဖြတ်တာမို့ ငွေဖြည့်ဖို့ စဉ်းစားစရာမလိုဘဲ ရွေးချယ်စရာ အစီအစဉ်လည်း များသောအားဖြင့် ပိုများပါတယ်။ ပုံမှန်အားဖြင့် နေထိုင်ခွင့်ကတ် (ARC) နဲ့ ကိုယ့်နာမည်နဲ့ ငွေပေးချေနည်း လိုပါတယ်။"
+        },
+        {
+          "heading": "ဘယ်လို ရွေးမလဲ",
+          "body": "ရောက်ခါစ ဒါမှမဟုတ် ခဏပဲ နေမယ်ဆိုရင် ငွေကြိုဖြည့်နဲ့ စတာ ပိုလွယ်နိုင်ပါတယ်။ ကြာကြာနေမယ်၊ ဘဏ်အကောင့်လည်း ရှိတယ်ဆိုရင် လစဉ်ကြေးက ပိုအဆင်ပြေနိုင်ပါတယ်။ ဘဏ်နဲ့ အက်ပ်တွေအတွက် ဖုန်းနဲ့ အတည်ပြုခြင်းကလည်း ဝန်ဆောင်မှုနဲ့ အစီအစဉ်အမျိုးအစားအလိုက် ကွာခြားလို့ အဲဒါလည်း စစ်ကြည့်ပါ။"
+        }
+      ],
+      "faq": [
+        {
+          "q": "ငွေကြိုဖြည့်ကနေ လစဉ်ကြေးကို ပြောင်းလို့ရသလား။",
+          "a": "အများအားဖြင့် ရပါတယ်။ ဒါပေမယ့် နံပါတ်ဟောင်း ဆက်ထားလို့ရမရနဲ့ လုပ်ငန်းစဉ်က ကုမ္ပဏီအလိုက် ကွာခြားပါတယ်။ မပြောင်းခင် မေးကြည့်ပါ။"
+        },
+        {
+          "q": "ငွေကြိုဖြည့်နံပါတ်နဲ့ ကိုယ်ပိုင်အတည်ပြုခြင်း လုပ်လို့ရသလား။",
+          "a": "ဝန်ဆောင်မှုပေါ် မူတည်ပါတယ်။ အချို့ဘဏ် ဒါမှမဟုတ် အက်ပ်တွေက ငွေကြိုဖြည့်နံပါတ်နဲ့ အတည်ပြုခြင်းကို ကန့်သတ်နိုင်လို့ ကြိုစစ်ပါ။"
+        }
+      ]
+    },
+    "uz": {
+      "title": "Koreyada prepaid va postpaid tariflar: qaysi biri sizga mos?",
+      "description": "Koreyada oldindan va keyin to'lanadigan telefon tariflari qanday farq qiladi va chet ellik sifatida vaziyatingizga qarab qaysi biri qulayroq bo'lishi mumkin.",
+      "sections": [
+        {
+          "heading": "Oldindan to'lanadigan (prepaid) tariflar",
+          "body": "Prepaid tarifda avval hisobingizni to'ldirasiz, so'ng shu mablag' doirasida foydalanasiz. Faqat to'ldirilgan summani ishlatganingiz uchun kutilmagan hisob kelishi xavfi kamroq, ayrim prepaid tariflarga esa pasport bilan ulanish mumkin. Biroq hisobni to'ldirishni unutsangiz, xizmat to'xtab qolishi mumkin, uzoq vaqt to'ldirmasangiz raqam bloklanishi yoki yopilishi mumkin, shuning uchun shartlarni tekshiring."
+        },
+        {
+          "heading": "Keyin to'lanadigan (postpaid) tariflar",
+          "body": "Postpaid tarifda bir oy davomida foydalanasiz va keyingi oyda to'laysiz. To'lov avtomatik yechiladi, shuning uchun hisobni to'ldirish haqida o'ylashingiz shart emas, tariflar tanlovi ham odatda kengroq. Odatda chet ellik kartasi (ARC) va o'z nomingizdagi to'lov usuli kerak bo'ladi."
+        },
+        {
+          "heading": "Qanday tanlash kerak",
+          "body": "Agar Koreyaga endigina kelgan bo'lsangiz yoki qisqa muddatga qolsangiz, prepaid bilan boshlash osonroq bo'lishi mumkin. Uzoqroq qolsangiz va bank hisobingiz bo'lsa, postpaid qulayroq bo'lishi mumkin. Banklar va ilovalarda telefon orqali shaxsni tasdiqlash ham xizmat va tarif turiga qarab farq qiladi, buni ham tekshirib qo'ying."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Prepaid'dan postpaid'ga o'tsam bo'ladimi?",
+          "a": "Ko'pincha ha, lekin raqamni saqlab qolish mumkinligi va jarayon qanday kechishi operatorga qarab farq qiladi. O'tishdan oldin aniqlab oling."
+        },
+        {
+          "q": "Prepaid raqam bilan shaxsni tasdiqlasa bo'ladimi?",
+          "a": "Bu xizmatga bog'liq. Ayrim banklar yoki ilovalar prepaid raqamlar bilan tasdiqlashni cheklashi mumkin, shuning uchun oldindan tekshiring."
+        }
+      ]
+    }
+  }
+}

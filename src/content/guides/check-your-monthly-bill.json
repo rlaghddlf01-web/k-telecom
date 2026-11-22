@@ -1,0 +1,293 @@
+{
+  "slug": "check-your-monthly-bill",
+  "order": 7,
+  "published": "2026-11-22",
+  "updated": "2026-11-22",
+  "related": [
+    "how-to-read-a-plan",
+    "avoid-phone-scams",
+    "leaving-korea"
+  ],
+  "content": {
+    "ko": {
+      "title": "휴대폰 요금 청구서 확인하는 법: 내가 무엇에 돈을 내고 있을까",
+      "description": "매달 오는 휴대폰 요금 청구서에서 기본요금, 부가서비스, 단말기 할부금, 추가 사용료를 구분해 보는 방법을 안내합니다.",
+      "sections": [
+        {
+          "heading": "청구서를 어디서 보나요?",
+          "body": "대부분의 통신사는 앱, 홈페이지, 문자나 이메일로 월별 청구서를 보여 줍니다. 처음 개통했다면 청구서를 받는 방법과 결제일, 결제 수단을 확인해 두세요. 한국어가 어렵다면 청구서 화면을 저장해 두었다가 상담할 때 보여 주면 도움이 됩니다."
+        },
+        {
+          "heading": "청구서에 자주 나오는 항목",
+          "body": "청구서에는 보통 요금제 기본료, 부가서비스 이용료, 단말기 할부금, 기본 제공량을 넘겨 쓴 추가 사용료, 국제전화 요금, 휴대폰으로 결제한 소액결제 등이 나뉘어 표시됩니다. 첫 달이나 해지하는 달에는 사용한 날짜만큼 나누어 계산되는 경우도 있어 금액이 평소와 다를 수 있습니다."
+        },
+        {
+          "heading": "모르는 항목이 있다면",
+          "body": "가입할 때 함께 들어간 부가서비스가 계속 청구되고 있는지 확인해 보세요. 쓰지 않는 서비스라면 해지할 수 있는지 통신사에 문의하면 됩니다. 휴대폰 소액결제는 이용 한도를 줄이거나 차단할 수 있는 경우가 많습니다. 이해되지 않는 항목은 그냥 넘기지 말고 고객센터에 물어보세요."
+        }
+      ],
+      "faq": [
+        {
+          "q": "첫 달 요금이 왜 평소와 다른가요?",
+          "a": "개통한 날부터 사용한 날짜만큼만 계산되거나, 개통 관련 항목이 함께 청구되는 경우가 있습니다. 자세한 내용은 통신사에 확인해 주세요."
+        },
+        {
+          "q": "모르는 결제가 청구됐어요.",
+          "a": "먼저 통신사 고객센터에 어떤 항목인지 확인하세요. 본인이 하지 않은 결제라면 소액결제 차단과 함께 신고 방법을 안내받을 수 있습니다."
+        }
+      ]
+    },
+    "en": {
+      "title": "How to check your monthly phone bill and see what you pay for",
+      "description": "How to tell apart the plan fee, add-on services, phone installments and extra usage on your monthly phone bill in Korea.",
+      "sections": [
+        {
+          "heading": "Where to find your bill",
+          "body": "Most carriers show your monthly bill in their app, on their website, or by text message or email. When you first open a line, check how you will receive the bill, the payment date and the payment method. If Korean is difficult, save a screenshot of the bill and show it when you ask for help."
+        },
+        {
+          "heading": "Common items on the bill",
+          "body": "A bill usually lists the plan fee, add-on services, phone installment, extra usage beyond your allowance, international call charges and small payments made with your phone (소액결제) separately. In the first month or the month you cancel, charges may be calculated only for the days you used, so the total can look different from usual."
+        },
+        {
+          "heading": "If you see something you do not recognize",
+          "body": "Check whether add-on services included at sign-up are still being charged. If you do not use them, ask the carrier whether you can cancel them. Many carriers let you lower the limit for phone payments or block them. Do not ignore items you do not understand; ask customer service."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Why is my first bill different?",
+          "a": "It may be calculated only from your activation date, or include sign-up related items. Ask your carrier for details."
+        },
+        {
+          "q": "There is a payment I did not make.",
+          "a": "First ask your carrier's customer service what the item is. If you did not make the payment, they can explain how to block phone payments and report it."
+        }
+      ]
+    },
+    "vi": {
+      "title": "Cách xem hóa đơn điện thoại hằng tháng: mình đang trả tiền cho những gì?",
+      "description": "Hướng dẫn phân biệt cước gói, dịch vụ cộng thêm, tiền trả góp máy và phí dùng vượt mức trên hóa đơn điện thoại hằng tháng ở Hàn Quốc.",
+      "sections": [
+        {
+          "heading": "Xem hóa đơn ở đâu?",
+          "body": "Hầu hết nhà mạng gửi hóa đơn hằng tháng qua ứng dụng, trang web, tin nhắn hoặc email. Khi mới mở thuê bao, hãy kiểm tra cách nhận hóa đơn, ngày thanh toán và phương thức thanh toán. Nếu tiếng Hàn còn khó, bạn có thể chụp lại màn hình hóa đơn và đưa ra khi cần hỏi tư vấn."
+        },
+        {
+          "heading": "Các mục thường thấy trên hóa đơn",
+          "body": "Hóa đơn thường liệt kê riêng cước gói cơ bản, phí dịch vụ cộng thêm, tiền trả góp máy, phí dùng vượt dung lượng, cước gọi quốc tế và các khoản thanh toán nhỏ bằng điện thoại (소액결제). Trong tháng đầu hoặc tháng hủy thuê bao, cước có thể chỉ tính theo số ngày đã dùng, nên tổng tiền có thể khác bình thường."
+        },
+        {
+          "heading": "Nếu thấy khoản lạ",
+          "body": "Hãy xem các dịch vụ cộng thêm được đăng ký kèm lúc mở sim có còn bị tính phí không. Nếu không dùng, bạn có thể hỏi nhà mạng xem có hủy được không. Nhiều nhà mạng cho phép giảm hạn mức hoặc chặn thanh toán bằng điện thoại. Đừng bỏ qua những khoản không hiểu, hãy hỏi tổng đài chăm sóc khách hàng."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Vì sao hóa đơn tháng đầu khác bình thường?",
+          "a": "Cước có thể chỉ được tính từ ngày kích hoạt, hoặc có kèm các khoản liên quan đến việc mở thuê bao. Hãy hỏi nhà mạng để biết chi tiết."
+        },
+        {
+          "q": "Hóa đơn có khoản thanh toán mà tôi không hề thực hiện.",
+          "a": "Trước tiên, hãy hỏi tổng đài nhà mạng đó là khoản gì. Nếu bạn không thực hiện giao dịch đó, họ có thể hướng dẫn cách chặn thanh toán bằng điện thoại (소액결제) và cách báo cáo."
+        }
+      ]
+    },
+    "ne": {
+      "title": "मासिक फोन बिल कसरी हेर्ने र केका लागि तिर्दै हुनुहुन्छ बुझ्ने",
+      "description": "कोरियाको मासिक फोन बिलमा प्लान शुल्क, थप सेवा, फोन किस्ता र बढी प्रयोगको शुल्क कसरी छुट्याउने।",
+      "sections": [
+        {
+          "heading": "बिल कहाँ हेर्ने",
+          "body": "धेरैजसो कम्पनीले एप, वेबसाइट, म्यासेज वा इमेलमार्फत मासिक बिल देखाउँछन्। पहिलो पटक लाइन खोल्दा बिल कसरी आउँछ, भुक्तानी मिति र भुक्तानी माध्यम पक्का गर्नुहोस्। कोरियाली भाषा गाह्रो लाग्छ भने बिलको स्क्रिनसट राखेर सहयोग माग्दा देखाउनुहोस्।"
+        },
+        {
+          "heading": "बिलमा प्रायः आउने कुरा",
+          "body": "बिलमा सामान्यतया प्लान शुल्क, थप सेवा, फोन किस्ता, तोकिएको भन्दा बढी प्रयोगको शुल्क, अन्तर्राष्ट्रिय कल शुल्क र फोनबाट गरिएको सानो भुक्तानी (소액결제) छुट्टाछुट्टै देखिन्छ। पहिलो महिना वा रद्द गर्ने महिनामा प्रयोग गरेको दिनको हिसाबले मात्र शुल्क लाग्न सक्छ, त्यसैले जम्मा रकम सधैंभन्दा फरक देखिन सक्छ।"
+        },
+        {
+          "heading": "नचिनेको कुरा देखिए",
+          "body": "साइन अप गर्दा थपिएका सेवाको शुल्क अझै लागिरहेको छ कि हेर्नुहोस्। प्रयोग गर्नुहुन्न भने रद्द गर्न मिल्छ कि कम्पनीसँग सोध्नुहोस्। धेरै कम्पनीले फोन भुक्तानीको सीमा घटाउन वा रोक्न दिन्छन्। नबुझेको कुरा बेवास्ता नगर्नुहोस्, ग्राहक सेवालाई सोध्नुहोस्।"
+        }
+      ],
+      "faq": [
+        {
+          "q": "मेरो पहिलो बिल किन फरक छ?",
+          "a": "लाइन सक्रिय भएको दिनदेखि मात्र हिसाब गरिएको हुन सक्छ, वा साइन अपसँग सम्बन्धित शुल्क समावेश हुन सक्छ। विस्तृत जानकारी कम्पनीसँग सोध्नुहोस्।"
+        },
+        {
+          "q": "मैले नगरेको भुक्तानी बिलमा आयो।",
+          "a": "पहिले कम्पनीको ग्राहक सेवालाई त्यो के हो सोध्नुहोस्। तपाईंले नगरेको भुक्तानी हो भने उनीहरूले फोन भुक्तानी कसरी रोक्ने र उजुरी कसरी गर्ने बताउन सक्छन्।"
+        }
+      ]
+    },
+    "km": {
+      "title": "របៀបពិនិត្យវិក្កយបត្រទូរស័ព្ទប្រចាំខែ៖ តើអ្នកកំពុងបង់សម្រាប់អ្វីខ្លះ?",
+      "description": "របៀបបែងចែកថ្លៃគម្រោង សេវាបន្ថែម ប្រាក់រំលស់ទូរស័ព្ទ និងការប្រើលើស នៅលើវិក្កយបត្រទូរស័ព្ទប្រចាំខែរបស់អ្នកនៅកូរ៉េ។",
+      "sections": [
+        {
+          "heading": "រកវិក្កយបត្រនៅឯណា?",
+          "body": "ក្រុមហ៊ុនភាគច្រើនបង្ហាញវិក្កយបត្រប្រចាំខែក្នុងកម្មវិធី គេហទំព័រ ឬតាមសារ និងអ៊ីមែល។ ពេលទើបបើកលេខដំបូង សូមពិនិត្យរបៀបទទួលវិក្កយបត្រ ថ្ងៃបង់ប្រាក់ និងវិធីបង់ប្រាក់។ បើភាសាកូរ៉េពិបាក សូមថតអេក្រង់វិក្កយបត្រទុក ហើយបង្ហាញវាពេលសុំជំនួយ។"
+        },
+        {
+          "heading": "ធាតុដែលឃើញញឹកញាប់លើវិក្កយបត្រ",
+          "body": "វិក្កយបត្រជាធម្មតាបង្ហាញដាច់ៗពីគ្នានូវ ថ្លៃគម្រោង សេវាបន្ថែម ប្រាក់រំលស់ទូរស័ព្ទ ការប្រើលើសចំនួនដែលបានផ្ដល់ ថ្លៃហៅអន្តរជាតិ និងការទូទាត់តូចៗតាមទូរស័ព្ទ (소액결제)។ ក្នុងខែដំបូង ឬខែដែលលុបចោល ថ្លៃអាចគិតតែចំនួនថ្ងៃដែលបានប្រើ ដូច្នេះចំនួនសរុបអាចខុសពីធម្មតា។"
+        },
+        {
+          "heading": "បើឃើញធាតុដែលមិនស្គាល់",
+          "body": "សូមពិនិត្យថាសេវាបន្ថែមដែលបានដាក់ពេលចុះឈ្មោះ នៅតែត្រូវគិតថ្លៃឬទេ។ បើមិនប្រើ សូមសួរក្រុមហ៊ុនថាអាចលុបចោលបានឬទេ។ ក្រុមហ៊ុនជាច្រើនអនុញ្ញាតឱ្យបន្ថយកម្រិត ឬបិទការទូទាត់តាមទូរស័ព្ទ។ កុំរំលងធាតុដែលអ្នកមិនយល់ សូមសួរផ្នែកសេវាអតិថិជន។"
+        }
+      ],
+      "faq": [
+        {
+          "q": "ហេតុអ្វីវិក្កយបត្រខែដំបូងខុសពីធម្មតា?",
+          "a": "វាអាចគិតតែចាប់ពីថ្ងៃបើកដំណើរការ ឬរួមបញ្ចូលធាតុទាក់ទងនឹងការចុះឈ្មោះ។ សូមសួរក្រុមហ៊ុនរបស់អ្នកសម្រាប់ព័ត៌មានលម្អិត។"
+        },
+        {
+          "q": "មានការទូទាត់មួយដែលខ្ញុំមិនបានធ្វើ។",
+          "a": "ជាដំបូង សូមសួរផ្នែកសេវាអតិថិជនរបស់ក្រុមហ៊ុនថាធាតុនោះជាអ្វី។ បើអ្នកមិនបានទូទាត់ខ្លួនឯង ពួកគេអាចណែនាំពីរបៀបបិទការទូទាត់តាមទូរស័ព្ទ និងរបៀបរាយការណ៍។"
+        }
+      ]
+    },
+    "id": {
+      "title": "Cara mengecek tagihan ponsel bulanan dan tahu untuk apa Anda membayar",
+      "description": "Cara membedakan biaya paket, layanan tambahan, cicilan ponsel, dan pemakaian ekstra di tagihan ponsel bulanan Anda di Korea.",
+      "sections": [
+        {
+          "heading": "Di mana melihat tagihan",
+          "body": "Sebagian besar operator menampilkan tagihan bulanan di aplikasi, situs web, atau lewat SMS maupun email. Saat pertama kali membuka nomor, cek bagaimana Anda akan menerima tagihan, tanggal pembayaran, dan metode pembayarannya. Jika bahasa Korea terasa sulit, simpan tangkapan layar tagihan dan tunjukkan saat meminta bantuan."
+        },
+        {
+          "heading": "Item yang sering muncul di tagihan",
+          "body": "Tagihan biasanya mencantumkan secara terpisah biaya paket, layanan tambahan, cicilan ponsel, pemakaian di luar kuota, biaya panggilan internasional, dan pembayaran kecil yang dilakukan lewat ponsel (소액결제). Di bulan pertama atau bulan saat berhenti berlangganan, biaya bisa dihitung hanya untuk hari pemakaian, sehingga totalnya bisa terlihat berbeda dari biasanya."
+        },
+        {
+          "heading": "Jika ada item yang tidak Anda kenali",
+          "body": "Cek apakah layanan tambahan yang ikut didaftarkan saat pembukaan nomor masih terus ditagih. Jika tidak dipakai, tanyakan ke operator apakah bisa dihentikan. Banyak operator memungkinkan Anda menurunkan batas atau memblokir pembayaran lewat ponsel. Jangan abaikan item yang tidak Anda pahami; tanyakan ke layanan pelanggan."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Mengapa tagihan pertama saya berbeda?",
+          "a": "Tagihan mungkin dihitung hanya sejak tanggal aktivasi, atau mencakup item terkait pendaftaran. Tanyakan rinciannya ke operator Anda."
+        },
+        {
+          "q": "Ada pembayaran yang tidak saya lakukan.",
+          "a": "Tanyakan dulu ke layanan pelanggan operator item apa itu. Jika memang bukan Anda yang melakukannya, mereka bisa menjelaskan cara memblokir pembayaran lewat ponsel dan cara melaporkannya."
+        }
+      ]
+    },
+    "th": {
+      "title": "วิธีเช็กบิลค่ามือถือรายเดือน: เรากำลังจ่ายค่าอะไรอยู่บ้าง?",
+      "description": "วิธีแยกค่าแพ็กเกจ บริการเสริม ค่าผ่อนเครื่อง และค่าใช้งานเกินบนบิลค่ามือถือรายเดือนในเกาหลี",
+      "sections": [
+        {
+          "heading": "ดูบิลได้ที่ไหน?",
+          "body": "ค่ายส่วนใหญ่แสดงบิลรายเดือนผ่านแอป เว็บไซต์ SMS หรืออีเมล ถ้าเพิ่งเปิดเบอร์ ควรเช็กว่าจะได้รับบิลทางไหน วันที่ต้องชำระ และช่องทางชำระเงิน ถ้าภาษาเกาหลียังไม่คล่อง แคปหน้าจอบิลเก็บไว้แล้วนำไปให้เจ้าหน้าที่ดูตอนขอคำปรึกษาจะช่วยได้มาก"
+        },
+        {
+          "heading": "รายการที่มักเจอในบิล",
+          "body": "บิลมักแยกแสดงค่าแพ็กเกจพื้นฐาน ค่าบริการเสริม ค่าผ่อนเครื่อง ค่าใช้งานเกินจากสิทธิ์ที่ได้ ค่าโทรต่างประเทศ และยอดชำระเงินเล็ก ๆ ผ่านมือถือ (소액결제) ในเดือนแรกหรือเดือนที่ยกเลิก อาจคิดค่าบริการตามจำนวนวันที่ใช้จริง ยอดรวมจึงอาจต่างจากปกติ"
+        },
+        {
+          "heading": "ถ้าเจอรายการที่ไม่รู้จัก",
+          "body": "ลองเช็กว่าบริการเสริมที่สมัครพ่วงมาตอนเปิดเบอร์ยังถูกเก็บเงินอยู่หรือไม่ ถ้าไม่ได้ใช้ ลองสอบถามค่ายว่ายกเลิกได้ไหม หลายค่ายให้ลดวงเงินหรือบล็อกการชำระเงินผ่านมือถือได้ อย่าปล่อยผ่านรายการที่ไม่เข้าใจ ให้สอบถามคอลเซ็นเตอร์"
+        }
+      ],
+      "faq": [
+        {
+          "q": "ทำไมบิลเดือนแรกถึงต่างจากปกติ?",
+          "a": "อาจคิดค่าบริการเฉพาะตั้งแต่วันที่เปิดใช้งาน หรือมีรายการที่เกี่ยวกับการเปิดเบอร์รวมอยู่ด้วย สอบถามรายละเอียดได้จากค่ายมือถือ"
+        },
+        {
+          "q": "มียอดชำระเงินที่เราไม่ได้ทำโผล่มาในบิล",
+          "a": "ก่อนอื่นให้สอบถามคอลเซ็นเตอร์ของค่ายว่าเป็นรายการอะไร ถ้าไม่ได้ทำรายการนั้นเอง เจ้าหน้าที่จะแนะนำวิธีบล็อกการชำระเงินผ่านมือถือ (소액결제) และวิธีแจ้งความได้"
+        }
+      ]
+    },
+    "mn": {
+      "title": "Сарын утасны төлбөрийн нэхэмжлэхээ хэрхэн шалгах вэ: та юунд мөнгө төлж байна?",
+      "description": "Солонгос дахь сарын утасны нэхэмжлэх дээрх багцын төлбөр, нэмэлт үйлчилгээ, утасны зээл, нэмэлт хэрэглээг хэрхэн ялгаж харах талаар.",
+      "sections": [
+        {
+          "heading": "Нэхэмжлэхээ хаанаас харах вэ?",
+          "body": "Ихэнх оператор сарын нэхэмжлэхийг аппликейшн, вэбсайт эсвэл мессеж, имэйлээр харуулдаг. Анх дугаар нээлгэхдээ нэхэмжлэхийг хэрхэн хүлээн авах, төлбөрийн өдөр, төлбөрийн хэрэгслээ шалгаад аваарай. Солонгос хэл хэцүү бол нэхэмжлэхийн дэлгэцийн зургийг хадгалж, тусламж хүсэхдээ үзүүлбэл тус болно."
+        },
+        {
+          "heading": "Нэхэмжлэх дээр түгээмэл гардаг зүйлс",
+          "body": "Нэхэмжлэх дээр ихэвчлэн багцын үндсэн төлбөр, нэмэлт үйлчилгээ, утасны зээл, олгосон хэмжээнээс хэтэрсэн хэрэглээ, олон улсын ярианы төлбөр, утсаар хийсэн жижиг төлбөр (소액결제) зэргийг тус тусад нь харуулдаг. Эхний сар эсвэл цуцалсан сард ашигласан өдрөөр нь тооцож болох тул нийт дүн ердийнхөөс өөр харагдаж болно."
+        },
+        {
+          "heading": "Танихгүй зүйл харвал",
+          "body": "Бүртгүүлэхдээ хамт идэвхжүүлсэн нэмэлт үйлчилгээний төлбөр одоо ч гарсаар байгаа эсэхийг шалгаарай. Ашигладаггүй бол цуцалж болох эсэхийг оператороос асуугаарай. Олон оператор утасны жижиг төлбөрийн хязгаарыг бууруулах эсвэл хаах боломж олгодог. Ойлгохгүй зүйлийг орхилгүй харилцагчийн төвөөс асуугаарай."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Эхний сарын төлбөр яагаад ердийнхөөс өөр байна вэ?",
+          "a": "Идэвхжүүлсэн өдрөөс хойш ашигласан өдрөөр л тооцсон эсвэл бүртгэлтэй холбоотой зүйлс хамт нэхэмжлэгдсэн байж болно. Дэлгэрэнгүйг оператороосоо лавлаарай."
+        },
+        {
+          "q": "Миний хийгээгүй төлбөр нэхэмжлэгдсэн байна.",
+          "a": "Эхлээд операторынхоо харилцагчийн төвөөс энэ ямар зүйл болохыг асуугаарай. Хэрэв та өөрөө хийгээгүй бол жижиг төлбөрийг хаах болон мэдэгдэх аргыг зааварлаж өгнө."
+        }
+      ]
+    },
+    "my": {
+      "title": "လစဉ်ဖုန်းဘေလ်ကို ဘယ်လိုစစ်ပြီး ဘာအတွက်ပေးနေလဲ သိမလဲ",
+      "description": "ကိုရီးယားရဲ့ လစဉ်ဖုန်းဘေလ်မှာ အစီအစဉ်ကြေး၊ ထပ်ဆောင်းဝန်ဆောင်မှု၊ ဖုန်းအရစ်ကျနဲ့ ပိုသုံးတဲ့ကြေးတွေကို ဘယ်လိုခွဲခြားကြည့်မလဲ။",
+      "sections": [
+        {
+          "heading": "ဘေလ်ကို ဘယ်မှာကြည့်မလဲ",
+          "body": "ကုမ္ပဏီအများစုက အက်ပ်၊ ဝက်ဘ်ဆိုက်၊ စာတို ဒါမှမဟုတ် အီးမေးလ်ကနေ လစဉ်ဘေလ်ကို ပြပါတယ်။ လိုင်းစဖွင့်တဲ့အခါ ဘေလ်ကို ဘယ်လိုရမလဲ၊ ငွေပေးရမယ့်ရက်နဲ့ ငွေပေးချေနည်းကို စစ်ထားပါ။ ကိုရီးယားစာ ခက်ရင် ဘေလ်ကို စခရင်ရှော့ရိုက်ထားပြီး အကူအညီတောင်းတဲ့အခါ ပြပါ။"
+        },
+        {
+          "heading": "ဘေလ်မှာ အတွေ့ရများတဲ့အရာများ",
+          "body": "ဘေလ်မှာ များသောအားဖြင့် အစီအစဉ်ကြေး၊ ထပ်ဆောင်းဝန်ဆောင်မှု၊ ဖုန်းအရစ်ကျ၊ ပမာဏထက်ပိုသုံးတဲ့ကြေး၊ နိုင်ငံတကာဖုန်းခ နဲ့ ဖုန်းနဲ့ ပေးချေတဲ့ ငွေပမာဏအသေး (소액결제) တွေကို သီးခြားစီ ပြပါတယ်။ ပထမလ ဒါမှမဟုတ် ဖျက်တဲ့လမှာ သုံးခဲ့တဲ့ရက်အလိုက်ပဲ တွက်နိုင်လို့ စုစုပေါင်းက ပုံမှန်နဲ့ မတူတာ ဖြစ်နိုင်ပါတယ်။"
+        },
+        {
+          "heading": "မသိတဲ့အရာ တွေ့ရင်",
+          "body": "စာရင်းသွင်းစဉ်က ထည့်ပေးခဲ့တဲ့ ထပ်ဆောင်းဝန်ဆောင်မှုတွေ အခုထိ ကြေးကောက်နေသေးလား စစ်ပါ။ မသုံးရင် ဖျက်လို့ရမရ ကုမ္ပဏီကို မေးပါ။ ကုမ္ပဏီအများစုက ဖုန်းနဲ့ပေးချေမှု ကန့်သတ်ချက်ကို လျှော့တာ ဒါမှမဟုတ် ပိတ်တာ လုပ်ခွင့်ပေးပါတယ်။ နားမလည်တဲ့အရာကို လျစ်လျူမရှုဘဲ ဖောက်သည်ဝန်ဆောင်မှုကို မေးပါ။"
+        }
+      ],
+      "faq": [
+        {
+          "q": "ပထမဆုံးဘေလ် ဘာကြောင့် ကွာနေတာလဲ။",
+          "a": "လိုင်းဖွင့်တဲ့ရက်ကစပြီးမှ တွက်ထားတာ ဒါမှမဟုတ် စာရင်းသွင်းခြင်းနဲ့ ဆိုင်တဲ့ကြေးတွေ ပါနေတာ ဖြစ်နိုင်ပါတယ်။ အသေးစိတ်ကို ကုမ္ပဏီကို မေးပါ။"
+        },
+        {
+          "q": "ကိုယ်မလုပ်ခဲ့တဲ့ ငွေပေးချေမှု ပါနေတယ်။",
+          "a": "အရင်ဆုံး ကုမ္ပဏီရဲ့ ဖောက်သည်ဝန်ဆောင်မှုကို အဲဒါဘာလဲ မေးပါ။ ကိုယ်မလုပ်ခဲ့တာဆိုရင် ဖုန်းနဲ့ပေးချေမှုကို ဘယ်လိုပိတ်ပြီး ဘယ်လိုတိုင်ကြားရမလဲ ရှင်းပြပေးနိုင်ပါတယ်။"
+        }
+      ]
+    },
+    "uz": {
+      "title": "Oylik telefon hisobini qanday tekshirish va nima uchun to'layotganingizni bilish",
+      "description": "Koreyadagi oylik telefon hisobingizda tarif to'lovi, qo'shimcha xizmatlar, telefon uchun bo'lib to'lov va qo'shimcha sarfni qanday ajratish mumkin.",
+      "sections": [
+        {
+          "heading": "Hisobni qayerdan ko'rish mumkin",
+          "body": "Ko'pchilik operatorlar oylik hisobni ilovada, veb-saytda yoki SMS va elektron pochta orqali ko'rsatadi. Raqam ochganingizda hisobni qanday olishingiz, to'lov sanasi va to'lov usulini tekshirib qo'ying. Koreys tili qiyin bo'lsa, hisobning skrinshotini saqlab, yordam so'raganingizda ko'rsating."
+        },
+        {
+          "heading": "Hisobda ko'p uchraydigan bandlar",
+          "body": "Hisobda odatda tarif to'lovi, qo'shimcha xizmatlar, telefon uchun bo'lib to'lov, limitdan ortiq sarf, xalqaro qo'ng'iroqlar to'lovi va telefon orqali qilingan kichik to'lovlar (소액결제) alohida ko'rsatiladi. Birinchi oyda yoki uzilgan oyda to'lov faqat foydalanilgan kunlar uchun hisoblanishi mumkin, shuning uchun jami summa odatdagidan farq qilishi mumkin."
+        },
+        {
+          "heading": "Tanish bo'lmagan band ko'rsangiz",
+          "body": "Ulanish paytida qo'shilgan qo'shimcha xizmatlar hali ham hisoblanayotganini tekshiring. Ulardan foydalanmasangiz, bekor qilish mumkinligini operatordan so'rang. Ko'p operatorlar telefon orqali to'lovlar limitini kamaytirish yoki ularni bloklash imkonini beradi. Tushunmagan bandlarni e'tiborsiz qoldirmang, mijozlarga xizmat ko'rsatish markazidan so'rang."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Nega birinchi hisobim boshqacha?",
+          "a": "U faqat faollashtirilgan sanadan boshlab hisoblangan yoki ulanish bilan bog'liq bandlarni o'z ichiga olgan bo'lishi mumkin. Tafsilotlarni operatoringizdan so'rang."
+        },
+        {
+          "q": "Men qilmagan to'lov bor.",
+          "a": "Avval operatoringizning mijozlarga xizmat ko'rsatish markazidan bu qanday band ekanini so'rang. Agar to'lovni siz qilmagan bo'lsangiz, ular telefon orqali to'lovlarni bloklash va bu haqda xabar berish yo'lini tushuntirib berishadi."
+        }
+      ]
+    }
+  }
+}

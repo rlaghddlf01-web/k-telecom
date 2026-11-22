@@ -1,0 +1,333 @@
+{
+  "slug": "how-to-read-a-plan",
+  "order": 5,
+  "published": "2026-11-22",
+  "updated": "2026-11-22",
+  "related": [
+    "what-is-mvno",
+    "check-your-monthly-bill",
+    "international-calls"
+  ],
+  "content": {
+    "ko": {
+      "title": "휴대폰 요금제 읽는 법: 데이터, 통화, 문자, 소진 후 속도",
+      "description": "요금제 안내에 나오는 데이터 제공량, 통화·문자, 데이터 소진 후 속도 같은 용어를 쉽게 풀어 설명합니다.",
+      "sections": [
+        {
+          "heading": "데이터 제공량",
+          "body": "요금제마다 한 달에 쓸 수 있는 데이터 양이 정해져 있습니다. 매일 일정량을 주는 요금제도 있고, 한 달 전체 양을 주는 요금제도 있습니다. 영상 통화나 동영상을 자주 본다면 데이터를 많이 쓰게 되므로, 휴대폰 설정에서 지난달 사용량을 먼저 확인해 보세요."
+        },
+        {
+          "heading": "통화와 문자",
+          "body": "국내 통화와 문자는 무제한인 요금제도 있고, 정해진 양만 주는 요금제도 있습니다. 영상통화, 고객센터나 특수 번호로 거는 전화, 국제전화는 기본 제공에 포함되지 않을 수 있습니다. 포함되는 범위는 요금제 상세 설명에서 확인하세요."
+        },
+        {
+          "heading": "데이터를 다 쓴 뒤의 속도",
+          "body": "기본 데이터를 다 쓴 뒤에도 느린 속도로 계속 쓸 수 있는 요금제가 있습니다. 이 속도로는 메신저나 지도는 쓸 만하지만 동영상은 어려울 수 있습니다. 반대로 데이터가 멈추거나 추가 요금이 붙는 요금제도 있으니, 소진 후 조건을 꼭 확인하세요."
+        },
+        {
+          "heading": "그 밖에 확인할 것",
+          "body": "약정 기간, 할인 조건, 부가서비스 포함 여부, 핫스팟(테더링) 사용 가능 여부도 요금제마다 다릅니다. 처음 몇 달만 적용되는 조건이 있는지도 살펴보세요."
+        }
+      ],
+      "faq": [
+        {
+          "q": "내가 데이터를 얼마나 쓰는지 어떻게 알 수 있나요?",
+          "a": "휴대폰 설정의 데이터 사용량 메뉴에서 기간별 사용량을 볼 수 있습니다. 통신사 앱에서도 확인할 수 있는 경우가 많습니다."
+        },
+        {
+          "q": "핫스팟을 써도 되나요?",
+          "a": "요금제에 따라 가능 여부와 사용량 한도가 다릅니다. 상세 조건을 확인해 주세요."
+        }
+      ]
+    },
+    "en": {
+      "title": "How to read a phone plan: data, calls, texts and speed after the cap",
+      "description": "A plain-language explanation of the terms you see on a Korean phone plan: data allowance, calls and texts, and the speed after your data runs out.",
+      "sections": [
+        {
+          "heading": "Data allowance",
+          "body": "Every plan sets how much data you can use each month. Some give a fixed amount per day, others a total for the month. If you often make video calls or watch videos, you will use more data, so first check last month's usage in your phone settings."
+        },
+        {
+          "heading": "Calls and texts",
+          "body": "Some plans include unlimited domestic calls and texts, while others give a set amount. Video calls, calls to customer centers or special numbers, and international calls may not be included. Check the plan details to see exactly what is covered."
+        },
+        {
+          "heading": "Speed after the data cap",
+          "body": "Some plans let you keep using data at a slower speed after the main allowance is used up. That speed is usually fine for messaging and maps but may be too slow for video. Other plans stop data or charge extra, so always check what happens after the cap."
+        },
+        {
+          "heading": "Other things to check",
+          "body": "Contract length, discount conditions, included add-ons and whether hotspot (tethering) is allowed also differ by plan. Look for any conditions that apply only for the first few months."
+        }
+      ],
+      "faq": [
+        {
+          "q": "How can I see how much data I use?",
+          "a": "Your phone's data usage settings show usage by period. Many carriers' apps also show it."
+        },
+        {
+          "q": "Can I use a hotspot?",
+          "a": "Whether it is allowed, and how much, depends on the plan. Please check the plan details."
+        }
+      ]
+    },
+    "vi": {
+      "title": "Cách đọc gói cước: dữ liệu, gọi, nhắn tin và tốc độ sau khi hết dung lượng",
+      "description": "Giải thích bằng lời dễ hiểu các thuật ngữ trong gói cước di động Hàn Quốc: dung lượng dữ liệu, gọi và nhắn tin, tốc độ sau khi dùng hết dữ liệu.",
+      "sections": [
+        {
+          "heading": "Dung lượng dữ liệu",
+          "body": "Mỗi gói cước quy định lượng dữ liệu bạn được dùng trong tháng. Có gói cấp một lượng cố định mỗi ngày, có gói cấp tổng dung lượng cho cả tháng. Nếu bạn hay gọi video hoặc xem video, bạn sẽ tốn nhiều dữ liệu hơn, vì vậy hãy xem trước mức dùng tháng trước trong phần cài đặt điện thoại."
+        },
+        {
+          "heading": "Gọi và nhắn tin",
+          "body": "Có gói miễn phí không giới hạn gọi và nhắn tin trong nước, có gói chỉ cấp một lượng nhất định. Gọi video, gọi đến tổng đài hoặc số đặc biệt, và gọi quốc tế có thể không nằm trong phần miễn phí. Hãy xem chi tiết gói cước để biết chính xác những gì được bao gồm."
+        },
+        {
+          "heading": "Tốc độ sau khi hết dữ liệu",
+          "body": "Một số gói cho phép tiếp tục dùng dữ liệu với tốc độ chậm sau khi hết dung lượng chính. Tốc độ này thường đủ để nhắn tin và xem bản đồ nhưng có thể quá chậm để xem video. Ngược lại, có gói sẽ ngắt dữ liệu hoặc tính thêm phí, nên nhất định phải kiểm tra điều kiện sau khi hết dung lượng."
+        },
+        {
+          "heading": "Những điều khác cần xem",
+          "body": "Thời hạn cam kết, điều kiện giảm giá, dịch vụ cộng thêm đi kèm và việc có được phát wifi (hotspot, tethering) hay không cũng khác nhau tùy gói. Hãy để ý xem có điều kiện nào chỉ áp dụng trong vài tháng đầu không."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Làm sao biết tôi dùng bao nhiêu dữ liệu?",
+          "a": "Mục sử dụng dữ liệu trong cài đặt điện thoại cho thấy lượng dùng theo từng khoảng thời gian. Ứng dụng của nhiều nhà mạng cũng hiển thị thông tin này."
+        },
+        {
+          "q": "Tôi có được phát wifi (hotspot) không?",
+          "a": "Có được phép hay không và được dùng bao nhiêu là tùy gói cước. Hãy xem điều kiện chi tiết của gói."
+        }
+      ]
+    },
+    "ne": {
+      "title": "फोन प्लान कसरी पढ्ने: डाटा, कल, म्यासेज र डाटा सकिएपछिको स्पिड",
+      "description": "कोरियाली फोन प्लानमा देखिने शब्दहरूको सरल व्याख्या: डाटा सीमा, कल र म्यासेज, र डाटा सकिएपछिको स्पिड।",
+      "sections": [
+        {
+          "heading": "डाटा सीमा",
+          "body": "हरेक प्लानले महिनामा कति डाटा चलाउन पाइन्छ तोकेको हुन्छ। कुनैले दिनको निश्चित मात्रा दिन्छन्, कुनैले महिनाभरको जम्मा मात्रा। भिडियो कल धेरै गर्नुहुन्छ वा भिडियो धेरै हेर्नुहुन्छ भने डाटा बढी खर्च हुन्छ, त्यसैले पहिले फोनको सेटिङमा गएको महिनाको प्रयोग हेर्नुहोस्।"
+        },
+        {
+          "heading": "कल र म्यासेज",
+          "body": "कुनै प्लानमा देशभित्रको कल र म्यासेज असीमित हुन्छ, कुनैमा तोकिएको मात्रा मात्र। भिडियो कल, ग्राहक सेवा वा विशेष नम्बरमा गर्ने कल, र अन्तर्राष्ट्रिय कल समावेश नहुन सक्छ। के-के समेटिन्छ भनेर प्लानको विस्तृत विवरण हेर्नुहोस्।"
+        },
+        {
+          "heading": "डाटा सकिएपछिको स्पिड",
+          "body": "कुनै प्लानमा मुख्य डाटा सकिएपछि पनि ढिलो स्पिडमा डाटा चलाउन मिल्छ। यो स्पिड मेसेजिङ र नक्साका लागि प्रायः ठिकै हुन्छ तर भिडियोका लागि ढिलो हुन सक्छ। अरू प्लानमा डाटा रोकिन्छ वा थप शुल्क लाग्छ, त्यसैले डाटा सकिएपछि के हुन्छ जरुर हेर्नुहोस्।"
+        },
+        {
+          "heading": "अरू जाँच्नुपर्ने कुरा",
+          "body": "सम्झौताको अवधि, छुटका सर्त, समावेश थप सेवा र हटस्पट (टेथरिङ) चलाउन मिल्छ कि मिल्दैन भन्ने पनि प्लान अनुसार फरक हुन्छ। सुरुका केही महिनामा मात्र लागू हुने सर्त छन् कि हेर्नुहोस्।"
+        }
+      ],
+      "faq": [
+        {
+          "q": "म कति डाटा चलाउँछु कसरी हेर्ने?",
+          "a": "फोनको डाटा प्रयोग सेटिङमा अवधि अनुसार प्रयोग देखिन्छ। धेरै कम्पनीको एपमा पनि हेर्न सकिन्छ।"
+        },
+        {
+          "q": "हटस्पट चलाउन मिल्छ?",
+          "a": "मिल्छ कि मिल्दैन र कति मिल्छ भन्ने प्लानमा भर पर्छ। प्लानको विस्तृत विवरण हेर्नुहोस्।"
+        }
+      ]
+    },
+    "km": {
+      "title": "របៀបអានគម្រោងទូរស័ព្ទ៖ ទិន្នន័យ ការហៅ សារ និងល្បឿនក្រោយទិន្នន័យអស់",
+      "description": "ការពន្យល់ងាយៗអំពីពាក្យដែលអ្នកឃើញលើគម្រោងទូរស័ព្ទកូរ៉េ៖ ចំនួនទិន្នន័យ ការហៅ និងសារ និងល្បឿនក្រោយពេលទិន្នន័យអស់។",
+      "sections": [
+        {
+          "heading": "ចំនួនទិន្នន័យ",
+          "body": "គម្រោងនីមួយៗកំណត់ចំនួនទិន្នន័យដែលអ្នកអាចប្រើក្នុងមួយខែ។ ខ្លះផ្ដល់ចំនួនថេររៀងរាល់ថ្ងៃ ខ្លះទៀតផ្ដល់ចំនួនសរុបសម្រាប់មួយខែ។ បើអ្នកហៅជាវីដេអូ ឬមើលវីដេអូញឹកញាប់ អ្នកនឹងប្រើទិន្នន័យច្រើន ដូច្នេះសូមពិនិត្យការប្រើប្រាស់ខែមុនក្នុងការកំណត់ទូរស័ព្ទជាមុនសិន។"
+        },
+        {
+          "heading": "ការហៅ និងសារ",
+          "body": "គម្រោងខ្លះមានការហៅ និងសារក្នុងស្រុកមិនកំណត់ ខណៈខ្លះទៀតផ្ដល់តែចំនួនកំណត់។ ការហៅជាវីដេអូ ការហៅទៅមជ្ឈមណ្ឌលសេវាអតិថិជន ឬលេខពិសេស និងការហៅអន្តរជាតិ អាចមិនរាប់បញ្ចូល។ សូមពិនិត្យព័ត៌មានលម្អិតរបស់គម្រោង ដើម្បីដឹងច្បាស់ថាអ្វីខ្លះត្រូវបានរាប់បញ្ចូល។"
+        },
+        {
+          "heading": "ល្បឿនក្រោយពេលទិន្នន័យអស់",
+          "body": "គម្រោងខ្លះអនុញ្ញាតឱ្យបន្តប្រើទិន្នន័យក្នុងល្បឿនយឺត ក្រោយពេលទិន្នន័យមូលដ្ឋានអស់។ ល្បឿននេះជាធម្មតាគ្រប់គ្រាន់សម្រាប់ផ្ញើសារ និងប្រើផែនទី ប៉ុន្តែអាចយឺតពេកសម្រាប់មើលវីដេអូ។ គម្រោងខ្លះទៀតបញ្ឈប់ទិន្នន័យ ឬគិតថ្លៃបន្ថែម ដូច្នេះសូមពិនិត្យជានិច្ចថាមានអ្វីកើតឡើងក្រោយទិន្នន័យអស់។"
+        },
+        {
+          "heading": "ចំណុចផ្សេងទៀតដែលត្រូវពិនិត្យ",
+          "body": "រយៈពេលកិច្ចសន្យា លក្ខខណ្ឌបញ្ចុះតម្លៃ សេវាបន្ថែមដែលរាប់បញ្ចូល និងការអនុញ្ញាតឱ្យប្រើ hotspot (tethering) ក៏ខុសគ្នាតាមគម្រោងដែរ។ សូមមើលផងដែរថាមានលក្ខខណ្ឌណាដែលអនុវត្តតែក្នុងប៉ុន្មានខែដំបូងឬទេ។"
+        }
+      ],
+      "faq": [
+        {
+          "q": "តើធ្វើដូចម្ដេចដឹងថាខ្ញុំប្រើទិន្នន័យប៉ុន្មាន?",
+          "a": "ម៉ឺនុយការប្រើប្រាស់ទិន្នន័យក្នុងការកំណត់ទូរស័ព្ទ បង្ហាញការប្រើប្រាស់តាមរយៈពេល។ កម្មវិធីរបស់ក្រុមហ៊ុនជាច្រើនក៏បង្ហាញដែរ។"
+        },
+        {
+          "q": "តើអាចប្រើ hotspot បានទេ?",
+          "a": "ថាតើអនុញ្ញាតឬទេ និងប្រើបានប៉ុន្មាន អាស្រ័យលើគម្រោង។ សូមពិនិត្យព័ត៌មានលម្អិតរបស់គម្រោង។"
+        }
+      ]
+    },
+    "id": {
+      "title": "Cara membaca paket ponsel: data, panggilan, SMS, dan kecepatan setelah kuota habis",
+      "description": "Penjelasan sederhana tentang istilah yang muncul di paket ponsel Korea: kuota data, panggilan dan SMS, serta kecepatan setelah kuota habis.",
+      "sections": [
+        {
+          "heading": "Kuota data",
+          "body": "Setiap paket menentukan berapa banyak data yang bisa dipakai per bulan. Ada yang memberi jatah tetap per hari, ada pula yang memberi total untuk sebulan. Jika Anda sering video call atau menonton video, pemakaian data akan lebih besar, jadi cek dulu pemakaian bulan lalu di pengaturan ponsel."
+        },
+        {
+          "heading": "Panggilan dan SMS",
+          "body": "Sebagian paket menyediakan panggilan dan SMS domestik tanpa batas, sementara yang lain hanya memberi jumlah tertentu. Panggilan video, panggilan ke layanan pelanggan atau nomor khusus, serta panggilan internasional mungkin tidak termasuk. Cek rincian paket untuk melihat apa saja yang tercakup."
+        },
+        {
+          "heading": "Kecepatan setelah kuota habis",
+          "body": "Sebagian paket tetap memungkinkan Anda memakai data dengan kecepatan lebih lambat setelah kuota utama habis. Kecepatan ini biasanya cukup untuk chatting dan peta, tetapi mungkin terlalu lambat untuk video. Ada juga paket yang menghentikan data atau mengenakan biaya tambahan, jadi selalu cek apa yang terjadi setelah kuota habis."
+        },
+        {
+          "heading": "Hal lain yang perlu dicek",
+          "body": "Lama kontrak, syarat diskon, layanan tambahan yang sudah termasuk, dan boleh tidaknya memakai hotspot (tethering) juga berbeda di setiap paket. Perhatikan juga apakah ada syarat yang hanya berlaku di beberapa bulan pertama."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Bagaimana cara melihat pemakaian data saya?",
+          "a": "Menu pemakaian data di pengaturan ponsel menampilkan pemakaian per periode. Aplikasi operator juga sering menampilkannya."
+        },
+        {
+          "q": "Bolehkah saya memakai hotspot?",
+          "a": "Boleh tidaknya, dan berapa batasnya, tergantung paket. Silakan cek rincian paketnya."
+        }
+      ]
+    },
+    "th": {
+      "title": "วิธีอ่านแพ็กเกจมือถือ: เน็ต โทร SMS และความเร็วหลังเน็ตหมด",
+      "description": "อธิบายคำศัพท์ในแพ็กเกจมือถือของเกาหลีแบบเข้าใจง่าย: ปริมาณเน็ต การโทรและ SMS และความเร็วหลังใช้เน็ตหมด",
+      "sections": [
+        {
+          "heading": "ปริมาณเน็ต",
+          "body": "แต่ละแพ็กเกจกำหนดปริมาณเน็ตที่ใช้ได้ต่อเดือนไว้ บางแพ็กเกจให้เป็นรายวันในปริมาณคงที่ บางแพ็กเกจให้เป็นยอดรวมทั้งเดือน ถ้าวิดีโอคอลหรือดูวิดีโอบ่อย จะใช้เน็ตเยอะขึ้น จึงควรเช็กปริมาณที่ใช้ไปเมื่อเดือนที่แล้วในเมนูตั้งค่ามือถือก่อน"
+        },
+        {
+          "heading": "การโทรและ SMS",
+          "body": "บางแพ็กเกจโทรและส่ง SMS ในประเทศได้ไม่จำกัด บางแพ็กเกจให้ในปริมาณที่กำหนด วิดีโอคอล การโทรหาคอลเซ็นเตอร์หรือเบอร์พิเศษ และการโทรต่างประเทศ อาจไม่รวมอยู่ในสิทธิ์พื้นฐาน ควรดูรายละเอียดแพ็กเกจเพื่อให้รู้แน่ชัดว่าครอบคลุมอะไรบ้าง"
+        },
+        {
+          "heading": "ความเร็วหลังเน็ตหมด",
+          "body": "บางแพ็กเกจให้ใช้เน็ตต่อได้ด้วยความเร็วที่ช้าลงหลังใช้ปริมาณหลักหมดแล้ว ความเร็วระดับนี้มักพอสำหรับแชตและแผนที่ แต่อาจช้าเกินไปสำหรับดูวิดีโอ ในทางกลับกัน บางแพ็กเกจจะตัดเน็ตหรือคิดค่าบริการเพิ่ม จึงต้องเช็กเงื่อนไขหลังเน็ตหมดให้ดี"
+        },
+        {
+          "heading": "สิ่งอื่นที่ควรเช็ก",
+          "body": "ระยะเวลาสัญญา เงื่อนไขส่วนลด บริการเสริมที่รวมอยู่ และการแชร์เน็ต (ฮอตสปอต, เทเทอริง) ได้หรือไม่ ก็ต่างกันไปตามแพ็กเกจ ลองดูด้วยว่ามีเงื่อนไขที่ใช้แค่ช่วงไม่กี่เดือนแรกหรือเปล่า"
+        }
+      ],
+      "faq": [
+        {
+          "q": "จะรู้ได้อย่างไรว่าเราใช้เน็ตไปเท่าไร?",
+          "a": "เมนูการใช้ข้อมูลในตั้งค่ามือถือจะแสดงปริมาณที่ใช้ตามช่วงเวลา แอปของหลายค่ายก็ดูได้เช่นกัน"
+        },
+        {
+          "q": "แชร์เน็ต (ฮอตสปอต) ได้ไหม?",
+          "a": "ใช้ได้หรือไม่และใช้ได้มากแค่ไหนขึ้นอยู่กับแพ็กเกจ ควรเช็กรายละเอียดเงื่อนไขของแพ็กเกจ"
+        }
+      ]
+    },
+    "mn": {
+      "title": "Утасны багцыг хэрхэн унших вэ: дата, яриа, мессеж, дата дууссаны дараах хурд",
+      "description": "Солонгосын утасны багц дээр гардаг датаны хэмжээ, яриа ба мессеж, дата дууссаны дараах хурд зэрэг нэр томьёог энгийнээр тайлбарлалаа.",
+      "sections": [
+        {
+          "heading": "Датаны хэмжээ",
+          "body": "Багц бүр сард хэр их дата ашиглаж болохыг тогтоодог. Зарим нь өдөр бүр тодорхой хэмжээ, зарим нь сарын нийт хэмжээг олгодог. Видео дуудлага хийх эсвэл видео үзэх нь элбэг бол дата их зарцуулна, тиймээс эхлээд утасныхаа тохиргооноос өнгөрсөн сарын хэрэглээгээ шалгаарай."
+        },
+        {
+          "heading": "Яриа ба мессеж",
+          "body": "Зарим багц дотоодын яриа, мессежийг хязгааргүй олгодог бол зарим нь тогтсон хэмжээгээр өгдөг. Видео дуудлага, харилцагчийн төв эсвэл тусгай дугаар руу залгах, олон улсын яриа нь багтахгүй байж болно. Яг юу багтдагийг багцын дэлгэрэнгүй мэдээллээс шалгаарай."
+        },
+        {
+          "heading": "Дата дууссаны дараах хурд",
+          "body": "Зарим багц үндсэн дата дууссаны дараа удаан хурдаар үргэлжлүүлэн ашиглах боломж олгодог. Энэ хурд мессеж бичих, газрын зураг ашиглахад ихэвчлэн хангалттай ч видео үзэхэд хэт удаан байж болно. Харин зарим багц дата зогсоох эсвэл нэмэлт төлбөр авдаг тул дата дууссаны дараа юу болохыг заавал шалгаарай."
+        },
+        {
+          "heading": "Бусад шалгах зүйлс",
+          "body": "Гэрээний хугацаа, хөнгөлөлтийн нөхцөл, багтсан нэмэлт үйлчилгээ, hotspot (tethering) ашиглаж болох эсэх нь багц бүрт өөр. Зөвхөн эхний хэдэн сард үйлчлэх нөхцөл байгаа эсэхийг ч хараарай."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Би хэр их дата ашигладгаа яаж мэдэх вэ?",
+          "a": "Утасны тохиргооны датаны хэрэглээ цэснээс хугацаагаар хэрэглээгээ харж болно. Олон операторын аппликейшн ч мөн харуулдаг."
+        },
+        {
+          "q": "Hotspot ашиглаж болох уу?",
+          "a": "Ашиглаж болох эсэх, хэр хэмжээгээр болох нь багцаас хамаарна. Багцын дэлгэрэнгүй нөхцөлийг шалгаарай."
+        }
+      ]
+    },
+    "my": {
+      "title": "ဖုန်းအစီအစဉ် ဘယ်လိုဖတ်မလဲ: ဒေတာ၊ ဖုန်းခေါ်ဆိုမှု၊ စာတို နဲ့ ဒေတာကုန်ပြီးနောက် အမြန်နှုန်း",
+      "description": "ကိုရီးယားဖုန်းအစီအစဉ်မှာ တွေ့ရတဲ့ ဝေါဟာရတွေကို ရိုးရှင်းစွာ ရှင်းပြချက်: ဒေတာပမာဏ၊ ဖုန်းခေါ်ဆိုမှုနဲ့ စာတို၊ ဒေတာကုန်ပြီးနောက် အမြန်နှုန်း။",
+      "sections": [
+        {
+          "heading": "ဒေတာပမာဏ",
+          "body": "အစီအစဉ်တိုင်းမှာ တစ်လ ဒေတာဘယ်လောက်သုံးလို့ရလဲ သတ်မှတ်ထားပါတယ်။ အချို့က တစ်ရက်ကို ပမာဏတစ်ခုပေးပြီး အချို့က တစ်လစာ စုစုပေါင်းပေးပါတယ်။ ဗီဒီယိုကော်လ် ခဏခဏခေါ်ရင် ဒါမှမဟုတ် ဗီဒီယိုကြည့်ရင် ဒေတာပိုကုန်တာမို့ ဖုန်းဆက်တင်မှာ ပြီးခဲ့တဲ့လ သုံးစွဲမှုကို အရင်ကြည့်ပါ။"
+        },
+        {
+          "heading": "ဖုန်းခေါ်ဆိုမှုနဲ့ စာတို",
+          "body": "အချို့အစီအစဉ်မှာ ပြည်တွင်းဖုန်းခေါ်ဆိုမှုနဲ့ စာတို အကန့်အသတ်မရှိ ပါပြီး အချို့မှာ သတ်မှတ်ပမာဏပဲ ပါပါတယ်။ ဗီဒီယိုကော်လ်၊ ဖောက်သည်ဝန်ဆောင်မှု ဒါမှမဟုတ် အထူးနံပါတ်တွေကို ခေါ်ခြင်းနဲ့ နိုင်ငံတကာဖုန်းခေါ်ဆိုမှု မပါနိုင်ပါဘူး။ ဘာတွေပါလဲဆိုတာ အစီအစဉ်အသေးစိတ်မှာ ကြည့်ပါ။"
+        },
+        {
+          "heading": "ဒေတာကုန်ပြီးနောက် အမြန်နှုန်း",
+          "body": "အချို့အစီအစဉ်မှာ အဓိကဒေတာကုန်သွားရင်တောင် အမြန်နှုန်းနှေးနှေးနဲ့ ဆက်သုံးလို့ရပါတယ်။ အဲဒီအမြန်နှုန်းက မက်ဆေ့ချ်ပို့တာ၊ မြေပုံသုံးတာအတွက် များသောအားဖြင့် အဆင်ပြေပေမယ့် ဗီဒီယိုအတွက် နှေးနိုင်ပါတယ်။ တခြားအစီအစဉ်တွေမှာ ဒေတာရပ်သွားတာ ဒါမှမဟုတ် အပိုကြေး ကောက်တာရှိလို့ ဒေတာကုန်ရင် ဘာဖြစ်မလဲ သေချာစစ်ပါ။"
+        },
+        {
+          "heading": "တခြား စစ်ရမယ့်အရာများ",
+          "body": "စာချုပ်သက်တမ်း၊ လျှော့ဈေးအခြေအနေ၊ ပါဝင်တဲ့ ထပ်ဆောင်းဝန်ဆောင်မှုနဲ့ ဟော့စပေါ့ (tethering) သုံးလို့ရမရဆိုတာလည်း အစီအစဉ်အလိုက် ကွာခြားပါတယ်။ ပထမလအနည်းငယ်မှာပဲ သက်ဆိုင်တဲ့ အခြေအနေ ရှိမရှိ ကြည့်ပါ။"
+        }
+      ],
+      "faq": [
+        {
+          "q": "ကိုယ် ဒေတာဘယ်လောက်သုံးလဲ ဘယ်လိုကြည့်မလဲ။",
+          "a": "ဖုန်းရဲ့ ဒေတာသုံးစွဲမှု ဆက်တင်မှာ ကာလအလိုက် သုံးစွဲမှုကို ပြပါတယ်။ ကုမ္ပဏီအများစုရဲ့ အက်ပ်မှာလည်း ကြည့်လို့ရပါတယ်။"
+        },
+        {
+          "q": "ဟော့စပေါ့ သုံးလို့ရသလား။",
+          "a": "ရမရနဲ့ ဘယ်လောက်ရလဲဆိုတာ အစီအစဉ်ပေါ် မူတည်ပါတယ်။ အစီအစဉ်အသေးစိတ်ကို ကြည့်ပါ။"
+        }
+      ]
+    },
+    "uz": {
+      "title": "Telefon tarifini qanday o'qish kerak: internet, qo'ng'iroq, SMS va limitdan keyingi tezlik",
+      "description": "Koreya telefon tariflarida uchraydigan atamalar sodda tilda: internet hajmi, qo'ng'iroq va SMS hamda internet tugagandan keyingi tezlik.",
+      "sections": [
+        {
+          "heading": "Internet hajmi",
+          "body": "Har bir tarif bir oyda qancha internetdan foydalanish mumkinligini belgilaydi. Ba'zilari har kuni ma'lum hajm beradi, boshqalari esa butun oy uchun umumiy hajm. Agar tez-tez video qo'ng'iroq qilsangiz yoki video ko'rsangiz, internet ko'proq sarflanadi, shuning uchun avval telefon sozlamalarida o'tgan oydagi sarfingizni tekshiring."
+        },
+        {
+          "heading": "Qo'ng'iroqlar va SMS",
+          "body": "Ayrim tariflarda mamlakat ichidagi qo'ng'iroq va SMS cheksiz, boshqalarida esa belgilangan miqdorda. Video qo'ng'iroqlar, mijozlarga xizmat ko'rsatish markazi yoki maxsus raqamlarga qo'ng'iroqlar hamda xalqaro qo'ng'iroqlar kiritilmagan bo'lishi mumkin. Aynan nimalar kiritilganini tarif tafsilotlaridan tekshiring."
+        },
+        {
+          "heading": "Internet tugagandan keyingi tezlik",
+          "body": "Ayrim tariflarda asosiy hajm tugagach ham internetdan sekinroq tezlikda foydalanishda davom etish mumkin. Bu tezlik odatda messenjer va xaritalar uchun yetarli, lekin video uchun juda sekin bo'lishi mumkin. Boshqa tariflarda esa internet to'xtaydi yoki qo'shimcha haq olinadi, shuning uchun limitdan keyin nima bo'lishini albatta tekshiring."
+        },
+        {
+          "heading": "Yana nimalarni tekshirish kerak",
+          "body": "Shartnoma muddati, chegirma shartlari, kiritilgan qo'shimcha xizmatlar va hotspot (tethering) ga ruxsat bor-yo'qligi ham tarifga qarab farq qiladi. Faqat dastlabki bir necha oy amal qiladigan shartlar bor-yo'qligiga ham e'tibor bering."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Qancha internet ishlatayotganimni qanday bilsam bo'ladi?",
+          "a": "Telefon sozlamalaridagi internet sarfi bo'limida davrlar bo'yicha sarf ko'rsatiladi. Ko'p operatorlarning ilovalarida ham buni ko'rish mumkin."
+        },
+        {
+          "q": "Hotspot'dan foydalansam bo'ladimi?",
+          "a": "Ruxsat berilishi va qancha hajmda ekani tarifga bog'liq. Tarif tafsilotlarini tekshiring."
+        }
+      ]
+    }
+  }
+}

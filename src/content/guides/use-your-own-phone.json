@@ -1,0 +1,293 @@
+{
+  "slug": "use-your-own-phone",
+  "order": 4,
+  "published": "2026-11-22",
+  "updated": "2026-11-22",
+  "related": [
+    "keep-your-number",
+    "what-is-mvno",
+    "opening-a-line-as-a-foreigner"
+  ],
+  "content": {
+    "ko": {
+      "title": "쓰던 휴대폰 그대로 쓰기: 자급제·언락폰, 유심과 eSIM",
+      "description": "고향에서 가져온 휴대폰이나 지금 쓰는 휴대폰으로 한국 요금제를 쓰는 방법, 유심과 eSIM의 차이, 미리 확인할 점을 정리했습니다.",
+      "sections": [
+        {
+          "heading": "언락(잠금 해제)된 휴대폰인지 확인하세요",
+          "body": "다른 나라나 다른 통신사에서 산 휴대폰은 특정 통신사에서만 쓰도록 잠겨 있을 수 있습니다. 잠금이 풀린 언락폰이나 자급제폰이라면 새 유심이나 eSIM을 넣어 한국 요금제를 쓸 수 있는 경우가 많습니다. 잠금 여부는 구입한 곳이나 원래 통신사에 문의하면 확인할 수 있습니다."
+        },
+        {
+          "heading": "유심과 eSIM의 차이",
+          "body": "유심은 휴대폰에 끼우는 작은 카드이고, eSIM은 휴대폰 안에 내장된 칩에 정보를 내려받아 쓰는 방식입니다. eSIM은 카드를 배송받지 않아도 되는 대신, 휴대폰이 eSIM을 지원해야 하고 통신사와 요금제도 eSIM을 지원해야 합니다. 휴대폰 설정 메뉴에서 eSIM 추가 항목이 있는지 확인해 보세요."
+        },
+        {
+          "heading": "해외 휴대폰을 쓸 때 확인할 점",
+          "body": "해외에서 산 휴대폰은 모델에 따라 한국에서 쓰는 주파수나 일부 기능을 지원하지 않을 수 있습니다. 데이터 속도나 통화 기능에 차이가 날 수 있으니 모델명을 알려 주고 사용 가능 여부를 먼저 물어보세요. 휴대폰을 바꾸기 전에는 연락처와 사진, 메신저 대화를 백업해 두세요."
+        }
+      ],
+      "faq": [
+        {
+          "q": "내 휴대폰이 eSIM을 지원하는지 어떻게 알 수 있나요?",
+          "a": "설정의 모바일 데이터나 연결 메뉴에서 eSIM 추가 항목이 있는지 확인해 보세요. 모델명으로 제조사 안내를 찾아보는 것도 방법입니다."
+        },
+        {
+          "q": "유심만 바꾸면 번호도 바뀌나요?",
+          "a": "새로 가입하면 새 번호가 나옵니다. 기존 번호를 그대로 쓰고 싶다면 번호이동으로 신청해야 합니다."
+        }
+      ]
+    },
+    "en": {
+      "title": "Using your own phone in Korea: unlocked phones, USIM and eSIM",
+      "description": "How to use the phone you already have, or one you brought from home, with a Korean plan, the difference between USIM and eSIM, and what to check first.",
+      "sections": [
+        {
+          "heading": "Check that your phone is unlocked",
+          "body": "A phone bought in another country or from another carrier may be locked to that carrier. If it is unlocked (or bought without a carrier), you can often insert a new USIM or add an eSIM and use a Korean plan. You can check the lock status with the store where you bought it or with your original carrier."
+        },
+        {
+          "heading": "USIM vs eSIM",
+          "body": "A USIM is a small card you insert into the phone. An eSIM is a profile you download to a chip built into the phone. With eSIM you do not need to wait for a card, but both your phone and the carrier's plan must support eSIM. Look in your phone's settings for an option to add an eSIM."
+        },
+        {
+          "heading": "If your phone is from abroad",
+          "body": "Depending on the model, a phone bought abroad may not support every frequency or feature used in Korea. Data speed or calling features may differ, so share the model name and ask whether it is supported before you sign up. Before changing phones, back up your contacts, photos and messenger chats."
+        }
+      ],
+      "faq": [
+        {
+          "q": "How do I know if my phone supports eSIM?",
+          "a": "Check your mobile data or connections settings for an option to add an eSIM. You can also look up the manufacturer's information by model name."
+        },
+        {
+          "q": "Does my number change if I only change the USIM?",
+          "a": "A new sign-up comes with a new number. If you want to keep your current number, apply for number porting instead."
+        }
+      ]
+    },
+    "vi": {
+      "title": "Dùng điện thoại sẵn có ở Hàn: máy quốc tế, USIM và eSIM",
+      "description": "Cách dùng điện thoại bạn đang có hoặc mang từ quê nhà sang với gói cước Hàn Quốc, sự khác nhau giữa USIM và eSIM, và những điều cần kiểm tra trước.",
+      "sections": [
+        {
+          "heading": "Kiểm tra máy đã mở khóa mạng chưa",
+          "body": "Điện thoại mua ở nước khác hoặc mua qua nhà mạng có thể bị khóa, chỉ dùng được với nhà mạng đó. Nếu máy đã mở khóa (máy quốc tế, không gắn nhà mạng), bạn thường có thể lắp USIM mới hoặc thêm eSIM để dùng gói cước Hàn Quốc. Bạn có thể hỏi nơi bán máy hoặc nhà mạng cũ để biết máy có bị khóa không."
+        },
+        {
+          "heading": "USIM và eSIM khác nhau thế nào?",
+          "body": "USIM là thẻ nhỏ lắp vào điện thoại, còn eSIM là hồ sơ được tải về một con chip có sẵn bên trong máy. Với eSIM, bạn không cần chờ nhận thẻ, nhưng cả điện thoại lẫn gói cước của nhà mạng đều phải hỗ trợ eSIM. Hãy vào phần cài đặt của điện thoại xem có mục thêm eSIM không."
+        },
+        {
+          "heading": "Nếu điện thoại mua ở nước ngoài",
+          "body": "Tùy dòng máy, điện thoại mua ở nước ngoài có thể không hỗ trợ đầy đủ các băng tần hoặc tính năng dùng ở Hàn. Tốc độ dữ liệu hay tính năng gọi có thể khác, nên hãy báo tên model và hỏi xem có dùng được không trước khi đăng ký. Trước khi đổi máy, nhớ sao lưu danh bạ, ảnh và tin nhắn trong các ứng dụng nhắn tin."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Làm sao biết điện thoại của tôi có hỗ trợ eSIM không?",
+          "a": "Vào cài đặt dữ liệu di động hoặc kết nối, xem có mục thêm eSIM không. Bạn cũng có thể tra thông tin của hãng theo tên model."
+        },
+        {
+          "q": "Chỉ đổi USIM thì số điện thoại có đổi không?",
+          "a": "Đăng ký mới sẽ được cấp số mới. Nếu muốn giữ số hiện tại, bạn cần đăng ký theo hình thức chuyển mạng giữ số (번호이동)."
+        }
+      ]
+    },
+    "ne": {
+      "title": "कोरियामा आफ्नै फोन चलाउने: अनलक फोन, USIM र eSIM",
+      "description": "अहिले चलाइरहेको वा घरबाट ल्याएको फोनमा कोरियाली प्लान कसरी चलाउने, USIM र eSIM को फरक, र पहिले के जाँच्ने।",
+      "sections": [
+        {
+          "heading": "फोन अनलक छ कि छैन जाँच्नुहोस्",
+          "body": "अर्को देश वा अर्को कम्पनीबाट किनेको फोन त्यही कम्पनीमा मात्र चल्ने गरी लक भएको हुन सक्छ। अनलक भएको (वा कम्पनी बिना किनेको) फोन हो भने प्रायः नयाँ USIM हालेर वा eSIM थपेर कोरियाली प्लान चलाउन सकिन्छ। लक छ कि छैन भनेर फोन किनेको पसल वा पुरानो कम्पनीसँग सोध्न सक्नुहुन्छ।"
+        },
+        {
+          "heading": "USIM र eSIM को फरक",
+          "body": "USIM फोनमा हाल्ने सानो कार्ड हो। eSIM चाहिँ फोनभित्रै रहेको चिपमा डाउनलोड गरिने प्रोफाइल हो। eSIM मा कार्ड आउने कुर्नु पर्दैन, तर तपाईंको फोन र कम्पनीको प्लान दुवैले eSIM सपोर्ट गर्नुपर्छ। फोनको सेटिङमा eSIM थप्ने विकल्प छ कि हेर्नुहोस्।"
+        },
+        {
+          "heading": "फोन विदेशबाट ल्याएको हो भने",
+          "body": "मोडल अनुसार विदेशमा किनेको फोनले कोरियामा प्रयोग हुने सबै फ्रिक्वेन्सी वा फिचर सपोर्ट नगर्न सक्छ। डाटा स्पिड वा कल फिचरमा फरक पर्न सक्छ, त्यसैले साइन अप गर्नुअघि मोडलको नाम बताएर चल्छ कि चल्दैन सोध्नुहोस्। फोन बदल्नुअघि सम्पर्क नम्बर, फोटो र मेसेन्जरका कुराकानी ब्याकअप गर्नुहोस्।"
+        }
+      ],
+      "faq": [
+        {
+          "q": "मेरो फोनले eSIM सपोर्ट गर्छ कि गर्दैन कसरी थाहा पाउने?",
+          "a": "सेटिङको मोबाइल डाटा वा कनेक्सन मेनुमा eSIM थप्ने विकल्प छ कि हेर्नुहोस्। मोडलको नामले निर्माताको जानकारी खोजेर पनि थाहा पाउन सकिन्छ।"
+        },
+        {
+          "q": "USIM मात्र बदल्दा मेरो नम्बर बदलिन्छ?",
+          "a": "नयाँ साइन अप गर्दा नयाँ नम्बर आउँछ। अहिलेकै नम्बर राख्न चाहनुहुन्छ भने नम्बर पोर्टिङ (번호이동) का लागि आवेदन दिनुहोस्।"
+        }
+      ]
+    },
+    "km": {
+      "title": "ប្រើទូរស័ព្ទផ្ទាល់ខ្លួននៅកូរ៉េ៖ ទូរស័ព្ទដោះសោ USIM និង eSIM",
+      "description": "របៀបប្រើទូរស័ព្ទដែលអ្នកមានស្រាប់ ឬយកមកពីស្រុកកំណើត ជាមួយគម្រោងកូរ៉េ ភាពខុសគ្នារវាង USIM និង eSIM និងអ្វីដែលត្រូវពិនិត្យមុន។",
+      "sections": [
+        {
+          "heading": "ពិនិត្យថាទូរស័ព្ទរបស់អ្នកបានដោះសោ (unlock) ហើយឬនៅ",
+          "body": "ទូរស័ព្ទដែលទិញនៅប្រទេសផ្សេង ឬពីក្រុមហ៊ុនផ្សេង អាចត្រូវបានចាក់សោឱ្យប្រើតែជាមួយក្រុមហ៊ុននោះ។ បើវាបានដោះសោ ឬទិញដោយមិនភ្ជាប់ក្រុមហ៊ុន ច្រើនតែអ្នកអាចដាក់ USIM ថ្មី ឬបន្ថែម eSIM ហើយប្រើគម្រោងកូរ៉េបាន។ អ្នកអាចសួរពីស្ថានភាពចាក់សោនៅហាងដែលបានទិញ ឬក្រុមហ៊ុនដើមរបស់អ្នក។"
+        },
+        {
+          "heading": "USIM និង eSIM ខុសគ្នាយ៉ាងណា?",
+          "body": "USIM គឺជាកាតតូចមួយដែលដាក់ចូលក្នុងទូរស័ព្ទ។ eSIM គឺជាព័ត៌មានដែលទាញយកទៅក្នុងឈីបដែលមានស្រាប់ក្នុងទូរស័ព្ទ។ ជាមួយ eSIM អ្នកមិនចាំបាច់រង់ចាំកាតដឹកជញ្ជូនទេ ប៉ុន្តែទាំងទូរស័ព្ទ និងគម្រោងរបស់ក្រុមហ៊ុន ត្រូវតែគាំទ្រ eSIM។ សូមមើលក្នុងការកំណត់ (Settings) ទូរស័ព្ទ ថាមានជម្រើសបន្ថែម eSIM ឬទេ។"
+        },
+        {
+          "heading": "បើទូរស័ព្ទរបស់អ្នកមកពីបរទេស",
+          "body": "អាស្រ័យលើម៉ូដែល ទូរស័ព្ទដែលទិញនៅបរទេសអាចមិនគាំទ្រគ្រប់ប្រេកង់ ឬមុខងារដែលប្រើនៅកូរ៉េ។ ល្បឿនទិន្នន័យ ឬមុខងារហៅទូរស័ព្ទអាចខុសគ្នា ដូច្នេះសូមប្រាប់ឈ្មោះម៉ូដែល ហើយសួរថាអាចប្រើបានឬទេ មុនពេលចុះឈ្មោះ។ មុនប្ដូរទូរស័ព្ទ សូមបម្រុងទុក (backup) លេខទំនាក់ទំនង រូបថត និងការសន្ទនាក្នុងកម្មវិធីផ្ញើសារ។"
+        }
+      ],
+      "faq": [
+        {
+          "q": "តើធ្វើដូចម្ដេចដឹងថាទូរស័ព្ទខ្ញុំគាំទ្រ eSIM?",
+          "a": "សូមពិនិត្យក្នុងការកំណត់ទិន្នន័យចល័ត ឬការតភ្ជាប់ ថាមានជម្រើសបន្ថែម eSIM ឬទេ។ អ្នកក៏អាចស្វែងរកព័ត៌មានពីក្រុមហ៊ុនផលិត តាមឈ្មោះម៉ូដែលបានដែរ។"
+        },
+        {
+          "q": "បើប្ដូរតែ USIM តើលេខទូរស័ព្ទប្ដូរដែរឬទេ?",
+          "a": "ការចុះឈ្មោះថ្មីនឹងទទួលបានលេខថ្មី។ បើចង់រក្សាលេខបច្ចុប្បន្ន សូមដាក់ពាក្យផ្ទេរលេខ (번호이동) ជំនួសវិញ។"
+        }
+      ]
+    },
+    "id": {
+      "title": "Memakai ponsel sendiri di Korea: ponsel unlocked, USIM, dan eSIM",
+      "description": "Cara memakai ponsel yang sudah Anda punya atau yang dibawa dari negara asal dengan paket Korea, perbedaan USIM dan eSIM, serta apa saja yang perlu dicek terlebih dahulu.",
+      "sections": [
+        {
+          "heading": "Pastikan ponsel Anda tidak terkunci (unlocked)",
+          "body": "Ponsel yang dibeli di negara lain atau dari operator lain mungkin terkunci untuk operator tersebut. Jika ponselnya unlocked (atau dibeli tanpa operator), biasanya Anda bisa memasang USIM baru atau menambahkan eSIM dan memakai paket Korea. Status kunci bisa ditanyakan ke toko tempat membeli atau ke operator asal Anda."
+        },
+        {
+          "heading": "USIM vs eSIM",
+          "body": "USIM adalah kartu kecil yang dimasukkan ke ponsel. eSIM adalah profil yang diunduh ke chip yang sudah tertanam di dalam ponsel. Dengan eSIM Anda tidak perlu menunggu kartu dikirim, tetapi ponsel Anda dan paket dari operator harus sama-sama mendukung eSIM. Cari opsi untuk menambahkan eSIM di menu pengaturan ponsel."
+        },
+        {
+          "heading": "Jika ponsel Anda dari luar negeri",
+          "body": "Tergantung modelnya, ponsel yang dibeli di luar negeri mungkin tidak mendukung semua frekuensi atau fitur yang dipakai di Korea. Kecepatan data atau fitur panggilan bisa berbeda, jadi sebutkan nama modelnya dan tanyakan apakah didukung sebelum mendaftar. Sebelum ganti ponsel, cadangkan kontak, foto, dan obrolan aplikasi pesan Anda."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Bagaimana cara tahu ponsel saya mendukung eSIM?",
+          "a": "Cek menu data seluler atau koneksi di pengaturan, apakah ada opsi untuk menambahkan eSIM. Anda juga bisa mencari informasi dari produsen berdasarkan nama model."
+        },
+        {
+          "q": "Apakah nomor saya berubah jika hanya mengganti USIM?",
+          "a": "Pendaftaran baru akan mendapat nomor baru. Jika ingin tetap memakai nomor lama, ajukan pindah operator dengan nomor tetap (번호이동)."
+        }
+      ]
+    },
+    "th": {
+      "title": "ใช้มือถือเครื่องเดิมในเกาหลี: เครื่องปลดล็อก ซิม (USIM) และ eSIM",
+      "description": "วิธีใช้มือถือที่มีอยู่แล้วหรือที่นำมาจากบ้านเกิดกับแพ็กเกจของเกาหลี ความแตกต่างระหว่าง USIM กับ eSIM และสิ่งที่ควรเช็กก่อน",
+      "sections": [
+        {
+          "heading": "เช็กว่ามือถือปลดล็อกแล้วหรือยัง",
+          "body": "มือถือที่ซื้อจากต่างประเทศหรือซื้อผ่านค่ายมือถือ อาจถูกล็อกให้ใช้ได้กับค่ายนั้นเท่านั้น ถ้าเป็นเครื่องที่ปลดล็อกแล้วหรือเครื่องที่ไม่ผูกกับค่าย ส่วนใหญ่สามารถใส่ USIM ใหม่หรือเพิ่ม eSIM เพื่อใช้แพ็กเกจของเกาหลีได้ สามารถสอบถามสถานะการล็อกได้จากร้านที่ซื้อเครื่องหรือค่ายมือถือเดิม"
+        },
+        {
+          "heading": "USIM กับ eSIM ต่างกันอย่างไร?",
+          "body": "USIM คือการ์ดขนาดเล็กที่ใส่เข้าไปในมือถือ ส่วน eSIM คือการดาวน์โหลดโปรไฟล์ลงชิปที่ฝังอยู่ในเครื่อง eSIM ไม่ต้องรอรับการ์ดทางไปรษณีย์ แต่ทั้งมือถือและแพ็กเกจของค่ายต้องรองรับ eSIM ด้วย ลองเข้าไปดูในเมนูตั้งค่าของมือถือว่ามีตัวเลือกเพิ่ม eSIM หรือไม่"
+        },
+        {
+          "heading": "ถ้าเป็นมือถือที่ซื้อจากต่างประเทศ",
+          "body": "มือถือที่ซื้อจากต่างประเทศอาจไม่รองรับคลื่นความถี่หรือฟังก์ชันบางอย่างที่ใช้ในเกาหลี ขึ้นอยู่กับรุ่น ความเร็วเน็ตหรือฟังก์ชันการโทรอาจต่างไป จึงควรแจ้งชื่อรุ่นและสอบถามว่าใช้งานได้หรือไม่ก่อนสมัคร ก่อนเปลี่ยนเครื่อง อย่าลืมสำรองรายชื่อติดต่อ รูปภาพ และแชตในแอปแชตไว้"
+        }
+      ],
+      "faq": [
+        {
+          "q": "จะรู้ได้อย่างไรว่ามือถือรองรับ eSIM?",
+          "a": "เข้าไปดูที่เมนูตั้งค่าข้อมูลมือถือหรือการเชื่อมต่อว่ามีตัวเลือกเพิ่ม eSIM หรือไม่ หรือค้นหาข้อมูลจากผู้ผลิตด้วยชื่อรุ่นก็ได้"
+        },
+        {
+          "q": "เปลี่ยนแค่ซิม (USIM) เบอร์จะเปลี่ยนไหม?",
+          "a": "ถ้าสมัครใหม่จะได้เบอร์ใหม่ ถ้าต้องการใช้เบอร์เดิมต่อ ต้องสมัครแบบย้ายค่ายเบอร์เดิม (번호이동)"
+        }
+      ]
+    },
+    "mn": {
+      "title": "Өөрийн утсаа Солонгост ашиглах: түгжээгүй утас, USIM ба eSIM",
+      "description": "Одоо байгаа эсвэл эх орноосоо авчирсан утсаа Солонгосын багцтай хэрхэн ашиглах, USIM ба eSIM-ийн ялгаа, эхлээд юуг шалгах талаар.",
+      "sections": [
+        {
+          "heading": "Утас тань түгжээгүй эсэхийг шалгаарай",
+          "body": "Өөр улсад эсвэл өөр оператороос худалдаж авсан утас тухайн операторт түгжигдсэн байж болно. Хэрэв түгжээгүй (unlocked) эсвэл оператороос хамааралгүй худалдаж авсан бол шинэ USIM хийх эсвэл eSIM нэмээд Солонгосын багц ашиглах боломжтой байдаг. Түгжээтэй эсэхийг худалдаж авсан газар эсвэл анхны оператороосоо асууж мэдэж болно."
+        },
+        {
+          "heading": "USIM ба eSIM-ийн ялгаа",
+          "body": "USIM бол утсанд хийдэг жижиг карт. eSIM бол утсанд суурилуулсан чип рүү профайл татаж авч ашигладаг арга юм. eSIM-д карт хүргүүлэхийг хүлээх шаардлагагүй ч утас тань болон операторын багц хоёулаа eSIM дэмждэг байх ёстой. Утасныхаа тохиргоонд eSIM нэмэх сонголт байгаа эсэхийг хараарай."
+        },
+        {
+          "heading": "Утас тань гадаадаас авсан бол",
+          "body": "Загвараас хамааран гадаадаас авсан утас Солонгост ашигладаг бүх давтамж, функцийг дэмжихгүй байж болно. Датаны хурд эсвэл ярианы функц өөр байж болзошгүй тул бүртгүүлэхээсээ өмнө загварын нэрээ хэлж, ашиглах боломжтой эсэхийг асуугаарай. Утсаа солихоосоо өмнө харилцагчид, зураг, мессенжерийн чатаа нөөцөлж аваарай."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Утас маань eSIM дэмждэг эсэхийг яаж мэдэх вэ?",
+          "a": "Тохиргооны мобайл дата эсвэл холболтын цэснээс eSIM нэмэх сонголт байгаа эсэхийг шалгаарай. Загварын нэрээр үйлдвэрлэгчийн мэдээллийг хайж үзэж болно."
+        },
+        {
+          "q": "Зөвхөн USIM солиход дугаар өөрчлөгдөх үү?",
+          "a": "Шинээр бүртгүүлбэл шинэ дугаар олгоно. Одоогийн дугаараа хадгалахыг хүсвэл дугаар шилжүүлэх (번호이동) хүсэлт гаргаарай."
+        }
+      ]
+    },
+    "my": {
+      "title": "ကိုရီးယားမှာ ကိုယ့်ဖုန်းကိုယ်သုံးခြင်း: လော့ခ်ဖြုတ်ထားတဲ့ဖုန်း၊ USIM နဲ့ eSIM",
+      "description": "အခုသုံးနေတဲ့ ဒါမှမဟုတ် အိမ်ကယူလာတဲ့ ဖုန်းမှာ ကိုရီးယားအစီအစဉ်ကို ဘယ်လိုသုံးမလဲ၊ USIM နဲ့ eSIM ကွာခြားချက်နဲ့ အရင်ဆုံး စစ်ရမယ့်အရာများ။",
+      "sections": [
+        {
+          "heading": "ဖုန်း လော့ခ်ဖြုတ်ထားလား စစ်ပါ",
+          "body": "တခြားနိုင်ငံ ဒါမှမဟုတ် တခြားကုမ္ပဏီကနေ ဝယ်ထားတဲ့ဖုန်းဟာ အဲဒီကုမ္ပဏီမှာပဲ သုံးလို့ရအောင် လော့ခ်ချထားနိုင်ပါတယ်။ လော့ခ်ဖြုတ်ထားတဲ့ (ဒါမှမဟုတ် ကုမ္ပဏီနဲ့မချိတ်ဘဲ ဝယ်ထားတဲ့) ဖုန်းဆိုရင် USIM အသစ်ထည့် ဒါမှမဟုတ် eSIM ထည့်ပြီး ကိုရီးယားအစီအစဉ်ကို အများအားဖြင့် သုံးနိုင်ပါတယ်။ လော့ခ်ရှိမရှိကို ဝယ်ခဲ့တဲ့ဆိုင် ဒါမှမဟုတ် မူလကုမ္ပဏီကို မေးနိုင်ပါတယ်။"
+        },
+        {
+          "heading": "USIM နဲ့ eSIM",
+          "body": "USIM ဆိုတာ ဖုန်းထဲထည့်ရတဲ့ ကတ်အသေးလေးပါ။ eSIM ကတော့ ဖုန်းထဲမှာ တပ်ဆင်ပြီးသား ချစ်ပ်ထဲကို ဒေါင်းလုဒ်လုပ်ရတဲ့ ပရိုဖိုင်ပါ။ eSIM မှာ ကတ်ရောက်လာဖို့ စောင့်စရာမလိုပေမယ့် ကိုယ့်ဖုန်းရော ကုမ္ပဏီအစီအစဉ်ပါ eSIM ကို ပံ့ပိုးရပါမယ်။ ဖုန်းရဲ့ ဆက်တင်ထဲမှာ eSIM ထည့်တဲ့ ရွေးချယ်စရာ ရှိမရှိ ကြည့်ပါ။"
+        },
+        {
+          "heading": "ဖုန်းက နိုင်ငံခြားကဆိုရင်",
+          "body": "မော်ဒယ်ပေါ်မူတည်ပြီး နိုင်ငံခြားမှာဝယ်တဲ့ဖုန်းဟာ ကိုရီးယားမှာသုံးတဲ့ ကြိမ်နှုန်း ဒါမှမဟုတ် လုပ်ဆောင်ချက်အားလုံးကို မပံ့ပိုးနိုင်ပါဘူး။ ဒေတာအမြန်နှုန်း ဒါမှမဟုတ် ဖုန်းခေါ်ဆိုမှု လုပ်ဆောင်ချက် ကွာခြားနိုင်လို့ စာရင်းမသွင်းခင် မော်ဒယ်နာမည်ပြောပြီး သုံးလို့ရမရ မေးပါ။ ဖုန်းမပြောင်းခင် အဆက်အသွယ်၊ ဓာတ်ပုံနဲ့ မက်ဆင်ဂျာစကားဝိုင်းတွေကို အရန်သိမ်းထားပါ။"
+        }
+      ],
+      "faq": [
+        {
+          "q": "ကိုယ့်ဖုန်း eSIM ပံ့ပိုးလား ဘယ်လိုသိနိုင်မလဲ။",
+          "a": "ဆက်တင်ထဲက မိုဘိုင်းဒေတာ ဒါမှမဟုတ် ချိတ်ဆက်မှုမီနူးမှာ eSIM ထည့်တဲ့ ရွေးချယ်စရာ ရှိမရှိ ကြည့်ပါ။ မော်ဒယ်နာမည်နဲ့ ထုတ်လုပ်သူရဲ့ အချက်အလက်ကို ရှာကြည့်လို့လည်း ရပါတယ်။"
+        },
+        {
+          "q": "USIM ပဲ ပြောင်းရင် ဖုန်းနံပါတ် ပြောင်းသွားမလား။",
+          "a": "အသစ်စာရင်းသွင်းရင် နံပါတ်အသစ် ရပါတယ်။ အခုနံပါတ်ကို ဆက်သုံးချင်ရင် နံပါတ်ရွှေ့ပြောင်းခြင်း (번호이동) နဲ့ လျှောက်ပါ။"
+        }
+      ]
+    },
+    "uz": {
+      "title": "Koreyada o'z telefoningizdan foydalanish: qulfdan chiqarilgan telefonlar, USIM va eSIM",
+      "description": "Hozirgi yoki vataningizdan olib kelgan telefoningizni Koreya tarifi bilan qanday ishlatish, USIM va eSIM farqi hamda avval nimalarni tekshirish kerakligi.",
+      "sections": [
+        {
+          "heading": "Telefoningiz qulfdan chiqarilganini tekshiring",
+          "body": "Boshqa davlatda yoki boshqa operatordan sotib olingan telefon faqat shu operatorda ishlaydigan qilib qulflangan bo'lishi mumkin. Agar telefon qulfdan chiqarilgan (unlocked) yoki operatorsiz sotib olingan bo'lsa, ko'pincha yangi USIM qo'yib yoki eSIM qo'shib, Koreya tarifidan foydalanish mumkin. Qulf holatini telefonni sotib olgan do'koningiz yoki avvalgi operatoringizdan bilib olishingiz mumkin."
+        },
+        {
+          "heading": "USIM va eSIM farqi",
+          "body": "USIM — telefonga qo'yiladigan kichik karta. eSIM esa telefon ichiga o'rnatilgan chipga yuklab olinadigan profil. eSIM bilan kartani kutib o'tirishingiz shart emas, ammo telefoningiz ham, operator tarifi ham eSIM'ni qo'llab-quvvatlashi kerak. Telefon sozlamalarida eSIM qo'shish bandi bor-yo'qligini qarab ko'ring."
+        },
+        {
+          "heading": "Telefoningiz xorijdan olingan bo'lsa",
+          "body": "Modelga qarab, xorijda sotib olingan telefon Koreyada ishlatiladigan barcha chastota yoki funksiyalarni qo'llab-quvvatlamasligi mumkin. Internet tezligi yoki qo'ng'iroq funksiyalarida farq bo'lishi mumkin, shuning uchun ulanishdan oldin model nomini aytib, qo'llab-quvvatlanishini so'rang. Telefon almashtirishdan oldin kontaktlar, rasmlar va messenjer yozishmalaringizning zaxira nusxasini oling."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Telefonim eSIM'ni qo'llab-quvvatlashini qanday bilaman?",
+          "a": "Sozlamalardagi mobil internet yoki ulanishlar bo'limida eSIM qo'shish bandi bor-yo'qligini tekshiring. Model nomi bo'yicha ishlab chiqaruvchi ma'lumotlarini ham qidirib ko'rishingiz mumkin."
+        },
+        {
+          "q": "Faqat USIM'ni almashtirsam, raqamim o'zgaradimi?",
+          "a": "Yangi ulanishda yangi raqam beriladi. Hozirgi raqamingizni saqlab qolmoqchi bo'lsangiz, raqamni ko'chirish (번호이동) orqali ariza bering."
+        }
+      ]
+    }
+  }
+}

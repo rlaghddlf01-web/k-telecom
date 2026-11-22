@@ -1,0 +1,293 @@
+{
+  "slug": "leaving-korea",
+  "order": 9,
+  "published": "2026-11-22",
+  "updated": "2026-11-22",
+  "related": [
+    "check-your-monthly-bill",
+    "keep-your-number",
+    "international-calls"
+  ],
+  "content": {
+    "ko": {
+      "title": "한국을 떠날 때: 휴대폰 해지와 마지막 요금 정리",
+      "description": "귀국이나 출국 전에 휴대폰 회선을 해지하고 마지막 요금과 단말기 할부금을 정리하는 방법, 미리 챙길 점을 안내합니다.",
+      "sections": [
+        {
+          "heading": "해지는 언제 하면 좋을까요?",
+          "body": "한국 휴대폰 번호는 은행, 정부 서비스, 각종 앱의 본인 인증에 쓰이는 경우가 많습니다. 그래서 너무 일찍 해지하면 출국 전에 필요한 일을 처리하기 어려울 수 있습니다. 은행 업무와 인증이 필요한 일을 먼저 마치고, 출국 직전에 해지 일정을 잡는 것이 좋습니다. 해지 방법과 필요한 서류는 통신사마다 다릅니다."
+        },
+        {
+          "heading": "마지막 요금과 할부금 정리",
+          "body": "해지하는 달의 요금은 해지 후에 청구되는 경우가 많습니다. 자동이체 계좌를 너무 빨리 닫으면 마지막 요금이 빠져나가지 못할 수 있습니다. 남은 단말기 할부금이나 약정 위약금이 있다면 한 번에 내야 하는지, 어떻게 처리하는지 통신사에 확인하세요. 내지 않은 요금은 본인 명의로 계속 남을 수 있습니다."
+        },
+        {
+          "heading": "다시 한국에 올 계획이 있다면",
+          "body": "잠시 고향에 다녀오는 경우라면 해지 대신 일시정지 같은 방법이 있는지 물어보세요. 제공 여부와 조건은 통신사와 요금제에 따라 다릅니다. 해지하든 정지하든 연락처와 사진, 메신저 대화는 미리 백업해 두세요."
+        }
+      ],
+      "faq": [
+        {
+          "q": "출국 후에도 해지할 수 있나요?",
+          "a": "통신사에 따라 해외에서 해지하는 절차가 있을 수 있지만 더 복잡한 경우가 많습니다. 가능하면 한국에 있을 때 정리하세요."
+        },
+        {
+          "q": "마지막 요금은 어떻게 내나요?",
+          "a": "보통 등록된 자동이체나 카드로 결제됩니다. 계좌를 닫을 예정이라면 다른 납부 방법을 통신사와 미리 정해 두세요."
+        }
+      ]
+    },
+    "en": {
+      "title": "Leaving Korea: cancelling your phone line and settling the final bill",
+      "description": "How to cancel your mobile line before leaving Korea, settle the final bill and phone installments, and what to take care of in advance.",
+      "sections": [
+        {
+          "heading": "When should I cancel?",
+          "body": "Your Korean phone number is often used to verify your identity for banks, government services and apps. If you cancel too early, it may be hard to finish what you need to do before you leave. Finish your banking and anything that needs verification first, then schedule the cancellation close to your departure. How to cancel and what documents you need differ by carrier."
+        },
+        {
+          "heading": "Final bill and installments",
+          "body": "The charges for your last month are often billed after you cancel. If you close the bank account used for automatic payment too early, the final bill may fail to go through. If you still owe a phone installment or early termination fee, ask the carrier whether it must be paid all at once and how. Unpaid charges can remain under your name."
+        },
+        {
+          "heading": "If you plan to come back",
+          "body": "If you are only going home for a while, ask whether a temporary suspension is available instead of cancelling. Whether it is offered, and on what terms, depends on the carrier and plan. Whether you cancel or suspend, back up your contacts, photos and messenger chats first."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Can I cancel after I have left Korea?",
+          "a": "Some carriers have a procedure for cancelling from abroad, but it is often more complicated. Settle it while you are still in Korea if you can."
+        },
+        {
+          "q": "How do I pay the final bill?",
+          "a": "It is usually charged to your registered automatic payment or card. If you plan to close your account, agree on another payment method with the carrier in advance."
+        }
+      ]
+    },
+    "vi": {
+      "title": "Khi rời Hàn Quốc: hủy thuê bao và thanh toán cước cuối cùng",
+      "description": "Cách hủy thuê bao di động trước khi về nước hoặc rời Hàn, thanh toán cước cuối và tiền trả góp máy, cùng những việc nên lo trước.",
+      "sections": [
+        {
+          "heading": "Khi nào nên hủy thuê bao?",
+          "body": "Số điện thoại Hàn Quốc thường được dùng để xác minh danh tính với ngân hàng, dịch vụ của chính phủ và nhiều ứng dụng. Vì vậy nếu hủy quá sớm, bạn có thể gặp khó khi xử lý những việc cần làm trước lúc đi. Hãy hoàn tất các việc ngân hàng và những việc cần xác minh trước, rồi hẹn lịch hủy sát ngày xuất cảnh. Cách hủy và giấy tờ cần thiết tùy từng nhà mạng."
+        },
+        {
+          "heading": "Thanh toán cước cuối và tiền trả góp",
+          "body": "Cước của tháng hủy thường được tính sau khi bạn đã hủy. Nếu đóng tài khoản ngân hàng dùng để trừ tiền tự động quá sớm, cước cuối có thể không thanh toán được. Nếu còn nợ tiền trả góp máy hoặc phí phạt hủy cam kết, hãy hỏi nhà mạng xem có phải trả một lần không và trả bằng cách nào. Cước chưa thanh toán có thể vẫn còn đứng tên bạn."
+        },
+        {
+          "heading": "Nếu có dự định quay lại Hàn",
+          "body": "Nếu bạn chỉ về quê một thời gian, hãy hỏi xem có hình thức tạm ngưng thay vì hủy hẳn không. Có hỗ trợ hay không và điều kiện thế nào tùy nhà mạng và gói cước. Dù hủy hay tạm ngưng, hãy sao lưu trước danh bạ, ảnh và tin nhắn trong các ứng dụng nhắn tin."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Đã rời Hàn rồi thì còn hủy thuê bao được không?",
+          "a": "Một số nhà mạng có thủ tục hủy từ nước ngoài, nhưng thường phức tạp hơn. Nếu được, hãy xử lý xong khi còn ở Hàn."
+        },
+        {
+          "q": "Cước cuối cùng thanh toán thế nào?",
+          "a": "Thường sẽ được trừ qua tài khoản tự động hoặc thẻ đã đăng ký. Nếu định đóng tài khoản, hãy thống nhất trước với nhà mạng một cách thanh toán khác."
+        }
+      ]
+    },
+    "ne": {
+      "title": "कोरिया छोड्दा: फोन लाइन रद्द गर्ने र अन्तिम बिल मिलाउने",
+      "description": "कोरिया छोड्नुअघि मोबाइल लाइन कसरी रद्द गर्ने, अन्तिम बिल र फोन किस्ता कसरी मिलाउने, र पहिल्यै के गर्ने।",
+      "sections": [
+        {
+          "heading": "कहिले रद्द गर्ने?",
+          "body": "तपाईंको कोरियाली फोन नम्बर प्रायः बैंक, सरकारी सेवा र एपमा पहिचान प्रमाणीकरणका लागि प्रयोग हुन्छ। धेरै चाँडो रद्द गर्नुभयो भने जानुअघि गर्नुपर्ने काम सक्न गाह्रो हुन सक्छ। पहिले बैंकका काम र प्रमाणीकरण चाहिने सबै काम सक्नुहोस्, अनि जाने मितिको नजिक रद्द गर्ने तय गर्नुहोस्। रद्द गर्ने तरिका र चाहिने कागजात कम्पनी अनुसार फरक हुन्छन्।"
+        },
+        {
+          "heading": "अन्तिम बिल र किस्ता",
+          "body": "अन्तिम महिनाको शुल्क प्रायः रद्द गरेपछि बिलमा आउँछ। अटो भुक्तानीको बैंक खाता धेरै चाँडो बन्द गर्नुभयो भने अन्तिम बिल नकट्न सक्छ। फोन किस्ता वा सम्झौता तोडेको जरिवाना बाँकी छ भने एकैपटक तिर्नुपर्छ कि र कसरी तिर्ने भनेर कम्पनीसँग सोध्नुहोस्। नतिरेको शुल्क तपाईंकै नाममा बाँकी रहन सक्छ।"
+        },
+        {
+          "heading": "फेरि फर्कने योजना छ भने",
+          "body": "केही समयका लागि मात्र घर जाँदै हुनुहुन्छ भने रद्दको सट्टा अस्थायी रूपमा बन्द गर्ने सुविधा छ कि सोध्नुहोस्। यो सुविधा छ कि छैन र कुन सर्तमा भन्ने कम्पनी र प्लानमा भर पर्छ। रद्द गर्नुहोस् वा बन्द, पहिले सम्पर्क नम्बर, फोटो र मेसेन्जरका कुराकानी ब्याकअप गर्नुहोस्।"
+        }
+      ],
+      "faq": [
+        {
+          "q": "कोरिया छोडेपछि पनि रद्द गर्न मिल्छ?",
+          "a": "केही कम्पनीमा विदेशबाट रद्द गर्ने प्रक्रिया हुन्छ, तर प्रायः झन्झटिलो हुन्छ। सकेसम्म कोरियामै हुँदा मिलाउनुहोस्।"
+        },
+        {
+          "q": "अन्तिम बिल कसरी तिर्ने?",
+          "a": "प्रायः दर्ता गरिएको अटो भुक्तानी वा कार्डबाट कट्छ। खाता बन्द गर्ने योजना छ भने अर्को भुक्तानी तरिकाबारे कम्पनीसँग पहिल्यै सहमति गर्नुहोस्।"
+        }
+      ]
+    },
+    "km": {
+      "title": "ពេលចាកចេញពីកូរ៉េ៖ លុបចោលលេខទូរស័ព្ទ និងទូទាត់វិក្កយបត្រចុងក្រោយ",
+      "description": "របៀបលុបចោលលេខទូរស័ព្ទមុនចាកចេញពីកូរ៉េ ទូទាត់វិក្កយបត្រចុងក្រោយ និងប្រាក់រំលស់ទូរស័ព្ទ និងអ្វីដែលគួររៀបចំជាមុន។",
+      "sections": [
+        {
+          "heading": "តើគួរលុបចោលនៅពេលណា?",
+          "body": "លេខទូរស័ព្ទកូរ៉េរបស់អ្នក ច្រើនតែត្រូវប្រើសម្រាប់ផ្ទៀងផ្ទាត់អត្តសញ្ញាណជាមួយធនាគារ សេវារដ្ឋាភិបាល និងកម្មវិធីផ្សេងៗ។ បើលុបចោលលឿនពេក អាចពិបាកបញ្ចប់កិច្ចការដែលត្រូវធ្វើមុនចាកចេញ។ សូមបញ្ចប់កិច្ចការធនាគារ និងអ្វីៗដែលត្រូវការផ្ទៀងផ្ទាត់ជាមុនសិន រួចកំណត់ថ្ងៃលុបចោលឱ្យជិតថ្ងៃចេញដំណើរ។ របៀបលុបចោល និងឯកសារដែលត្រូវការ ខុសគ្នាតាមក្រុមហ៊ុន។"
+        },
+        {
+          "heading": "វិក្កយបត្រចុងក្រោយ និងប្រាក់រំលស់",
+          "body": "ថ្លៃខែចុងក្រោយច្រើនតែត្រូវគិតក្រោយពេលលុបចោល។ បើបិទគណនីធនាគារដែលប្រើកាត់ប្រាក់ស្វ័យប្រវត្តិលឿនពេក វិក្កយបត្រចុងក្រោយអាចកាត់មិនចូល។ បើនៅជំពាក់ប្រាក់រំលស់ទូរស័ព្ទ ឬថ្លៃពិន័យបញ្ចប់កិច្ចសន្យាមុនកំណត់ សូមសួរក្រុមហ៊ុនថាត្រូវបង់ម្ដងគ្រប់ឬទេ និងបង់យ៉ាងដូចម្ដេច។ ថ្លៃដែលមិនទាន់បង់ អាចនៅជាប់ក្នុងឈ្មោះអ្នក។"
+        },
+        {
+          "heading": "បើអ្នកមានគម្រោងត្រឡប់មកវិញ",
+          "body": "បើអ្នកគ្រាន់តែទៅស្រុកមួយរយៈ សូមសួរថាមានការផ្អាកបណ្ដោះអាសន្នជំនួសការលុបចោលឬទេ។ ថាតើមានឬទេ និងលក្ខខណ្ឌយ៉ាងណា អាស្រ័យលើក្រុមហ៊ុន និងគម្រោង។ ទោះលុបចោល ឬផ្អាកក្ដី សូមបម្រុងទុកលេខទំនាក់ទំនង រូបថត និងការសន្ទនាក្នុងកម្មវិធីផ្ញើសារជាមុនសិន។"
+        }
+      ],
+      "faq": [
+        {
+          "q": "តើអាចលុបចោលក្រោយពេលចាកចេញពីកូរ៉េហើយបានទេ?",
+          "a": "ក្រុមហ៊ុនខ្លះមាននីតិវិធីលុបចោលពីបរទេស ប៉ុន្តែច្រើនតែស្មុគស្មាញជាង។ បើអាចធ្វើបាន សូមដោះស្រាយឱ្យរួចពេលនៅកូរ៉េនៅឡើយ។"
+        },
+        {
+          "q": "តើបង់វិក្កយបត្រចុងក្រោយយ៉ាងដូចម្ដេច?",
+          "a": "ជាធម្មតាវាត្រូវកាត់តាមការបង់ស្វ័យប្រវត្តិ ឬកាតដែលបានចុះឈ្មោះ។ បើអ្នកគ្រោងបិទគណនី សូមព្រមព្រៀងវិធីបង់ប្រាក់ផ្សេងជាមួយក្រុមហ៊ុនជាមុន។"
+        }
+      ]
+    },
+    "id": {
+      "title": "Meninggalkan Korea: menutup nomor ponsel dan melunasi tagihan terakhir",
+      "description": "Cara menutup nomor ponsel sebelum meninggalkan Korea, melunasi tagihan terakhir dan cicilan ponsel, serta apa yang perlu diurus lebih awal.",
+      "sections": [
+        {
+          "heading": "Kapan sebaiknya menutup nomor?",
+          "body": "Nomor ponsel Korea Anda sering dipakai untuk verifikasi identitas di bank, layanan pemerintah, dan berbagai aplikasi. Jika ditutup terlalu cepat, Anda bisa kesulitan menyelesaikan urusan sebelum berangkat. Selesaikan dulu urusan bank dan hal-hal yang memerlukan verifikasi, lalu jadwalkan penutupan menjelang keberangkatan. Cara menutup dan dokumen yang diperlukan berbeda di setiap operator."
+        },
+        {
+          "heading": "Tagihan terakhir dan cicilan",
+          "body": "Biaya bulan terakhir sering ditagihkan setelah Anda menutup nomor. Jika rekening untuk pembayaran otomatis ditutup terlalu cepat, tagihan terakhir bisa gagal dibayar. Jika masih ada cicilan ponsel atau denda pemutusan kontrak, tanyakan ke operator apakah harus dibayar sekaligus dan bagaimana caranya. Tagihan yang belum dibayar bisa tetap tercatat atas nama Anda."
+        },
+        {
+          "heading": "Jika Anda berencana kembali",
+          "body": "Jika hanya pulang kampung sementara, tanyakan apakah tersedia penangguhan sementara sebagai ganti penutupan. Ada tidaknya layanan ini dan syaratnya tergantung operator dan paket. Baik ditutup maupun ditangguhkan, cadangkan dulu kontak, foto, dan obrolan aplikasi pesan Anda."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Bisakah saya menutup nomor setelah meninggalkan Korea?",
+          "a": "Beberapa operator punya prosedur penutupan dari luar negeri, tetapi biasanya lebih rumit. Sebisa mungkin selesaikan selagi masih di Korea."
+        },
+        {
+          "q": "Bagaimana cara membayar tagihan terakhir?",
+          "a": "Biasanya ditagihkan ke pembayaran otomatis atau kartu yang terdaftar. Jika Anda berencana menutup rekening, sepakati metode pembayaran lain dengan operator sejak awal."
+        }
+      ]
+    },
+    "th": {
+      "title": "เมื่อจะออกจากเกาหลี: ยกเลิกเบอร์และเคลียร์ค่าบริการงวดสุดท้าย",
+      "description": "วิธียกเลิกเบอร์มือถือก่อนกลับประเทศหรือออกจากเกาหลี เคลียร์ค่าบริการงวดสุดท้ายและค่าผ่อนเครื่อง พร้อมสิ่งที่ควรจัดการไว้ล่วงหน้า",
+      "sections": [
+        {
+          "heading": "ควรยกเลิกเบอร์เมื่อไร?",
+          "body": "เบอร์มือถือเกาหลีมักใช้ยืนยันตัวตนกับธนาคาร บริการของภาครัฐ และแอปต่าง ๆ ถ้ายกเลิกเร็วเกินไป อาจทำให้จัดการเรื่องที่จำเป็นก่อนเดินทางได้ยาก ควรทำธุระกับธนาคารและเรื่องที่ต้องยืนยันตัวตนให้เสร็จก่อน แล้วนัดยกเลิกเบอร์ช่วงใกล้วันเดินทาง วิธียกเลิกและเอกสารที่ต้องใช้ต่างกันไปตามแต่ละค่าย"
+        },
+        {
+          "heading": "เคลียร์ค่าบริการงวดสุดท้ายและค่าผ่อนเครื่อง",
+          "body": "ค่าบริการของเดือนที่ยกเลิกมักถูกเรียกเก็บหลังจากยกเลิกไปแล้ว ถ้าปิดบัญชีธนาคารที่ใช้ตัดเงินอัตโนมัติเร็วเกินไป ค่าบริการงวดสุดท้ายอาจตัดเงินไม่ผ่าน ถ้ายังมีค่าผ่อนเครื่องหรือค่าปรับยกเลิกสัญญาค้างอยู่ ควรสอบถามค่ายว่าต้องจ่ายทีเดียวหรือไม่และจ่ายอย่างไร ค่าบริการที่ไม่ได้จ่ายอาจค้างอยู่ในชื่อของเราต่อไป"
+        },
+        {
+          "heading": "ถ้ามีแผนจะกลับมาเกาหลีอีก",
+          "body": "ถ้าแค่กลับบ้านเกิดช่วงสั้น ๆ ลองสอบถามว่ามีบริการระงับเบอร์ชั่วคราวแทนการยกเลิกหรือไม่ จะมีให้หรือไม่และมีเงื่อนไขอย่างไรขึ้นอยู่กับค่ายและแพ็กเกจ ไม่ว่าจะยกเลิกหรือระงับ ควรสำรองรายชื่อติดต่อ รูปภาพ และแชตในแอปแชตไว้ก่อน"
+        }
+      ],
+      "faq": [
+        {
+          "q": "ออกจากเกาหลีไปแล้วยังยกเลิกเบอร์ได้ไหม?",
+          "a": "บางค่ายมีขั้นตอนยกเลิกจากต่างประเทศ แต่มักยุ่งยากกว่า ถ้าเป็นไปได้ควรจัดการให้เสร็จขณะยังอยู่ในเกาหลี"
+        },
+        {
+          "q": "ค่าบริการงวดสุดท้ายจ่ายอย่างไร?",
+          "a": "โดยทั่วไปจะตัดผ่านบัญชีตัดเงินอัตโนมัติหรือบัตรที่ลงทะเบียนไว้ ถ้าจะปิดบัญชี ควรตกลงช่องทางชำระเงินอื่นกับค่ายไว้ล่วงหน้า"
+        }
+      ]
+    },
+    "mn": {
+      "title": "Солонгосоос явахдаа: утасны дугаараа цуцалж, сүүлийн төлбөрөө барагдуулах",
+      "description": "Солонгосоос явахаасаа өмнө гар утасны дугаараа цуцлах, сүүлийн нэхэмжлэх болон утасны зээлээ барагдуулах арга, урьдчилан анхаарах зүйлс.",
+      "sections": [
+        {
+          "heading": "Хэзээ цуцлах нь зөв бэ?",
+          "body": "Солонгос утасны дугаар тань банк, төрийн үйлчилгээ, аппликейшнд хувийн баталгаажуулалт хийхэд ихэвчлэн ашиглагддаг. Хэт эрт цуцалбал явахаасаа өмнө хийх ёстой ажлаа дуусгахад хэцүү болж магадгүй. Банкны ажил болон баталгаажуулалт шаардсан бүх зүйлээ эхлээд дуусгаад, цуцлах өдрөө явах өдөртөө ойртуулж төлөвлөөрэй. Цуцлах арга, шаардлагатай бичиг баримт нь оператор бүрт өөр."
+        },
+        {
+          "heading": "Сүүлийн төлбөр ба утасны зээл",
+          "body": "Сүүлийн сарын төлбөр ихэвчлэн цуцалсны дараа нэхэмжлэгддэг. Автомат төлбөрийн банкны дансаа хэт эрт хаавал сүүлийн төлбөр суутгагдахгүй байж болно. Утасны зээл эсвэл гэрээ цуцалсны торгууль үлдсэн бол нэг дор төлөх ёстой эсэх, хэрхэн төлөхийг оператороос лавлаарай. Төлөгдөөгүй төлбөр таны нэр дээр үлдэж болно."
+        },
+        {
+          "heading": "Дахин ирэх төлөвлөгөөтэй бол",
+          "body": "Эх орондоо түр очиж байгаа бол цуцлахын оронд түр зогсоох боломж байгаа эсэхийг асуугаарай. Ийм үйлчилгээ байгаа эсэх, нөхцөл нь оператор, багцаас хамаарна. Цуцлах ч бай, түр зогсоох ч бай харилцагчид, зураг, мессенжерийн чатаа урьдчилан нөөцөлж аваарай."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Солонгосоос явсны дараа цуцалж болох уу?",
+          "a": "Зарим оператор гадаадаас цуцлах журамтай байж болох ч ихэнхдээ илүү төвөгтэй. Боломжтой бол Солонгост байхдаа шийдээрэй."
+        },
+        {
+          "q": "Сүүлийн төлбөрийг яаж төлөх вэ?",
+          "a": "Ихэвчлэн бүртгэлтэй автомат төлбөр эсвэл картаас суутгагдана. Дансаа хаах гэж байгаа бол өөр төлбөрийн аргыг оператортой урьдчилан тохиролцоорой."
+        }
+      ]
+    },
+    "my": {
+      "title": "ကိုရီးယားက ထွက်ခွာတဲ့အခါ: ဖုန်းလိုင်းဖျက်ခြင်းနဲ့ နောက်ဆုံးဘေလ် ရှင်းခြင်း",
+      "description": "ကိုရီးယားက မထွက်ခင် ဖုန်းလိုင်းကို ဘယ်လိုဖျက်မလဲ၊ နောက်ဆုံးဘေလ်နဲ့ ဖုန်းအရစ်ကျကို ဘယ်လိုရှင်းမလဲ၊ ကြိုတင်လုပ်ထားရမယ့်အရာများ။",
+      "sections": [
+        {
+          "heading": "ဘယ်အချိန် ဖျက်သင့်လဲ",
+          "body": "ကိုရီးယားဖုန်းနံပါတ်ကို ဘဏ်၊ အစိုးရဝန်ဆောင်မှုနဲ့ အက်ပ်တွေမှာ ကိုယ်ပိုင်အတည်ပြုဖို့ မကြာခဏ သုံးပါတယ်။ စောလွန်းစွာ ဖျက်လိုက်ရင် မထွက်ခင် လုပ်စရာတွေ ပြီးအောင်လုပ်ဖို့ ခက်နိုင်ပါတယ်။ ဘဏ်ကိစ္စနဲ့ အတည်ပြုခြင်းလိုတဲ့ ကိစ္စတွေကို အရင်ပြီးအောင်လုပ်ပြီး ထွက်ခွာမယ့်ရက်နားမှ ဖျက်ဖို့ စီစဉ်ပါ။ ဖျက်နည်းနဲ့ လိုအပ်တဲ့ စာရွက်စာတမ်းက ကုမ္ပဏီအလိုက် ကွာခြားပါတယ်။"
+        },
+        {
+          "heading": "နောက်ဆုံးဘေလ်နဲ့ အရစ်ကျ",
+          "body": "နောက်ဆုံးလရဲ့ ကြေးကို ဖျက်ပြီးမှ ဘေလ်ပို့တာ များပါတယ်။ အလိုအလျောက်ငွေဖြတ်တဲ့ ဘဏ်အကောင့်ကို စောစောပိတ်လိုက်ရင် နောက်ဆုံးဘေလ် မဖြတ်နိုင်ဘဲ ဖြစ်နိုင်ပါတယ်။ ဖုန်းအရစ်ကျ ဒါမှမဟုတ် စာချုပ်မပြည့်ခင် ဖျက်တဲ့ဒဏ်ကြေး ကျန်သေးရင် တစ်ခါတည်း ပေးရမလား၊ ဘယ်လိုပေးရမလဲ ကုမ္ပဏီကို မေးပါ။ မပေးရသေးတဲ့ကြေးတွေ ကိုယ့်နာမည်အောက်မှာ ကျန်နေနိုင်ပါတယ်။"
+        },
+        {
+          "heading": "ပြန်လာဖို့ အစီအစဉ်ရှိရင်",
+          "body": "ခဏပဲ အိမ်ပြန်မယ်ဆိုရင် ဖျက်မယ့်အစား ယာယီဆိုင်းငံ့ထားလို့ ရမရ မေးကြည့်ပါ။ ရမရနဲ့ ဘယ်လိုအခြေအနေနဲ့ ရလဲဆိုတာ ကုမ္ပဏီနဲ့ အစီအစဉ်ပေါ် မူတည်ပါတယ်။ ဖျက်ဖျက်၊ ဆိုင်းငံ့ဆိုင်းငံ့ အဆက်အသွယ်၊ ဓာတ်ပုံနဲ့ မက်ဆင်ဂျာစကားဝိုင်းတွေကို အရင် အရန်သိမ်းထားပါ။"
+        }
+      ],
+      "faq": [
+        {
+          "q": "ကိုရီးယားက ထွက်ပြီးမှ ဖျက်လို့ရသလား။",
+          "a": "အချို့ကုမ္ပဏီတွေမှာ နိုင်ငံခြားကနေ ဖျက်တဲ့ လုပ်ငန်းစဉ် ရှိပေမယ့် များသောအားဖြင့် ပိုရှုပ်ထွေးပါတယ်။ ဖြစ်နိုင်ရင် ကိုရီးယားမှာ ရှိနေတုန်း ရှင်းထားပါ။"
+        },
+        {
+          "q": "နောက်ဆုံးဘေလ်ကို ဘယ်လိုပေးမလဲ။",
+          "a": "များသောအားဖြင့် မှတ်ပုံတင်ထားတဲ့ အလိုအလျောက်ငွေဖြတ်စနစ် ဒါမှမဟုတ် ကတ်ကနေ ဖြတ်ပါတယ်။ အကောင့်ပိတ်မယ်ဆိုရင် တခြားငွေပေးချေနည်းကို ကုမ္ပဏီနဲ့ ကြိုတင် သဘောတူထားပါ။"
+        }
+      ]
+    },
+    "uz": {
+      "title": "Koreyadan ketayotganda: telefon raqamini yopish va oxirgi hisobni to'lash",
+      "description": "Koreyadan ketishdan oldin mobil raqamni qanday yopish, oxirgi hisob va telefon uchun bo'lib to'lovni qanday hal qilish hamda nimalarni oldindan hal qilib qo'yish kerakligi.",
+      "sections": [
+        {
+          "heading": "Raqamni qachon yopgan ma'qul?",
+          "body": "Koreya telefon raqamingiz ko'pincha banklar, davlat xizmatlari va ilovalarda shaxsni tasdiqlash uchun ishlatiladi. Juda erta yopsangiz, ketishdan oldin kerakli ishlarni tugatish qiyin bo'lishi mumkin. Avval bank ishlari va tasdiqlash talab qilinadigan ishlarni tugating, so'ng raqamni yopishni jo'nash vaqtiga yaqin rejalashtiring. Yopish tartibi va kerakli hujjatlar operatorga qarab farq qiladi."
+        },
+        {
+          "heading": "Oxirgi hisob va bo'lib to'lovlar",
+          "body": "Oxirgi oy uchun to'lov ko'pincha raqam yopilgandan keyin hisoblanadi. Avtomatik to'lov uchun ishlatiladigan bank hisobini juda erta yopsangiz, oxirgi to'lov o'tmay qolishi mumkin. Agar telefon uchun bo'lib to'lov yoki shartnomani muddatidan oldin bekor qilish jarimasi qolgan bo'lsa, uni bir yo'la to'lash kerakmi va qanday to'lanishini operatordan so'rang. To'lanmagan qarzlar sizning nomingizda qolishi mumkin."
+        },
+        {
+          "heading": "Qaytib kelish rejangiz bo'lsa",
+          "body": "Agar vataningizga vaqtincha ketayotgan bo'lsangiz, raqamni yopish o'rniga vaqtincha to'xtatib qo'yish imkoniyati bor-yo'qligini so'rang. Bunday xizmat bor-yo'qligi va shartlari operator va tarifga bog'liq. Yopasizmi yoki to'xtatasizmi, avval kontaktlar, rasmlar va messenjer yozishmalaringizning zaxira nusxasini oling."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Koreyadan ketganimdan keyin raqamni yopsam bo'ladimi?",
+          "a": "Ayrim operatorlarda xorijdan turib yopish tartibi bor, lekin bu ko'pincha murakkabroq. Iloji bo'lsa, Koreyada ekaningizda hal qiling."
+        },
+        {
+          "q": "Oxirgi hisobni qanday to'layman?",
+          "a": "Odatda u ro'yxatdan o'tgan avtomatik to'lov yoki karta orqali yechiladi. Bank hisobingizni yopmoqchi bo'lsangiz, operator bilan boshqa to'lov usulini oldindan kelishib oling."
+        }
+      ]
+    }
+  }
+}

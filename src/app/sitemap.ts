@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getEvents, getNotices, getPlans, getProducts, getSiteSettings } from '@/lib/content/load';
+import { GUIDES, GUIDE_LANGS } from '@/lib/guides';
 import { PUBLIC_LANG_CODES, localizePath } from '@/lib/langs';
 import { INDEXING_ALLOWED, SITE_URL } from '@/lib/seo';
 
@@ -29,9 +30,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   events.forEach((p) => paths.add(`/events/${p.id}`));
   notices.forEach((p) => paths.add(`/support/notice/${p.id}`));
 
+  // 가이드 주소는 아래에서 가이드 언어로만 따로 내보낸다 (메뉴에 들어 있어도 중복되지 않게)
+  const guidePaths = GUIDES.map((g) => `/guide/${g.slug}`);
+  paths.delete('/guide');
+  guidePaths.forEach((p) => paths.delete(p));
+
   // 모든 주소를 17개 언어로 내보내고, 서로를 언어 대체 주소로 연결한다
-  return [...paths].flatMap((path) => {
+  const pages = [...paths].flatMap((path) => {
     const languages = Object.fromEntries(PUBLIC_LANG_CODES.map((code) => [code, `${SITE_URL}${localizePath(path, code)}`]));
     return PUBLIC_LANG_CODES.map((code) => ({ url: languages[code], alternates: { languages } }));
   });
+
+  // 통신 가이드: 본문이 있는 10개 언어만 내보낸다 (다른 언어 화면은 영어 본문이라 영어 주소가 대표 주소)
+  const latestGuideUpdate = GUIDES.map((g) => g.updated).sort().reverse()[0];
+  const guides = ['/guide', ...guidePaths].flatMap((path) => {
+    const languages = Object.fromEntries(GUIDE_LANGS.map((code) => [code, `${SITE_URL}${localizePath(path, code)}`]));
+    const lastModified = path === '/guide' ? latestGuideUpdate : GUIDES.find((g) => `/guide/${g.slug}` === path)?.updated;
+    return GUIDE_LANGS.map((code) => ({ url: languages[code], lastModified, alternates: { languages } }));
+  });
+
+  return [...pages, ...guides];
 }
