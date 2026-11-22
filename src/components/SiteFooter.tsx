@@ -56,10 +56,9 @@ export default async function SiteFooter() {
           </div>
           <div className="md:text-right">
             <p className="text-sm font-bold text-white">{t('고객센터')}</p>
-            {c.phone && <p className="mt-1 text-2xl font-black text-white">{c.phone}</p>}
-            <a href={`tel:${AI_PHONE.number.replace(/[^0-9+]/g, '')}`} className="mt-3 block hover:text-white">
+            <a href={`tel:${AI_PHONE.number.replace(/[^0-9+]/g, '')}`} className="mt-1 block hover:text-white">
               <span className="text-[11px] font-bold text-white/60">{t(PHONE_TEXTS[0])}</span>
-              <span className="block text-xl font-black text-white">{AI_PHONE.number}</span>
+              <span className="block text-2xl font-black text-white">{AI_PHONE.number}</span>
               <span className="block text-[11px] text-white/50">{t(PHONE_TEXTS[1])}</span>
             </a>
             <Link href="/support/inquiry" className="mt-3 inline-flex rounded-full border border-white/30 px-4 py-2 font-bold text-white hover:bg-white/10">

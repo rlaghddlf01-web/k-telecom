@@ -304,18 +304,6 @@ export default function ChatWidget({ managerName, managerRole, intro, teaser, av
           </div>
 
           <div className="mt-4 space-y-2.5">
-            {aiEnabled && (
-              <button
-                onClick={openChat}
-                className="flex w-full items-center gap-2.5 rounded-full bg-brand py-2.5 pl-2.5 pr-4 text-sm font-extrabold text-white shadow-md shadow-brand/30 transition-colors hover:bg-brand-dark"
-              >
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/20">
-                  <MessageSquareText className="h-4 w-4" />
-                </span>
-                <span className="flex-1 text-left">{t('지금 실시간으로 매니저에게 문의하기')}</span>
-                <ChevronRight className="h-4 w-4 shrink-0" />
-              </button>
-            )}
             {aiPhone && (
               <a
                 href={`tel:${aiPhone.replace(/[^0-9+]/g, '')}`}
@@ -330,6 +318,18 @@ export default function ChatWidget({ managerName, managerRole, intro, teaser, av
                 </span>
                 <ChevronRight className="h-4 w-4 shrink-0" />
               </a>
+            )}
+            {aiEnabled && (
+              <button
+                onClick={openChat}
+                className="flex w-full items-center gap-2.5 rounded-full bg-brand py-2.5 pl-2.5 pr-4 text-sm font-extrabold text-white shadow-md shadow-brand/30 transition-colors hover:bg-brand-dark"
+              >
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/20">
+                  <MessageSquareText className="h-4 w-4" />
+                </span>
+                <span className="flex-1 text-left">{t('지금 실시간으로 매니저에게 문의하기')}</span>
+                <ChevronRight className="h-4 w-4 shrink-0" />
+              </button>
             )}
             {channelButtons}
             {!installed && (

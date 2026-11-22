@@ -5,13 +5,13 @@ export const COMPANY = {
   name: 'K-Telecom(케이텔레콤)',
   brand: 'KTRS',
   ceo: '김홍일',
-  phone: '010-4885-8575',
+  phone: '070-5236-9982',
   email: 'zkfnrh01@naver.com',
   address: '경기도 남양주시 부평로 48번길 140, 107-1102',
 };
 
 /** AI 전화 상담 번호 (voice-agent 가 받는 070 번호). 공식 매니저 창에 보여 준다 */
-export const AI_PHONE = { number: '070-5236-9982' };
+export const AI_PHONE = { number: COMPANY.phone };
 
 export interface Category {
   label: string;

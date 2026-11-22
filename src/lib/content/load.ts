@@ -18,6 +18,7 @@ import { PHONE_EXTRAS } from '@/lib/phoneExtras';
 import { PLANS, SAMPLE_DATA, type Network, type Plan } from '@/lib/plans';
 import { EVENTS, NOTICES, type Post } from '@/lib/boards';
 import { FAQS, KO_FAQS, type Faq } from '@/lib/faq';
+import { COMPANY } from '@/lib/site';
 import type { Banner, BannerPosition, FooterSettings, HeaderSettings, SiteSettings, ThemeKey } from '@/lib/content/types';
 
 const asString = (v: unknown) => (typeof v === 'string' ? v : '');
@@ -357,6 +358,10 @@ export const getSiteSettings = cache(async (): Promise<SiteSettings> => {
     }
   } catch (err) {
     console.error('settings load failed:', err instanceof Error ? err.name : 'unknown');
+  }
+  // 예전에 관리자에서 저장해 둔 옛 대표 번호(010-4885-8575)는 새 대표 번호로 바꿔 보여 준다
+  if (footer.company.phone.replace(/\D/g, '') === '01048858575') {
+    footer = { ...footer, company: { ...footer.company, phone: COMPANY.phone } };
   }
   return { header, footer };
 });
