@@ -21,8 +21,8 @@ export interface ChatSettings {
 }
 
 export const DEFAULT_CHAT: ChatSettings = {
-  managerName: 'K-Telecom 공식 매니저',
-  managerRole: '공식 매니저',
+  managerName: '김서연 매니저',
+  managerRole: 'K-Telecom 공식 매니저',
   intro: '통신·요금제·단말 가입을 도와 드립니다.',
   teaser: '요금제, 핸드폰에 대해 궁금하세요? 😊 궁금한 점이 있으시거나 도움이 필요하시면 언제든 말씀해 주세요!',
   avatar: '/images/manager-k-avatar.jpg',
