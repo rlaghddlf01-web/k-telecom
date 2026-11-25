@@ -95,6 +95,8 @@ export async function POST(req: Request) {
           contents,
           // 마지막 차례에는 도구 없이 답만 하게 한다
           ...(round < 4 ? { tools: [{ functionDeclarations: TOOL_DECLARATIONS }] } : {}),
+          // 첫 차례에는 (짧은 인사가 아니면) 반드시 도구로 찾아 보고 답하게 한다. 도구 없이 일반 지식으로 답하면 정책과 다른 말을 한다.
+          ...(round === 0 && message.length >= 8 ? { toolConfig: { functionCallingConfig: { mode: 'ANY' } } } : {}),
           generationConfig: { maxOutputTokens: 700, temperature: 0.6 },
         }),
       });
