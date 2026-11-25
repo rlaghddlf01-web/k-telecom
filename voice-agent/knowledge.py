@@ -97,6 +97,22 @@ def _short(s: str, n: int) -> str:
     return s if len(s) <= n else s[:n] + "…"
 
 
+_SYNONYMS = [
+    ["국제전화", "국제통화", "해외통화", "해외전화", "글로벌통화", "00700"],
+    ["무료충전", "2개월무료", "3개월무료"],
+    ["결합", "인터넷결합", "kt인터넷", "인터넷결합할인"],
+    ["5g", "5지"],
+]
+
+
+def _alternatives(kw: str) -> list[str]:
+    """같은 뜻의 말: 어느 쪽으로 물어도 같은 요금제가 나오게 한다 (chatTools.ts 와 같은 규칙)"""
+    for group in _SYNONYMS:
+        if any(w in kw for w in group):
+            return list(dict.fromkeys([kw, *group]))
+    return [kw]
+
+
 def search_plans(network="", billing="", min_price=0, max_price=0, min_data_gb=0, keyword="", sort="price_asc") -> str:
     plans = _DATA.get("plans")
     if not plans:
@@ -118,8 +134,10 @@ def search_plans(network="", billing="", min_price=0, max_price=0, min_data_gb=0
             continue
         if min_data_gb and p["dataGB"] < min_data_gb:
             continue
-        if kw and kw not in _norm(f"{p['name']} {' '.join(p['features'])} {p['badge']}"):
-            continue
+        if kw:
+            hay = _norm(f"{p['name']} {' '.join(p['features'])} {p['badge']} {p.get('promoNote', '')}")
+            if not any(k in hay for k in _alternatives(kw)):
+                continue
         out.append(p)
     if sort == "data_desc":
         out.sort(key=lambda p: (-p["dataGB"], p["promoPrice"]))

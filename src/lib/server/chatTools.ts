@@ -122,6 +122,18 @@ function planLine(p: Plan) {
   return `- ${parts.join(' | ')}`;
 }
 
+/** 같은 뜻의 말: 어느 쪽으로 물어도 같은 요금제가 나오게 한다 */
+const SYNONYMS: string[][] = [
+  ['국제전화', '국제통화', '해외통화', '해외전화', '글로벌통화', '00700'],
+  ['무료충전', '무료충전', '2개월무료', '3개월무료'],
+  ['결합', '인터넷결합', 'kt인터넷', '인터넷결합할인'],
+  ['5g', '5지'],
+];
+function keywordAlternatives(kw: string): string[] {
+  const hit = SYNONYMS.find((g) => g.some((w) => kw.includes(w)));
+  return hit ? [...new Set([kw, ...hit])] : [kw];
+}
+
 async function searchPlans(a: Args): Promise<string> {
   const { plans } = await getPlans();
   const network = str(a.network).toUpperCase().replace('LG U+', 'LGU+').replace('LGU', 'LGU+').replace('LGU++', 'LGU+');
@@ -137,7 +149,7 @@ async function searchPlans(a: Args): Promise<string> {
       (minP === undefined || p.promoPrice >= minP) &&
       (maxP === undefined || p.promoPrice <= maxP) &&
       (minD === undefined || p.dataGB >= minD) &&
-      (!kw || norm(`${p.name} ${p.features.join(' ')} ${p.badge ?? ''}`).includes(kw)),
+      (!kw || keywordAlternatives(kw).some((k) => norm(`${p.name} ${p.features.join(' ')} ${p.badge ?? ''} ${p.promoNote}`).includes(k))),
   );
   const sort = str(a.sort);
   list = [...list].sort((x, y) =>

@@ -26,6 +26,7 @@ async function catalogText(): Promise<string> {
   const [{ plans }, phones] = await Promise.all([getPlans(), getProducts()]);
   return [
     `The shop has ${plans.length} mobile plans and ${phones.length} phones registered. You do NOT have them memorised.`,
+    'NEVER say you will "check" or "look it up" without calling a tool in that same turn, and NEVER say a kind of plan or product does not exist unless search_plans / search_phones / search_pages actually returned nothing for it. If unsure whether something exists (for example prepaid free-charge plans, international-call plans, internet bundles), search first.',
     'ALWAYS call a tool before answering about any plan, price, data amount, carrier, discount, phone, phone spec, box contents, return policy, bundle (internet/TV combination) or FAQ-type question:',
     '- search_plans: find plans by carrier, prepaid/postpaid, price range, data, or a Korean keyword (e.g. 결합, eSIM, 평생). Use min_price/max_price for "만원대" (10000-19999).',
     '- get_plan: full detail of one plan.',
@@ -33,6 +34,8 @@ async function catalogText(): Promise<string> {
     '- search_faq: sign-up documents, activation, number porting, self-activation, cancellation, payment, etc.',
     '- search_pages / get_page / list_pages: any other website information (self-activation, add-ons, phone installments, internet, IPTV, forms, guides, order status, terms, privacy).',
     '- get_events / get_notices / get_company_info: current events, notices, company and contact details.',
+    'PRICE RANGES: "만원대" means 10,000–19,999 won, so set BOTH min_price=10000 and max_price=19999; "2만원대" is 20,000–29,999. Never recommend a plan whose current monthly price is outside the range the customer asked for.',
+    'VOICE WORDING: quote voice/SMS exactly as returned, e.g. "기본제공 (부가 300분)". NEVER explain 기본제공 as "unlimited" (무제한) — the plan data does not say that.',
     'Tool results are in Korean. Translate them into the customer\'s language when you answer. Quote prices and names exactly as returned; never invent any. If a tool returns nothing relevant, say staff will confirm. For bundle (결합) questions, only state what appears in plan perks or FAQ results.',
   ].join('\n');
 }

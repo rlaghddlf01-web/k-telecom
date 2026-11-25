@@ -63,7 +63,7 @@ export default function PlanExplorer({ plans }: { plans: Plan[] }) {
         (network === 'all' || p.network === network) &&
         (billing === 'all' || (p.billing ?? 'post') === billing) &&
         p.dataGB >= dataNeed &&
-        (!intl || p.features.includes('무료 국제통화 패키지')) &&
+        (!intl || p.features.some((f) => /국제(통화|전화)/.test(f))) &&
         (maxPrice === 0 || p.promoPrice <= maxPrice),
     );
     const sorted = [...filtered];
@@ -125,12 +125,10 @@ export default function PlanExplorer({ plans }: { plans: Plan[] }) {
                 <option value={40000}>{t('4만원 이하')}</option>
               </select>
             </label>
-            {lang !== 'ko' && (
-              <label className="flex items-end gap-2 pb-2.5 text-sm font-bold">
-                <input type="checkbox" checked={intl} onChange={(e) => change(setIntl)(e.target.checked)} />
-                {t('무료 국제통화 포함')}
-              </label>
-            )}
+            <label className="flex items-end gap-2 pb-2.5 text-sm font-bold">
+              <input type="checkbox" checked={intl} onChange={(e) => change(setIntl)(e.target.checked)} />
+              {t('무료 국제통화 포함')}
+            </label>
           </div>
         )}
       </section>
