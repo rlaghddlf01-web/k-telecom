@@ -176,7 +176,8 @@ def search_phones(brand="", keyword="", max_monthly=0) -> str:
     out.sort(key=lambda p: p["monthly"] or 10**12)
     if not out:
         return "조건에 맞는 휴대폰이 없습니다."
-    return f"휴대폰 {len(out)}개 (월 금액이 낮은 순, 24개월 할부 기준 월 최저가):\n" + "\n".join(p["line"] for p in out)
+    head = (_DATA.get("phoneNotice") or "") + ("\n" if _DATA.get("phoneNotice") else "")
+    return head + f"휴대폰 {len(out)}개 (월 금액이 낮은 순, 24개월 할부 기준 월 최저가):\n" + "\n".join(p["line"] for p in out)
 
 
 def get_phone(name: str) -> str:

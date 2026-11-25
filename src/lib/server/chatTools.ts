@@ -14,6 +14,7 @@ import { dictionaryOf } from '@/lib/dictionaries';
 import { PAGES, type Block } from '@/lib/pages';
 import { PHONE_EXTRAS, PHONE_INCLUDES, PHONE_POLICY } from '@/lib/phoneExtras';
 import type { Plan } from '@/lib/plans';
+import { PHONES_COMING_SOON, PHONES_SOON_AI_NOTE } from '@/lib/phoneStatus';
 
 /**
  * AI 상담사가 쓰는 도구. 요금제·휴대폰·FAQ 전체를 프롬프트에 넣지 않고,
@@ -98,6 +99,9 @@ export const TOOL_DECLARATIONS = [
     parameters: { type: 'OBJECT', properties: { keyword: { type: 'STRING', description: 'Korean keyword or short question' } }, required: ['keyword'] },
   },
 ];
+
+/** 휴대폰 판매가 준비 중이면 AI 가 휴대폰을 안내할 때 맨 앞에 붙는 말 */
+const soonNote = () => (PHONES_COMING_SOON ? `${PHONES_SOON_AI_NOTE}\n` : '');
 
 const won = (n: number) => `${n.toLocaleString('ko-KR')}원`;
 const norm = (s: string) => s.toLowerCase().replace(/\s+/g, '');
@@ -188,7 +192,7 @@ async function findPhones(a: Args) {
 async function searchPhones(a: Args): Promise<string> {
   const list = await findPhones(a);
   if (list.length === 0) return '조건에 맞는 휴대폰이 없습니다.';
-  return `휴대폰 ${list.length}개 (월 금액이 낮은 순, 24개월 할부 기준 월 최저가):\n${list.map((p) => `- ${p.title} | ${p.price} | ${p.note}${p.badge ? ` | ${p.badge}` : ''}`).join('\n')}`;
+  return `${soonNote()}휴대폰 ${list.length}개 (월 금액이 낮은 순, 24개월 할부 기준 월 최저가):\n${list.map((p) => `- ${p.title} | ${p.price} | ${p.note}${p.badge ? ` | ${p.badge}` : ''}`).join('\n')}`;
 }
 
 async function getPhoneDetail(a: Args): Promise<string> {
@@ -205,6 +209,7 @@ function phoneDetailText(p: Awaited<ReturnType<typeof getProducts>>[number]): st
   const rows = p.specs ?? extra?.rows ?? [];
   const isNew = p.isNew ?? extra?.isNew ?? false;
   return [
+    soonNote().trim(),
     `${p.title} | ${p.price} | ${p.note}`,
     p.description ? `설명: ${p.description}` : '',
     rows.length ? `사양:\n${rows.map(([k, v]) => `  · ${k}: ${v}`).join('\n')}` : '사양 정보가 아직 없습니다.',
@@ -442,6 +447,7 @@ export async function buildSnapshot() {
   const monthly = (price: string) => Number((price.match(/([\d,]+)\s*원/)?.[1] ?? '').replace(/,/g, '')) || null;
   return {
     generatedAt: new Date().toISOString(),
+    phoneNotice: soonNote().trim(),
     plans: plans.map((p) => ({
       id: p.id,
       name: p.name,

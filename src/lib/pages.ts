@@ -124,6 +124,7 @@ export const PAGES: PageDef[] = [
     title: '단말 할부 안내',
     lead: '신용카드 할부가 어려운 외국인 고객도 외국인등록증으로 단말을 구매할 수 있습니다.',
     blocks: [
+      { type: 'notice', text: '휴대폰 판매는 현재 준비 중입니다. 아래 안내는 참고용이며, 판매가 시작될 때 달라질 수 있습니다.' },
       {
         type: 'table',
         head: ['구분', '내용'],

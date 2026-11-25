@@ -19,6 +19,7 @@ import { PLANS, SAMPLE_DATA, type Network, type Plan } from '@/lib/plans';
 import { EVENTS, NOTICES, type Post } from '@/lib/boards';
 import { FAQS, KO_FAQS, type Faq } from '@/lib/faq';
 import { COMPANY } from '@/lib/site';
+import { PHONES_COMING_SOON, PHONES_SOON_BADGE } from '@/lib/phoneStatus';
 import type { Banner, BannerPosition, FooterSettings, HeaderSettings, SiteSettings, ThemeKey } from '@/lib/content/types';
 
 const asString = (v: unknown) => (typeof v === 'string' ? v : '');
@@ -122,14 +123,17 @@ function toPhone(r: Row): Phone {
   });
 }
 
-const DEFAULT_PHONES = PHONES.map(withExtras);
+/** 판매 준비 중이면 모든 휴대폰에 "준비 중" 배지를 단다 (phoneStatus.ts 에서 끈다) */
+const markSoon = (p: Phone): Phone => (PHONES_COMING_SOON ? { ...p, badge: PHONES_SOON_BADGE } : p);
+
+const DEFAULT_PHONES = PHONES.map(withExtras).map(markSoon);
 
 const loadProducts = cache(async (lang: string): Promise<Phone[]> => {
   if (storeMode() === 'none') return DEFAULT_PHONES;
   try {
     const rows = await listRows('products');
     if (rows.length === 0) return DEFAULT_PHONES; // 아직 등록한 적이 없으면 기본 상품
-    return rows.filter(isActive).map((r) => toPhone(localize(r, lang, ['tag', 'title', 'price', 'note', 'badge', 'description'])));
+    return rows.filter(isActive).map((r) => markSoon(toPhone(localize(r, lang, ['tag', 'title', 'price', 'note', 'badge', 'description']))));
   } catch (err) {
     console.error('products load failed:', err instanceof Error ? err.name : 'unknown');
     return DEFAULT_PHONES;

@@ -34,6 +34,7 @@ async function catalogText(): Promise<string> {
     '- search_faq: sign-up documents, activation, number porting, self-activation, cancellation, payment, etc.',
     '- search_pages / get_page / list_pages: any other website information (self-activation, add-ons, phone installments, internet, IPTV, forms, guides, order status, terms, privacy).',
     '- get_events / get_notices / get_company_info: current events, notices, company and contact details.',
+    'PHONES: phone sales are currently "coming soon" (준비 중). When a customer asks about phones, say first that phone sales are being prepared and are not available to buy or apply for yet; you may share the listed models and monthly prices only as reference. Never offer to start a phone order.',
     'PRICE RANGES: "만원대" means 10,000–19,999 won, so set BOTH min_price=10000 and max_price=19999; "2만원대" is 20,000–29,999. Never recommend a plan whose current monthly price is outside the range the customer asked for.',
     'VOICE WORDING: quote voice/SMS exactly as returned, e.g. "기본제공 (부가 300분)". NEVER explain 기본제공 as "unlimited" (무제한) — the plan data does not say that.',
     'Tool results are in Korean. Translate them into the customer\'s language when you answer. Quote prices and names exactly as returned; never invent any. If a tool returns nothing relevant, say staff will confirm. For bundle (결합) questions, only state what appears in plan perks or FAQ results.',

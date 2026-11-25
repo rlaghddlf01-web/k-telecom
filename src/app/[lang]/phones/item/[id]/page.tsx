@@ -8,6 +8,7 @@ import { getProduct, getProducts } from '@/lib/content/load';
 import { t, withLang } from '@/lib/i18n';
 import { PHONE_INCLUDES, PHONE_POLICY } from '@/lib/phoneExtras';
 import { phonePrice } from '@/lib/planText';
+import { PHONES_COMING_SOON, PHONES_SOON_NOTICE } from '@/lib/phoneStatus';
 import { primeTranslations } from '@/lib/server/prime';
 
 interface Props {
@@ -41,6 +42,8 @@ async function PhoneDetailPage({ params }: Props) {
     phone.title,
     phone.tag,
     phone.note,
+    phone.badge ?? '',
+    PHONES_SOON_NOTICE,
     phone.description ?? '',
     ...specs.flat(),
     ...related.map((p) => p.title),
@@ -48,6 +51,11 @@ async function PhoneDetailPage({ params }: Props) {
 
   return (
     <PageShell path="/phones" title={t(phone.title)}>
+      {PHONES_COMING_SOON && (
+        <p className="mb-6 rounded-2xl bg-amber-50 px-5 py-4 text-sm font-bold leading-relaxed text-amber-900 ring-1 ring-amber-200" role="status">
+          {t(PHONES_SOON_NOTICE)}
+        </p>
+      )}
       <div className="grid gap-8 md:grid-cols-2">
         <div className="relative flex items-center justify-center rounded-3xl bg-soft py-10">
           {phone.badge && (
