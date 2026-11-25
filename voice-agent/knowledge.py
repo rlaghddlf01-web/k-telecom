@@ -19,7 +19,7 @@ log = logging.getLogger("ktelecom.knowledge")
 _CACHE_FILE = Path(__file__).with_name("snapshot.cache.json")
 _DATA: dict = {}
 _LOCK = threading.Lock()
-REFRESH_SECONDS = 600
+REFRESH_SECONDS = 1800  # 30분. 너무 자주 받으면 Supabase 데이터 전송량(egress)을 낭비한다
 
 
 def _snapshot_url() -> str:

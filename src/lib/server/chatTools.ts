@@ -428,7 +428,22 @@ export async function runTool(name: string, args: Args, ctx: Ctx = { korean: tru
 // ---------------------------------------------------------------------------
 // 전화 상담용 스냅샷: 전화 프로그램이 켜질 때 한 번에 받아 메모리에 올려 두고, 이후에는 인터넷 없이 바로 찾는다
 // ---------------------------------------------------------------------------
-export async function buildSnapshot() {
+/** 전화 프로그램이 받아 가는 전체 내용은 서버에서 10분 동안 만들어 둔 것을 그대로 준다 (DB 를 다시 읽지 않는다) */
+const SNAPSHOT_TTL_MS = 10 * 60 * 1000;
+const snapGlobal = globalThis as unknown as { __ktSnapshot?: { at: number; promise: Promise<Awaited<ReturnType<typeof makeSnapshot>>> } };
+
+export function buildSnapshot() {
+  const hit = snapGlobal.__ktSnapshot;
+  if (hit && Date.now() - hit.at < SNAPSHOT_TTL_MS) return hit.promise;
+  const promise = makeSnapshot();
+  snapGlobal.__ktSnapshot = { at: Date.now(), promise };
+  promise.catch(() => {
+    snapGlobal.__ktSnapshot = undefined;
+  });
+  return promise;
+}
+
+async function makeSnapshot() {
   const ko: Ctx = { korean: true };
   const fo: Ctx = { korean: false };
   const [{ plans }, phones, faqKo, faqFo, pagesKo, pagesFo, eventsKo, eventsFo, noticesKo, noticesFo, company] = await Promise.all([

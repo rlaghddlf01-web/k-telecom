@@ -123,7 +123,7 @@ export async function GET(req: NextRequest, ctx: Ctx) {
   const { resource } = await ctx.params;
   if (!isResource(resource)) return json({ error: 'Not found' }, 404);
   try {
-    return json({ mode: storeMode(), rows: await listRows(resource) });
+    return json({ mode: storeMode(), rows: await listRows(resource, { fresh: true }) });
   } catch (err) {
     return handleError(err);
   }
@@ -140,7 +140,7 @@ export async function POST(req: NextRequest, ctx: Ctx) {
 
   try {
     if (body.action === 'seed') {
-      if ((await listRows(resource)).length > 0) {
+      if ((await listRows(resource, { fresh: true })).length > 0) {
         return json({ error: '이미 등록된 내용이 있어 기본 내용을 가져올 수 없습니다.' }, 409);
       }
       const count = await insertRows(resource, seedRows(resource));
@@ -151,7 +151,7 @@ export async function POST(req: NextRequest, ctx: Ctx) {
     // 지금 등록된 항목을 모두 지우고 기본 내용(요금제·상품은 프리티 홈페이지 기준)으로 바꾼다.
     // 새 항목을 먼저 넣고 나서 이전 것을 지우므로, 중간에 실패해도 목록이 비지 않는다.
     if (body.action === 'replace') {
-      const old = await listRows(resource);
+      const old = await listRows(resource, { fresh: true });
       const count = await insertRows(resource, seedRows(resource));
       for (const row of old) await deleteRow(resource, String(row.id));
       refreshSite();

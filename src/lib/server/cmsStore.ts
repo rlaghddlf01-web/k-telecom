@@ -64,21 +64,46 @@ const SPEC_COLUMNS = ['specs', 'official_url', 'is_new'];
 const isMissingSpecColumn = (error: unknown) => SPEC_COLUMNS.some((c) => String((error as { message?: string })?.message ?? '').includes(c));
 const withoutSpecColumns = (row: Row): Row => Object.fromEntries(Object.entries(row).filter(([k]) => !SPEC_COLUMNS.includes(k)));
 
+// ---------------------------------------------------------------------------
+// 읽기 기억(캐시): 페이지를 한 번 열 때마다 DB 를 열 번 넘게 읽으면 Supabase 의 데이터 전송량(egress) 한도를 금방 넘는다.
+// 같은 서버에서는 읽은 내용을 잠깐 기억해 두고, 저장(쓰기)이 일어나면 바로 비운다.
+// 다른 서버(Vercel 은 여러 대일 수 있음)에서는 최대 READ_TTL_MS 동안 예전 내용이 보일 수 있다.
+// ---------------------------------------------------------------------------
+const READ_TTL_MS = 60 * 1000;
+const readGlobal = globalThis as unknown as { __ktReadCache?: Map<string, { at: number; promise: Promise<unknown> }> };
+const readCache = () => (readGlobal.__ktReadCache ??= new Map());
+
+function memo<T>(key: string, fn: () => Promise<T>, ttl = READ_TTL_MS): Promise<T> {
+  const hit = readCache().get(key);
+  if (hit && Date.now() - hit.at < ttl) return hit.promise as Promise<T>;
+  const promise = fn();
+  readCache().set(key, { at: Date.now(), promise });
+  promise.catch(() => readCache().delete(key)); // 실패는 기억하지 않는다
+  return promise;
+}
+
+/** 저장이 일어나면 기억해 둔 읽기를 모두 비운다 */
+const clearReadCache = () => readCache().clear();
+
 const byOrder = (a: Row, b: Row) => Number(a.sort_order ?? 0) - Number(b.sort_order ?? 0);
 const byNewest = (a: Row, b: Row) =>
   String(b.published_at ?? '').localeCompare(String(a.published_at ?? '')) ||
   String(b.created_at ?? '').localeCompare(String(a.created_at ?? ''));
 
-export async function listRows(resource: Resource): Promise<Row[]> {
+/** fresh: true 면 기억해 둔 것을 쓰지 않고 DB 에서 새로 읽는다 (관리자 화면용) */
+export async function listRows(resource: Resource, opts: { fresh?: boolean } = {}): Promise<Row[]> {
   const mode = storeMode();
   if (mode === 'supabase') {
-    let query = getSupabaseAdmin().from(TABLES[resource]).select('*');
-    query = isPost(resource)
-      ? query.order('published_at', { ascending: false }).order('created_at', { ascending: false })
-      : query.order('sort_order', { ascending: true }).order('created_at', { ascending: true });
-    const { data, error } = await query.limit(500);
-    if (error) throw error;
-    return data ?? [];
+    const read = async (): Promise<Row[]> => {
+      let query = getSupabaseAdmin().from(TABLES[resource]).select('*');
+      query = isPost(resource)
+        ? query.order('published_at', { ascending: false }).order('created_at', { ascending: false })
+        : query.order('sort_order', { ascending: true }).order('created_at', { ascending: true });
+      const { data, error } = await query.limit(500);
+      if (error) throw error;
+      return data ?? [];
+    };
+    return opts.fresh ? read() : memo(`rows:${resource}`, read);
   }
   if (mode === 'memory') return [...memory()[resource]].sort(isPost(resource) ? byNewest : byOrder);
   return [];
@@ -99,6 +124,7 @@ export async function insertRows(resource: Resource, rows: Row[]): Promise<numbe
       }
       if (error) throw error;
     }
+    clearReadCache();
     return rows.length;
   }
   const now = new Date().toISOString();
@@ -115,6 +141,7 @@ export async function updateRow(resource: Resource, id: string, patch: Row): Pro
       ({ data, error } = await getSupabaseAdmin().from(TABLES[resource]).update(withoutSpecColumns(patch)).eq('id', id).select('id'));
     }
     if (error) throw error;
+    clearReadCache();
     return (data?.length ?? 0) > 0;
   }
   const row = memory()[resource].find((r) => r.id === id);
@@ -129,6 +156,7 @@ export async function deleteRow(resource: Resource, id: string): Promise<boolean
   if (mode === 'supabase') {
     const { data, error } = await getSupabaseAdmin().from(TABLES[resource]).delete().eq('id', id).select('id');
     if (error) throw error;
+    clearReadCache();
     return (data?.length ?? 0) > 0;
   }
   const list = memory()[resource];
@@ -141,9 +169,11 @@ export async function deleteRow(resource: Resource, id: string): Promise<boolean
 export async function getSetting(key: string): Promise<unknown | null> {
   const mode = storeMode();
   if (mode === 'supabase') {
-    const { data, error } = await getSupabaseAdmin().from('telecom_settings').select('value').eq('key', key).maybeSingle();
-    if (error) throw error;
-    return data?.value ?? null;
+    return memo(`setting:${key}`, async () => {
+      const { data, error } = await getSupabaseAdmin().from('telecom_settings').select('value').eq('key', key).maybeSingle();
+      if (error) throw error;
+      return data?.value ?? null;
+    });
   }
   if (mode === 'memory') return memory().settings[key] ?? null;
   return null;
@@ -157,6 +187,7 @@ export async function setSetting(key: string, value: unknown): Promise<void> {
       .from('telecom_settings')
       .upsert({ key, value, updated_at: new Date().toISOString() }, { onConflict: 'key' });
     if (error) throw error;
+    clearReadCache();
     return;
   }
   memory().settings[key] = value;
@@ -171,17 +202,39 @@ const trGlobal = globalThis as unknown as { __ktTranslations?: Map<string, { tar
 const trMemory = () => (trGlobal.__ktTranslations ??= new Map());
 const trKey = (lang: string, source: string) => `${lang}\u0000${source}`;
 
+// Supabase 번역 읽기 기억: 있는 번역은 30분, 없는 번역은 5분
+const TR_HIT_TTL_MS = 30 * 60 * 1000;
+const TR_MISS_TTL_MS = 5 * 60 * 1000;
+const trCacheGlobal = globalThis as unknown as { __ktTrReadCache?: Map<string, { at: number; target: string | null }> };
+const trCache = () => (trCacheGlobal.__ktTrReadCache ??= new Map());
+
 export async function getTranslations(lang: string, sources: string[]): Promise<Record<string, string>> {
   const out: Record<string, string> = {};
   const unique = [...new Set(sources)];
   if (unique.length === 0) return out;
   const mode = storeMode();
   if (mode === 'supabase') {
-    for (let i = 0; i < unique.length; i += 80) {
-      const chunk = unique.slice(i, i + 80);
+    // 번역은 거의 바뀌지 않으므로 한 번 읽은 것은 오래 기억한다 (없는 번역도 잠깐 기억해서 매번 DB 를 두드리지 않게 한다)
+    const cache = trCache();
+    const now = Date.now();
+    const missing: string[] = [];
+    for (const s of unique) {
+      const hit = cache.get(trKey(lang, s));
+      if (hit && now - hit.at < (hit.target === null ? TR_MISS_TTL_MS : TR_HIT_TTL_MS)) {
+        if (hit.target !== null) out[s] = hit.target;
+      } else missing.push(s);
+    }
+    for (let i = 0; i < missing.length; i += 80) {
+      const chunk = missing.slice(i, i + 80);
       const { data, error } = await getSupabaseAdmin().from('telecom_translations').select('source,target').eq('lang', lang).in('source', chunk);
       if (error) return out;
-      for (const r of data ?? []) out[String(r.source)] = String(r.target);
+      const found = new Set<string>();
+      for (const r of data ?? []) {
+        out[String(r.source)] = String(r.target);
+        found.add(String(r.source));
+        cache.set(trKey(lang, String(r.source)), { at: now, target: String(r.target) });
+      }
+      for (const s of chunk) if (!found.has(s)) cache.set(trKey(lang, s), { at: now, target: null });
     }
     return out;
   }
@@ -209,6 +262,13 @@ export async function saveTranslations(lang: string, pairs: Record<string, strin
       const { error } = await getSupabaseAdmin().from('telecom_translations').upsert(rows, { onConflict: 'lang,source' });
       if (error) console.error('translation save failed:', error.code ?? 'unknown');
     }
+    // 방금 저장한 번역은 바로 기억해 둔다 (사람이 고친 번역은 AI 번역보다 우선이므로 manual 이면 덮어쓴다)
+    const cache = trCache();
+    for (const [s, t] of entries) {
+      const prev = cache.get(trKey(lang, s));
+      if (origin === 'ai' && prev?.target) continue;
+      cache.set(trKey(lang, s), { at: Date.now(), target: t });
+    }
     return;
   }
   if (mode === 'memory') {
@@ -226,9 +286,11 @@ export async function saveTranslations(lang: string, pairs: Record<string, strin
 export async function listPageRows(): Promise<Row[]> {
   const mode = storeMode();
   if (mode === 'supabase') {
-    const { data, error } = await getSupabaseAdmin().from('telecom_pages').select('*').order('path', { ascending: true }).limit(500);
-    if (error) throw error;
-    return data ?? [];
+    return memo('pages:all', async () => {
+      const { data, error } = await getSupabaseAdmin().from('telecom_pages').select('*').order('path', { ascending: true }).limit(500);
+      if (error) throw error;
+      return data ?? [];
+    });
   }
   if (mode === 'memory') return Object.values(memory().pages);
   return [];
@@ -237,9 +299,11 @@ export async function listPageRows(): Promise<Row[]> {
 export async function getPageRow(path: string): Promise<Row | null> {
   const mode = storeMode();
   if (mode === 'supabase') {
-    const { data, error } = await getSupabaseAdmin().from('telecom_pages').select('*').eq('path', path).maybeSingle();
-    if (error) throw error;
-    return data ?? null;
+    return memo(`page:${path}`, async () => {
+      const { data, error } = await getSupabaseAdmin().from('telecom_pages').select('*').eq('path', path).maybeSingle();
+      if (error) throw error;
+      return data ?? null;
+    });
   }
   if (mode === 'memory') return memory().pages[path] ?? null;
   return null;
@@ -252,6 +316,7 @@ export async function upsertPageRow(row: Row & { path: string }): Promise<void> 
   if (mode === 'supabase') {
     const { error } = await getSupabaseAdmin().from('telecom_pages').upsert(full, { onConflict: 'path' });
     if (error) throw error;
+    clearReadCache();
     return;
   }
   memory().pages[row.path] = full;
@@ -263,6 +328,7 @@ export async function deletePageRow(path: string): Promise<boolean> {
   if (mode === 'supabase') {
     const { data, error } = await getSupabaseAdmin().from('telecom_pages').delete().eq('path', path).select('path');
     if (error) throw error;
+    clearReadCache();
     return (data?.length ?? 0) > 0;
   }
   const had = path in memory().pages;
