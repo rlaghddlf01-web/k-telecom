@@ -31,7 +31,13 @@ function boxClass(m: CertMarker) {
 export function CertSlideFrame({ slide, index, theme, label }: { slide: CertSlide; index: number; theme: CertTheme; label: string }) {
   const tc = useCertText();
   // 항목이 3개 이상이면 말풍선이 서로 겹치므로 사진 위에는 번호만 두고, 설명은 아래 번호 목록에서 읽는다
-  const crowded = slide.markers.length >= 3;
+  const crowded = false;
+  // 말풍선이 3개 이상이면 위에서부터 겹치지 않게 세로 간격을 벌려 배치한다 (번호를 붙여 어느 칸 설명인지 알 수 있게)
+  const many = slide.markers.length >= 3;
+  const order = slide.markers.map((m, i) => ({ i, y: m.textY ?? m.y })).sort((a, b) => a.y - b.y);
+  const adjTop: Record<number, number> = {};
+  let prev = -100;
+  for (const o of order) { const y = Math.max(o.y, prev + 7); adjTop[o.i] = y; prev = y; }
   return (
     <div className="relative w-full max-w-[380px] rounded-[2.2rem] bg-white shadow-2xl ring-4 ring-white/10" style={{ border: `10px solid ${theme.frame}` }}>
       <div className="relative overflow-hidden rounded-[1.6rem]" style={{ containerType: 'inline-size' }}>
@@ -71,20 +77,26 @@ export function CertSlideFrame({ slide, index, theme, label }: { slide: CertSlid
               {m.text && !crowded && (
                 <div
                   className="absolute z-[60] flex w-full justify-center px-2"
-                  style={{ left: 0, top: `${by}%`, transform: `translateY(calc(-50% + ${shift}))`, ...(hasPos && bx !== 50 ? { left: `${bx - 50}%` } : null) }}
+                  style={{ left: 0, top: `${many ? adjTop[i] : by}%`, transform: `translateY(calc(-50% + ${shift}))`, ...(hasPos && bx !== 50 ? { left: `${bx - 50}%` } : null) }}
                 >
                   <div
-                    className={cn('relative flex max-w-[92%] items-start gap-1.5 rounded-xl px-3 py-2 text-left font-black shadow-xl', congrats && 'whitespace-pre-line text-center')}
+                    className={cn('relative flex max-w-[92%] items-start gap-1 rounded-lg px-2 py-1 text-left font-black shadow-xl', congrats && 'whitespace-pre-line text-center')}
                     style={{
                       backgroundColor: theme.bubbleBg,
                       color: m.isRed ? '#ff4d4d' : theme.bubbleText,
                       border: `2px solid ${m.isRed ? '#ff0000' : theme.accent}`,
                       // 사진 폭에 맞춰 글자 크기를 줄이고 늘린다 (원본 fontSize 10 ≈ 폭 360px 에서 10px)
-                      fontSize: `max(8.5px, ${((m.fontSize ?? (congrats ? 14 : 12.5)) / 3.6).toFixed(2)}cqw)`,
+                      fontSize: `max(10.5px, ${((m.fontSize ?? (congrats ? 12 : 10)) / 2.7).toFixed(2)}cqw)`,
                     }}
                   >
-                    {!congrats && <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" />}
-                    <span className="break-words leading-snug">{tc(m.text)}</span>
+                    {!congrats && !many && <Info className="mt-px h-3 w-3 shrink-0" />}
+                    <span className="break-words leading-snug">{many ? `${i + 1}. ` : ''}{tc(m.text)}</span>
+                    {!congrats && !m.hideArrow && (
+                      <div
+                        className={cn('absolute left-1/2 h-3 w-3 -translate-x-1/2 rotate-45', m.position === 'bottom' ? '-top-[7px] border-l-2 border-t-2' : '-bottom-[7px] border-b-2 border-r-2')}
+                        style={{ backgroundColor: theme.bubbleBg, borderColor: m.isRed ? '#ff0000' : theme.accent }}
+                      />
+                    )}
                   </div>
                 </div>
               )}

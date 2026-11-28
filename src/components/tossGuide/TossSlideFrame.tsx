@@ -1,8 +1,9 @@
 'use client';
 
 import React from 'react';
-import { Info } from 'lucide-react';
 import { cn } from '@/lib/cn';
+import { useLang } from '@/components/LangProvider';
+import { TOSS_MARKER_TEXTS } from '@/lib/guides/toss/tossMarkerTexts';
 import type { TossSlide } from '@/lib/guides/toss/tossGuideData';
 import { useTossText } from './useTossText';
 
@@ -20,11 +21,14 @@ export function TossSlideFrame({ slide, index, size = 'lg' }: {
   const lg = size !== 'sm';
   const md = size === 'md';
 
-  // 말풍선은 박스 묶음의 위쪽(박스가 아래쪽이면) 또는 아래쪽에 붙임
-  const top = Math.min(...slide.markers.map((mk) => mk.y - mk.height / 2));
-  const bottom = Math.max(...slide.markers.map((mk) => mk.y + mk.height / 2));
-  const above = top > 24;
-  const anyWarn = slide.markers.some((mk) => mk.warn);
+  const lang = useLang();
+  const code = lang === 'kr' ? 'ko' : lang;
+  const markerText = (label: string) => TOSS_MARKER_TEXTS[code]?.[label] ?? TOSS_MARKER_TEXTS.en?.[label] ?? label;
+  // 말풍선 아래 끝 = 박스 위쪽 가장자리. 위에서부터 보면서 앞 말풍선과 겹치면 아래로 민다
+  const tops: number[] = [];
+  const order = slide.markers.map((mk, i) => ({ i, y: mk.y - mk.height / 2 - 0.8 })).sort((a, b) => a.y - b.y);
+  let prev = -100;
+  for (const o of order) { const y = Math.max(o.y, prev + 6.5); tops[o.i] = y; prev = y; }
 
   return (
     <div className="flex flex-col items-center w-full gap-4">
@@ -58,29 +62,26 @@ export function TossSlideFrame({ slide, index, size = 'lg' }: {
             />
           ))}
 
-          <div
-            className="absolute z-[60] w-full flex justify-center px-2"
-            style={above ? { top: `${top - 1.5}%`, transform: 'translateY(-100%)' } : { top: `${bottom + 1.5}%` }}
-          >
+          {/* 칸마다 말풍선: 박스 바로 위에 두고, 서로 겹치면 아래로 밀어서 간격을 둔다 */}
+          {slide.markers.map((mk, i) => (
             <div
-              className={cn(
-                'relative text-white font-black flex items-start gap-2 border-2 border-white shadow-xl text-left',
-                anyWarn ? 'bg-red-600 ring-red-600/30' : 'bg-[#0064FF] ring-[#0064FF]/30',
-                lg ? 'px-4 py-3 sm:px-6 sm:py-4 rounded-2xl sm:rounded-[1.75rem] ring-4 max-w-[94%]' : 'px-2.5 py-2 rounded-xl ring-2 max-w-[96%]'
-              )}
-              style={{ fontSize: md ? '13px' : lg ? 'clamp(12px,3.2vw,19px)' : '10px' }}
+              key={`b${i}`}
+              className="absolute z-[60] w-full flex justify-center px-2"
+              style={{ top: `${tops[i]}%`, transform: 'translateY(-100%)' }}
             >
-              <Info className={cn('shrink-0 mt-0.5', lg ? 'w-5 h-5' : 'w-3.5 h-3.5')} />
-              <span className="leading-snug break-words">{tt(slide.bubble)}</span>
               <div
                 className={cn(
-                  'absolute left-1/2 -translate-x-1/2 w-4 h-4 rotate-45 border-white',
-                  anyWarn ? 'bg-red-600' : 'bg-[#0064FF]',
-                  above ? '-bottom-2.5 border-r-2 border-b-2' : '-top-2.5 border-l-2 border-t-2'
+                  'relative text-white font-black flex items-start gap-1 border-2 border-white shadow-xl text-left px-2 py-1 rounded-lg max-w-[94%]',
+                  mk.warn ? 'bg-red-600' : 'bg-[#0064FF]'
                 )}
-              />
+                style={{ fontSize: md ? '11px' : lg ? 'clamp(11px,2.6vw,15px)' : '9px' }}
+              >
+                {slide.markers.length > 1 && <span>{i + 1}.</span>}
+                <span className="leading-snug break-words">{mk.label ? markerText(mk.label) : ''}</span>
+                <div className={cn('absolute -bottom-[7px] left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-b-2 border-r-2 border-white', mk.warn ? 'bg-red-600' : 'bg-[#0064FF]')} />
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
 

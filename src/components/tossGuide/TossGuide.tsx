@@ -67,27 +67,27 @@ export default function TossGuide() {
           </span>
         </div>
 
-        <div className="mt-4 flex items-center justify-center gap-2 sm:gap-4">
+        <div className="mt-4 flex justify-center">
+          <TossSlideFrame key={current} slide={slide} index={current} size="md" />
+        </div>
+
+        <div className="mt-4 flex items-center justify-center gap-6">
           <button
             type="button"
             onClick={() => go(-1)}
             disabled={current === 0}
             aria-label="previous"
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-800 shadow disabled:opacity-30"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-800 shadow disabled:opacity-30"
           >
             <ChevronLeft className="h-5 w-5 rtl:rotate-180" />
           </button>
-
-          <div className="flex min-w-0 flex-1 justify-center">
-            <TossSlideFrame key={current} slide={slide} index={current} size="md" />
-          </div>
-
+          <span className="min-w-[4.5rem] text-center text-xs font-black text-slate-600">{current + 1} / {slides.length}</span>
           <button
             type="button"
             onClick={() => go(1)}
             disabled={current === slides.length - 1}
             aria-label="next"
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#0064FF] text-white shadow disabled:opacity-30"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#0064FF] text-white shadow disabled:opacity-30"
           >
             <ChevronRight className="h-5 w-5 rtl:rotate-180" />
           </button>
