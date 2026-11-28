@@ -10,6 +10,7 @@ import {
   getSiteSettings,
 } from '@/lib/content/load';
 import { DEDICATED_PAGES } from '@/lib/content/pageIndex';
+import { reportUrgent } from '@/lib/server/urgent';
 import { dictionaryOf } from '@/lib/dictionaries';
 import { PAGES, type Block } from '@/lib/pages';
 import { PHONE_EXTRAS, PHONE_INCLUDES, PHONE_POLICY } from '@/lib/phoneExtras';
@@ -97,6 +98,21 @@ export const TOOL_DECLARATIONS = [
     name: 'search_faq',
     description: 'Search the frequently asked questions (sign-up documents, activation, number porting, self-activation, plan changes, cancellation, payment, eSIM, bundles, etc.).',
     parameters: { type: 'OBJECT', properties: { keyword: { type: 'STRING', description: 'Korean keyword or short question' } }, required: ['keyword'] },
+  },
+  {
+    name: 'report_urgent',
+    description:
+      'Alert the shop owner about an urgent problem. Use ONLY when the customer says the SIM card has not been delivered, or the SIM is still not recognized after the troubleshooting steps on /support/usim-guide, or another urgent problem that staff must know. First give the customer the normal help. Never ask for or include ID, registration, passport, card, account numbers or passwords. Only pass a contact number if the customer offers it. Afterwards tell the customer only that staff was notified and will check; never promise a fix or a time.',
+    parameters: {
+      type: 'OBJECT',
+      properties: {
+        type: { type: 'STRING', description: 'usim_not_delivered, usim_not_recognized or other_urgent' },
+        summary: { type: 'STRING', description: 'One or two Korean sentences: what happened and what was already tried. No personal numbers.' },
+        contact: { type: 'STRING', description: 'Phone number the customer chose to give, or empty' },
+        source: { type: 'STRING', description: 'chat or phone' },
+      },
+      required: ['type', 'summary'],
+    },
   },
 ];
 
@@ -386,7 +402,7 @@ async function companyInfo(): Promise<string> {
     `이메일: ${c.email}`,
     c.bizNumber ? `사업자등록번호: ${c.bizNumber}` : '',
     c.salesNumber ? `통신판매업 신고번호: ${c.salesNumber}` : '',
-    '상담: 홈페이지의 1:1 상담문의나 가입 신청서를 남기시면 상담원이 연락드립니다.',
+    '상담: 홈페이지 채팅(김서연 매니저)이나 1:1 상담문의로 문의하실 수 있습니다.',
   ]
     .filter(Boolean)
     .join('\n');
@@ -417,6 +433,8 @@ export async function runTool(name: string, args: Args, ctx: Ctx = { korean: tru
         return await getPhoneDetail(args);
       case 'search_faq':
         return await searchFaq(args, ctx);
+      case 'report_urgent':
+        return await reportUrgent(args);
       default:
         return '알 수 없는 도구입니다.';
     }

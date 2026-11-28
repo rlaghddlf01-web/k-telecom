@@ -12,9 +12,10 @@ export const MENU: MenuItem[] = [
     label: '요금제',
     href: '/plans',
     children: [
-      { label: '요금제 안내', href: '/plans' },
-      { label: '가입접수', href: '/plans/apply' },
-      { label: '셀프개통', href: '/plans/self' },
+      { label: '후불 요금제', href: '/plans?billing=post' },
+      { label: '선불 요금제', href: '/plans?billing=prepaid' },
+      { label: '선불 충전 요청', href: '/support/recharge' },
+      { label: '가입 방법', href: '/plans/apply' },
       { label: '부가서비스', href: '/plans/addons' },
       { label: 'eSIM 안내', href: '/plans/esim' },
     ],
@@ -63,7 +64,7 @@ export const MENU: MenuItem[] = [
 
 /** 헤더 최상단 유틸 줄 */
 export const UTILITY_LINKS: MenuLink[] = [
-  { label: '셀프개통', href: '/plans/self' },
+  { label: '가입 방법', href: '/plans/apply' },
   { label: 'eSIM', href: '/plans/esim' },
   { label: '신청/배송조회', href: '/order-status' },
 ];

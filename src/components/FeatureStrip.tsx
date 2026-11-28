@@ -1,10 +1,10 @@
-import { Truck, Languages, ScanLine, Wrench } from 'lucide-react';
+import { Truck, Languages, Smartphone, Wrench } from 'lucide-react';
 import { ht } from '@/lib/content/homeText';
 
 const ITEMS = [
   { icon: Truck, title: '무료 배송', desc: '단말·유심 우체국 택배 발송' },
   { icon: Languages, title: '모국어 안내', desc: '요금제와 월 납부액을 내 나라 말로' },
-  { icon: ScanLine, title: '30초 비대면 접수', desc: '신분증 OCR과 전자서명' },
+  { icon: Smartphone, title: '직접 셀프개통', desc: '프리티 가입 화면에서 직접 가입' },
   { icon: Wrench, title: '방문 설치', desc: '인터넷은 전문 기사님이 설치' },
 ];
 

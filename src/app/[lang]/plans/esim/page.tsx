@@ -17,7 +17,7 @@ function EsimPage() {
       <div className="space-y-10">
         <div className="flex items-start gap-3 rounded-2xl bg-amber-50 p-4 text-sm text-amber-900 ring-1 ring-amber-200">
           <Info className="mt-0.5 h-4 w-4 shrink-0" />
-          <p>{t('온라인 접수 기능은 준비 중입니다. 현재는 1:1 상담문의로 신청해 주시면 담당자가 연락드립니다.')}</p>
+          <p>{t('eSIM 가입 방법과 가능 여부는 김서연 매니저에게 문의해 주세요.')}</p>
         </div>
 
         <ul className="grid gap-4 sm:grid-cols-2">
@@ -43,10 +43,10 @@ function EsimPage() {
         <div className="flex flex-col items-start justify-between gap-4 rounded-3xl bg-navy p-7 text-white sm:flex-row sm:items-center">
           <div>
             <p className="text-lg font-black">{t('eSIM으로 가입하시려면')}</p>
-            <p className="mt-1 text-sm text-white/65">{t('가입접수에서 SIM 유형을 eSIM으로 선택해 주세요.')}</p>
+            <p className="mt-1 text-sm text-white/65">{t('프리티 가입 화면에서 SIM 유형을 eSIM으로 선택해 주세요.')}</p>
           </div>
           <Link href="/plans/apply" className="shrink-0 rounded-full bg-brand px-7 py-3 text-sm font-bold hover:bg-brand-dark">
-            {t('가입접수')}
+            {t('가입 방법')}
           </Link>
         </div>
       </div>

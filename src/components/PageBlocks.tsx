@@ -1,4 +1,5 @@
 import Link from '@/components/LocaleLink';
+import OpenChatButton from '@/components/OpenChatButton';
 import {
   Truck, Languages, ScanLine, Wrench, Wifi, Tv, Globe2, CardSim, Smartphone, ShieldCheck,
   Headset, Wallet, BadgeCheck, Handshake, Clock, Info, ChevronDown, ExternalLink,
@@ -154,18 +155,43 @@ function BlockView({ block }: { block: Block }) {
       );
 
     case 'cta':
+      if (block.highlight) {
+        return (
+          <div
+            className="flex flex-col items-start justify-between gap-5 rounded-3xl p-8 text-white shadow-xl ring-4 ring-amber-300/60 sm:flex-row sm:items-center sm:p-10"
+            style={{ background: 'linear-gradient(135deg, #ff3d00 0%, #ff0066 55%, #b5179e 100%)' }}
+          >
+            <div>
+              <p className="text-2xl font-black sm:text-3xl">{t(block.title)}</p>
+              <p className="mt-2 text-sm font-medium text-white/90 sm:text-base">{t(block.desc)}</p>
+            </div>
+            <Link
+              href={block.href}
+              className="shrink-0 animate-pulse rounded-full bg-white px-9 py-4 text-base font-black text-[#ff0066] shadow-lg transition-transform hover:scale-105"
+            >
+              {t(block.label)} →
+            </Link>
+          </div>
+        );
+      }
       return (
         <div className="flex flex-col items-start justify-between gap-4 rounded-3xl bg-navy p-7 text-white sm:flex-row sm:items-center">
           <div>
             <p className="text-lg font-black">{t(block.title)}</p>
             <p className="mt-1 text-sm text-white/65">{t(block.desc)}</p>
           </div>
+          {block.chat ? (
+            <OpenChatButton className="shrink-0 rounded-full bg-brand px-7 py-3 text-sm font-bold transition-colors hover:bg-brand-dark">
+              {t(block.label)}
+            </OpenChatButton>
+          ) : (
           <Link
             href={block.href}
             className="shrink-0 rounded-full bg-brand px-7 py-3 text-sm font-bold transition-colors hover:bg-brand-dark"
           >
             {t(block.label)}
           </Link>
+          )}
         </div>
       );
   }

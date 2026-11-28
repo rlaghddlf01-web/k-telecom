@@ -4,7 +4,6 @@
  * - price = 기본(정상) 요금, promoPrice = 정책서의 청구요금(할인 적용 후 월 요금).
  * - 정책서에는 할인이 몇 개월 적용되는지가 없어서 후불은 promoNote 에 "할인 기간은 가입 상담 시 안내"라고 둔다.
  *   기간을 받으면 promoNote 를 "N개월 후 ○○원" 또는 "평생 할인" 으로 바꿔 주세요.
- * - 선불 2·3회충전 상품은 개통 후 N개월 기본료를 무료로 충전해 주는 상품이라 promoPrice 0, promoNote "N개월 후 ○○원".
  * - 수수료·Grade·환수·예치금 같은 대리점 전용 정보는 이 파일에 넣지 않습니다. (파트너 전용 자료)
  * - 단기 유심은 정책서에 가격이 없어 넣지 않았습니다.
  * - 프리티는 매달 정책이 바뀌므로 이 파일을 주기적으로 교체해야 합니다. (관리자에서 요금제를 등록하면 그쪽이 우선합니다)
@@ -122,8 +121,6 @@ export const PLANS: Plan[] = [
   { id: 'p-lgu-r-51', name: '데이터안심300분15G+', network: 'LGU+', billing: 'post', dataLabel: '15GB + 3Mbps', dataGB: 15, voice: '300분', sms: '300건', price: 46200, promoPrice: 40700, promoNote: '할인 기간은 가입 상담 시 안내', features: ['후불'] },
   { id: 'p-lgu-r-52', name: '유심프리티데이터중심11G+', network: 'LGU+', billing: 'post', dataLabel: '11GB + 매일 2GB + 3Mbps', dataGB: 11, voice: '기본제공 (부가 300분)', sms: '기본제공', price: 49390, promoPrice: 43890, promoNote: '할인 기간은 가입 상담 시 안내', features: ['후불'] },
   { id: 'p-lgu-r-53', name: '데이터팡팡', network: 'LGU+', billing: 'post', dataLabel: '매일 5GB + 5Mbps', dataGB: 150, voice: '기본제공 (부가 300분)', sms: '기본제공', price: 56000, promoPrice: 49400, promoNote: '할인 기간은 가입 상담 시 안내', features: ['후불'] },
-  { id: 'p-skt-s-1', name: '선불데이터안심 (2회충전)', network: 'SKT', billing: 'prepaid', dataLabel: '요금제 상세는 상담 시 안내', dataGB: 0, voice: '기본제공', sms: '기본제공', price: 36000, promoPrice: 0, promoNote: '2개월 후 36,000원', features: ['선불', '개통 후 2개월 기본료 무료충전 (72,000원 상당)'], badge: '2개월 무료충전' },
-  { id: 'p-skt-s-2', name: '선불데이터안심 (3회충전)', network: 'SKT', billing: 'prepaid', dataLabel: '요금제 상세는 상담 시 안내', dataGB: 0, voice: '기본제공', sms: '기본제공', price: 36000, promoPrice: 0, promoNote: '3개월 후 36,000원', features: ['선불', '개통 후 3개월 기본료 무료충전 (108,000원 상당)'], badge: '3개월 무료충전' },
   { id: 'p-skt-s-3', name: '선불데이터안심', network: 'SKT', billing: 'prepaid', dataLabel: '요금제 상세는 상담 시 안내', dataGB: 0, voice: '기본제공', sms: '기본제공', price: 36000, promoPrice: 36000, promoNote: '선불 요금제 (충전 후 사용)', features: ['선불'], badge: '선불' },
   { id: 'p-skt-s-4', name: '선불데이터11G', network: 'SKT', billing: 'prepaid', dataLabel: '11GB + 매일 2GB + 3Mbps', dataGB: 11, voice: '기본제공 (부가 300분)', sms: '기본제공', price: 59900, promoPrice: 59900, promoNote: '선불 요금제 (충전 후 사용)', features: ['선불'], badge: '선불' },
   { id: 'p-skt-s-5', name: '선불데이터안심15G+', network: 'SKT', billing: 'prepaid', dataLabel: '15GB', dataGB: 15, voice: '기본제공', sms: '기본제공', price: 39000, promoPrice: 39000, promoNote: '선불 요금제 (충전 후 사용)', features: ['선불'], badge: '선불' },
@@ -133,17 +130,12 @@ export const PLANS: Plan[] = [
   { id: 'p-kt-s-9', name: '선불데이터안심15G', network: 'KT', billing: 'prepaid', dataLabel: '15GB', dataGB: 15, voice: '기본제공', sms: '기본제공', price: 39600, promoPrice: 39600, promoNote: '선불 요금제 (충전 후 사용)', features: ['선불'], badge: '선불' },
   { id: 'p-kt-s-10', name: '선불데이터팡팡', network: 'KT', billing: 'prepaid', dataLabel: '100GB + 5Mbps', dataGB: 100, voice: '기본제공 (부가 300분)', sms: '기본제공', price: 66000, promoPrice: 66000, promoNote: '선불 요금제 (충전 후 사용)', features: ['선불'], badge: '선불' },
   { id: 'p-lgu-s-11', name: '(5G) 선불데이터20G', network: 'LGU+', billing: 'prepaid', dataLabel: '20GB + 3Mbps', dataGB: 20, voice: '기본제공 (부가 50분)', sms: '기본제공', price: 46200, promoPrice: 46200, promoNote: '선불 요금제 (충전 후 사용)', features: ['선불', '5G'], badge: '선불' },
-  { id: 'p-lgu-s-12', name: '(5G) 선불데이터20G (2회충전)', network: 'LGU+', billing: 'prepaid', dataLabel: '20GB + 3Mbps', dataGB: 20, voice: '기본제공 (부가 50분)', sms: '기본제공', price: 46200, promoPrice: 0, promoNote: '2개월 후 46,200원', features: ['선불', '5G', '개통 후 2개월 기본료 무료충전 (92,400원 상당)'], badge: '2개월 무료충전' },
   { id: 'p-lgu-s-13', name: '선불데이터300M', network: 'LGU+', billing: 'prepaid', dataLabel: '300MB', dataGB: 0.3, voice: '기본제공', sms: '기본제공', price: 36300, promoPrice: 36300, promoNote: '선불 요금제 (충전 후 사용)', features: ['선불'], badge: '선불' },
-  { id: 'p-lgu-s-14', name: '선불데이터300M (2회충전)', network: 'LGU+', billing: 'prepaid', dataLabel: '300MB', dataGB: 0.3, voice: '기본제공', sms: '기본제공', price: 36300, promoPrice: 0, promoNote: '2개월 후 36,300원', features: ['선불', '개통 후 2개월 기본료 무료충전 (72,600원 상당)'], badge: '2개월 무료충전' },
-  { id: 'p-lgu-s-15', name: '선불데이터300M (3회충전)', network: 'LGU+', billing: 'prepaid', dataLabel: '300MB', dataGB: 0.3, voice: '기본제공', sms: '기본제공', price: 36300, promoPrice: 0, promoNote: '3개월 후 36,300원', features: ['선불', '개통 후 3개월 기본료 무료충전 (108,900원 상당)'], badge: '3개월 무료충전' },
   { id: 'p-lgu-s-16', name: '선불데이터11G', network: 'LGU+', billing: 'prepaid', dataLabel: '11GB', dataGB: 11, voice: '기본제공', sms: '기본제공', price: 50600, promoPrice: 50600, promoNote: '선불 요금제 (충전 후 사용)', features: ['선불'], badge: '선불' },
   { id: 'p-lgu-s-17', name: '선불데이터300MB+1Mbps', network: 'LGU+', billing: 'prepaid', dataLabel: '300MB + 1Mbps', dataGB: 0.3, voice: '기본제공 (부가 50분)', sms: '기본제공', price: 29700, promoPrice: 29700, promoNote: '선불 요금제 (충전 후 사용)', features: ['선불'], badge: '선불' },
   { id: 'p-lgu-s-18', name: '선불데이터안심15G', network: 'LGU+', billing: 'prepaid', dataLabel: '15GB', dataGB: 15, voice: '기본제공', sms: '기본제공', price: 39000, promoPrice: 39000, promoNote: '선불 요금제 (충전 후 사용)', features: ['선불'], badge: '선불' },
   { id: 'p-lgu-s-19', name: '선불데이터안심11G', network: 'LGU+', billing: 'prepaid', dataLabel: '11GB', dataGB: 11, voice: '기본제공', sms: '기본제공', price: 55000, promoPrice: 55000, promoNote: '선불 요금제 (충전 후 사용)', features: ['선불'], badge: '선불' },
   { id: 'p-lgu-s-20', name: '선불데이터안심10.3G', network: 'LGU+', billing: 'prepaid', dataLabel: '10.3GB + 3Mbps', dataGB: 10.3, voice: '기본제공 (부가 50분)', sms: '기본제공', price: 38300, promoPrice: 38300, promoNote: '선불 요금제 (충전 후 사용)', features: ['선불'], badge: '선불' },
-  { id: 'p-lgu-s-21', name: '선불데이터안심10.3G (2회충전)', network: 'LGU+', billing: 'prepaid', dataLabel: '10.3GB + 3Mbps', dataGB: 10.3, voice: '기본제공 (부가 50분)', sms: '기본제공', price: 38300, promoPrice: 0, promoNote: '2개월 후 38,300원', features: ['선불', '개통 후 2개월 기본료 무료충전 (76,600원 상당)'], badge: '2개월 무료충전' },
-  { id: 'p-lgu-s-22', name: '선불데이터안심10.3G (3회충전)', network: 'LGU+', billing: 'prepaid', dataLabel: '10.3GB + 3Mbps', dataGB: 10.3, voice: '기본제공 (부가 50분)', sms: '기본제공', price: 38300, promoPrice: 0, promoNote: '3개월 후 38,300원', features: ['선불', '개통 후 3개월 기본료 무료충전 (114,900원 상당)'], badge: '3개월 무료충전' },
   { id: 'p-lgu-s-23', name: '선불데이터일5G+', network: 'LGU+', billing: 'prepaid', dataLabel: '매일 5GB + 5Mbps', dataGB: 150, voice: '기본제공', sms: '기본제공', price: 66000, promoPrice: 66000, promoNote: '선불 요금제 (충전 후 사용)', features: ['선불'], badge: '선불' },
   { id: 'p-lgu-s-24', name: '선불데이터10G', network: 'LGU+', billing: 'prepaid', dataLabel: '10GB', dataGB: 10, voice: '기본제공', sms: '기본제공', price: 33000, promoPrice: 33000, promoNote: '선불 요금제 (충전 후 사용)', features: ['선불'], badge: '선불' },
 ];

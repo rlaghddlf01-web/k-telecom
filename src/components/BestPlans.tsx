@@ -21,8 +21,8 @@ function durability(note: string) {
 /**
  * 홈 추천 요금제: 후불 요금제 중 첫 달(현재 월) 요금이 가장 싼 8개(2줄).
  */
-function pickPlans(plans: Plan[]): Plan[] {
-  const postpaid = plans.filter((p) => (p.billing ?? 'post') === 'post');
+function pickPlans(plans: Plan[], billing: 'post' | 'prepaid'): Plan[] {
+  const postpaid = plans.filter((p) => (p.billing ?? 'post') === billing);
   // 첫 달 요금이 가장 싼 순. 같으면 할인이 오래가는 것, 배지, 데이터 많은 순
   return [...postpaid]
     .sort(
@@ -35,22 +35,27 @@ function pickPlans(plans: Plan[]): Plan[] {
     .slice(0, PICK_COUNT);
 }
 
-export default async function BestPlans({ title }: { title?: string }) {
+export default async function BestPlans({ title, billing = 'post' }: { title?: string; billing?: 'post' | 'prepaid' }) {
   const { plans } = await getPlans();
-  const picks = pickPlans(plans);
+  const picks = pickPlans(plans, billing);
   if (picks.length === 0) return null;
   const extra = await primeTranslations(picks.flatMap((p) => [...p.features, p.badge ?? '', /개월 후 [\d,]+원$/.test(p.promoNote) ? '' : p.promoNote]));
 
   return (
     <section className="mx-auto max-w-6xl px-4 pb-16">
       <div className="flex items-end justify-between">
-        <h2 className="section-title">{title || ht('추천 요금제 BEST')}</h2>
-        <Link href="/plans" className="text-xs font-bold text-slate-500 underline underline-offset-4 hover:text-brand">
+        <h2 className="section-title">{title || (billing === 'prepaid' ? ht('선불 요금제') : ht('추천 요금제 BEST'))}</h2>
+        <Link href={billing === 'prepaid' ? '/plans?billing=prepaid' : '/plans'} className="text-xs font-bold text-slate-500 underline underline-offset-4 hover:text-brand">
           {ht('전체 요금제 보기')}
         </Link>
+        {billing === 'prepaid' && (
+          <Link href="/support/recharge" className="ml-3 rounded-full bg-brand px-4 py-2 text-xs font-bold text-white hover:bg-brand-dark">
+            {ht('충전 요청하기')}
+          </Link>
+        )}
       </div>
       <div className="mt-6">
-        <SampleNotice />
+        {billing === 'prepaid' ? <p className="text-sm text-slate-500">{ht('선불 요금제는 충전해서 쓰는 방식입니다.')}</p> : <SampleNotice />}
       </div>
       <ExtraDict extra={extra}>
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

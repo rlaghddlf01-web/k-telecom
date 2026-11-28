@@ -5,9 +5,9 @@ export default function ProcessSteps() {
   return (
     <section id="process" className="scroll-mt-20 bg-navy py-16 text-white">
       <div className="mx-auto max-w-6xl px-4">
-        <h2 className="section-title text-center">{ht('100% 앱 안에서 비대면 신청')}</h2>
+        <h2 className="section-title text-center">{ht('가입 순서')}</h2>
         <p className="mt-3 text-center text-sm text-white/65">
-          {ht('외부 사이트로 이동하지 않고 모국어로 끝까지 신청합니다')}
+          {ht('프리티 가입 화면에서 직접 가입하고, 유심이 도착하면 개통합니다')}
         </p>
         <ol className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-4">
           {PROCESS_STEPS.map((s, i) => (

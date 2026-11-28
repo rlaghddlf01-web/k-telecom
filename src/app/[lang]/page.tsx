@@ -73,6 +73,7 @@ async function HomePage() {
     sister: lang === DEFAULT_LANG || lang === SOURCE_LANG ? null : <SisterServices />,
     categories: <PopularCategories />,
     plans: <BestPlans />,
+    prepaid: <BestPlans billing="prepaid" />,
     deals: <TodayDeals phones={phones} />,
     best: (
       <ExtraDict extra={phoneExtra}>

@@ -9,6 +9,9 @@ import ResourceManager from '@/components/admin/ResourceManager';
 import PageManager from '@/components/admin/PageManager';
 import HomeManager from '@/components/admin/HomeManager';
 import ChatManager from '@/components/admin/ChatManager';
+import UrgentPanel from '@/components/admin/UrgentPanel';
+import RechargePanel from '@/components/admin/RechargePanel';
+
 import { EVENT_UI, FAQ_UI, NOTICE_UI, PLAN_UI } from '@/lib/content/schema';
 
 type Kind = 'application' | 'inquiry' | 'partnership';
@@ -279,6 +282,9 @@ function Dashboard({ devBypass, onLogout }: { devBypass: boolean; onLogout: () =
             </p>
           </div>
         )}
+
+        <UrgentPanel onUnauthorized={handleUnauthorized} onChanged={loadCounts} />
+        <RechargePanel onUnauthorized={handleUnauthorized} onChanged={loadCounts} />
 
         {tab === 'summary' && <Summary counts={counts} onRefresh={loadCounts} onOpen={setTab} />}
         {(tab === 'application' || tab === 'inquiry' || tab === 'partnership') && (

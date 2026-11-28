@@ -10,6 +10,9 @@ import {
   isStatus,
   type SubmissionKind,
 } from '@/lib/server/submissions';
+import { URGENT_PREFIX } from '@/lib/server/urgent';
+import { RECHARGE_PREFIX } from '@/lib/recharge';
+
 
 const KINDS: SubmissionKind[] = ['application', 'inquiry', 'partnership'];
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -26,7 +29,7 @@ export async function GET(req: NextRequest) {
 
   // 저장소 연결 여부와 관계없이 잘못된 요청은 먼저 거른다
   const params = req.nextUrl.searchParams;
-  if (!params.get('summary') && !params.get('planCounts') && !isKind(params.get('kind'))) {
+  if (!params.get('summary') && !params.get('planCounts') && !params.get('urgent') && !params.get('recharge') && !isKind(params.get('kind'))) {
     return NextResponse.json({ error: 'Bad kind' }, { status: 400 });
   }
   const statusParam = params.get('status');
@@ -34,6 +37,58 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'Bad status' }, { status: 400 });
   }
 
+  // 긴급 알림: AI 상담사가 올린 "[긴급:…]" 상담문의 중 아직 처리하지 않은 것 (최근 50건)
+  if (params.get('urgent')) {
+    if (!isSupabaseConfigured()) {
+      // 로컬 개발 모드에서는 화면 확인용 샘플 한 건을 보여준다
+      if (DEV_BYPASS) {
+        return NextResponse.json({
+          sample: true,
+          rows: [{ id: '00000000-0000-4000-8000-000000000001', created_at: new Date().toISOString(), name: '긴급 보고(채팅)', phone: '010-0000-0000', message: `${URGENT_PREFIX}유심 미배송] 샘플: 주문한 지 5일이 지났는데 유심이 도착하지 않았다고 합니다.`, status: 'new' }],
+        });
+      }
+      return NextResponse.json({ rows: [] });
+    }
+    try {
+      const { data, error } = await getSupabaseAdmin()
+        .from(TABLES.inquiry)
+        .select('id, created_at, name, phone, message, status')
+        .like('message', `${URGENT_PREFIX}%`)
+        .in('status', ['new', 'contacted'])
+        .order('created_at', { ascending: false })
+        .limit(50);
+      if (error) throw error;
+      return NextResponse.json({ rows: data ?? [] });
+    } catch {
+      return serverError();
+    }
+  }
+
+  // 선불 충전 요청: 고객이 남긴 "[충전요청:…]" 상담문의 중 아직 처리하지 않은 것 (최근 50건)
+  if (params.get('recharge')) {
+    if (!isSupabaseConfigured()) {
+      if (DEV_BYPASS) {
+        return NextResponse.json({
+          sample: true,
+          rows: [{ id: '00000000-0000-4000-8000-000000000002', created_at: new Date().toISOString(), name: '충전요청', phone: '01012345678', message: `${RECHARGE_PREFIX}데이터] 선불데이터 안심 (36,000원)`, status: 'new' }],
+        });
+      }
+      return NextResponse.json({ rows: [] });
+    }
+    try {
+      const { data, error } = await getSupabaseAdmin()
+        .from(TABLES.inquiry)
+        .select('id, created_at, name, phone, message, status')
+        .like('message', `${RECHARGE_PREFIX}%`)
+        .in('status', ['new', 'contacted'])
+        .order('created_at', { ascending: true })
+        .limit(50);
+      if (error) throw error;
+      return NextResponse.json({ rows: data ?? [] });
+    } catch {
+      return serverError();
+    }
+  }
   // 요금제별 가입접수 건수 (관리자 요금제 목록의 "가입 많은순" 정렬용)
   if (params.get('planCounts')) {
     if (!isSupabaseConfigured()) return NextResponse.json({ counts: {} });

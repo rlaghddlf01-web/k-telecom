@@ -117,6 +117,14 @@ export default function ChatWidget({ managerName, managerRole, intro, teaser, av
     endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
   }, [messages, busy, view]);
 
+  // 페이지 안의 "매니저에게 물어보기" 버튼이 채팅을 열 수 있게 한다
+  const openChatRef = useRef<() => void>(() => undefined);
+  useEffect(() => {
+    const onOpen = () => openChatRef.current();
+    window.addEventListener('ktel:open-chat', onOpen);
+    return () => window.removeEventListener('ktel:open-chat', onOpen);
+  }, []);
+
   if (pathname.startsWith('/admin')) return null;
 
   // 말풍선 문구: 보고 있는 페이지에 맞는 인사가 있으면 그것을, 없으면 관리자가 정한 기본 인사
@@ -133,6 +141,8 @@ export default function ChatWidget({ managerName, managerRole, intro, teaser, av
       setMessages([{ role: 'model', text: help.teaser ? t(help.teaser) : t('안녕하세요! 무엇이든 물어보세요. 요금제, 단말, 가입 방법을 안내해 드립니다.'), chips: help.chips }]);
     }
   }
+
+  openChatRef.current = openChat;
 
   async function install() {
     if (installEvent) {

@@ -3,6 +3,8 @@
 import { useMemo, useState } from 'react';
 import { ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import PlanCard from '@/components/PlanCard';
+import Link from '@/components/LocaleLink';
+
 import { NETWORKS, type Network, type Plan } from '@/lib/plans';
 import { useLang, useT } from '@/components/LangProvider';
 
@@ -44,11 +46,11 @@ const BILLINGS: { id: Billing; label: string }[] = [
   { id: 'prepaid', label: '선불' },
 ];
 
-export default function PlanExplorer({ plans }: { plans: Plan[] }) {
+export default function PlanExplorer({ plans, initialBilling = 'all' }: { plans: Plan[]; initialBilling?: Billing }) {
   const t = useT();
   const lang = useLang();
   const [network, setNetwork] = useState<Network | 'all'>('all');
-  const [billing, setBilling] = useState<Billing>('all');
+  const [billing, setBilling] = useState<Billing>(initialBilling);
   // 처음 열 때는 항상 낮은 가격순으로 보여 준다
   const [sort, setSort] = useState<Sort>('priceAsc');
   const [dataNeed, setDataNeed] = useState(0);
@@ -71,7 +73,8 @@ export default function PlanExplorer({ plans }: { plans: Plan[] }) {
     if (sort === 'priceAsc') sorted.sort((a, b) => a.promoPrice - b.promoPrice || b.dataGB - a.dataGB);
     if (sort === 'priceDesc') sorted.sort((a, b) => b.promoPrice - a.promoPrice);
     if (sort === 'dataDesc') sorted.sort((a, b) => b.dataGB - a.dataGB);
-    return sorted;
+    // 어떤 정렬이든 후불 요금제가 항상 먼저, 선불 요금제는 그 뒤에 (같은 묶음 안에서는 고른 정렬 그대로)
+    return [...sorted.filter((p) => (p.billing ?? 'post') === 'post'), ...sorted.filter((p) => (p.billing ?? 'post') !== 'post')];
   }, [plans, network, billing, sort, dataNeed, intl, maxPrice]);
 
   const pages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
@@ -179,8 +182,13 @@ export default function PlanExplorer({ plans }: { plans: Plan[] }) {
         </div>
       </div>
 
-      {shown.length === 0 ? (
-        <p className="py-20 text-center text-sm text-slate-400">{t('조건에 맞는 요금제가 없습니다.')}</p>
+      {billing === 'prepaid' && (
+        <p className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-soft px-5 py-4 text-sm font-semibold text-slate-600">
+          <span>{t('선불 요금제는 충전해서 쓰는 방식입니다.')}</span>
+          <Link href="/support/recharge" className="rounded-full bg-brand px-5 py-2 text-xs font-bold text-white hover:bg-brand-dark">{t('충전 요청하기')}</Link>
+        </p>
+      )}
+      {shown.length === 0 ? (        <p className="py-20 text-center text-sm text-slate-400">{t('조건에 맞는 요금제가 없습니다.')}</p>
       ) : (
         <ul className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {shown.map((p) => (

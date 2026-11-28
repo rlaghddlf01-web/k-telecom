@@ -25,9 +25,9 @@ export const PAGE_HELPS: PageHelp[] = [
     match: (p) => p.startsWith('/plans/apply'),
     teaser: '가입 신청 중 막히는 부분이 있나요? 😊 필요한 서류와 순서를 바로 안내해 드릴게요!',
     delayMs: 15000,
-    chips: ['신규가입과 번호이동은 무엇이 다른가요?', '유심과 eSIM 중 무엇을 고르나요?', '후불과 선불은 무엇이 다른가요?', '입력한 개인정보는 안전한가요?'],
+    chips: ['신규가입과 번호이동은 무엇이 다른가요?', '유심과 eSIM 중 무엇을 고르나요?', '후불과 선불은 무엇이 다른가요?', '셀프개통은 어떻게 하나요?'],
     topic:
-      'the sign-up (가입접수) form where the customer picks a plan and enters join type (new number or number porting), SIM type (USIM or eSIM), billing (postpaid or prepaid) and applicant details. Explain terms simply; never ask for personal data in chat.',
+      'the how-to-sign-up page (가입 방법) where the customer picks a plan to see its price and then signs up by themselves on the Freet sign-up screen (self-activation); there is no staff-assisted application form. Explain terms (new number or number porting, USIM or eSIM, postpaid or prepaid) simply; never ask for personal data in chat.',
   },
   {
     id: 'esim',

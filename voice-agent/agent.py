@@ -136,6 +136,11 @@ async def main() -> None:
         """Company name, CEO, address, phone, email and how to reach staff. Returns Korean text."""
         return knowledge.get_company_info()
 
+    @agent.tool
+    async def report_urgent(type: str, summary: str, contact: str = "", source: str = "phone") -> str:
+        """Alert the shop owner about an urgent problem: type is usim_not_delivered, usim_not_recognized or other_urgent; summary is one or two Korean sentences without any ID, card or account numbers; contact is a phone number only if the caller volunteered it. Call at most once per problem. Returns Korean text telling you what to say."""
+        return await asyncio.to_thread(knowledge.report_urgent, type, summary, contact)
+
     if sys.platform == "win32":
         # serve() 는 유닉스 종료 신호를 쓰므로 윈도우에서는 연결만 하고 계속 대기한다.
         await agent.connect()

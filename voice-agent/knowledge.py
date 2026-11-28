@@ -36,6 +36,25 @@ def _fetch() -> dict:
         return json.loads(res.read().decode("utf-8"))
 
 
+def report_urgent(type_: str, summary: str, contact: str = "") -> str:
+    """긴급 보고: 홈페이지 서버에 올려 관리자 화면과 카카오톡으로 알린다. (인터넷이 필요해서 통화 중 한 번만 부른다)"""
+    base = os.environ.get("VOICE_TOOL_URL", "https://k-telecom.vercel.app/api/voice/tool")
+    payload = json.dumps(
+        {"name": "report_urgent", "args": {"type": type_, "summary": summary, "contact": contact, "source": "phone"}}
+    ).encode("utf-8")
+    req = urllib.request.Request(
+        base,
+        data=payload,
+        headers={"content-type": "application/json", "x-voice-secret": os.environ["VOICE_TOOL_SECRET"]},
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=15) as res:
+            return json.loads(res.read().decode("utf-8")).get("result", "")
+    except Exception as err:
+        log.warning("report_urgent failed: %s", type(err).__name__)
+        return "담당자에게 전달하지 못했습니다. 고객에게 홈페이지 1:1 상담문의를 남기도록 안내하세요."
+
+
 def refresh() -> bool:
     """홈페이지에서 최신 내용을 받아 메모리와 파일에 저장한다. 실패하면 기존 내용을 그대로 쓴다."""
     global _DATA
