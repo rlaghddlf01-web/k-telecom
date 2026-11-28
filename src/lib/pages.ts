@@ -102,6 +102,7 @@ export const PAGES: PageDef[] = [
         label: '토스 인증서 만들기',
         href: '/guide/toss',
       },
+      { type: 'links', heading: '다른 인증서 만들기', items: [{ label: '카카오톡 인증서 만들기', href: '/guide/kakao' }, { label: 'PASS 인증서 만들기', href: '/guide/pass' }] },
       { type: 'links', heading: '가입하러 가기', items: [{ label: '프리티 셀프개통 시작하기 (한국어 화면)', href: FREET_SELF_URL }] },
       INQUIRY_CTA,
     ],
