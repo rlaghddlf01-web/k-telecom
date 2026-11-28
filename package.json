@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3100",
+    "freet-proxy": "node freet-proxy/server.js",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

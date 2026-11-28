@@ -100,7 +100,8 @@ function BlockView({ block }: { block: Block }) {
                         key={cell + i}
                         className={`px-4 py-3.5 ${!block.head && i === 0 ? 'w-32 bg-soft font-bold' : 'text-slate-600'}`}
                       >
-                        {t(cell)}
+                        {/* "@@" 로 시작하는 칸은 번역하지 않고 그대로 보여 준다 (다른 나라 말 화면에서도 한국어 버튼 이름을 알아볼 수 있게) */}
+                        {cell.startsWith('@@') ? <span className="font-bold text-ink">{cell.slice(2)}</span> : t(cell)}
                       </td>
                     ))}
                   </tr>

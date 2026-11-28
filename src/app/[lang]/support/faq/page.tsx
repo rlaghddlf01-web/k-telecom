@@ -5,16 +5,22 @@ import FaqBoard from '@/components/FaqBoard';
 import { getFaqsForLang } from '@/lib/content/load';
 import { getLang, t, withLang } from '@/lib/i18n';
 import { hiddenForKorean } from '@/lib/content/koFilter';
+import { ExtraDict } from '@/components/LangProvider';
+import { primeTranslations } from '@/lib/server/prime';
 
 export const generateMetadata = pageMeta('자주 묻는 질문 | K-Telecom');
 
 async function FaqPage() {
   // 한국어 화면(한국인 고객)에서는 외국인에게만 해당하는 질문(국제통화, 지원 언어)을 뺀다
   const faqs = (await getFaqsForLang(getLang())).filter((f) => !hiddenForKorean(f.q, f.a));
+  // 사이트 사전에 없는 새 질문·답변은 번역 저장소에서 꺼내거나 번역해서 저장해 두고, 목록(클라이언트 화면)에도 넘긴다
+  const extra = await primeTranslations(faqs.flatMap((f) => [f.q, f.a]));
 
   return (
     <PageShell path="/support/faq" managed title="자주 묻는 질문">
-      <FaqBoard faqs={faqs} />
+      <ExtraDict extra={extra}>
+        <FaqBoard faqs={faqs} />
+      </ExtraDict>
       <div className="mt-10 flex flex-col items-start justify-between gap-4 rounded-3xl bg-navy p-7 text-white sm:flex-row sm:items-center">
         <div>
           <p className="text-lg font-black">{t('원하는 답을 찾지 못하셨나요?')}</p>

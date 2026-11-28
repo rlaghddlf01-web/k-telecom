@@ -22,9 +22,10 @@ interface Turn {
 const clip = (v: unknown, max: number) => (typeof v === 'string' ? v.replace(/[\u0000-\u001f\u007f]/g, ' ').trim().slice(0, max) : '');
 
 /** 요금제·단말 전체를 프롬프트에 넣지 않고, 개수만 알려 준다. 자세한 내용은 AI 가 도구(chatTools)로 찾아 쓴다 */
-async function catalogText(): Promise<string> {
+async function catalogText(language: string): Promise<string> {
   const [{ plans }, phones] = await Promise.all([getPlans(), getProducts()]);
   return [
+    `FINAL ANSWER LANGUAGE: write your final answer in the SAME language the customer wrote in (if unclear, ${language}). Tool keywords and tool results are Korean, but your reply must NOT be in Korean unless the customer wrote in Korean. Keep Korean only for exact button or menu names.`,
     `The shop has ${plans.length} mobile plans and ${phones.length} phones registered. You do NOT have them memorised.`,
     'NEVER say you will "check" or "look it up" without calling a tool in that same turn, and NEVER say a kind of plan or product does not exist unless search_plans / search_phones / search_pages actually returned nothing for it. If unsure whether something exists (for example prepaid free-charge plans, international-call plans, internet bundles), search first.',
     'ALWAYS call a tool before answering about any plan, price, data amount, carrier, discount, phone, phone spec, box contents, return policy, bundle (internet/TV combination) or FAQ-type question:',
@@ -34,7 +35,9 @@ async function catalogText(): Promise<string> {
     '- search_faq: sign-up documents, activation, number porting, self-activation, cancellation, payment, etc.',
     '- search_pages / get_page / list_pages: any other website information (self-activation, add-ons, phone installments, internet, IPTV, forms, guides, order status, terms, privacy).',
     '- get_events / get_notices / get_company_info: current events, notices, company and contact details.',
-    'PHONES: phone sales are currently "coming soon" (준비 중). When a customer asks about phones, say first that phone sales are being prepared and are not available to buy or apply for yet; you may share the listed models and monthly prices only as reference. Never offer to start a phone order.',
+    'SEARCH LANGUAGE: all tool data is Korean, so ALWAYS write tool keywords in KOREAN (translate the customer\'s question into Korean first, e.g. "Korean phone number" -> "한국 휴대폰", "self activation" -> "셀프개통").',
+    'KEY FACTS (always true, never contradict): (1) Self-activation (셀프개통) happens on the Freet sign-up screen, which is Korean-only, and its identity check needs a Korean mobile phone number, OR a Korean credit card, OR a public certificate (공동인증서); foreigners also need their Alien Registration Card. (2) A customer who has NO Korean phone number can NOT sign up online by themselves right now: tell them clearly, and offer to leave a 1:1 inquiry or application so staff can guide them. (3) FORBIDDEN: stating how long sign-up takes (never say "5분", "10분", "in 5 minutes", etc.) and promising approval.',
+    'PHONES: phone sales are currently "coming soon" (준비 중). When a customer asks about phones, say first that phone sales are being prepared and are not available to buy or apply for yet; there is NO phone price to quote: never state any phone price or monthly installment, only say "준비 중" / coming soon. You may name the listed models. Never offer to start a phone order.',
     'PRICE RANGES: "만원대" means 10,000–19,999 won, so set BOTH min_price=10000 and max_price=19999; "2만원대" is 20,000–29,999. Never recommend a plan whose current monthly price is outside the range the customer asked for.',
     'VOICE WORDING: quote voice/SMS exactly as returned, e.g. "기본제공 (부가 300분)". NEVER explain 기본제공 as "unlimited" (무제한) — the plan data does not say that.',
     'Tool results are in Korean. Translate them into the customer\'s language when you answer. Quote prices and names exactly as returned; never invent any. If a tool returns nothing relevant, say staff will confirm. For bundle (결합) questions, only state what appears in plan perks or FAQ results.',
@@ -81,7 +84,7 @@ export async function POST(req: Request) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 40_000);
   try {
-    const systemInstruction = { parts: [{ text: systemPrompt(settings.managerName, langInfo(lang).name, help.topic, await catalogText(), lang === 'ko') }] };
+    const systemInstruction = { parts: [{ text: systemPrompt(settings.managerName, langInfo(lang).name, help.topic, await catalogText(langInfo(lang).name), lang === 'ko') }] };
     const contents: { role: string; parts: unknown[] }[] = [...history, { role: 'user', text: message }].map((t) => ({ role: t.role, parts: [{ text: t.text }] }));
 
     // AI 가 도구를 부르면 결과를 돌려주고 다시 묻는다 (최대 4번). 도구를 더 부르지 않으면 그 답이 최종 답이다.

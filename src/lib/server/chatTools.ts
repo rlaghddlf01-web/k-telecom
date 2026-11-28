@@ -256,7 +256,7 @@ function flatten(blocks: Block[], tr: (s: string) => string = (s) => s): string 
     else if (b.type === 'text') out.push([b.heading, ...b.paragraphs].filter(Boolean).map((s) => tr(s as string)).join(' '));
     else if (b.type === 'cards') out.push(b.items.map((i) => `${tr(i.title)}: ${tr(i.desc)}`).join(' / '));
     else if (b.type === 'steps') out.push(`${tr(b.heading ?? '순서')}: ${b.items.map((i, n) => `${n + 1}) ${tr(i.title)} - ${tr(i.desc)}`).join(' ')}`);
-    else if (b.type === 'table') out.push(`${b.heading ? tr(b.heading) : ''} ${b.rows.map((r) => r.map(tr).join(' | ')).join(' ; ')}`.trim());
+    else if (b.type === 'table') out.push(`${b.heading ? tr(b.heading) : ''} ${b.rows.map((r) => r.map((c) => (c.startsWith('@@') ? c.slice(2) : tr(c))).join(' | ')).join(' ; ')}`.trim());
     else if (b.type === 'faq') out.push(b.items.map((i) => `Q ${tr(i.q)} A ${tr(i.a)}`).join(' '));
     else if (b.type === 'links') out.push(`${tr(b.heading ?? '링크')}: ${b.items.map((i) => tr(i.label)).join(', ')}`);
     else if (b.type === 'cta') out.push(`${tr(b.title)} ${tr(b.desc)}`);

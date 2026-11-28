@@ -5,6 +5,8 @@ import PageBlocks from '@/components/PageBlocks';
 import { getContentPage } from '@/lib/content/load';
 import { setLang, t, withLang } from '@/lib/i18n';
 import { isLang } from '@/lib/langs';
+import { blockTexts } from '@/lib/content/blockTexts';
+import { primeTranslations } from '@/lib/server/prime';
 
 interface Props {
   params: Promise<{ lang: string; slug: string[] }>;
@@ -33,6 +35,9 @@ async function ContentPage({ params }: Props) {
   const path = '/' + slug.join('/');
   const page = await getContentPage(path);
   if (!page) notFound();
+
+  // 사이트 사전에 없는 문구(새로 넣은 안내 문구)는 번역 저장소에서 꺼내거나 번역해서 저장해 둔다
+  await primeTranslations([page.title, page.lead ?? '', ...blockTexts(page.blocks)]);
 
   return (
     <PageShell path={page.path} title={page.title} lead={page.lead}>

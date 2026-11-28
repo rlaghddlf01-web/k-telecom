@@ -6,6 +6,7 @@ import ProductImage from '@/components/ProductImage';
 import type { Phone, PhoneGroup } from '@/lib/phones';
 import { useT } from '@/components/LangProvider';
 import { phonePrice } from '@/lib/planText';
+import { PHONES_COMING_SOON } from '@/lib/phoneStatus';
 
 const TABS: { id: PhoneGroup | 'all'; label: string }[] = [
   { id: 'all', label: '전체' },
@@ -43,15 +44,17 @@ export default function PhonesCatalog({ phones }: { phones: Phone[] }) {
           ))}
         </div>
         <div className="flex items-center gap-3">
-          <select
-            value={sort}
-            onChange={(e) => setSort(e.target.value as 'price' | 'recommended')}
-            aria-label={t('정렬')}
-            className="rounded-full bg-soft px-3 py-2 text-xs font-bold text-slate-600 outline-none"
-          >
-            <option value="price">{t('낮은가격순')}</option>
-            <option value="recommended">{t('추천순')}</option>
-          </select>
+          {!PHONES_COMING_SOON && (
+            <select
+              value={sort}
+              onChange={(e) => setSort(e.target.value as 'price' | 'recommended')}
+              aria-label={t('정렬')}
+              className="rounded-full bg-soft px-3 py-2 text-xs font-bold text-slate-600 outline-none"
+            >
+              <option value="price">{t('낮은가격순')}</option>
+              <option value="recommended">{t('추천순')}</option>
+            </select>
+          )}
           <p className="text-xs text-slate-500">
             {t('총')} <b className="text-brand">{list.length}</b>
             {t('개 상품')}
